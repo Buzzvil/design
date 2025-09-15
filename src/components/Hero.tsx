@@ -1,0 +1,123 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { ArrowDown, Sparkles, Target, Lightbulb } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { BlurReveal } from './BlurReveal';
+
+const Hero = () => {
+  const { t } = useLanguage();
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+      },
+    },
+  };
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Minimal background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        {/* Main Heading */}
+        <div className="py-2">
+          <BlurReveal>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 tracking-tight">
+              <span className="text-foreground">{t('hero.title')}</span>
+            </h1>
+          </BlurReveal>
+        </div>
+
+        {/* Subtitle */}
+        <div className="py-2">
+          <BlurReveal>
+            <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+              {t('hero.subtitle')}
+            </p>
+          </BlurReveal>
+        </div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+        >
+          <motion.a
+            href="#foundations"
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 bg-accent/10 text-accent rounded-lg font-medium hover:bg-accent/20 transition-all duration-150 focus-ring"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector('#foundations');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            {t('hero.explore')}
+          </motion.a>
+          <motion.a
+            href="#resources"
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"
+          >
+            {t('hero.browse')}
+          </motion.a>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col items-center"
+        >
+          <span className="text-sm text-muted-foreground mb-2">{t('hero.scroll')}</span>
+          <motion.div
+            animate={{ y: [0, 4, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <ArrowDown className="w-5 h-5 text-white" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      {/* Minimal fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+    </section>
+  );
+};
+
+export default Hero;

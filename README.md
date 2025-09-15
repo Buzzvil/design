@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Buzzvil Design System
 
-## Getting Started
+A modern, minimal design system website for Buzzvil, featuring a dark theme, interactive animations, and bilingual support (English/Korean).
 
-First, run the development server:
+## 🌟 Features
 
+- **Dark Theme**: Minimal, Linear-inspired design with blue accent colors
+- **Interactive Minimap**: Full-screen animated minimap with scroll-based progress
+- **Bilingual Support**: Seamless language switching between English and Korean
+- **Smooth Animations**: Choreographed page transitions and blur reveal effects
+- **Responsive Design**: Optimized for all device sizes
+- **Modern Stack**: Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion
+
+## 🚀 Live Demo
+
+Visit the live site: [design.buzzvil.com](https://design.buzzvil.com)
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Fonts**: Nunito (English), Pretendard (Korean)
+- **Deployment**: GitHub Pages
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/buzzvil/design-buzzvil.git
+cd design-buzzvil
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+### Color Palette
+- **Primary**: Black (#000000)
+- **Accent**: Blue (#3B82F6)
+- **Background**: Dark (#0A0A0A)
+- **Text**: White (#FFFFFF)
+- **Muted**: Gray (#6B7280)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Typography
+- **English**: Nunito (Google Fonts)
+- **Korean**: Pretendard (Local font)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Components
+- Interactive Minimap
+- Language Switcher
+- Blur Reveal Animations
+- Parallax Sections
+- Avatar Generator
 
-## Deploy on Vercel
+## 🌐 Internationalization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site supports two languages:
+- **English** (en)
+- **Korean** (ko)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Language switching is handled through React Context with smooth page-wide transitions.
+
+## 🚀 Deployment
+
+### GitHub Pages (Automatic)
+
+The site is automatically deployed to GitHub Pages on every push to the `main` branch using GitHub Actions.
+
+### Manual Deployment
+
+```bash
+npm run build
+npm run deploy
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                 # Next.js App Router
+│   ├── globals.css     # Global styles and CSS variables
+│   ├── layout.tsx      # Root layout
+│   └── page.tsx        # Home page
+├── components/         # React components
+│   ├── Header.tsx      # Navigation header
+│   ├── Hero.tsx        # Hero section
+│   ├── InteractiveMinimap.tsx  # Animated minimap
+│   ├── LanguageSwitcher.tsx    # Language toggle
+│   └── ...
+├── contexts/           # React contexts
+│   └── LanguageContext.tsx     # Language management
+└── utils/              # Utility functions
+    ├── avatar.ts       # Avatar generation
+    └── clamp.ts        # Math utilities
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+- **Max** - Design Lead
+- **Jia** - Frontend Developer
+- **Elle** - UX Designer
+- **Joy** - Product Designer
+- **Rina** - Design System Engineer
+
+## 🔗 Links
+
+- [Live Site](https://design.buzzvil.com)
+- [Buzzvil](https://buzzvil.com)
+- [Design System Documentation](https://design.buzzvil.com/foundations)
+
+---
+
+Built with ❤️ by the Buzzvil Design Team

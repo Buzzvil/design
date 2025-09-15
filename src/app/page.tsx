@@ -1,103 +1,208 @@
-import Image from "next/image";
+'use client';
+
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Resources from '@/components/Resources';
+import Team from '@/components/Team';
+import Tools from '@/components/Tools';
+import Footer from '@/components/Footer';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { BlurReveal } from '@/components/BlurReveal';
+import InteractiveMinimap from '@/components/InteractiveMinimap';
+import { SectionTitle } from '@/components/SectionTitle';
+import { ParallaxSection } from '@/components/ParallaxSection';
+import { LanguageTransitionWrapper } from '@/components/LanguageTransitionWrapper';
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen">
+      <InteractiveMinimap />
+      <Header />
+      <LanguageTransitionWrapper>
+        <ParallaxSection speed={0.2}>
+          <Hero />
+        </ParallaxSection>
+      
+      {/* Philosophy & Foundations Section */}
+      <ParallaxSection speed={0.3} offset={50}>
+        <section id="foundations" className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <SectionTitle className="mb-4">
+            <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+              {t('foundations.title')}
+            </h2>
+          </SectionTitle>
+          <div className="py-2">
+            <BlurReveal>
+              <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">
+                {t('foundations.subtitle')}
+              </p>
+            </BlurReveal>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Mission & Vision */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16 relative">
+          <div className="p-8">
+            <h3 className="text-2xl font-semibold text-foreground mb-4">{t('foundations.mission.title')}</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              {t('foundations.mission.content')}
+            </p>
+          </div>
+          <div className="p-8 relative">
+            <div className="absolute left-0 top-8 bottom-8 w-px bg-border/50 hidden md:block"></div>
+            <h3 className="text-2xl font-semibold text-foreground mb-4">{t('foundations.vision.title')}</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              {t('foundations.vision.content')}
+            </p>
+          </div>
+        </div>
+
+        {/* Philosophy: Design as One-Team */}
+        <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-sm mb-16">
+          <h3 className="text-2xl font-semibold text-foreground mb-4">{t('foundations.philosophy.title')}</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            {t('foundations.philosophy.content1')}
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            {t('foundations.philosophy.content2')}
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            {t('foundations.philosophy.content3')}
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            {t('foundations.philosophy.content4')}
+          </p>
+        </div>
+
+        {/* Principles */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-semibold text-foreground mb-8 text-center">{t('principles.title')}</h3>
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            <div className="p-6">
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('principles.1.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.1.content1')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.1.content2')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.1.content3')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t('principles.1.content4')}
+              </p>
+            </div>
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden md:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('principles.2.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.2.content1')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.2.content2')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t('principles.2.content3')}
+              </p>
+            </div>
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden md:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('principles.3.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.3.content1')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('principles.3.content2')}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t('principles.3.content3')}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Values (How We Work) */}
+        <div>
+          <h3 className="text-3xl font-semibold text-foreground mb-8 text-center">{t('values.title')}</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Build in the Open */}
+            <div className="p-6">
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('values.build.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('values.build.content')}
+              </p>
+              <p className="text-primary font-medium">{t('values.build.slogan')}</p>
+            </div>
+            {/* Clarity Through Feedback */}
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden md:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('values.clarity.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('values.clarity.content')}
+              </p>
+              <p className="text-primary font-medium">{t('values.clarity.slogan')}</p>
+            </div>
+            {/* Lead with Grit */}
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden lg:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('values.grit.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('values.grit.content')}
+              </p>
+              <p className="text-primary font-medium">{t('values.grit.slogan')}</p>
+            </div>
+            {/* Bold Explorers */}
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden md:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('values.explore.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('values.explore.content')}
+              </p>
+              <p className="text-primary font-medium">{t('values.explore.slogan')}</p>
+            </div>
+            {/* One-Team in Practice */}
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden md:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('values.team.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('values.team.content')}
+              </p>
+              <p className="text-primary font-medium">{t('values.team.slogan')}</p>
+            </div>
+            {/* Delight with Integrity */}
+            <div className="p-6 relative">
+              <div className="absolute left-0 top-6 bottom-6 w-px bg-border/50 hidden lg:block"></div>
+              <h4 className="text-xl font-semibold text-foreground mb-3">{t('values.delight.title')}</h4>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                {t('values.delight.content')}
+              </p>
+              <p className="text-primary font-medium">{t('values.delight.slogan')}</p>
+            </div>
+          </div>
+        </div>
+        </section>
+      </ParallaxSection>
+
+      <ParallaxSection speed={0.4} offset={100}>
+        <Resources />
+      </ParallaxSection>
+      
+      <ParallaxSection speed={0.5} offset={150}>
+        <Team />
+      </ParallaxSection>
+      
+      <ParallaxSection speed={0.6} offset={200}>
+        <Tools />
+      </ParallaxSection>
+      
+      <ParallaxSection speed={0.7} offset={250}>
+        <Footer />
+      </ParallaxSection>
+      </LanguageTransitionWrapper>
+    </main>
   );
 }
