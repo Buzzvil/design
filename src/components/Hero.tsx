@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Sparkles, Target, Lightbulb } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from './BlurReveal';
 
@@ -30,15 +30,6 @@ const Hero = () => {
     },
   };
 
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-      },
-    },
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

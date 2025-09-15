@@ -7,11 +7,9 @@ import {
   useScroll,
   MotionValue,
   useMotionValue,
-  useTransform,
 } from "framer-motion";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { clamp } from "@/utils/clamp";
 
 export const LINE_GAP = 8;
 export const LINE_WIDTH = 1;

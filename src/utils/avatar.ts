@@ -8,7 +8,7 @@ export function hash(str: string): number {
   return Math.abs(hash);
 }
 
-export function getUnit(value: number, range: number, index: number = 0): number {
+export function getUnit(value: number, range: number): number {
   return (value % range) / range;
 }
 
@@ -22,10 +22,10 @@ export function generateColors(name: string, colors: string[]) {
 
   const elementsProperties = Array.from({ length: 3 }, (_, i) => ({
     color: getRandomColor(numFromName + i, colors, range),
-    translateX: getUnit(numFromName * (i + 1), 40 / 10, 1),
-    translateY: getUnit(numFromName * (i + 1), 40 / 10, 2),
+    translateX: getUnit(numFromName * (i + 1), 40 / 10),
+    translateY: getUnit(numFromName * (i + 1), 40 / 10),
     scale: 1.2 + getUnit(numFromName * (i + 1), 40 / 20) / 10,
-    rotate: getUnit(numFromName * (i + 1), 360, 1),
+    rotate: getUnit(numFromName * (i + 1), 360),
   }));
 
   return elementsProperties;
