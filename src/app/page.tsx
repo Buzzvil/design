@@ -8,7 +8,6 @@ import Tools from '@/components/Tools';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from '@/components/BlurReveal';
-// import InteractiveMinimap from '@/components/InteractiveMinimap';
 import { SectionTitle } from '@/components/SectionTitle';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { LanguageTransitionWrapper } from '@/components/LanguageTransitionWrapper';
@@ -18,7 +17,6 @@ export default function Home() {
   
   return (
     <main className="min-h-screen">
-      {/* <InteractiveMinimap /> */}
       <Header />
       <LanguageTransitionWrapper>
         <ParallaxSection speed={0.2}>
