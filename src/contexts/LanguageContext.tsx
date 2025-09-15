@@ -36,7 +36,9 @@ const translations = {
     'foundations.mission.content': 'We design fair and delightful reward experiences that connect users, advertisers, and publishers across every touchpoint.',
     'foundations.vision.title': 'Vision',
     'foundations.vision.content': 'We set the next standard for AdTech design by creating trusted, scalable, and enjoyable experiences that power Buzzvil\'s growth.',
-    'foundations.philosophy.title': 'Philosophy: Design as One-Team',
+    'foundations.philosophy.title': 'Philosophy: Design 
+    
+    as One-Team',
     'foundations.philosophy.content1': 'Buzzvil Design exists for an ecosystem: users, advertisers, and publishers — all connected through rewards.',
     'foundations.philosophy.content2': 'Design is the unifying layer across Demand, Supply, and Frontier.',
     'foundations.philosophy.content3': 'Our role is not to optimize for one side, but to create fair, delightful, and scalable experiences that benefit the entire system.',
