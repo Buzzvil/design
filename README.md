@@ -36,8 +36,8 @@ Visit the live site: [design.buzzvil.com](https://design.buzzvil.com)
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/buzzvil/design-buzzvil.git
-cd design-buzzvil
+git clone https://github.com/Buzzvil/design.git
+cd design
 ```
 
 2. Install dependencies:
