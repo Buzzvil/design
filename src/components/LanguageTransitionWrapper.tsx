@@ -103,6 +103,8 @@ function ChoreographedContent({
       
       // Find all major content blocks and animate them with delays
       const timer = setTimeout(() => {
+        if (typeof document === 'undefined') return;
+        
         const elements = document.querySelectorAll('[data-choreography]');
         elements.forEach((element, index) => {
           const delay = getElementDelay(element as HTMLElement, index * 0.05);
@@ -135,7 +137,7 @@ function ChoreographedContent({
               transition={{
                 duration: 0.4,
                 ease: [0.25, 0.46, 0.45, 0.94],
-                delay: isTransitioning ? 0 : getElementDelay(document.getElementById(elementId) || document.body, index * 0.05)
+                delay: isTransitioning ? 0 : (typeof document !== 'undefined' ? getElementDelay(document.getElementById(elementId) || document.body, index * 0.05) : 0)
               }}
             >
               {child}

@@ -68,14 +68,14 @@ export function AnimatedLanguageSwitcher() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const languages = [
+  const languages: Array<{ code: 'en' | 'ko'; name: string }> = [
     { code: 'en', name: 'English' },
     { code: 'ko', name: '한국어' }
   ];
 
   const currentLanguage = languages.find(lang => lang.code === language);
 
-  const handleLanguageChange = (newLanguage: string) => {
+  const handleLanguageChange = (newLanguage: 'en' | 'ko') => {
     if (newLanguage === language) return;
     
     setIsAnimating(true);

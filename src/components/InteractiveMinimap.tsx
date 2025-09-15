@@ -10,6 +10,7 @@ import {
   useTransform,
 } from "framer-motion";
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { clamp } from "@/utils/clamp";
 
 export const LINE_GAP = 8;
@@ -36,13 +37,19 @@ export function lerp(start: number, end: number, factor: number): number {
 }
 
 export default function InteractiveMinimap() {
+  const [isClient, setIsClient] = useState(false);
+  
   const scrollX = useScrollX(MAX);
-  const { mouseX, onMouseMove, onMouseLeave } = useMouseX();
+  const { mouseX, onMouseMove, onPointerLeave } = useMouseX();
   const { scrollY } = useScroll();
   
   // Calculate scale based on scroll position - keep minimaps throughout page
   const scaleY = useSpring(1, { damping: 30, stiffness: 300 });
   const opacity = useSpring(1, { damping: 30, stiffness: 300 });
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   
   // Update scale and opacity based on scroll
   React.useEffect(() => {
@@ -61,6 +68,10 @@ export default function InteractiveMinimap() {
     return unsubscribe;
   }, [scrollY, scaleY, opacity]);
 
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <>
       {/* Top Minimap - Fixed below header */}
@@ -73,7 +84,7 @@ export default function InteractiveMinimap() {
           pointerEvents: opacity.get() > 0.1 ? 'auto' : 'none'
         }}
         onPointerMove={onMouseMove}
-        onPointerLeave={onMouseLeave}
+        onPointerLeave={onPointerLeave}
       >
         <div className="flex items-start justify-between px-4" style={{ gap: LINE_GAP }}>
           {[...Array(LINE_COUNT)].map((_, i) => (
@@ -127,7 +138,7 @@ export default function InteractiveMinimap() {
           pointerEvents: opacity.get() > 0.1 ? 'auto' : 'none'
         }}
         onPointerMove={onMouseMove}
-        onPointerLeave={onMouseLeave}
+        onPointerLeave={onPointerLeave}
       >
         <div className="flex items-end justify-between px-4" style={{ gap: LINE_GAP }}>
           {[...Array(LINE_COUNT)].map((_, i) => (
@@ -372,6 +383,8 @@ export function useScrollX(max: number = MAX) {
   const targetX = React.useRef(0);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
+    if (typeof window === 'undefined') return;
+    
     // Calculate progress based on entire page height
     const documentHeight = document.documentElement.scrollHeight;
     const viewportHeight = window.innerHeight;
@@ -398,6 +411,8 @@ export function useMouseX() {
   const mouseX = useMotionValue<number>(0);
 
   React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     function handleMouseMove(e: MouseEvent) {
       mouseX.set(e.clientX);
     }
