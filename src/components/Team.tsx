@@ -12,31 +12,31 @@ const Team = () => {
   const teamMembers = [
     {
       name: 'Max',
-      role: 'Design Lead',
+      role: 'Product Designer',
       bio: 'Leading design strategy and building world-class design teams.',
       expertise: ['Design Strategy', 'Team Leadership', 'Product Design'],
     },
     {
       name: 'Jia',
-      role: 'Senior Designer',
+      role: 'Product Designer',
       bio: 'Crafting intuitive user experiences that delight and engage.',
       expertise: ['User Research', 'UX Design', 'Prototyping'],
     },
     {
       name: 'Elle',
-      role: 'UI Designer',
+      role: 'Product Designer',
       bio: 'Creating beautiful, accessible interfaces that bring designs to life.',
       expertise: ['Visual Design', 'Design Systems', 'Accessibility'],
     },
     {
       name: 'Joy',
-      role: 'Design Engineer',
+      role: 'Product Designer',
       bio: 'Bridging design and development with code and creativity.',
       expertise: ['Frontend Development', 'Design Systems', 'Animation'],
     },
     {
       name: 'Rina',
-      role: 'UX Researcher',
+      role: 'Product Designer',
       bio: 'Understanding users to inform better design decisions.',
       expertise: ['User Research', 'Data Analysis', 'Usability Testing'],
     },
