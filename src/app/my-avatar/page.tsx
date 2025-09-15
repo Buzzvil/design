@@ -9,6 +9,7 @@ interface AvatarData {
   // Style questions
   primaryColor: string;
   secondaryColor: string;
+  philosophy: string;
   animationStyle: string;
   
   // Role information
@@ -26,13 +27,43 @@ const STEPS = [
   { id: 'preview', title: 'Preview & Download', icon: Download },
 ];
 
-const COLOR_OPTIONS = [
-  { name: 'Warm & Energetic', colors: ['#FF6B6B', '#FFE66D', '#4ECDC4'] },
-  { name: 'Cool & Professional', colors: ['#667EEA', '#764BA2', '#F093FB'] },
-  { name: 'Natural & Organic', colors: ['#56AB2F', '#A8E6CF', '#FFD93D'] },
-  { name: 'Bold & Modern', colors: ['#FF416C', '#FF4B2B', '#FF6B6B'] },
-  { name: 'Minimal & Clean', colors: ['#2C3E50', '#34495E', '#ECF0F1'] },
-  { name: 'Creative & Playful', colors: ['#FF9A9E', '#FECFEF', '#FECFEF'] },
+const DESIGN_PHILOSOPHY_OPTIONS = [
+  { 
+    name: 'Rewarded', 
+    description: 'Creating experiences that feel valuable and meaningful',
+    colors: ['#FF6B6B', '#FFE66D', '#4ECDC4'],
+    philosophy: 'rewarded'
+  },
+  { 
+    name: 'Playful', 
+    description: 'Bringing joy and delight to every interaction',
+    colors: ['#667EEA', '#764BA2', '#F093FB'],
+    philosophy: 'playful'
+  },
+  { 
+    name: 'Scalable', 
+    description: 'Building systems that grow with our users',
+    colors: ['#56AB2F', '#A8E6CF', '#FFD93D'],
+    philosophy: 'scalable'
+  },
+  { 
+    name: 'One-Team', 
+    description: 'Designing as a unified force across all touchpoints',
+    colors: ['#FF416C', '#FF4B2B', '#FF6B6B'],
+    philosophy: 'one-team'
+  },
+  { 
+    name: 'Clarity', 
+    description: 'Making complex things simple and understandable',
+    colors: ['#2C3E50', '#34495E', '#ECF0F1'],
+    philosophy: 'clarity'
+  },
+  { 
+    name: 'Grit', 
+    description: 'Pushing boundaries and challenging the status quo',
+    colors: ['#FF9A9E', '#FECFEF', '#FECFEF'],
+    philosophy: 'grit'
+  },
 ];
 
 const ANIMATION_OPTIONS = [
@@ -49,6 +80,7 @@ export default function MyAvatarPage() {
   const [avatarData, setAvatarData] = useState<AvatarData>({
     primaryColor: '',
     secondaryColor: '',
+    philosophy: '',
     animationStyle: '',
     role: 'Product Designer',
     organizationDescription: '',
@@ -77,6 +109,7 @@ export default function MyAvatarPage() {
   <style>
     <primaryColor>${avatarData.primaryColor}</primaryColor>
     <secondaryColor>${avatarData.secondaryColor}</secondaryColor>
+    <philosophy>${avatarData.philosophy}</philosophy>
     <animationStyle>${avatarData.animationStyle}</animationStyle>
   </style>
   <role>
@@ -107,12 +140,12 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Choose Your Design Style</h2>
-              <p className="text-muted-foreground text-lg">Select colors that represent your design aesthetic</p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">What drives your design philosophy?</h2>
+              <p className="text-muted-foreground text-lg">Choose the principle that resonates most with your approach</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {COLOR_OPTIONS.map((option, index) => (
+              {DESIGN_PHILOSOPHY_OPTIONS.map((option, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.02 }}
@@ -120,9 +153,10 @@ export default function MyAvatarPage() {
                   onClick={() => {
                     updateAvatarData('primaryColor', option.colors[0]);
                     updateAvatarData('secondaryColor', option.colors[1]);
+                    updateAvatarData('philosophy', option.philosophy);
                   }}
-                  className={`p-6 rounded-2xl border-2 transition-all ${
-                    avatarData.primaryColor === option.colors[0] 
+                  className={`p-6 rounded-2xl border-2 transition-all text-left ${
+                    avatarData.philosophy === option.philosophy 
                       ? 'border-accent bg-accent/10' 
                       : 'border-border hover:border-accent/50'
                   }`}
@@ -136,7 +170,8 @@ export default function MyAvatarPage() {
                       />
                     ))}
                   </div>
-                  <h3 className="font-semibold text-foreground">{option.name}</h3>
+                  <h3 className="font-semibold text-foreground mb-2">{option.name}</h3>
+                  <p className="text-muted-foreground text-sm">{option.description}</p>
                 </motion.button>
               ))}
             </div>
@@ -245,28 +280,37 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Preview & Download</h2>
-              <p className="text-muted-foreground text-lg">Review your avatar and download the XML file</p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Your Designer Profile</h2>
+              <p className="text-muted-foreground text-lg">Here&apos;s your completed avatar card</p>
             </div>
             
             <div className="max-w-2xl mx-auto">
-              <div className="bg-muted/20 p-8 rounded-2xl border border-border">
+              {/* Complete Profile Card */}
+              <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-lg">
                 <div className="flex items-center space-x-6 mb-6">
-                  <Avatar name="Your Name" size={80} />
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground">{avatarData.role}</h3>
-                    <p className="text-muted-foreground">{avatarData.organizationDescription}</p>
+                  <div className="relative">
+                    <Avatar name="Your Name" size={80} />
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-background" 
+                         style={{ backgroundColor: avatarData.primaryColor }} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-foreground mb-1">{avatarData.role}</h3>
+                    <p className="text-muted-foreground text-sm mb-2">{avatarData.organizationDescription}</p>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-xs text-muted-foreground">Philosophy:</span>
+                      <span className="text-xs font-medium text-accent capitalize">{avatarData.philosophy}</span>
+                    </div>
                   </div>
                 </div>
                 
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-foreground mb-2">Expertise:</h4>
+                    <h4 className="font-medium text-foreground mb-3">Expertise</h4>
                     <div className="flex flex-wrap gap-2">
                       {avatarData.keywords.filter(k => k.trim()).map((keyword, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm"
+                          className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
                         >
                           {keyword}
                         </span>
@@ -274,22 +318,26 @@ export default function MyAvatarPage() {
                     </div>
                   </div>
                   
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Style:</h4>
-                    <div className="flex items-center space-x-4">
-                      <div className="flex space-x-2">
-                        <div
-                          className="w-6 h-6 rounded-full"
-                          style={{ backgroundColor: avatarData.primaryColor }}
-                        />
-                        <div
-                          className="w-6 h-6 rounded-full"
-                          style={{ backgroundColor: avatarData.secondaryColor }}
-                        />
+                  <div className="pt-4 border-t border-border/50">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-medium text-foreground mb-2">Design Style</h4>
+                        <div className="flex items-center space-x-3">
+                          <div className="flex space-x-1">
+                            <div
+                              className="w-4 h-4 rounded-full"
+                              style={{ backgroundColor: avatarData.primaryColor }}
+                            />
+                            <div
+                              className="w-4 h-4 rounded-full"
+                              style={{ backgroundColor: avatarData.secondaryColor }}
+                            />
+                          </div>
+                          <span className="text-sm text-muted-foreground capitalize">
+                            {avatarData.animationStyle} motion
+                          </span>
+                        </div>
                       </div>
-                      <span className="text-muted-foreground capitalize">
-                        {avatarData.animationStyle} animation
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -314,73 +362,22 @@ export default function MyAvatarPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">My Avatar</h1>
-              <p className="text-muted-foreground">Customize your designer profile</p>
-            </div>
-            <div className="text-sm text-muted-foreground">
-              Step {currentStep + 1} of {STEPS.length}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-4 py-4">
-            {STEPS.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.id} className="flex items-center">
-                  <div
-                    className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-colors ${
-                      index <= currentStep
-                        ? 'border-accent bg-accent text-white'
-                        : 'border-border text-muted-foreground'
-                    }`}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span
-                    className={`ml-2 text-sm font-medium ${
-                      index <= currentStep ? 'text-foreground' : 'text-muted-foreground'
-                    }`}
-                  >
-                    {step.title}
-                  </span>
-                  {index < STEPS.length - 1 && (
-                    <div
-                      className={`w-8 h-0.5 mx-4 ${
-                        index < currentStep ? 'bg-accent' : 'bg-border'
-                      }`}
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentStep}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            {renderStep()}
-          </motion.div>
-        </AnimatePresence>
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+        <div className="w-full max-w-4xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentStep}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {renderStep()}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Navigation */}
