@@ -62,6 +62,10 @@ const Team = () => {
               {t('team.subtitle')}
             </p>
           </BlurReveal>
+          {/* Debug info */}
+          <div className="mt-4 p-2 bg-yellow-200 text-black rounded">
+            Debug: Hovered member = {hoveredMember || 'none'}
+          </div>
         </motion.div>
 
 
@@ -86,8 +90,14 @@ const Team = () => {
                   <div className="relative p-4">
                     <div 
                       className="border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2 cursor-pointer"
-                      onMouseEnter={() => setHoveredMember(member.name)}
-                      onMouseLeave={() => setHoveredMember(null)}
+                      onMouseEnter={() => {
+                        console.log('Hovering over avatar:', member.name);
+                        setHoveredMember(member.name);
+                      }}
+                      onMouseLeave={() => {
+                        console.log('Leaving avatar:', member.name);
+                        setHoveredMember(null);
+                      }}
                     >
                       <Avatar 
                         name={member.name} 
