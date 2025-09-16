@@ -10,7 +10,7 @@ interface AvatarData {
   primaryColor: string;
   secondaryColor: string;
   philosophy: string;
-  animationStyle: string;
+  workingStyle: string;
   
   // Role information
   role: string;
@@ -66,14 +66,39 @@ const DESIGN_PHILOSOPHY_OPTIONS = [
   },
 ];
 
-const ANIMATION_OPTIONS = [
-  { name: 'Quick & Snappy', style: 'quick', description: 'Fast, responsive animations' },
-  { name: 'Slow & Smooth', style: 'slow', description: 'Gentle, flowing movements' },
-  { name: 'Wavy & Organic', style: 'wavy', description: 'Natural, wave-like motion' },
-  { name: 'Springy & Bouncy', style: 'springy', description: 'Energetic, elastic feel' },
-  { name: 'Minimal & Subtle', style: 'minimal', description: 'Understated, refined motion' },
-  { name: 'Dynamic & Bold', style: 'dynamic', description: 'Strong, impactful animations' },
+const WORKING_STYLE_OPTIONS = [
+  { 
+    name: 'Iterative', 
+    description: 'Building and refining through continuous cycles',
+    style: 'iterative'
+  },
+  { 
+    name: 'Detail-Oriented', 
+    description: 'Focusing on precision and attention to every element',
+    style: 'detail-oriented'
+  },
+  { 
+    name: 'Big Picture', 
+    description: 'Thinking strategically about overall user experience',
+    style: 'big-picture'
+  },
+  { 
+    name: 'Collaborative', 
+    description: 'Working closely with cross-functional teams',
+    style: 'collaborative'
+  },
+  { 
+    name: 'Experimental', 
+    description: 'Testing new approaches and pushing boundaries',
+    style: 'experimental'
+  },
+  { 
+    name: 'Systematic', 
+    description: 'Following structured processes and methodologies',
+    style: 'systematic'
+  },
 ];
+
 
 export default function MyAvatarPage() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -81,7 +106,7 @@ export default function MyAvatarPage() {
     primaryColor: '',
     secondaryColor: '',
     philosophy: '',
-    animationStyle: '',
+    workingStyle: '',
     role: 'Product Designer',
     organizationDescription: '',
     keywords: ['', '', ''],
@@ -89,6 +114,16 @@ export default function MyAvatarPage() {
 
   const updateAvatarData = (field: keyof AvatarData, value: string | string[]) => {
     setAvatarData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const isFormComplete = () => {
+    return (
+      avatarData.philosophy &&
+      avatarData.workingStyle &&
+      avatarData.role &&
+      avatarData.organizationDescription &&
+      avatarData.keywords[0]?.trim()
+    );
   };
 
   const nextStep = () => {
@@ -110,7 +145,7 @@ export default function MyAvatarPage() {
     <primaryColor>${avatarData.primaryColor}</primaryColor>
     <secondaryColor>${avatarData.secondaryColor}</secondaryColor>
     <philosophy>${avatarData.philosophy}</philosophy>
-    <animationStyle>${avatarData.animationStyle}</animationStyle>
+    <workingStyle>${avatarData.workingStyle}</workingStyle>
   </style>
   <role>
     <title>${avatarData.role}</title>
@@ -118,7 +153,7 @@ export default function MyAvatarPage() {
   </role>
   <expertise>
     <keywords>
-      ${avatarData.keywords.map(keyword => `<keyword>${keyword}</keyword>`).join('\n      ')}
+      ${avatarData.keywords.filter(k => k.trim()).map(keyword => `<keyword>${keyword}</keyword>`).join('\n      ')}
     </keywords>
   </expertise>
 </avatar>`;
@@ -161,16 +196,7 @@ export default function MyAvatarPage() {
                       : 'border-border hover:border-accent/50'
                   }`}
                 >
-                  <div className="flex space-x-2 mb-4">
-                    {option.colors.map((color, i) => (
-                      <div
-                        key={i}
-                        className="w-8 h-8 rounded-full"
-                        style={{ backgroundColor: color }}
-                      />
-                    ))}
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2">{option.name}</h3>
+                  <h3 className="font-semibold text-foreground mb-3">{option.name}</h3>
                   <p className="text-muted-foreground text-sm">{option.description}</p>
                 </motion.button>
               ))}
@@ -182,19 +208,19 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Animation Style</h2>
-              <p className="text-muted-foreground text-lg">How should your avatar move and interact?</p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">How do you approach your work?</h2>
+              <p className="text-muted-foreground text-lg">Select the working style that best describes your process</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {ANIMATION_OPTIONS.map((option, index) => (
+              {WORKING_STYLE_OPTIONS.map((option, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => updateAvatarData('animationStyle', option.style)}
+                  onClick={() => updateAvatarData('workingStyle', option.style)}
                   className={`p-6 rounded-2xl border-2 transition-all text-left ${
-                    avatarData.animationStyle === option.style 
+                    avatarData.workingStyle === option.style 
                       ? 'border-accent bg-accent/10' 
                       : 'border-border hover:border-accent/50'
                   }`}
@@ -250,14 +276,15 @@ export default function MyAvatarPage() {
           <div className="space-y-8">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-foreground mb-4">Your Expertise</h2>
-              <p className="text-muted-foreground text-lg">Add 3 keywords that define what you do best</p>
+              <p className="text-muted-foreground text-lg">Add keywords that define what you do best (at least 1 required)</p>
             </div>
             
             <div className="max-w-2xl mx-auto space-y-4">
               {[0, 1, 2].map((index) => (
                 <div key={index}>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Keyword {index + 1}
+                    Keyword {index + 1} {index === 0 && <span className="text-accent">*</span>}
+                    {index > 0 && <span className="text-muted-foreground text-xs ml-2">(optional)</span>}
                   </label>
                   <input
                     type="text"
@@ -268,7 +295,7 @@ export default function MyAvatarPage() {
                       updateAvatarData('keywords', newKeywords);
                     }}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder={`Expertise ${index + 1}...`}
+                    placeholder={index === 0 ? "Your primary expertise..." : `Additional expertise ${index}...`}
                   />
                 </div>
               ))}
@@ -334,7 +361,7 @@ export default function MyAvatarPage() {
                             />
                           </div>
                           <span className="text-sm text-muted-foreground capitalize">
-                            {avatarData.animationStyle} motion
+                            {avatarData.workingStyle.replace('-', ' ')} approach
                           </span>
                         </div>
                       </div>
@@ -403,9 +430,9 @@ export default function MyAvatarPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={nextStep}
-              disabled={currentStep === STEPS.length - 1}
+              disabled={currentStep === STEPS.length - 1 || !isFormComplete()}
               className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                currentStep === STEPS.length - 1
+                currentStep === STEPS.length - 1 || !isFormComplete()
                   ? 'text-muted-foreground cursor-not-allowed'
                   : 'bg-accent text-white hover:bg-accent/90'
               }`}
