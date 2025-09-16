@@ -24,141 +24,150 @@ const BUZZVIL_VALUE_COLORS = {
   'delight': ["#FF69B4", "#00CED1", "#FF1493", "#32CD32"], // Hot pink, turquoise, deep pink, lime - vibrant energy
 };
 
-// Buzzvil Design Principles - 3 distinct, smooth animations
+// Generate random values for organic, non-looping animations
+const generateRandomSequence = (length: number, min: number, max: number, seed: number = 0) => {
+  const sequence = [];
+  let current = (Math.sin(seed) + 1) / 2; // Start with a random value based on seed
+  
+  for (let i = 0; i < length; i++) {
+    // Use a combination of sine waves and random noise for organic movement
+    const sineWave = Math.sin((i / length) * Math.PI * 2 + seed);
+    const noise = (Math.random() - 0.5) * 0.3; // Random noise
+    const drift = (Math.random() - 0.5) * 0.1; // Slow drift
+    
+    current = Math.max(min, Math.min(max, current + sineWave * 0.1 + noise + drift));
+    sequence.push(current);
+  }
+  
+  return sequence;
+};
+
+// Buzzvil Design Principles - Each with a specific property focus and organic randomness
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Living, breathing organism with random mutations
+    // Focus: SCALE - Time-based breathing and pulsing
     color1: {
       animate: {
-        scale: [1, 1.4, 0.5, 1.6, 0.3, 1.3, 0.7, 1.5, 0.8, 1.2, 0.9, 1.1, 1],
-        opacity: [1, 0.2, 1, 0.1, 1, 0.6, 0.8, 0.3, 1, 0.7, 0.9, 0.4, 1],
-        rotate: [0, 45, -35, 60, -25, 30, -50, 40, -15, 25, -40, 35, 0],
-        x: [0, 6, -4, 8, -5, 3, -6, 4, -2, 3, -4, 2, 0],
-        y: [0, -4, 6, -7, 4, -3, 5, -4, 2, -3, 4, -2, 0],
-        skewX: [0, 20, -15, 25, -18, 10, -12, 15, -8, 12, -10, 8, 0],
-        skewY: [0, -15, 20, -22, 15, -10, 12, -18, 8, -12, 10, -8, 0],
-        scaleX: [1, 1.3, 0.6, 1.5, 0.4, 1.2, 0.8, 1.4, 0.7, 1.1, 0.9, 1.2, 1],
-        scaleY: [1, 0.7, 1.4, 0.5, 1.6, 0.8, 1.3, 0.6, 1.2, 0.9, 1.1, 0.8, 1],
+        // Primary: Scale variations (breathing effect)
+        scale: generateRandomSequence(12, 0.8, 1.3, 1),
+        // Secondary: Subtle opacity changes
+        opacity: generateRandomSequence(12, 0.7, 1.0, 2),
+        // Minimal rotation for organic feel
+        rotate: generateRandomSequence(12, -15, 15, 3),
+        // Very subtle position changes
+        x: generateRandomSequence(12, -2, 2, 4),
+        y: generateRandomSequence(12, -2, 2, 5),
       },
       transition: {
-        duration: 8.5,
+        duration: 6.0 + Math.random() * 2, // Random duration for unpredictability
         repeat: Infinity,
         ease: "easeInOut" as const,
-        times: [0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 1]
+        repeatType: "reverse" as const,
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.4, 1.6, 0.2, 1.8, 0.6, 1.4, 0.3, 1.7, 0.7, 1.3, 0.5, 1],
-        opacity: [1, 0.9, 0.1, 1, 0.2, 0.8, 0.4, 1, 0.3, 0.9, 0.5, 0.8, 1],
-        rotate: [0, -50, 40, -65, 30, -35, 55, -45, 20, -30, 45, -35, 0],
-        x: [0, -6, 4, -8, 5, -3, 6, -4, 2, -3, 4, -2, 0],
-        y: [0, 4, -6, 7, -4, 3, -5, 4, -2, 3, -4, 2, 0],
-        skewX: [0, -20, 15, -25, 18, -10, 12, -15, 8, -12, 10, -8, 0],
-        skewY: [0, 15, -20, 22, -15, 10, -12, 18, -8, 12, -10, 8, 0],
-        scaleX: [1, 0.6, 1.4, 0.4, 1.6, 0.8, 1.3, 0.5, 1.5, 0.7, 1.2, 0.9, 1],
-        scaleY: [1, 1.4, 0.6, 1.6, 0.4, 1.2, 0.8, 1.5, 0.7, 1.1, 0.9, 1.3, 1],
+        // Counter-balancing scale
+        scale: generateRandomSequence(12, 0.7, 1.4, 6),
+        opacity: generateRandomSequence(12, 0.6, 1.0, 7),
+        rotate: generateRandomSequence(12, -20, 20, 8),
+        x: generateRandomSequence(12, -3, 3, 9),
+        y: generateRandomSequence(12, -3, 3, 10),
       },
       transition: {
-        duration: 7.2,
+        duration: 5.5 + Math.random() * 1.5,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 1.5,
-        times: [0, 0.1, 0.18, 0.26, 0.34, 0.42, 0.5, 0.58, 0.66, 0.74, 0.82, 0.9, 1]
+        delay: 0.8 + Math.random() * 0.4,
+        repeatType: "reverse" as const,
       }
     }
   },
   'playful': {
-    // Animation 2: Chaotic living entity with extreme random mutations
+    // Focus: ROTATION - Playful spinning and tumbling
     color1: {
       animate: {
-        scale: [1, 1.8, 0.2, 2.0, 0.1, 1.6, 0.4, 1.9, 0.3, 1.7, 0.5, 1.8, 0.6, 1.3, 1],
-        rotate: [0, 80, -60, 90, -45, 70, -80, 65, -35, 55, -75, 50, -25, 40, 0],
-        opacity: [1, 0.1, 1, 0.05, 1, 0.3, 0.7, 0.1, 1, 0.4, 0.8, 0.2, 1, 0.6, 1],
-        x: [0, 10, -7, 12, -8, 6, -9, 7, -4, 5, -7, 4, -2, 3, 0],
-        y: [0, -7, 10, -12, 8, -6, 9, -7, 4, -5, 7, -4, 2, -3, 0],
-        skewX: [0, 30, -25, 35, -28, 15, -18, 25, -12, 18, -15, 12, -8, 10, 0],
-        skewY: [0, -25, 30, -35, 28, -15, 18, -25, 12, -18, 15, -12, 8, -10, 0],
-        scaleX: [1, 1.6, 0.3, 1.8, 0.2, 1.4, 0.5, 1.7, 0.4, 1.5, 0.6, 1.6, 0.7, 1.2, 1],
-        scaleY: [1, 0.4, 1.7, 0.2, 1.9, 0.6, 1.4, 0.3, 1.6, 0.5, 1.3, 0.8, 1.1, 0.9, 1],
-        rotateX: [0, 25, -20, 30, -22, 15, -18, 20, -12, 16, -14, 10, -8, 6, 0],
-        rotateY: [0, -20, 25, -30, 22, -15, 18, -20, 12, -16, 14, -10, 8, -6, 0],
+        // Primary: Rotation variations (playful spinning)
+        rotate: generateRandomSequence(15, -180, 180, 11),
+        // Secondary: Scale for bouncy effect
+        scale: generateRandomSequence(15, 0.9, 1.2, 12),
+        // Opacity for sparkle effect
+        opacity: generateRandomSequence(15, 0.8, 1.0, 13),
+        // Position for floating effect
+        x: generateRandomSequence(15, -4, 4, 14),
+        y: generateRandomSequence(15, -4, 4, 15),
+        // Skew for playful distortion
+        skewX: generateRandomSequence(15, -10, 10, 16),
+        skewY: generateRandomSequence(15, -10, 10, 17),
       },
       transition: {
-        duration: 4.8,
+        duration: 4.0 + Math.random() * 1.5,
         repeat: Infinity,
-        ease: "easeOut" as const,
-        times: [0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63, 0.7, 0.77, 0.84, 0.91, 1]
+        ease: "easeInOut" as const,
+        repeatType: "reverse" as const,
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.2, 1.9, 0.1, 2.1, 0.4, 1.7, 0.2, 1.8, 0.5, 1.6, 0.3, 1.7, 0.6, 1],
-        rotate: [0, -80, 60, -90, 45, -70, 80, -65, 35, -55, 75, -50, 25, -40, 0],
-        opacity: [1, 0.9, 0.05, 1, 0.1, 0.7, 0.3, 1, 0.2, 0.8, 0.4, 1, 0.3, 0.9, 1],
-        x: [0, -10, 7, -12, 8, -6, 9, -7, 4, -5, 7, -4, 2, -3, 0],
-        y: [0, 7, -10, 12, -8, 6, -9, 7, -4, 5, -7, 4, -2, 3, 0],
-        skewX: [0, -30, 25, -35, 28, -15, 18, -25, 12, -18, 15, -12, 8, -10, 0],
-        skewY: [0, 25, -30, 35, -28, 15, -18, 25, -12, 18, -15, 12, -8, 10, 0],
-        scaleX: [1, 0.3, 1.7, 0.2, 1.9, 0.5, 1.4, 0.3, 1.6, 0.4, 1.3, 0.7, 1.2, 0.8, 1],
-        scaleY: [1, 1.7, 0.3, 1.9, 0.2, 1.4, 0.6, 1.6, 0.4, 1.3, 0.8, 1.1, 0.9, 1.2, 1],
-        rotateX: [0, -25, 20, -30, 22, -15, 18, -20, 12, -16, 14, -10, 8, -6, 0],
-        rotateY: [0, 20, -25, 30, -22, 15, -18, 20, -12, 16, -14, 10, -8, 6, 0],
+        // Counter-rotating for dynamic interaction
+        rotate: generateRandomSequence(15, -200, 200, 18),
+        scale: generateRandomSequence(15, 0.8, 1.3, 19),
+        opacity: generateRandomSequence(15, 0.7, 1.0, 20),
+        x: generateRandomSequence(15, -5, 5, 21),
+        y: generateRandomSequence(15, -5, 5, 22),
+        skewX: generateRandomSequence(15, -12, 12, 23),
+        skewY: generateRandomSequence(15, -12, 12, 24),
       },
       transition: {
-        duration: 4.0,
+        duration: 3.5 + Math.random() * 1.0,
         repeat: Infinity,
-        ease: "easeIn" as const,
-        delay: 0.8,
-        times: [0, 0.08, 0.15, 0.22, 0.29, 0.36, 0.43, 0.5, 0.57, 0.64, 0.71, 0.78, 0.85, 0.92, 1]
+        ease: "easeOut" as const,
+        delay: 0.5 + Math.random() * 0.3,
+        repeatType: "reverse" as const,
       }
     }
   },
   'scalable': {
-    // Animation 3: Living organism with organic growth and random mutations
+    // Focus: POSITION (X/Y) - Growth and expansion patterns
     color1: {
       animate: {
-        scale: [1, 1.7, 0.3, 1.9, 0.2, 1.6, 0.4, 1.8, 0.5, 1.5, 0.6, 1.7, 0.7, 1.3, 0.8, 1.1, 1],
-        opacity: [1, 0.1, 1, 0.05, 1, 0.4, 0.7, 0.2, 1, 0.5, 0.8, 0.3, 1, 0.6, 0.9, 0.4, 1],
-        rotate: [0, 55, -40, 70, -30, 45, -60, 50, -25, 35, -55, 40, -20, 30, -45, 25, 0],
-        x: [0, 7, -5, 9, -6, 4, -7, 5, -3, 4, -6, 3, -2, 3, -4, 2, 0],
-        y: [0, -5, 7, -9, 6, -4, 7, -5, 3, -4, 6, -3, 2, -3, 4, -2, 0],
-        skewX: [0, 25, -20, 30, -22, 15, -18, 20, -12, 16, -18, 14, -10, 12, -15, 8, 0],
-        skewY: [0, -20, 25, -30, 22, -15, 18, -20, 12, -16, 18, -14, 10, -12, 15, -8, 0],
-        scaleX: [1, 1.5, 0.4, 1.7, 0.3, 1.3, 0.6, 1.6, 0.5, 1.2, 0.7, 1.4, 0.8, 1.1, 0.9, 1.2, 1],
-        scaleY: [1, 0.5, 1.6, 0.3, 1.8, 0.7, 1.4, 0.4, 1.5, 0.6, 1.3, 0.8, 1.2, 0.9, 1.1, 0.8, 1],
-        rotateX: [0, 30, -25, 35, -28, 20, -22, 25, -15, 18, -20, 16, -12, 14, -16, 10, 0],
-        rotateY: [0, -25, 30, -35, 28, -20, 22, -25, 15, -18, 20, -16, 12, -14, 16, -10, 0],
-        rotateZ: [0, 15, -12, 18, -14, 10, -11, 13, -8, 9, -10, 8, -6, 7, -8, 5, 0],
+        // Primary: Position changes (growth patterns)
+        x: generateRandomSequence(18, -6, 6, 25),
+        y: generateRandomSequence(18, -6, 6, 26),
+        // Secondary: Scale for expansion
+        scale: generateRandomSequence(18, 0.85, 1.25, 27),
+        // Opacity for layering effect
+        opacity: generateRandomSequence(18, 0.75, 1.0, 28),
+        // Minimal rotation for organic growth
+        rotate: generateRandomSequence(18, -25, 25, 29),
+        // Skew for dynamic scaling
+        skewX: generateRandomSequence(18, -8, 8, 30),
+        skewY: generateRandomSequence(18, -8, 8, 31),
       },
       transition: {
-        duration: 9.2,
+        duration: 7.0 + Math.random() * 2.0,
         repeat: Infinity,
         ease: "easeInOut" as const,
-        times: [0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66, 0.72, 0.78, 0.84, 0.9, 1]
+        repeatType: "reverse" as const,
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.3, 1.8, 0.2, 2.0, 0.5, 1.6, 0.3, 1.7, 0.6, 1.4, 0.4, 1.6, 0.7, 1.3, 0.8, 1],
-        opacity: [1, 0.9, 0.05, 1, 0.1, 0.6, 0.3, 1, 0.2, 0.7, 0.4, 1, 0.3, 0.8, 0.5, 0.9, 1],
-        rotate: [0, -55, 40, -70, 30, -45, 60, -50, 25, -35, 55, -40, 20, -30, 45, -25, 0],
-        x: [0, -7, 5, -9, 6, -4, 7, -5, 3, -4, 6, -3, 2, -3, 4, -2, 0],
-        y: [0, 5, -7, 9, -6, 4, -7, 5, -3, 4, -6, 3, -2, 3, -4, 2, 0],
-        skewX: [0, -25, 20, -30, 22, -15, 18, -20, 12, -16, 18, -14, 10, -12, 15, -8, 0],
-        skewY: [0, 20, -25, 30, -22, 15, -18, 20, -12, 16, -18, 14, -10, 12, -15, 8, 0],
-        scaleX: [1, 0.4, 1.6, 0.3, 1.8, 0.6, 1.3, 0.4, 1.5, 0.5, 1.2, 0.7, 1.1, 0.8, 1.0, 0.9, 1],
-        scaleY: [1, 1.6, 0.4, 1.8, 0.3, 1.3, 0.7, 1.5, 0.5, 1.2, 0.8, 1.1, 0.9, 1.0, 0.8, 1.1, 1],
-        rotateX: [0, -30, 25, -35, 28, -20, 22, -25, 15, -18, 20, -16, 12, -14, 16, -10, 0],
-        rotateY: [0, 25, -30, 35, -28, 20, -22, 25, -15, 18, -20, 16, -12, 14, -16, 10, 0],
-        rotateZ: [0, -15, 12, -18, 14, -10, 11, -13, 8, -9, 10, -8, 6, -7, 8, -5, 0],
+        // Complementary position patterns
+        x: generateRandomSequence(18, -7, 7, 32),
+        y: generateRandomSequence(18, -7, 7, 33),
+        scale: generateRandomSequence(18, 0.8, 1.3, 34),
+        opacity: generateRandomSequence(18, 0.7, 1.0, 35),
+        rotate: generateRandomSequence(18, -30, 30, 36),
+        skewX: generateRandomSequence(18, -10, 10, 37),
+        skewY: generateRandomSequence(18, -10, 10, 38),
       },
       transition: {
-        duration: 7.5,
+        duration: 6.5 + Math.random() * 1.5,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 1.8,
-        times: [0, 0.08, 0.14, 0.2, 0.26, 0.32, 0.38, 0.44, 0.5, 0.56, 0.62, 0.68, 0.74, 0.8, 0.86, 0.92, 1]
+        delay: 1.0 + Math.random() * 0.5,
+        repeatType: "reverse" as const,
       }
     }
   },
