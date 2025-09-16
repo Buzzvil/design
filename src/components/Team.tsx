@@ -87,33 +87,33 @@ const Team = () => {
               <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative">
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
-                  {/* Hover detection area - separate from avatar */}
-                  <div 
-                    className="absolute inset-0 z-10 border-2 border-blue-500 cursor-pointer"
-                    onMouseEnter={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      console.log('Hovering over:', member.name);
-                      setHoveredMember(member.name);
-                    }}
-                    onMouseLeave={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      console.log('Leaving:', member.name);
-                      setHoveredMember(null);
-                    }}
-                    onClick={() => {
-                      console.log('Clicked on:', member.name);
-                      setHoveredMember(member.name);
-                    }}
-                  />
                   <div className="relative p-4">
-                    <Avatar 
-                      name={member.name} 
-                      size={80}
-                      philosophy={member.buzzvilValue}
-                      workingStyle={member.buzzvilPrinciple}
-                    />
+                    <div
+                      className="cursor-pointer border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2"
+                      onMouseEnter={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Hovering over:', member.name);
+                        setHoveredMember(member.name);
+                      }}
+                      onMouseLeave={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Leaving:', member.name);
+                        setHoveredMember(null);
+                      }}
+                      onClick={() => {
+                        console.log('Clicked on:', member.name);
+                        setHoveredMember(member.name);
+                      }}
+                    >
+                      <Avatar 
+                        name={member.name} 
+                        size={80}
+                        philosophy={member.buzzvilValue}
+                        workingStyle={member.buzzvilPrinciple}
+                      />
+                    </div>
                     {/* Tooltip - positioned 8px from top right of avatar */}
                     <div className={`absolute -top-2 -right-2 bg-red-500 border-2 border-yellow-400 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
                       hoveredMember === member.name ? 'opacity-100' : 'opacity-50'
