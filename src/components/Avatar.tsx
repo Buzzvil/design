@@ -37,7 +37,7 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
         y: [0, -1, 2, -2, 1, -1, 2, -1, 0],
       },
       transition: {
-        duration: 3.2,
+        duration: 8.5,
         repeat: Infinity,
         ease: "easeInOut" as const,
         times: [0, 0.15, 0.3, 0.45, 0.6, 0.7, 0.8, 0.9, 1]
@@ -52,10 +52,10 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
         y: [0, 1, -2, 2, -1, 1, -2, 1, 0],
       },
       transition: {
-        duration: 2.7,
+        duration: 7.2,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 0.6,
+        delay: 1.5,
         times: [0, 0.2, 0.35, 0.5, 0.65, 0.75, 0.85, 0.95, 1]
       }
     }
@@ -73,7 +73,7 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
         skewY: [0, -6, 8, -10, 6, -3, 3, -5, 2, -3, 0],
       },
       transition: {
-        duration: 1.8,
+        duration: 4.8,
         repeat: Infinity,
         ease: "easeOut" as const,
         times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
@@ -90,10 +90,10 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
         skewY: [0, 6, -8, 10, -6, 3, -3, 5, -2, 3, 0],
       },
       transition: {
-        duration: 1.5,
+        duration: 4.0,
         repeat: Infinity,
         ease: "easeIn" as const,
-        delay: 0.3,
+        delay: 0.8,
         times: [0, 0.12, 0.22, 0.32, 0.42, 0.52, 0.62, 0.72, 0.82, 0.92, 1]
       }
     }
@@ -111,7 +111,7 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
         skewY: [0, -8, 10, -12, 8, -4, 4, -6, 2, -4, 0],
       },
       transition: {
-        duration: 3.5,
+        duration: 9.2,
         repeat: Infinity,
         ease: "easeInOut" as const,
         times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
@@ -128,10 +128,10 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
         skewY: [0, 8, -10, 12, -8, 4, -4, 6, -2, 4, 0],
       },
       transition: {
-        duration: 2.8,
+        duration: 7.5,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 0.7,
+        delay: 1.8,
         times: [0, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1]
       }
     }
