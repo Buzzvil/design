@@ -168,21 +168,21 @@ export function loadTeamMembers(): TeamMember[] {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Rina</name>
+    <name>Rina Lee</name>
   </personal>
   <buzzvil>
-    <value>grit</value>
-    <principle>reward-time</principle>
+    <value>clarity</value>
+    <principle>scalable</principle>
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>Understanding users to inform better design decisions.</organizationDescription>
+    <organizationDescription>I am a Product Designer on the Supply Experience Team, specializing in the UI/UX of the Benefit Hub and the internal operation system, Dash, that enables and monitors it.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>User Research</keyword>
-      <keyword>Data Analysis</keyword>
-      <keyword>Usability Testing</keyword>
+      <keyword>UI/UX</keyword>
+      <keyword>Usability Improvement</keyword>
+      <keyword>System Design</keyword>
     </keywords>
   </expertise>
 </avatar>`;
