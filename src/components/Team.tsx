@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 const Team = () => {
   const { t } = useLanguage();
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
   
   useEffect(() => {
     // Load team members from XML files
@@ -82,7 +83,11 @@ const Team = () => {
               <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative">
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
-                  <div className="relative group/avatar">
+                  <div 
+                    className="relative"
+                    onMouseEnter={() => setHoveredMember(member.name)}
+                    onMouseLeave={() => setHoveredMember(null)}
+                  >
                     <Avatar 
                       name={member.name} 
                       size={80}
@@ -90,7 +95,9 @@ const Team = () => {
                       workingStyle={member.buzzvilPrinciple}
                     />
                     {/* Tooltip - positioned 8px from top right of avatar */}
-                    <div className="absolute -top-2 -right-2 bg-background border border-border rounded-lg px-3 py-2 shadow-lg opacity-0 group-hover/avatar:opacity-100 transition-all duration-200 pointer-events-none z-20 whitespace-nowrap transform -translate-y-1">
+                    <div className={`absolute -top-2 -right-2 bg-background border border-border rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-20 whitespace-nowrap transform -translate-y-1 ${
+                      hoveredMember === member.name ? 'opacity-100' : 'opacity-0'
+                    }`}>
                       <div className="text-sm font-medium text-foreground">
                         {member.buzzvilValue.replace('-', ' ')} • {member.buzzvilPrinciple.replace('-', ' ')}
                       </div>
