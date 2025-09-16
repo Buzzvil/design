@@ -167,7 +167,8 @@ function AvatarFallback({
           
           {/* First animated color layer */}
           <motion.g
-            {...(animationConfig?.color1 || {})}
+            animate={animationConfig?.color1?.animate}
+            transition={animationConfig?.color1?.transition}
             style={{
               transformOrigin: `${size / 2}px ${size / 2}px`,
             }}
@@ -186,7 +187,8 @@ function AvatarFallback({
           
           {/* Second animated color layer */}
           <motion.g
-            {...(animationConfig?.color2 || {})}
+            animate={animationConfig?.color2?.animate}
+            transition={animationConfig?.color2?.transition}
             style={{
               transformOrigin: `${size / 2}px ${size / 2}px`,
               mixBlendMode: "overlay",
