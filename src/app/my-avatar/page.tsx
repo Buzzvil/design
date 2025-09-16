@@ -116,14 +116,19 @@ export default function MyAvatarPage() {
     setAvatarData(prev => ({ ...prev, [field]: value }));
   };
 
-  const isFormComplete = () => {
-    return (
-      avatarData.philosophy &&
-      avatarData.workingStyle &&
-      avatarData.role &&
-      avatarData.organizationDescription &&
-      avatarData.keywords[0]?.trim()
-    );
+  const isStepComplete = (step: number) => {
+    switch (step) {
+      case 0: // Philosophy selection
+        return avatarData.philosophy;
+      case 1: // Working style selection
+        return avatarData.workingStyle;
+      case 2: // Role and organization
+        return avatarData.role && avatarData.organizationDescription;
+      case 3: // Keywords
+        return avatarData.keywords[0]?.trim();
+      default:
+        return false;
+    }
   };
 
   const nextStep = () => {
@@ -430,9 +435,9 @@ export default function MyAvatarPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={nextStep}
-              disabled={currentStep === STEPS.length - 1 || !isFormComplete()}
+              disabled={currentStep === STEPS.length - 1 || !isStepComplete(currentStep)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                currentStep === STEPS.length - 1 || !isFormComplete()
+                currentStep === STEPS.length - 1 || !isStepComplete(currentStep)
                   ? 'text-muted-foreground cursor-not-allowed'
                   : 'bg-accent text-white hover:bg-accent/90'
               }`}
