@@ -102,6 +102,7 @@ const WORKING_STYLE_OPTIONS = [
 
 export default function MyAvatarPage() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [showPreview, setShowPreview] = useState(false);
   const [avatarData, setAvatarData] = useState<AvatarData>({
     primaryColor: '',
     secondaryColor: '',
@@ -143,6 +144,10 @@ export default function MyAvatarPage() {
     if (currentStep < STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
     }
+  };
+
+  const generateAvatar = () => {
+    setShowPreview(true);
   };
 
   const prevStep = () => {
@@ -320,32 +325,36 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Your Designer Profile</h2>
-              <p className="text-muted-foreground text-lg">Here&apos;s your completed avatar card</p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Generate?</h2>
+              <p className="text-muted-foreground text-lg">Review your information and generate your avatar card</p>
             </div>
             
             <div className="max-w-2xl mx-auto">
-              {/* Complete Profile Card */}
+              {/* Summary Card */}
               <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-lg">
-                <div className="flex items-center space-x-6 mb-6">
-                  <div className="relative">
-                    <Avatar name="Your Name" size={80} />
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-background" 
-                         style={{ backgroundColor: avatarData.primaryColor }} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-foreground mb-1">{avatarData.role}</h3>
-                    <p className="text-muted-foreground text-sm mb-2">{avatarData.organizationDescription}</p>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xs text-muted-foreground">Philosophy:</span>
-                      <span className="text-xs font-medium text-accent capitalize">{avatarData.philosophy}</span>
-                    </div>
-                  </div>
-                </div>
-                
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-foreground mb-3">Expertise</h4>
+                    <h4 className="font-medium text-foreground mb-2">Design Philosophy</h4>
+                    <p className="text-accent capitalize">{avatarData.philosophy}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">Working Style</h4>
+                    <p className="text-muted-foreground capitalize">{avatarData.workingStyle.replace('-', ' ')}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">Role</h4>
+                    <p className="text-muted-foreground">{avatarData.role}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">Organization Description</h4>
+                    <p className="text-muted-foreground">{avatarData.organizationDescription}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">Expertise</h4>
                     <div className="flex flex-wrap gap-2">
                       {avatarData.keywords.filter(k => k.trim()).map((keyword, index) => (
                         <span
@@ -355,29 +364,6 @@ export default function MyAvatarPage() {
                           {keyword}
                         </span>
                       ))}
-                    </div>
-                  </div>
-                  
-                  <div className="pt-4 border-t border-border/50">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="font-medium text-foreground mb-2">Design Style</h4>
-                        <div className="flex items-center space-x-3">
-                          <div className="flex space-x-1">
-                            <div
-                              className="w-4 h-4 rounded-full"
-                              style={{ backgroundColor: avatarData.primaryColor }}
-                            />
-                            <div
-                              className="w-4 h-4 rounded-full"
-                              style={{ backgroundColor: avatarData.secondaryColor }}
-                            />
-                          </div>
-                          <span className="text-sm text-muted-foreground capitalize">
-                            {avatarData.workingStyle.replace('-', ' ')} approach
-                          </span>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -397,59 +383,148 @@ export default function MyAvatarPage() {
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
         <div className="w-full max-w-4xl">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={currentStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              {renderStep()}
-            </motion.div>
+            {showPreview ? (
+              <motion.div
+                key="preview"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="space-y-8">
+                  <div className="text-center">
+                    <h2 className="text-3xl font-bold text-foreground mb-4">Your Designer Profile</h2>
+                    <p className="text-muted-foreground text-lg">Here&apos;s your completed avatar card</p>
+                  </div>
+                  
+                  <div className="max-w-2xl mx-auto">
+                    {/* Complete Profile Card */}
+                    <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-lg">
+                      <div className="flex items-center space-x-6 mb-6">
+                        <div className="relative">
+                          <Avatar name="Your Name" size={80} />
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-background" 
+                               style={{ backgroundColor: avatarData.primaryColor }} />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-semibold text-foreground mb-1">{avatarData.role}</h3>
+                          <p className="text-muted-foreground text-sm mb-2">{avatarData.organizationDescription}</p>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-xs text-muted-foreground">Philosophy:</span>
+                            <span className="text-xs font-medium text-accent capitalize">{avatarData.philosophy}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-medium text-foreground mb-3">Expertise</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {avatarData.keywords.filter(k => k.trim()).map((keyword, index) => (
+                              <span
+                                key={index}
+                                className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
+                              >
+                                {keyword}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <div className="pt-4 border-t border-border/50">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h4 className="font-medium text-foreground mb-2">Design Style</h4>
+                              <div className="flex items-center space-x-3">
+                                <div className="flex space-x-1">
+                                  <div
+                                    className="w-4 h-4 rounded-full"
+                                    style={{ backgroundColor: avatarData.primaryColor }}
+                                  />
+                                  <div
+                                    className="w-4 h-4 rounded-full"
+                                    style={{ backgroundColor: avatarData.secondaryColor }}
+                                  />
+                                </div>
+                                <span className="text-sm text-muted-foreground capitalize">
+                                  {avatarData.workingStyle.replace('-', ' ')} approach
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={generateXML}
+                      className="w-full mt-8 bg-accent text-white py-4 px-6 rounded-lg font-semibold hover:bg-accent/90 transition-colors flex items-center justify-center space-x-2"
+                    >
+                      <Download className="w-5 h-5" />
+                      <span>Download my avatar</span>
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={currentStep}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {renderStep()}
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={prevStep}
-              disabled={currentStep === 0}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                currentStep === 0
-                  ? 'text-muted-foreground cursor-not-allowed'
-                  : 'text-foreground hover:bg-muted'
-              }`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Previous</span>
-            </motion.button>
+      {!showPreview && (
+        <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex items-center justify-between">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={prevStep}
+                disabled={currentStep === 0}
+                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
+                  currentStep === 0
+                    ? 'text-muted-foreground cursor-not-allowed'
+                    : 'text-foreground hover:bg-muted'
+                }`}
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Previous</span>
+              </motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={currentStep === STEPS.length - 1 ? generateXML : nextStep}
-              disabled={!isStepComplete(currentStep)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                !isStepComplete(currentStep)
-                  ? 'text-muted-foreground cursor-not-allowed'
-                  : 'bg-accent text-white hover:bg-accent/90'
-              }`}
-            >
-              <span>{currentStep === STEPS.length - 1 ? 'Complete' : 'Next'}</span>
-              {currentStep === STEPS.length - 1 ? (
-                <Download className="w-4 h-4" />
-              ) : (
-                <ArrowRight className="w-4 h-4" />
-              )}
-            </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={currentStep === STEPS.length - 1 ? generateAvatar : nextStep}
+                disabled={!isStepComplete(currentStep)}
+                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
+                  !isStepComplete(currentStep)
+                    ? 'text-muted-foreground cursor-not-allowed'
+                    : 'bg-accent text-white hover:bg-accent/90'
+                }`}
+              >
+                <span>{currentStep === STEPS.length - 1 ? 'Generate my avatar' : 'Next'}</span>
+                {currentStep === STEPS.length - 1 ? (
+                  <Sparkles className="w-4 h-4" />
+                ) : (
+                  <ArrowRight className="w-4 h-4" />
+                )}
+              </motion.button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
