@@ -14,108 +14,54 @@ interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   workingStyle?: string;
 }
 
-// Philosophy-based color palettes
+// Philosophy-based color palettes - meaningful and purposeful
 const PHILOSOPHY_COLORS = {
-  'rewarded': ["#FF6B6B", "#FFE66D", "#4ECDC4"],
-  'playful': ["#667EEA", "#764BA2", "#F093FB"],
-  'scalable': ["#56AB2F", "#A8E6CF", "#FFD93D"],
-  'one-team': ["#FF416C", "#FF4B2B", "#FF6B6B"],
-  'clarity': ["#2C3E50", "#34495E", "#ECF0F1"],
-  'grit': ["#FF9A9E", "#FECFEF", "#FECFEF"],
+  'rewarded': ["#FFD700", "#FFA500", "#FF8C00"], // Gold, amber, orange - success and achievement
+  'playful': ["#FF69B4", "#00CED1", "#FF1493"], // Hot pink, turquoise, deep pink - fun and vibrant
+  'scalable': ["#32CD32", "#00FA9A", "#7FFF00"], // Lime green, medium spring green, chartreuse - growth and expansion
+  'one-team': ["#4169E1", "#1E90FF", "#87CEEB"], // Royal blue, dodger blue, sky blue - unity and collaboration
+  'clarity': ["#F0F8FF", "#E6E6FA", "#FFFFFF"], // Alice blue, lavender, white - clear and transparent
+  'grit': ["#8B0000", "#DC143C", "#B22222"], // Dark red, crimson, fire brick - powerful and determined
 };
 
-// Work style-based internal color animation variants
+// Work style-based internal color animation variants - meaningful and purposeful
 const WORK_STYLE_ANIMATIONS = {
   'iterative': {
-    // Colors cycle through positions in a circular motion
+    // Methodical, step-by-step refinement - like polishing a gem
     color1: {
       animate: {
-        translateX: [0, 8, -8, 0],
-        translateY: [0, -8, 8, 0],
-        rotate: [0, 90, 180, 270, 360],
-        scale: [1, 1.1, 0.9, 1],
+        scale: [1, 1.08, 1.12, 1.08, 1],
+        rotate: [0, 45, 90, 135, 180, 225, 270, 315, 360],
+        translateX: [0, 3, 0, -3, 0],
+        translateY: [0, -2, 0, 2, 0],
       },
       transition: {
-        duration: 4,
+        duration: 8,
         repeat: Infinity,
-        ease: "linear" as const
+        ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        translateX: [0, -6, 6, 0],
-        translateY: [0, 6, -6, 0],
-        rotate: [0, -90, -180, -270, -360],
-        scale: [1, 0.9, 1.1, 1],
+        scale: [1, 0.95, 0.92, 0.95, 1],
+        rotate: [0, -30, -60, -90, -120, -150, -180, -210, -240, -270, -300, -330, -360],
+        translateX: [0, -2, 0, 2, 0],
+        translateY: [0, 3, 0, -3, 0],
       },
       transition: {
-        duration: 4,
+        duration: 8.5,
         repeat: Infinity,
-        ease: "linear" as const
+        ease: "easeInOut" as const
       }
     }
   },
   'detail-oriented': {
-    // Subtle pulsing and fine adjustments
+    // Precise, careful movements - like a surgeon's hand
     color1: {
       animate: {
-        scale: [1, 1.05, 1],
-        translateX: [0, 2, -2, 0],
-        translateY: [0, 1, -1, 0],
-      },
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        scale: [1, 0.98, 1],
-        translateX: [0, -1, 1, 0],
-        translateY: [0, -2, 2, 0],
-      },
-      transition: {
-        duration: 2.2,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    }
-  },
-  'big-picture': {
-    // Slow, sweeping movements
-    color1: {
-      animate: {
-        rotate: [0, 180, 360],
-        scale: [1, 1.2, 1],
-        translateX: [0, 10, -10, 0],
-      },
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        rotate: [0, -180, -360],
-        scale: [1, 0.8, 1],
-        translateY: [0, -10, 10, 0],
-      },
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    }
-  },
-  'collaborative': {
-    // Gentle, flowing movements
-    color1: {
-      animate: {
-        x: [0, 6, -6, 0],
-        y: [0, -4, 4, 0],
-        scale: [1, 1.1, 0.9, 1],
+        scale: [1, 1.02, 1.04, 1.02, 1],
+        translateX: [0, 1, 0.5, -0.5, 0],
+        translateY: [0, 0.5, 1, 0.5, 0],
       },
       transition: {
         duration: 3,
@@ -125,68 +71,124 @@ const WORK_STYLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        x: [0, -4, 4, 0],
-        y: [0, 6, -6, 0],
-        scale: [1, 0.9, 1.1, 1],
+        scale: [1, 0.99, 0.98, 0.99, 1],
+        translateX: [0, -0.5, -1, -0.5, 0],
+        translateY: [0, -1, -0.5, 0.5, 0],
       },
       transition: {
-        duration: 3.5,
+        duration: 3.2,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    }
+  },
+  'big-picture': {
+    // Grand, sweeping movements - like orchestrating a symphony
+    color1: {
+      animate: {
+        scale: [1, 1.3, 1.5, 1.3, 1],
+        rotate: [0, 90, 180, 270, 360],
+        translateX: [0, 15, 0, -15, 0],
+        translateY: [0, -10, 0, 10, 0],
+      },
+      transition: {
+        duration: 12,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    },
+    color2: {
+      animate: {
+        scale: [1, 0.7, 0.5, 0.7, 1],
+        rotate: [0, -90, -180, -270, -360],
+        translateX: [0, -12, 0, 12, 0],
+        translateY: [0, 8, 0, -8, 0],
+      },
+      transition: {
+        duration: 12,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    }
+  },
+  'collaborative': {
+    // Harmonious, synchronized movements - like a dance partnership
+    color1: {
+      animate: {
+        scale: [1, 1.1, 1, 0.9, 1],
+        translateX: [0, 8, 0, -8, 0],
+        translateY: [0, -6, 0, 6, 0],
+      },
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    },
+    color2: {
+      animate: {
+        scale: [1, 0.9, 1, 1.1, 1],
+        translateX: [0, -6, 0, 6, 0],
+        translateY: [0, 8, 0, -8, 0],
+      },
+      transition: {
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     }
   },
   'experimental': {
-    // Chaotic, unpredictable movements
+    // Bold, unpredictable movements - like a mad scientist's experiment
     color1: {
       animate: {
-        scale: [1, 1.3, 0.7, 1],
-        rotate: [0, 120, 240, 360],
-        translateX: [0, 12, -8, 4, 0],
-        translateY: [0, -8, 12, -4, 0],
+        scale: [1, 1.4, 0.6, 1.6, 0.8, 1],
+        rotate: [0, 72, 144, 216, 288, 360],
+        translateX: [0, 15, -10, 8, -12, 0],
+        translateY: [0, -12, 15, -8, 10, 0],
       },
       transition: {
-        duration: 5,
+        duration: 6,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.8, 1.4, 1],
-        rotate: [0, -150, -300, -450],
-        translateX: [0, -10, 6, -12, 0],
-        translateY: [0, 10, -6, 8, 0],
+        scale: [1, 0.7, 1.5, 0.5, 1.3, 1],
+        rotate: [0, -108, -216, -324, -432, -540],
+        translateX: [0, -12, 8, -15, 6, 0],
+        translateY: [0, 10, -6, 12, -8, 0],
       },
       transition: {
-        duration: 5.5,
+        duration: 6.5,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     }
   },
   'systematic': {
-    // Precise, rhythmic movements
+    // Precise, mechanical movements - like clockwork
     color1: {
       animate: {
-        scale: [1, 1.02, 1],
-        translateX: [0, 3, 0],
-        translateY: [0, 2, 0],
+        scale: [1, 1.01, 1, 0.99, 1],
+        translateX: [0, 2, 0, -2, 0],
+        translateY: [0, 1, 0, -1, 0],
       },
       transition: {
-        duration: 1.5,
+        duration: 2,
         repeat: Infinity,
         ease: "linear" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.98, 1],
-        translateX: [0, -2, 0],
-        translateY: [0, -3, 0],
+        scale: [1, 0.99, 1, 1.01, 1],
+        translateX: [0, -1, 0, 1, 0],
+        translateY: [0, -2, 0, 2, 0],
       },
       transition: {
-        duration: 1.5,
+        duration: 2,
         repeat: Infinity,
         ease: "linear" as const
       }
