@@ -62,10 +62,19 @@ const Team = () => {
               {t('team.subtitle')}
             </p>
           </BlurReveal>
-          {/* Debug info */}
-          <div className="mt-4 p-2 bg-yellow-200 text-black rounded">
-            Debug: Hovered member = {hoveredMember || 'none'}
-          </div>
+                  {/* Debug info */}
+                  <div className="mt-4 p-2 bg-yellow-200 text-black rounded">
+                    Debug: Hovered member = {hoveredMember || 'none'}
+                    <button 
+                      className="ml-4 px-2 py-1 bg-red-500 text-white rounded"
+                      onClick={() => {
+                        console.log('Test button clicked');
+                        setHoveredMember('TEST');
+                      }}
+                    >
+                      Test Button
+                    </button>
+                  </div>
         </motion.div>
 
 
@@ -90,15 +99,11 @@ const Team = () => {
                   <div className="relative p-4">
                     <div
                       className="cursor-pointer border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2"
-                      onMouseEnter={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
+                      onMouseEnter={() => {
                         console.log('Hovering over:', member.name);
                         setHoveredMember(member.name);
                       }}
-                      onMouseLeave={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
+                      onMouseLeave={() => {
                         console.log('Leaving:', member.name);
                         setHoveredMember(null);
                       }}
