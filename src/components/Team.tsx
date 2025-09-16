@@ -87,8 +87,9 @@ const Team = () => {
               <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative">
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
+                  {/* Hover detection area - separate from avatar */}
                   <div 
-                    className="relative p-4 border-2 border-blue-500 cursor-pointer"
+                    className="absolute inset-0 z-10 border-2 border-blue-500 cursor-pointer"
                     onMouseEnter={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -105,7 +106,8 @@ const Team = () => {
                       console.log('Clicked on:', member.name);
                       setHoveredMember(member.name);
                     }}
-                  >
+                  />
+                  <div className="relative p-4">
                     <Avatar 
                       name={member.name} 
                       size={80}
