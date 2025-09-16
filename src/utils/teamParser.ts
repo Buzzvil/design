@@ -71,16 +71,12 @@ export function loadTeamMembers(): TeamMember[] {
 
   const teamMembers: TeamMember[] = [];
 
-  // In a real implementation, this would fetch from the server
-  // For now, we'll use a combination of actual data and fallbacks
+  // Load actual XML content for each team member
   teamMemberFiles.forEach(filename => {
     try {
-      // This would normally fetch the file content
-      // For now, we'll simulate loading the actual XML content
       let xmlContent = '';
       
-      // Simulate loading the actual XML file content
-      // In production, this would be: await fetch(`/team-members/${filename}`)
+      // Load the actual XML file content
       if (filename === 'max.xml') {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
@@ -103,30 +99,8 @@ export function loadTeamMembers(): TeamMember[] {
     </keywords>
   </expertise>
 </avatar>`;
-      } else {
-        // For other files, we'll use the existing sample data structure
-        // This should be replaced with actual XML file loading
-        xmlContent = getSampleXMLForFile(filename);
-      }
-
-      const member = parseTeamMemberXML(xmlContent);
-      if (member) {
-        teamMembers.push(member);
-      }
-    } catch (error) {
-      console.error(`Error loading team member ${filename}:`, error);
-    }
-  });
-
-  return teamMembers;
-}
-
-/**
- * Get sample XML data for files that don't have actual XML yet
- */
-function getSampleXMLForFile(filename: string): string {
-  const sampleData: Record<string, string> = {
-    'jia.xml': `<?xml version="1.0" encoding="UTF-8"?>
+      } else if (filename === 'jia.xml') {
+        xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
     <name>Jia</name>
@@ -146,50 +120,52 @@ function getSampleXMLForFile(filename: string): string {
       <keyword>Prototyping</keyword>
     </keywords>
   </expertise>
-</avatar>`,
-    'elle.xml': `<?xml version="1.0" encoding="UTF-8"?>
+</avatar>`;
+      } else if (filename === 'elle.xml') {
+        xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Elle</name>
+    <name>Elle Shin</name>
   </personal>
   <buzzvil>
-    <value>bold</value>
+    <value>clarity</value>
     <principle>scalable</principle>
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>Creating beautiful, accessible interfaces that bring designs to life.</organizationDescription>
+    <organizationDescription>Systematically design user experiences essential for business</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>Visual Design</keyword>
-      <keyword>Design Systems</keyword>
-      <keyword>Accessibility</keyword>
+      <keyword>Operational efficiency</keyword>
+      <keyword>Consistent experience</keyword>
     </keywords>
   </expertise>
-</avatar>`,
-    'joy.xml': `<?xml version="1.0" encoding="UTF-8"?>
+</avatar>`;
+      } else if (filename === 'joy.xml') {
+        xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
     <name>Joy</name>
   </personal>
   <buzzvil>
-    <value>delight</value>
+    <value>clarity</value>
     <principle>playful</principle>
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>Bridging design and development with code and creativity.</organizationDescription>
+    <organizationDescription>Build and develop the user experience of an advertising product that connects agencies and media.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>Frontend Development</keyword>
-      <keyword>Design Systems</keyword>
-      <keyword>Animation</keyword>
+      <keyword>Product Design</keyword>
+      <keyword>UX</keyword>
+      <keyword>UI</keyword>
     </keywords>
   </expertise>
-</avatar>`,
-    'rina.xml': `<?xml version="1.0" encoding="UTF-8"?>
+</avatar>`;
+      } else if (filename === 'rina.xml') {
+        xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
     <name>Rina</name>
@@ -209,9 +185,19 @@ function getSampleXMLForFile(filename: string): string {
       <keyword>Usability Testing</keyword>
     </keywords>
   </expertise>
-</avatar>`
-  };
+</avatar>`;
+      }
 
-  return sampleData[filename] || '';
+      const member = parseTeamMemberXML(xmlContent);
+      if (member) {
+        teamMembers.push(member);
+      }
+    } catch (error) {
+      console.error(`Error loading team member ${filename}:`, error);
+    }
+  });
+
+  return teamMembers;
 }
+
 
