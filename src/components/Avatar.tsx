@@ -27,88 +27,112 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Organic breathing pattern with varied timing
+    // Animation 1: Complex morphing with random-like patterns
     color1: {
       animate: {
-        scale: [1, 1.15, 0.95, 1.08, 1],
-        opacity: [1, 0.8, 1, 0.9, 1],
+        scale: [1, 1.2, 0.8, 1.3, 0.7, 1.15, 0.9, 1.1, 1],
+        opacity: [1, 0.6, 1, 0.4, 1, 0.8, 0.9, 0.7, 1],
+        rotate: [0, 12, -8, 20, -15, 10, -5, 18, 0],
+        x: [0, 2, -1, 3, -2, 1, -1, 2, 0],
+        y: [0, -1, 2, -2, 1, -1, 2, -1, 0],
       },
       transition: {
-        duration: 2.3,
+        duration: 3.2,
         repeat: Infinity,
         ease: "easeInOut" as const,
-        times: [0, 0.3, 0.6, 0.8, 1]
+        times: [0, 0.15, 0.3, 0.45, 0.6, 0.7, 0.8, 0.9, 1]
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.85, 1.1, 0.9, 1],
-        opacity: [1, 0.9, 0.7, 1, 0.8],
+        scale: [1, 0.7, 1.25, 0.6, 1.4, 0.8, 1.2, 0.9, 1],
+        opacity: [1, 0.8, 0.3, 1, 0.5, 0.9, 0.6, 0.8, 1],
+        rotate: [0, -18, 15, -25, 12, -8, 22, -12, 0],
+        x: [0, -2, 1, -3, 2, -1, 1, -2, 0],
+        y: [0, 1, -2, 2, -1, 1, -2, 1, 0],
       },
       transition: {
-        duration: 1.9,
+        duration: 2.7,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 0.4,
-        times: [0, 0.25, 0.55, 0.75, 1]
+        delay: 0.6,
+        times: [0, 0.2, 0.35, 0.5, 0.65, 0.75, 0.85, 0.95, 1]
       }
     }
   },
   'playful': {
-    // Animation 2: Chaotic playful dance with unpredictable patterns
+    // Animation 2: Wild chaotic morphing with extreme randomness
     color1: {
       animate: {
-        scale: [1, 1.2, 0.8, 1.3, 0.9, 1.1, 1],
-        rotate: [0, 15, -10, 25, -5, 20, 0],
-        opacity: [1, 0.6, 1, 0.7, 0.9, 0.8, 1],
+        scale: [1, 1.4, 0.6, 1.6, 0.4, 1.3, 0.7, 1.5, 0.8, 1.2, 1],
+        rotate: [0, 35, -25, 45, -30, 20, -40, 30, -15, 25, 0],
+        opacity: [1, 0.3, 1, 0.2, 1, 0.6, 0.8, 0.4, 1, 0.7, 1],
+        x: [0, 4, -3, 5, -4, 2, -2, 3, -1, 2, 0],
+        y: [0, -3, 4, -5, 3, -2, 2, -3, 1, -2, 0],
+        skewX: [0, 8, -6, 12, -8, 4, -4, 6, -2, 4, 0],
+        skewY: [0, -6, 8, -10, 6, -3, 3, -5, 2, -3, 0],
       },
       transition: {
-        duration: 1.2,
+        duration: 1.8,
         repeat: Infinity,
         ease: "easeOut" as const,
-        times: [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1]
+        times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.9, 1.25, 0.75, 1.15, 0.85, 1],
-        rotate: [0, -20, 12, -18, 8, -15, 0],
-        opacity: [1, 0.8, 0.5, 1, 0.6, 0.9, 1],
+        scale: [1, 0.5, 1.5, 0.3, 1.7, 0.6, 1.4, 0.4, 1.6, 0.8, 1],
+        rotate: [0, -40, 30, -50, 35, -25, 45, -35, 20, -30, 0],
+        opacity: [1, 0.7, 0.2, 1, 0.3, 0.8, 0.5, 1, 0.4, 0.9, 1],
+        x: [0, -4, 3, -5, 4, -2, 2, -3, 1, -2, 0],
+        y: [0, 3, -4, 5, -3, 2, -2, 3, -1, 2, 0],
+        skewX: [0, -8, 6, -12, 8, -4, 4, -6, 2, -4, 0],
+        skewY: [0, 6, -8, 10, -6, 3, -3, 5, -2, 3, 0],
       },
       transition: {
-        duration: 1.1,
+        duration: 1.5,
         repeat: Infinity,
         ease: "easeIn" as const,
-        delay: 0.2,
-        times: [0, 0.15, 0.35, 0.55, 0.75, 0.85, 1]
+        delay: 0.3,
+        times: [0, 0.12, 0.22, 0.32, 0.42, 0.52, 0.62, 0.72, 0.82, 0.92, 1]
       }
     }
   },
   'scalable': {
-    // Animation 3: Organic growth pattern with natural variations
+    // Animation 3: Complex morphing with fluid-like transformations
     color1: {
       animate: {
-        scale: [1, 1.12, 0.96, 1.18, 0.94, 1.08, 1],
-        opacity: [1, 0.85, 1, 0.75, 1, 0.9, 1],
+        scale: [1, 1.3, 0.7, 1.5, 0.5, 1.4, 0.8, 1.2, 0.9, 1.1, 1],
+        opacity: [1, 0.4, 1, 0.3, 1, 0.6, 0.8, 0.5, 1, 0.7, 1],
+        rotate: [0, 25, -20, 35, -25, 15, -30, 20, -10, 15, 0],
+        x: [0, 3, -2, 4, -3, 1, -2, 2, -1, 1, 0],
+        y: [0, -2, 3, -4, 2, -1, 2, -2, 1, -1, 0],
+        skewX: [0, 10, -8, 15, -10, 5, -5, 8, -3, 5, 0],
+        skewY: [0, -8, 10, -12, 8, -4, 4, -6, 2, -4, 0],
       },
       transition: {
-        duration: 2.8,
+        duration: 3.5,
         repeat: Infinity,
         ease: "easeInOut" as const,
-        times: [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1]
+        times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.88, 1.14, 0.92, 1.16, 0.86, 1],
-        opacity: [1, 0.9, 0.7, 1, 0.8, 0.95, 1],
+        scale: [1, 0.6, 1.4, 0.4, 1.6, 0.7, 1.3, 0.5, 1.5, 0.8, 1],
+        opacity: [1, 0.8, 0.3, 1, 0.4, 0.9, 0.6, 1, 0.5, 0.8, 1],
+        rotate: [0, -30, 25, -40, 30, -20, 35, -25, 15, -20, 0],
+        x: [0, -3, 2, -4, 3, -1, 2, -2, 1, -1, 0],
+        y: [0, 2, -3, 4, -2, 1, -2, 2, -1, 1, 0],
+        skewX: [0, -10, 8, -15, 10, -5, 5, -8, 3, -5, 0],
+        skewY: [0, 8, -10, 12, -8, 4, -4, 6, -2, 4, 0],
       },
       transition: {
-        duration: 2.1,
+        duration: 2.8,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 0.5,
-        times: [0, 0.18, 0.38, 0.58, 0.78, 0.88, 1]
+        delay: 0.7,
+        times: [0, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1]
       }
     }
   },
