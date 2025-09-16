@@ -88,7 +88,7 @@ const Team = () => {
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
                   <div 
-                    className="relative"
+                    className="relative p-4 border-2 border-blue-500"
                     onMouseEnter={() => {
                       console.log('Hovering over:', member.name);
                       setHoveredMember(member.name);
