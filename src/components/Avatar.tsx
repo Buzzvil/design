@@ -14,14 +14,38 @@ interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   workingStyle?: string;
 }
 
-// Buzzvil Values - Color palettes for working styles
-const BUZZVIL_VALUE_COLORS = {
-  'iterate-fast': ["#FF6B35", "#FFD700", "#FFE135", "#FF8C00"], // Orange, gold, bright yellow, dark orange - speed and energy
-  'clarity': ["#F0F8FF", "#E6E6FA", "#FFFFFF", "#B0C4DE"], // Alice blue, lavender, white, light steel - clear spectrum
-  'grit': ["#8B0000", "#DC143C", "#B22222", "#FF4500"], // Dark red, crimson, fire brick, orange red - power with energy
-  'bold': ["#8B008B", "#FF1493", "#DC143C", "#B22222"], // Dark magenta, deep pink, crimson, fire brick - bold and daring
-  'one-team': ["#4169E1", "#1E90FF", "#87CEEB", "#4682B4"], // Royal blue, dodger blue, sky blue, steel blue - unity depth
-  'delight': ["#FF69B4", "#00CED1", "#FF1493", "#32CD32"], // Hot pink, turquoise, deep pink, lime - vibrant energy
+// Buzzvil Values - Color palettes and initial positioning for working styles
+const BUZZVIL_VALUE_CONFIG = {
+  'iterate-fast': {
+    colors: ["#FF6B35", "#FFD700", "#FFE135", "#FF8C00"], // Orange, gold, bright yellow, dark orange - speed and energy
+    initialPositions: { color1: { x: 0, y: 0 }, color2: { x: 0, y: 0 } }, // Centered for speed
+    shapes: { color1: "sharp", color2: "dynamic" } // Sharp, dynamic shapes for speed
+  },
+  'clarity': {
+    colors: ["#F0F8FF", "#E6E6FA", "#FFFFFF", "#B0C4DE"], // Alice blue, lavender, white, light steel - clear spectrum
+    initialPositions: { color1: { x: 0, y: 0 }, color2: { x: 0, y: 0 } }, // Centered for clarity
+    shapes: { color1: "clean", color2: "minimal" } // Clean, minimal shapes for clarity
+  },
+  'grit': {
+    colors: ["#8B0000", "#DC143C", "#B22222", "#FF4500"], // Dark red, crimson, fire brick, orange red - power with energy
+    initialPositions: { color1: { x: -2, y: -2 }, color2: { x: 2, y: 2 } }, // Offset for power
+    shapes: { color1: "bold", color2: "strong" } // Bold, strong shapes for grit
+  },
+  'bold': {
+    colors: ["#8B008B", "#FF1493", "#DC143C", "#B22222"], // Dark magenta, deep pink, crimson, fire brick - bold and daring
+    initialPositions: { color1: { x: -3, y: 0 }, color2: { x: 3, y: 0 } }, // Wide spread for boldness
+    shapes: { color1: "dramatic", color2: "striking" } // Dramatic, striking shapes for bold
+  },
+  'one-team': {
+    colors: ["#4169E1", "#1E90FF", "#87CEEB", "#4682B4"], // Royal blue, dodger blue, sky blue, steel blue - unity depth
+    initialPositions: { color1: { x: 0, y: -2 }, color2: { x: 0, y: 2 } }, // Vertical alignment for unity
+    shapes: { color1: "unified", color2: "connected" } // Unified, connected shapes for one-team
+  },
+  'delight': {
+    colors: ["#FF69B4", "#00CED1", "#FF1493", "#32CD32"], // Hot pink, turquoise, deep pink, lime - vibrant energy
+    initialPositions: { color1: { x: -2, y: -2 }, color2: { x: 2, y: 2 } }, // Diagonal spread for delight
+    shapes: { color1: "playful", color2: "vibrant" } // Playful, vibrant shapes for delight
+  },
 };
 
 // Generate random values for organic, non-looping animations
@@ -42,24 +66,31 @@ const generateRandomSequence = (length: number, min: number, max: number, seed: 
   return sequence;
 };
 
-// Buzzvil Design Principles - Each with a specific property focus and organic randomness
+// Buzzvil Design Principles - Enhanced with more movements, slower but more dynamic
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Focus: SCALE - Time-based breathing and pulsing
+    // Focus: SCALE + MULTIPLE MOVEMENTS - Time-based breathing with rich movement
     color1: {
       animate: {
         // Primary: Scale variations (breathing effect)
-        scale: generateRandomSequence(12, 0.8, 1.3, 1),
-        // Secondary: Subtle opacity changes
-        opacity: generateRandomSequence(12, 0.7, 1.0, 2),
-        // Minimal rotation for organic feel
-        rotate: generateRandomSequence(12, -15, 15, 3),
-        // Very subtle position changes
-        x: generateRandomSequence(12, -2, 2, 4),
-        y: generateRandomSequence(12, -2, 2, 5),
+        scale: generateRandomSequence(20, 0.8, 1.4, 1),
+        // Enhanced opacity changes
+        opacity: generateRandomSequence(20, 0.6, 1.0, 2),
+        // More rotation for organic feel
+        rotate: generateRandomSequence(20, -30, 30, 3),
+        // Enhanced position changes
+        x: generateRandomSequence(20, -4, 4, 4),
+        y: generateRandomSequence(20, -4, 4, 5),
+        // Additional movements
+        skewX: generateRandomSequence(20, -15, 15, 6),
+        skewY: generateRandomSequence(20, -15, 15, 7),
+        scaleX: generateRandomSequence(20, 0.9, 1.2, 8),
+        scaleY: generateRandomSequence(20, 0.9, 1.2, 9),
+        rotateX: generateRandomSequence(20, -20, 20, 10),
+        rotateY: generateRandomSequence(20, -20, 20, 11),
       },
       transition: {
-        duration: 6.0 + Math.random() * 2, // Random duration for unpredictability
+        duration: 8.0 + Math.random() * 3, // Slower but more varied
         repeat: Infinity,
         ease: "easeInOut" as const,
         repeatType: "reverse" as const,
@@ -67,41 +98,53 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        // Counter-balancing scale
-        scale: generateRandomSequence(12, 0.7, 1.4, 6),
-        opacity: generateRandomSequence(12, 0.6, 1.0, 7),
-        rotate: generateRandomSequence(12, -20, 20, 8),
-        x: generateRandomSequence(12, -3, 3, 9),
-        y: generateRandomSequence(12, -3, 3, 10),
+        // Counter-balancing with more movements
+        scale: generateRandomSequence(20, 0.7, 1.5, 12),
+        opacity: generateRandomSequence(20, 0.5, 1.0, 13),
+        rotate: generateRandomSequence(20, -35, 35, 14),
+        x: generateRandomSequence(20, -5, 5, 15),
+        y: generateRandomSequence(20, -5, 5, 16),
+        skewX: generateRandomSequence(20, -18, 18, 17),
+        skewY: generateRandomSequence(20, -18, 18, 18),
+        scaleX: generateRandomSequence(20, 0.8, 1.3, 19),
+        scaleY: generateRandomSequence(20, 0.8, 1.3, 20),
+        rotateX: generateRandomSequence(20, -25, 25, 21),
+        rotateY: generateRandomSequence(20, -25, 25, 22),
       },
       transition: {
-        duration: 5.5 + Math.random() * 1.5,
+        duration: 7.5 + Math.random() * 2.5,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 0.8 + Math.random() * 0.4,
+        delay: 1.2 + Math.random() * 0.6,
         repeatType: "reverse" as const,
       }
     }
   },
   'playful': {
-    // Focus: ROTATION - Playful spinning and tumbling
+    // Focus: ROTATION + MULTIPLE MOVEMENTS - Playful spinning with rich dynamics
     color1: {
       animate: {
-        // Primary: Rotation variations (playful spinning)
-        rotate: generateRandomSequence(15, -180, 180, 11),
-        // Secondary: Scale for bouncy effect
-        scale: generateRandomSequence(15, 0.9, 1.2, 12),
-        // Opacity for sparkle effect
-        opacity: generateRandomSequence(15, 0.8, 1.0, 13),
-        // Position for floating effect
-        x: generateRandomSequence(15, -4, 4, 14),
-        y: generateRandomSequence(15, -4, 4, 15),
-        // Skew for playful distortion
-        skewX: generateRandomSequence(15, -10, 10, 16),
-        skewY: generateRandomSequence(15, -10, 10, 17),
+        // Primary: Enhanced rotation variations
+        rotate: generateRandomSequence(25, -360, 360, 23),
+        // More scale variations for bouncy effect
+        scale: generateRandomSequence(25, 0.8, 1.3, 24),
+        // Enhanced opacity for sparkle effect
+        opacity: generateRandomSequence(25, 0.7, 1.0, 25),
+        // More position changes for floating effect
+        x: generateRandomSequence(25, -6, 6, 26),
+        y: generateRandomSequence(25, -6, 6, 27),
+        // Enhanced skew for playful distortion
+        skewX: generateRandomSequence(25, -20, 20, 28),
+        skewY: generateRandomSequence(25, -20, 20, 29),
+        // Additional movements
+        scaleX: generateRandomSequence(25, 0.85, 1.25, 30),
+        scaleY: generateRandomSequence(25, 0.85, 1.25, 31),
+        rotateX: generateRandomSequence(25, -30, 30, 32),
+        rotateY: generateRandomSequence(25, -30, 30, 33),
+        rotateZ: generateRandomSequence(25, -45, 45, 34),
       },
       transition: {
-        duration: 4.0 + Math.random() * 1.5,
+        duration: 6.0 + Math.random() * 2.5, // Slower but more dynamic
         repeat: Infinity,
         ease: "easeInOut" as const,
         repeatType: "reverse" as const,
@@ -109,43 +152,54 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        // Counter-rotating for dynamic interaction
-        rotate: generateRandomSequence(15, -200, 200, 18),
-        scale: generateRandomSequence(15, 0.8, 1.3, 19),
-        opacity: generateRandomSequence(15, 0.7, 1.0, 20),
-        x: generateRandomSequence(15, -5, 5, 21),
-        y: generateRandomSequence(15, -5, 5, 22),
-        skewX: generateRandomSequence(15, -12, 12, 23),
-        skewY: generateRandomSequence(15, -12, 12, 24),
+        // Counter-rotating with enhanced movements
+        rotate: generateRandomSequence(25, -400, 400, 35),
+        scale: generateRandomSequence(25, 0.75, 1.4, 36),
+        opacity: generateRandomSequence(25, 0.6, 1.0, 37),
+        x: generateRandomSequence(25, -7, 7, 38),
+        y: generateRandomSequence(25, -7, 7, 39),
+        skewX: generateRandomSequence(25, -22, 22, 40),
+        skewY: generateRandomSequence(25, -22, 22, 41),
+        scaleX: generateRandomSequence(25, 0.8, 1.3, 42),
+        scaleY: generateRandomSequence(25, 0.8, 1.3, 43),
+        rotateX: generateRandomSequence(25, -35, 35, 44),
+        rotateY: generateRandomSequence(25, -35, 35, 45),
+        rotateZ: generateRandomSequence(25, -50, 50, 46),
       },
       transition: {
-        duration: 3.5 + Math.random() * 1.0,
+        duration: 5.5 + Math.random() * 2.0,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 0.5 + Math.random() * 0.3,
+        delay: 0.8 + Math.random() * 0.5,
         repeatType: "reverse" as const,
       }
     }
   },
   'scalable': {
-    // Focus: POSITION (X/Y) - Growth and expansion patterns
+    // Focus: POSITION + MULTIPLE MOVEMENTS - Growth patterns with rich expansion
     color1: {
       animate: {
-        // Primary: Position changes (growth patterns)
-        x: generateRandomSequence(18, -6, 6, 25),
-        y: generateRandomSequence(18, -6, 6, 26),
-        // Secondary: Scale for expansion
-        scale: generateRandomSequence(18, 0.85, 1.25, 27),
-        // Opacity for layering effect
-        opacity: generateRandomSequence(18, 0.75, 1.0, 28),
-        // Minimal rotation for organic growth
-        rotate: generateRandomSequence(18, -25, 25, 29),
-        // Skew for dynamic scaling
-        skewX: generateRandomSequence(18, -8, 8, 30),
-        skewY: generateRandomSequence(18, -8, 8, 31),
+        // Primary: Enhanced position changes
+        x: generateRandomSequence(30, -8, 8, 47),
+        y: generateRandomSequence(30, -8, 8, 48),
+        // More scale variations for expansion
+        scale: generateRandomSequence(30, 0.8, 1.3, 49),
+        // Enhanced opacity for layering effect
+        opacity: generateRandomSequence(30, 0.7, 1.0, 50),
+        // More rotation for organic growth
+        rotate: generateRandomSequence(30, -40, 40, 51),
+        // Enhanced skew for dynamic scaling
+        skewX: generateRandomSequence(30, -12, 12, 52),
+        skewY: generateRandomSequence(30, -12, 12, 53),
+        // Additional movements
+        scaleX: generateRandomSequence(30, 0.85, 1.2, 54),
+        scaleY: generateRandomSequence(30, 0.85, 1.2, 55),
+        rotateX: generateRandomSequence(30, -25, 25, 56),
+        rotateY: generateRandomSequence(30, -25, 25, 57),
+        rotateZ: generateRandomSequence(30, -30, 30, 58),
       },
       transition: {
-        duration: 7.0 + Math.random() * 2.0,
+        duration: 9.0 + Math.random() * 3.0, // Slower for growth patterns
         repeat: Infinity,
         ease: "easeInOut" as const,
         repeatType: "reverse" as const,
@@ -153,20 +207,25 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        // Complementary position patterns
-        x: generateRandomSequence(18, -7, 7, 32),
-        y: generateRandomSequence(18, -7, 7, 33),
-        scale: generateRandomSequence(18, 0.8, 1.3, 34),
-        opacity: generateRandomSequence(18, 0.7, 1.0, 35),
-        rotate: generateRandomSequence(18, -30, 30, 36),
-        skewX: generateRandomSequence(18, -10, 10, 37),
-        skewY: generateRandomSequence(18, -10, 10, 38),
+        // Complementary position patterns with more movements
+        x: generateRandomSequence(30, -9, 9, 59),
+        y: generateRandomSequence(30, -9, 9, 60),
+        scale: generateRandomSequence(30, 0.75, 1.4, 61),
+        opacity: generateRandomSequence(30, 0.6, 1.0, 62),
+        rotate: generateRandomSequence(30, -45, 45, 63),
+        skewX: generateRandomSequence(30, -15, 15, 64),
+        skewY: generateRandomSequence(30, -15, 15, 65),
+        scaleX: generateRandomSequence(30, 0.8, 1.25, 66),
+        scaleY: generateRandomSequence(30, 0.8, 1.25, 67),
+        rotateX: generateRandomSequence(30, -30, 30, 68),
+        rotateY: generateRandomSequence(30, -30, 30, 69),
+        rotateZ: generateRandomSequence(30, -35, 35, 70),
       },
       transition: {
-        duration: 6.5 + Math.random() * 1.5,
+        duration: 8.5 + Math.random() * 2.5,
         repeat: Infinity,
         ease: "easeOut" as const,
-        delay: 1.0 + Math.random() * 0.5,
+        delay: 1.5 + Math.random() * 0.8,
         repeatType: "reverse" as const,
       }
     }
@@ -190,10 +249,10 @@ function AvatarFallback({
 }) {
   const titleId = React.useId();
   
-  // Use Buzzvil value-based colors if available, otherwise use default colors
-  const colors = philosophy && BUZZVIL_VALUE_COLORS[philosophy as keyof typeof BUZZVIL_VALUE_COLORS] 
-    ? BUZZVIL_VALUE_COLORS[philosophy as keyof typeof BUZZVIL_VALUE_COLORS]
-    : defaultColors;
+  // Use Buzzvil value-based configuration if available, otherwise use default colors
+  const valueConfig = philosophy && BUZZVIL_VALUE_CONFIG[philosophy as keyof typeof BUZZVIL_VALUE_CONFIG];
+  const colors = valueConfig ? valueConfig.colors : defaultColors;
+  const initialPositions = valueConfig ? valueConfig.initialPositions : { color1: { x: 0, y: 0 }, color2: { x: 0, y: 0 } };
     
   const properties = generateColors(name, colors);
 
@@ -243,7 +302,7 @@ function AvatarFallback({
               d="M32.414 59.35L50.376 70.5H72.5v-71H33.728L26.5 13.381l19.057 27.08L32.414 59.35z"
               fill={properties[1].color}
               transform={`
-                translate(${properties[1].translateX} ${properties[1].translateY})
+                translate(${properties[1].translateX + initialPositions.color1.x} ${properties[1].translateY + initialPositions.color1.y})
                 rotate(${properties[1].rotate} ${size / 2} ${size / 2})
                 scale(${properties[1].scale})
               `}
@@ -264,7 +323,7 @@ function AvatarFallback({
               d="M22.216 24L0 46.75l14.108 38.129L78 86l-3.081-59.276-22.378 4.005 12.972 20.186-23.35 27.395L22.215 24z"
               fill={properties[2].color}
               transform={`
-                translate(${properties[2].translateX} ${properties[2].translateY})
+                translate(${properties[2].translateX + initialPositions.color2.x} ${properties[2].translateY + initialPositions.color2.y})
                 rotate(${properties[2].rotate} ${size / 2} ${size / 2})
                 scale(${properties[2].scale})
               `}

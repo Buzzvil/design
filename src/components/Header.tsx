@@ -50,7 +50,7 @@ const Header = () => {
             }}
           >
             <Logo size={32} className="text-white" />
-            <span className="text-lg font-semibold text-foreground">Design Buzzvil</span>
+            <span className="text-lg font-semibold text-foreground">Buzzvil Design</span>
           </motion.div>
 
           {/* Desktop Navigation */}

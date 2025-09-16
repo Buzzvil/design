@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from './BlurReveal';
+import { KeywordAnimation } from './KeywordAnimation';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -45,20 +46,24 @@ const Hero = () => {
         {/* Main Heading */}
         <div className="py-2">
           <BlurReveal>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 tracking-tight">
-              <span className="text-foreground">{t('hero.title')}</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+              <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                {t('hero.title')}
+              </span>
             </h1>
           </BlurReveal>
         </div>
 
-        {/* Subtitle */}
-        <div className="py-2">
-          <BlurReveal>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-          </BlurReveal>
-        </div>
+        {/* Sentence with Keyword Animation */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <div className="text-xl sm:text-2xl text-muted-foreground flex items-center justify-center flex-wrap gap-1">
+            <span>We build</span>
+            <div className="inline-block min-w-[112px] text-center">
+              <KeywordAnimation />
+            </div>
+            <span>experiences.</span>
+          </div>
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div

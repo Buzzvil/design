@@ -5,42 +5,18 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from './BlurReveal';
 import { SectionTitle } from './SectionTitle';
 import Avatar from './Avatar';
+import { loadTeamMembers, TeamMember } from '@/utils/teamParser';
+import { useState, useEffect } from 'react';
 
 const Team = () => {
   const { t } = useLanguage();
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   
-  const teamMembers = [
-    {
-      name: 'Max',
-      role: 'Product Designer',
-      bio: 'Leading design strategy and building world-class design teams.',
-      expertise: ['Design Strategy', 'Team Leadership', 'Product Design'],
-    },
-    {
-      name: 'Jia',
-      role: 'Product Designer',
-      bio: 'Crafting intuitive user experiences that delight and engage.',
-      expertise: ['User Research', 'UX Design', 'Prototyping'],
-    },
-    {
-      name: 'Elle',
-      role: 'Product Designer',
-      bio: 'Creating beautiful, accessible interfaces that bring designs to life.',
-      expertise: ['Visual Design', 'Design Systems', 'Accessibility'],
-    },
-    {
-      name: 'Joy',
-      role: 'Product Designer',
-      bio: 'Bridging design and development with code and creativity.',
-      expertise: ['Frontend Development', 'Design Systems', 'Animation'],
-    },
-    {
-      name: 'Rina',
-      role: 'Product Designer',
-      bio: 'Understanding users to inform better design decisions.',
-      expertise: ['User Research', 'Data Analysis', 'Usability Testing'],
-    },
-  ];
+  useEffect(() => {
+    // Load team members from XML files
+    const members = loadTeamMembers();
+    setTeamMembers(members);
+  }, []);
 
 
   const containerVariants = {
@@ -103,10 +79,24 @@ const Team = () => {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group relative"
             >
-              <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass">
-                {/* Avatar */}
-                <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Avatar name={member.name} size={80} />
+              <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative">
+                {/* Avatar with Buzzvil Animation */}
+                <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
+                  <div className="group/avatar relative">
+                    <Avatar 
+                      name={member.name} 
+                      size={80}
+                      philosophy={member.buzzvilValue}
+                      workingStyle={member.buzzvilPrinciple}
+                    />
+                    {/* Tooltip */}
+                    <div className="absolute -top-2 -right-2 bg-background border border-border rounded-lg px-3 py-2 shadow-lg opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-200 pointer-events-none z-10 whitespace-nowrap">
+                      <div className="text-sm font-medium text-foreground">
+                        {member.buzzvilValue} • {member.buzzvilPrinciple}
+                      </div>
+                      <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-border"></div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Member Info */}
@@ -116,18 +106,18 @@ const Team = () => {
                   </h3>
                   <p className="text-primary font-semibold mb-3">{member.role}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    {member.bio}
+                    {member.description}
                   </p>
                 </div>
 
-                {/* Expertise Tags */}
+                {/* Keywords/Expertise Tags */}
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {member.expertise.map((skill, skillIndex) => (
+                  {member.keywords.map((keyword, keywordIndex) => (
                     <span
-                      key={skillIndex}
+                      key={keywordIndex}
                       className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full group-hover:bg-primary/10 group-hover:text-primary transition-colors"
                     >
-                      {skill}
+                      {keyword}
                     </span>
                   ))}
                 </div>
