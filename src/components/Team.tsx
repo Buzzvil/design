@@ -88,14 +88,22 @@ const Team = () => {
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
                   <div 
-                    className="relative p-4 border-2 border-blue-500"
-                    onMouseEnter={() => {
+                    className="relative p-4 border-2 border-blue-500 cursor-pointer"
+                    onMouseEnter={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       console.log('Hovering over:', member.name);
                       setHoveredMember(member.name);
                     }}
-                    onMouseLeave={() => {
+                    onMouseLeave={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       console.log('Leaving:', member.name);
                       setHoveredMember(null);
+                    }}
+                    onClick={() => {
+                      console.log('Clicked on:', member.name);
+                      setHoveredMember(member.name);
                     }}
                   >
                     <Avatar 
@@ -106,7 +114,7 @@ const Team = () => {
                     />
                     {/* Tooltip - positioned 8px from top right of avatar */}
                     <div className={`absolute -top-2 -right-2 bg-red-500 border-2 border-yellow-400 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
-                      hoveredMember === member.name ? 'opacity-100' : 'opacity-0'
+                      hoveredMember === member.name ? 'opacity-100' : 'opacity-50'
                     }`}>
                       <div className="text-sm font-medium text-white">
                         {member.buzzvilValue.replace('-', ' ')} • {member.buzzvilPrinciple.replace('-', ' ')}
