@@ -110,24 +110,18 @@ export default function MyAvatarPage() {
         return avatarData.buzzvilPrinciple;
       case 3: // Role and organization
         return avatarData.role && avatarData.organizationDescription;
-      case 4: // Keywords
+      case 4: // Keywords - final step before preview
         return avatarData.keywords[0]?.trim();
-      case 5: // Final step - check all required fields
-        return (
-          avatarData.name.trim() &&
-          avatarData.buzzvilValue &&
-          avatarData.buzzvilPrinciple &&
-          avatarData.role &&
-          avatarData.organizationDescription &&
-          avatarData.keywords[0]?.trim()
-        );
       default:
         return false;
     }
   };
 
   const nextStep = () => {
-    if (currentStep < STEPS.length - 1) {
+    if (currentStep === 4) {
+      // After keywords step, go directly to preview
+      setShowPreview(true);
+    } else if (currentStep < STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -334,60 +328,8 @@ export default function MyAvatarPage() {
         );
 
       case 5:
-        return (
-          <div className="space-y-8">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Generate?</h2>
-              <p className="text-muted-foreground text-lg">Review your information and generate your avatar card</p>
-            </div>
-            
-            <div className="max-w-2xl mx-auto">
-              {/* Summary Card */}
-              <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-lg">
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Name</h4>
-                    <p className="text-foreground">{avatarData.name}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Buzzvil Value</h4>
-                    <p className="text-accent capitalize">{avatarData.buzzvilValue.replace('-', ' ')}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Design Principle</h4>
-                    <p className="text-muted-foreground capitalize">{avatarData.buzzvilPrinciple.replace('-', ' ')}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Role</h4>
-                    <p className="text-muted-foreground">{avatarData.role}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Organization Description</h4>
-                    <p className="text-muted-foreground">{avatarData.organizationDescription}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-foreground mb-2">Expertise</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {avatarData.keywords.filter(k => k.trim()).map((keyword, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
-                        >
-                          {keyword}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
+        // This step is now removed - go directly to preview
+        return null;
 
       default:
         return null;
@@ -498,7 +440,7 @@ export default function MyAvatarPage() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={currentStep === STEPS.length - 1 ? generateAvatar : nextStep}
+                onClick={currentStep === 4 ? generateAvatar : nextStep}
                 disabled={!isStepComplete(currentStep)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
                   !isStepComplete(currentStep)
@@ -506,8 +448,8 @@ export default function MyAvatarPage() {
                     : 'bg-accent text-white hover:bg-accent/90'
                 }`}
               >
-                <span>{currentStep === STEPS.length - 1 ? 'Generate my avatar' : 'Next'}</span>
-                {currentStep === STEPS.length - 1 ? (
+                <span>{currentStep === 4 ? 'Generate my avatar' : 'Next'}</span>
+                {currentStep === 4 ? (
                   <Sparkles className="w-4 h-4" />
                 ) : (
                   <ArrowRight className="w-4 h-4" />
