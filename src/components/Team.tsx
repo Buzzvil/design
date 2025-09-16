@@ -82,19 +82,20 @@ const Team = () => {
               <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative">
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
-                  <div className="group/avatar relative">
+                  <div className="relative group/avatar">
                     <Avatar 
                       name={member.name} 
                       size={80}
                       philosophy={member.buzzvilValue}
                       workingStyle={member.buzzvilPrinciple}
                     />
-                    {/* Tooltip */}
-                    <div className="absolute -top-2 -right-2 bg-background border border-border rounded-lg px-3 py-2 shadow-lg opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-200 pointer-events-none z-10 whitespace-nowrap">
+                    {/* Tooltip - positioned 8px from top right of avatar */}
+                    <div className="absolute -top-2 -right-2 bg-background border border-border rounded-lg px-3 py-2 shadow-lg opacity-0 group-hover/avatar:opacity-100 transition-all duration-200 pointer-events-none z-20 whitespace-nowrap transform -translate-y-1">
                       <div className="text-sm font-medium text-foreground">
-                        {member.buzzvilValue} • {member.buzzvilPrinciple}
+                        {member.buzzvilValue.replace('-', ' ')} • {member.buzzvilPrinciple.replace('-', ' ')}
                       </div>
-                      <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-border"></div>
+                      {/* Arrow pointing to avatar */}
+                      <div className="absolute top-full right-3 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-border"></div>
                     </div>
                   </div>
                 </div>
