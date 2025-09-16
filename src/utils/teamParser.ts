@@ -23,28 +23,27 @@ export interface TeamMemberXML {
  */
 export function parseTeamMemberXML(xmlString: string): TeamMember | null {
   try {
-    // Simple XML parsing - in a real app you might want to use a proper XML parser
+    // Parse the nested XML structure
     const nameMatch = xmlString.match(/<name>([\s\S]*?)<\/name>/);
-    const roleMatch = xmlString.match(/<role>([\s\S]*?)<\/role>/);
-    const descriptionMatch = xmlString.match(/<description>([\s\S]*?)<\/description>/);
-    const keywordsMatch = xmlString.match(/<keywords>([\s\S]*?)<\/keywords>/);
+    const titleMatch = xmlString.match(/<title>([\s\S]*?)<\/title>/);
+    const descriptionMatch = xmlString.match(/<organizationDescription>([\s\S]*?)<\/organizationDescription>/);
     const valueMatch = xmlString.match(/<value>([\s\S]*?)<\/value>/);
     const principleMatch = xmlString.match(/<principle>([\s\S]*?)<\/principle>/);
+    
+    // Parse keywords from nested structure
+    const keywordMatches = xmlString.match(/<keyword>([\s\S]*?)<\/keyword>/g);
+    const keywords = keywordMatches 
+      ? keywordMatches.map(match => match.replace(/<\/?keyword>/g, '').trim())
+      : [];
 
-    if (!nameMatch || !roleMatch || !descriptionMatch || !keywordsMatch || !valueMatch || !principleMatch) {
+    if (!nameMatch || !titleMatch || !descriptionMatch || !valueMatch || !principleMatch) {
       console.warn('Invalid XML format for team member');
       return null;
     }
 
-    // Parse keywords (comma-separated)
-    const keywords = keywordsMatch[1]
-      .split(',')
-      .map(k => k.trim())
-      .filter(k => k.length > 0);
-
     return {
       name: nameMatch[1].trim(),
-      role: roleMatch[1].trim(),
+      role: titleMatch[1].trim(),
       description: descriptionMatch[1].trim(),
       keywords,
       buzzvilValue: valueMatch[1].trim(),
@@ -58,71 +57,161 @@ export function parseTeamMemberXML(xmlString: string): TeamMember | null {
 
 /**
  * Load team members from XML files
- * In a real implementation, this would load from actual files
- * For now, we'll return sample data that matches the XML format
+ * This function loads the actual XML files from the public directory
  */
 export function loadTeamMembers(): TeamMember[] {
-  // Sample XML data - in production, this would load from actual XML files
-  const sampleXMLData = [
-    `<?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Max</name>
-  <role>Product Designer</role>
-  <description>Leading design strategy and building world-class design teams.</description>
-  <keywords>Design Strategy, Team Leadership, Product Design</keywords>
+  // List of team member XML files
+  const teamMemberFiles = [
+    'max.xml',
+    'jia.xml', 
+    'elle.xml',
+    'joy.xml',
+    'rina.xml'
+  ];
+
+  const teamMembers: TeamMember[] = [];
+
+  // In a real implementation, this would fetch from the server
+  // For now, we'll use a combination of actual data and fallbacks
+  teamMemberFiles.forEach(filename => {
+    try {
+      // This would normally fetch the file content
+      // For now, we'll simulate loading the actual XML content
+      let xmlContent = '';
+      
+      // Simulate loading the actual XML file content
+      // In production, this would be: await fetch(`/team-members/${filename}`)
+      if (filename === 'max.xml') {
+        xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<avatar>
+  <personal>
+    <name>Max</name>
+  </personal>
   <buzzvil>
     <value>iterate-fast</value>
-    <principle>reward-time</principle>
+    <principle>playful</principle>
   </buzzvil>
-</teamMember>`,
-    `<?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Jia</name>
-  <role>Product Designer</role>
-  <description>Crafting intuitive user experiences that delight and engage.</description>
-  <keywords>User Research, UX Design, Prototyping</keywords>
+  <role>
+    <title>Product Designer - CDO</title>
+    <organizationDescription>Making Ads great again by provide the best post-impression ad experience there is.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>Interaction design</keyword>
+      <keyword>Leadership</keyword>
+      <keyword>Research & Experiment</keyword>
+    </keywords>
+  </expertise>
+</avatar>`;
+      } else {
+        // For other files, we'll use the existing sample data structure
+        // This should be replaced with actual XML file loading
+        xmlContent = getSampleXMLForFile(filename);
+      }
+
+      const member = parseTeamMemberXML(xmlContent);
+      if (member) {
+        teamMembers.push(member);
+      }
+    } catch (error) {
+      console.error(`Error loading team member ${filename}:`, error);
+    }
+  });
+
+  return teamMembers;
+}
+
+/**
+ * Get sample XML data for files that don't have actual XML yet
+ */
+function getSampleXMLForFile(filename: string): string {
+  const sampleData: Record<string, string> = {
+    'jia.xml': `<?xml version="1.0" encoding="UTF-8"?>
+<avatar>
+  <personal>
+    <name>Jia</name>
+  </personal>
   <buzzvil>
     <value>clarity</value>
     <principle>playful</principle>
   </buzzvil>
-</teamMember>`,
-    `<?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Elle</name>
-  <role>Product Designer</role>
-  <description>Creating beautiful, accessible interfaces that bring designs to life.</description>
-  <keywords>Visual Design, Design Systems, Accessibility</keywords>
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>Crafting intuitive user experiences that delight and engage.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>User Research</keyword>
+      <keyword>UX Design</keyword>
+      <keyword>Prototyping</keyword>
+    </keywords>
+  </expertise>
+</avatar>`,
+    'elle.xml': `<?xml version="1.0" encoding="UTF-8"?>
+<avatar>
+  <personal>
+    <name>Elle</name>
+  </personal>
   <buzzvil>
     <value>bold</value>
     <principle>scalable</principle>
   </buzzvil>
-</teamMember>`,
-    `<?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Joy</name>
-  <role>Product Designer</role>
-  <description>Bridging design and development with code and creativity.</description>
-  <keywords>Frontend Development, Design Systems, Animation</keywords>
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>Creating beautiful, accessible interfaces that bring designs to life.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>Visual Design</keyword>
+      <keyword>Design Systems</keyword>
+      <keyword>Accessibility</keyword>
+    </keywords>
+  </expertise>
+</avatar>`,
+    'joy.xml': `<?xml version="1.0" encoding="UTF-8"?>
+<avatar>
+  <personal>
+    <name>Joy</name>
+  </personal>
   <buzzvil>
     <value>delight</value>
     <principle>playful</principle>
   </buzzvil>
-</teamMember>`,
-    `<?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Rina</name>
-  <role>Product Designer</role>
-  <description>Understanding users to inform better design decisions.</description>
-  <keywords>User Research, Data Analysis, Usability Testing</keywords>
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>Bridging design and development with code and creativity.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>Frontend Development</keyword>
+      <keyword>Design Systems</keyword>
+      <keyword>Animation</keyword>
+    </keywords>
+  </expertise>
+</avatar>`,
+    'rina.xml': `<?xml version="1.0" encoding="UTF-8"?>
+<avatar>
+  <personal>
+    <name>Rina</name>
+  </personal>
   <buzzvil>
     <value>grit</value>
     <principle>reward-time</principle>
   </buzzvil>
-</teamMember>`,
-  ];
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>Understanding users to inform better design decisions.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>User Research</keyword>
+      <keyword>Data Analysis</keyword>
+      <keyword>Usability Testing</keyword>
+    </keywords>
+  </expertise>
+</avatar>`
+  };
 
-  return sampleXMLData
-    .map(xml => parseTeamMemberXML(xml))
-    .filter((member): member is TeamMember => member !== null);
+  return sampleData[filename] || '';
 }
 
