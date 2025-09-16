@@ -27,13 +27,13 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Smooth, flowing movements - like time passing
+    // Animation 1: Smooth, flowing movements - like time passing (constrained to circle)
     color1: {
       animate: {
-        scale: [1, 1.1, 1],
+        scale: [1, 1.05, 1],
         rotate: [0, 120, 240, 360],
-        translateX: [0, 4, 0],
-        translateY: [0, -3, 0],
+        translateX: [0, 2, 0],
+        translateY: [0, -1.5, 0],
       },
       transition: {
         duration: 4,
@@ -43,10 +43,10 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        scale: [1, 0.95, 1],
+        scale: [1, 0.98, 1],
         rotate: [0, -120, -240, -360],
-        translateX: [0, -3, 0],
-        translateY: [0, 4, 0],
+        translateX: [0, -1.5, 0],
+        translateY: [0, 2, 0],
       },
       transition: {
         duration: 4,
@@ -56,12 +56,12 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     }
   },
   'playful': {
-    // Animation 2: Bouncy, energetic movements - like play
+    // Animation 2: Bouncy, energetic movements - like play (constrained to circle)
     color1: {
       animate: {
-        scale: [1, 1.2, 0.9, 1.1, 1],
-        translateX: [0, 6, -4, 3, 0],
-        translateY: [0, -4, 6, -3, 0],
+        scale: [1, 1.15, 0.95, 1.08, 1],
+        translateX: [0, 4, -3, 2, 0],
+        translateY: [0, -3, 4, -2, 0],
       },
       transition: {
         duration: 3,
@@ -71,9 +71,9 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        scale: [1, 0.8, 1.1, 0.9, 1],
-        translateX: [0, -4, 3, -6, 0],
-        translateY: [0, 3, -6, 4, 0],
+        scale: [1, 0.85, 1.08, 0.95, 1],
+        translateX: [0, -3, 2, -4, 0],
+        translateY: [0, 2, -4, 3, 0],
       },
       transition: {
         duration: 3,
@@ -83,13 +83,13 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     }
   },
   'scalable': {
-    // Animation 3: Expanding, growing movements - like scaling up
+    // Animation 3: Expanding, growing movements - like scaling up (constrained to circle)
     color1: {
       animate: {
-        scale: [1, 1.3, 1],
+        scale: [1, 1.2, 1],
         rotate: [0, 180, 360],
-        translateX: [0, 8, 0],
-        translateY: [0, -6, 0],
+        translateX: [0, 5, 0],
+        translateY: [0, -4, 0],
       },
       transition: {
         duration: 5,
@@ -99,10 +99,10 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        scale: [1, 0.7, 1],
+        scale: [1, 0.8, 1],
         rotate: [0, -180, -360],
-        translateX: [0, -6, 0],
-        translateY: [0, 8, 0],
+        translateX: [0, -4, 0],
+        translateY: [0, 5, 0],
       },
       transition: {
         duration: 5,
