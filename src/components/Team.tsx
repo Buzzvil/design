@@ -62,19 +62,6 @@ const Team = () => {
               {t('team.subtitle')}
             </p>
           </BlurReveal>
-                  {/* Debug info */}
-                  <div className="mt-4 p-2 bg-yellow-200 text-black rounded">
-                    Debug: Hovered member = {hoveredMember || 'none'}
-                    <button 
-                      className="ml-4 px-2 py-1 bg-red-500 text-white rounded"
-                      onClick={() => {
-                        console.log('Test button clicked');
-                        setHoveredMember('TEST');
-                      }}
-                    >
-                      Test Button
-                    </button>
-                  </div>
         </motion.div>
 
 
@@ -97,20 +84,10 @@ const Team = () => {
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
                   <div className="relative p-4">
-                    <div
-                      className="cursor-pointer border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2"
-                      onMouseEnter={() => {
-                        console.log('Hovering over:', member.name);
-                        setHoveredMember(member.name);
-                      }}
-                      onMouseLeave={() => {
-                        console.log('Leaving:', member.name);
-                        setHoveredMember(null);
-                      }}
-                      onClick={() => {
-                        console.log('Clicked on:', member.name);
-                        setHoveredMember(member.name);
-                      }}
+                    <div 
+                      className="border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2 cursor-pointer"
+                      onMouseEnter={() => setHoveredMember(member.name)}
+                      onMouseLeave={() => setHoveredMember(null)}
                     >
                       <Avatar 
                         name={member.name} 
