@@ -84,33 +84,21 @@ const Team = () => {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group relative"
             >
-              <div className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative">
+              <div 
+                className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative cursor-pointer"
+                onMouseEnter={() => {
+                  console.log('Hovering over card:', member.name);
+                  setHoveredMember(member.name);
+                }}
+                onMouseLeave={() => {
+                  console.log('Leaving card:', member.name);
+                  setHoveredMember(null);
+                }}
+              >
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
                   <div className="relative p-4">
-                    {/* Test hover area - completely separate from avatar */}
-                    <div 
-                      className="absolute top-0 left-0 w-20 h-20 bg-red-500 bg-opacity-50 border-2 border-red-500 cursor-pointer z-20"
-                      onMouseEnter={() => {
-                        console.log('Hovering over test area:', member.name);
-                        setHoveredMember(member.name);
-                      }}
-                      onMouseLeave={() => {
-                        console.log('Leaving test area:', member.name);
-                        setHoveredMember(null);
-                      }}
-                    />
-                    <div 
-                      className="border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2 cursor-pointer"
-                      onMouseEnter={() => {
-                        console.log('Hovering over avatar:', member.name);
-                        setHoveredMember(member.name);
-                      }}
-                      onMouseLeave={() => {
-                        console.log('Leaving avatar:', member.name);
-                        setHoveredMember(null);
-                      }}
-                    >
+                    <div className="border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2">
                       <Avatar 
                         name={member.name} 
                         size={80}
