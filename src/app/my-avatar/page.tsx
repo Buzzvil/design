@@ -9,11 +9,9 @@ interface AvatarData {
   // Personal information
   name: string;
   
-  // Style questions
-  primaryColor: string;
-  secondaryColor: string;
-  philosophy: string;
-  workingStyle: string;
+  // Buzzvil Values & Principles
+  buzzvilValue: string;  // What drives your working style
+  buzzvilPrinciple: string;  // Your favorite design principle
   
   // Role information
   role: string;
@@ -25,81 +23,63 @@ interface AvatarData {
 
 const STEPS = [
   { id: 'name', title: 'Personal Info', icon: Palette },
-  { id: 'style', title: 'Design Style', icon: Palette },
-  { id: 'role', title: 'Role & Organization', icon: Zap },
+  { id: 'values', title: 'Buzzvil Values', icon: Zap },
+  { id: 'principles', title: 'Design Principles', icon: Sparkles },
+  { id: 'role', title: 'Role & Organization', icon: Palette },
   { id: 'keywords', title: 'Expertise', icon: Sparkles },
   { id: 'preview', title: 'Preview & Download', icon: Download },
 ];
 
-const DESIGN_PHILOSOPHY_OPTIONS = [
+// Buzzvil Values - Question 1: What drives your working style?
+const BUZZVIL_VALUES = [
   { 
-    name: 'Rewarded', 
-    description: 'Creating experiences that feel valuable and meaningful',
-    colors: ['#FF6B6B', '#FFE66D', '#4ECDC4'],
-    philosophy: 'rewarded'
-  },
-  { 
-    name: 'Playful', 
-    description: 'Bringing joy and delight to every interaction',
-    colors: ['#667EEA', '#764BA2', '#F093FB'],
-    philosophy: 'playful'
-  },
-  { 
-    name: 'Scalable', 
-    description: 'Building systems that grow with our users',
-    colors: ['#56AB2F', '#A8E6CF', '#FFD93D'],
-    philosophy: 'scalable'
-  },
-  { 
-    name: 'One-Team', 
-    description: 'Designing as a unified force across all touchpoints',
-    colors: ['#FF416C', '#FF4B2B', '#FF6B6B'],
-    philosophy: 'one-team'
+    name: 'Iterate Fast', 
+    description: 'Moving quickly with rapid prototyping and continuous improvement',
+    value: 'iterate-fast'
   },
   { 
     name: 'Clarity', 
     description: 'Making complex things simple and understandable',
-    colors: ['#2C3E50', '#34495E', '#ECF0F1'],
-    philosophy: 'clarity'
+    value: 'clarity'
   },
   { 
     name: 'Grit', 
     description: 'Pushing boundaries and challenging the status quo',
-    colors: ['#FF9A9E', '#FECFEF', '#FECFEF'],
-    philosophy: 'grit'
+    value: 'grit'
+  },
+  { 
+    name: 'Bold', 
+    description: 'Taking risks and making courageous design decisions',
+    value: 'bold'
+  },
+  { 
+    name: 'One-Team', 
+    description: 'Designing as a unified force across all touchpoints',
+    value: 'one-team'
+  },
+  { 
+    name: 'Delight', 
+    description: 'Bringing joy and delight to every interaction',
+    value: 'delight'
   },
 ];
 
-const WORKING_STYLE_OPTIONS = [
+// Buzzvil Design Principles - Question 2: What's your favorite design principle?
+const BUZZVIL_PRINCIPLES = [
   { 
-    name: 'Iterative', 
-    description: 'Building and refining through continuous cycles',
-    style: 'iterative'
+    name: 'Reward = Time', 
+    description: 'Creating experiences that feel valuable and meaningful',
+    principle: 'reward-time'
   },
   { 
-    name: 'Detail-Oriented', 
-    description: 'Focusing on precision and attention to every element',
-    style: 'detail-oriented'
+    name: 'Playful', 
+    description: 'Bringing joy and delight to every interaction',
+    principle: 'playful'
   },
   { 
-    name: 'Big Picture', 
-    description: 'Thinking strategically about overall user experience',
-    style: 'big-picture'
-  },
-  { 
-    name: 'Collaborative', 
-    description: 'Working closely with cross-functional teams',
-    style: 'collaborative'
-  },
-  { 
-    name: 'Experimental', 
-    description: 'Testing new approaches and pushing boundaries',
-    style: 'experimental'
-  },
-  { 
-    name: 'Systematic', 
-    description: 'Following structured processes and methodologies',
-    style: 'systematic'
+    name: 'Scalable', 
+    description: 'Building systems that grow with our users',
+    principle: 'scalable'
   },
 ];
 
@@ -109,10 +89,8 @@ export default function MyAvatarPage() {
   const [showPreview, setShowPreview] = useState(false);
   const [avatarData, setAvatarData] = useState<AvatarData>({
     name: '',
-    primaryColor: '',
-    secondaryColor: '',
-    philosophy: '',
-    workingStyle: '',
+    buzzvilValue: '',
+    buzzvilPrinciple: '',
     role: 'Product Designer',
     organizationDescription: '',
     keywords: ['', '', ''],
@@ -126,10 +104,10 @@ export default function MyAvatarPage() {
     switch (step) {
       case 0: // Name input
         return avatarData.name.trim();
-      case 1: // Philosophy selection
-        return avatarData.philosophy;
-      case 2: // Working style selection
-        return avatarData.workingStyle;
+      case 1: // Buzzvil Values selection
+        return avatarData.buzzvilValue;
+      case 2: // Buzzvil Principles selection
+        return avatarData.buzzvilPrinciple;
       case 3: // Role and organization
         return avatarData.role && avatarData.organizationDescription;
       case 4: // Keywords
@@ -137,8 +115,8 @@ export default function MyAvatarPage() {
       case 5: // Final step - check all required fields
         return (
           avatarData.name.trim() &&
-          avatarData.philosophy &&
-          avatarData.workingStyle &&
+          avatarData.buzzvilValue &&
+          avatarData.buzzvilPrinciple &&
           avatarData.role &&
           avatarData.organizationDescription &&
           avatarData.keywords[0]?.trim()
@@ -170,12 +148,10 @@ export default function MyAvatarPage() {
   <personal>
     <name>${avatarData.name}</name>
   </personal>
-  <style>
-    <primaryColor>${avatarData.primaryColor}</primaryColor>
-    <secondaryColor>${avatarData.secondaryColor}</secondaryColor>
-    <philosophy>${avatarData.philosophy}</philosophy>
-    <workingStyle>${avatarData.workingStyle}</workingStyle>
-  </style>
+  <buzzvil>
+    <value>${avatarData.buzzvilValue}</value>
+    <principle>${avatarData.buzzvilPrinciple}</principle>
+  </buzzvil>
   <role>
     <title>${avatarData.role}</title>
     <organizationDescription>${avatarData.organizationDescription}</organizationDescription>
@@ -229,23 +205,19 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">What drives your design philosophy?</h2>
-              <p className="text-muted-foreground text-lg">Choose the principle that resonates most with your approach</p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">What drives your working style?</h2>
+              <p className="text-muted-foreground text-lg">Choose the Buzzvil value that resonates most with your approach</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {DESIGN_PHILOSOPHY_OPTIONS.map((option, index) => (
+              {BUZZVIL_VALUES.map((option, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    updateAvatarData('primaryColor', option.colors[0]);
-                    updateAvatarData('secondaryColor', option.colors[1]);
-                    updateAvatarData('philosophy', option.philosophy);
-                  }}
+                  onClick={() => updateAvatarData('buzzvilValue', option.value)}
                   className={`p-6 rounded-2xl border-2 transition-all text-left ${
-                    avatarData.philosophy === option.philosophy 
+                    avatarData.buzzvilValue === option.value 
                       ? 'border-accent bg-accent/10' 
                       : 'border-border hover:border-accent/50'
                   }`}
@@ -262,24 +234,24 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">How do you approach your work?</h2>
-              <p className="text-muted-foreground text-lg">Select the working style that best describes your process</p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">What&apos;s your favorite Buzzvil design principle?</h2>
+              <p className="text-muted-foreground text-lg">Choose the principle that guides your design decisions</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {WORKING_STYLE_OPTIONS.map((option, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {BUZZVIL_PRINCIPLES.map((option, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => updateAvatarData('workingStyle', option.style)}
+                  onClick={() => updateAvatarData('buzzvilPrinciple', option.principle)}
                   className={`p-6 rounded-2xl border-2 transition-all text-left ${
-                    avatarData.workingStyle === option.style 
+                    avatarData.buzzvilPrinciple === option.principle 
                       ? 'border-accent bg-accent/10' 
                       : 'border-border hover:border-accent/50'
                   }`}
                 >
-                  <h3 className="font-semibold text-foreground mb-2">{option.name}</h3>
+                  <h3 className="font-semibold text-foreground mb-3">{option.name}</h3>
                   <p className="text-muted-foreground text-sm">{option.description}</p>
                 </motion.button>
               ))}
@@ -375,13 +347,13 @@ export default function MyAvatarPage() {
                   </div>
                   
                   <div>
-                    <h4 className="font-medium text-foreground mb-2">Design Philosophy</h4>
-                    <p className="text-accent capitalize">{avatarData.philosophy}</p>
+                    <h4 className="font-medium text-foreground mb-2">Buzzvil Value</h4>
+                    <p className="text-accent capitalize">{avatarData.buzzvilValue.replace('-', ' ')}</p>
                   </div>
                   
                   <div>
-                    <h4 className="font-medium text-foreground mb-2">Working Style</h4>
-                    <p className="text-muted-foreground capitalize">{avatarData.workingStyle.replace('-', ' ')}</p>
+                    <h4 className="font-medium text-foreground mb-2">Design Principle</h4>
+                    <p className="text-muted-foreground capitalize">{avatarData.buzzvilPrinciple.replace('-', ' ')}</p>
                   </div>
                   
                   <div>
@@ -446,8 +418,8 @@ export default function MyAvatarPage() {
                           <Avatar 
                             name={avatarData.name} 
                             size={80} 
-                            philosophy={avatarData.philosophy}
-                            workingStyle={avatarData.workingStyle}
+                            philosophy={avatarData.buzzvilValue}
+                            workingStyle={avatarData.buzzvilPrinciple}
                           />
                         </div>
                         <div className="flex-1">

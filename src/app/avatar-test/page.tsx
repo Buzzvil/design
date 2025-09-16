@@ -15,8 +15,8 @@ interface TestAvatar {
   keywords: string[];
 }
 
-const PHILOSOPHIES = ['rewarded', 'playful', 'scalable', 'one-team', 'clarity', 'grit'];
-const WORKING_STYLES = ['iterative', 'detail-oriented', 'big-picture', 'collaborative', 'experimental', 'systematic'];
+const BUZZVIL_VALUES = ['iterate-fast', 'clarity', 'grit', 'bold', 'one-team', 'delight'];
+const BUZZVIL_PRINCIPLES = ['reward-time', 'playful', 'scalable'];
 const NAMES = ['Alex Chen', 'Maya Patel', 'Jordan Kim', 'Sam Wilson', 'Taylor Brown', 'Casey Lee', 'Riley Zhang', 'Morgan Davis'];
 const ROLES = ['Product Designer', 'UX Designer', 'UI Designer', 'Design Lead', 'Design Manager'];
 const DESCRIPTIONS = [
@@ -37,8 +37,8 @@ const KEYWORDS = [
 
 function generateRandomAvatar(id: number): TestAvatar {
   const randomName = NAMES[Math.floor(Math.random() * NAMES.length)];
-  const randomPhilosophy = PHILOSOPHIES[Math.floor(Math.random() * PHILOSOPHIES.length)];
-  const randomWorkingStyle = WORKING_STYLES[Math.floor(Math.random() * WORKING_STYLES.length)];
+  const randomValue = BUZZVIL_VALUES[Math.floor(Math.random() * BUZZVIL_VALUES.length)];
+  const randomPrinciple = BUZZVIL_PRINCIPLES[Math.floor(Math.random() * BUZZVIL_PRINCIPLES.length)];
   const randomRole = ROLES[Math.floor(Math.random() * ROLES.length)];
   const randomDescription = DESCRIPTIONS[Math.floor(Math.random() * DESCRIPTIONS.length)];
   const randomKeywords = KEYWORDS[Math.floor(Math.random() * KEYWORDS.length)];
@@ -46,8 +46,8 @@ function generateRandomAvatar(id: number): TestAvatar {
   return {
     id,
     name: randomName,
-    philosophy: randomPhilosophy,
-    workingStyle: randomWorkingStyle,
+    philosophy: randomValue,
+    workingStyle: randomPrinciple,
     role: randomRole,
     description: randomDescription,
     keywords: randomKeywords,
@@ -86,7 +86,7 @@ export default function AvatarTestPage() {
             <div>
               <h1 className="text-3xl font-bold text-foreground">Avatar Generation Test</h1>
               <p className="text-muted-foreground mt-2">
-                Testing philosophy-based colors and work style animations
+                Testing Buzzvil values-based colors and principle-based animations
               </p>
             </div>
             
@@ -142,16 +142,16 @@ export default function AvatarTestPage() {
                   <p className="text-muted-foreground text-xs">{avatar.description}</p>
                 </div>
 
-                {/* Philosophy & Work Style */}
+                {/* Buzzvil Value & Principle */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">Philosophy:</span>
+                    <span className="text-xs text-muted-foreground">Value:</span>
                     <span className="text-xs font-medium text-accent capitalize px-2 py-1 bg-accent/10 rounded-full">
-                      {avatar.philosophy}
+                      {avatar.philosophy.replace('-', ' ')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">Work Style:</span>
+                    <span className="text-xs text-muted-foreground">Principle:</span>
                     <span className="text-xs font-medium text-accent capitalize px-2 py-1 bg-accent/10 rounded-full">
                       {avatar.workingStyle.replace('-', ' ')}
                     </span>
@@ -185,41 +185,41 @@ export default function AvatarTestPage() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Philosophy Colors */}
+            {/* Buzzvil Values Colors */}
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Philosophy-Based Colors</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Buzzvil Values (Colors)</h3>
               <div className="space-y-3">
-                {PHILOSOPHIES.map((philosophy) => (
-                  <div key={philosophy} className="flex items-center space-x-3">
+                {BUZZVIL_VALUES.map((value) => (
+                  <div key={value} className="flex items-center space-x-3">
                     <div className="w-6 h-6 rounded-full border-2 border-border flex items-center justify-center">
                       <Avatar 
                         name="Test" 
                         size={20} 
-                        philosophy={philosophy}
-                        workingStyle="systematic"
+                        philosophy={value}
+                        workingStyle="reward-time"
                       />
                     </div>
-                    <span className="text-sm text-foreground capitalize">{philosophy}</span>
+                    <span className="text-sm text-foreground capitalize">{value.replace('-', ' ')}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Work Style Animations */}
+            {/* Buzzvil Principles Animations */}
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Work Style Animations</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Buzzvil Principles (Animations)</h3>
               <div className="space-y-3">
-                {WORKING_STYLES.map((style) => (
-                  <div key={style} className="flex items-center space-x-3">
+                {BUZZVIL_PRINCIPLES.map((principle) => (
+                  <div key={principle} className="flex items-center space-x-3">
                     <div className="w-6 h-6 rounded-full border-2 border-border flex items-center justify-center">
                       <Avatar 
                         name="Test" 
                         size={20} 
-                        philosophy="playful"
-                        workingStyle={style}
+                        philosophy="delight"
+                        workingStyle={principle}
                       />
                     </div>
-                    <span className="text-sm text-foreground capitalize">{style.replace('-', ' ')}</span>
+                    <span className="text-sm text-foreground capitalize">{principle.replace('-', ' ')}</span>
                   </div>
                 ))}
               </div>

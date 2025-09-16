@@ -14,108 +14,26 @@ interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   workingStyle?: string;
 }
 
-// Philosophy-based color palettes - meaningful yet creative and varied
-const PHILOSOPHY_COLORS = {
-  'rewarded': ["#FFD700", "#FF6B35", "#FFE135"], // Gold, burnt orange, bright yellow - success with warmth
-  'playful': ["#FF69B4", "#00CED1", "#FF1493", "#32CD32"], // Hot pink, turquoise, deep pink, lime - vibrant energy
-  'scalable': ["#32CD32", "#00FA9A", "#7FFF00", "#228B22"], // Lime, spring green, chartreuse, forest - growth spectrum
-  'one-team': ["#4169E1", "#1E90FF", "#87CEEB", "#4682B4"], // Royal blue, dodger blue, sky blue, steel blue - unity depth
+// Buzzvil Values - Color palettes for working styles
+const BUZZVIL_VALUE_COLORS = {
+  'iterate-fast': ["#FF6B35", "#FFD700", "#FFE135", "#FF8C00"], // Orange, gold, bright yellow, dark orange - speed and energy
   'clarity': ["#F0F8FF", "#E6E6FA", "#FFFFFF", "#B0C4DE"], // Alice blue, lavender, white, light steel - clear spectrum
   'grit': ["#8B0000", "#DC143C", "#B22222", "#FF4500"], // Dark red, crimson, fire brick, orange red - power with energy
+  'bold': ["#8B008B", "#FF1493", "#DC143C", "#B22222"], // Dark magenta, deep pink, crimson, fire brick - bold and daring
+  'one-team': ["#4169E1", "#1E90FF", "#87CEEB", "#4682B4"], // Royal blue, dodger blue, sky blue, steel blue - unity depth
+  'delight': ["#FF69B4", "#00CED1", "#FF1493", "#32CD32"], // Hot pink, turquoise, deep pink, lime - vibrant energy
 };
 
-// Work style-based internal color animation variants - smooth and meaningful
-const WORK_STYLE_ANIMATIONS = {
-  'iterative': {
-    // Smooth, rhythmic pulse - like a heartbeat
-    color1: {
-      animate: {
-        scale: [1, 1.15, 1],
-        translateX: [0, 2, 0],
-        translateY: [0, -1, 0],
-      },
-      transition: {
-        duration: 2.5,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        scale: [1, 0.9, 1],
-        translateX: [0, -1, 0],
-        translateY: [0, 2, 0],
-      },
-      transition: {
-        duration: 2.5,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    }
-  },
-  'detail-oriented': {
-    // Gentle, precise movements - like fine-tuning
-    color1: {
-      animate: {
-        scale: [1, 1.05, 1],
-        translateX: [0, 1, 0],
-        translateY: [0, 0.5, 0],
-      },
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        scale: [1, 0.98, 1],
-        translateX: [0, -0.5, 0],
-        translateY: [0, -1, 0],
-      },
-      transition: {
-        duration: 3.2,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    }
-  },
-  'big-picture': {
-    // Slow, majestic movements - like conducting an orchestra
-    color1: {
-      animate: {
-        scale: [1, 1.2, 1],
-        rotate: [0, 180, 360],
-        translateX: [0, 8, 0],
-        translateY: [0, -6, 0],
-      },
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        scale: [1, 0.85, 1],
-        rotate: [0, -180, -360],
-        translateX: [0, -6, 0],
-        translateY: [0, 8, 0],
-      },
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    }
-  },
-  'collaborative': {
-    // Harmonious, flowing movements - like a dance
+// Buzzvil Design Principles - 3 distinct, smooth animations
+const BUZZVIL_PRINCIPLE_ANIMATIONS = {
+  'reward-time': {
+    // Animation 1: Smooth, flowing movements - like time passing
     color1: {
       animate: {
         scale: [1, 1.1, 1],
-        translateX: [0, 6, 0],
-        translateY: [0, -4, 0],
+        rotate: [0, 120, 240, 360],
+        translateX: [0, 4, 0],
+        translateY: [0, -3, 0],
       },
       transition: {
         duration: 4,
@@ -126,8 +44,9 @@ const WORK_STYLE_ANIMATIONS = {
     color2: {
       animate: {
         scale: [1, 0.95, 1],
-        translateX: [0, -4, 0],
-        translateY: [0, 6, 0],
+        rotate: [0, -120, -240, -360],
+        translateX: [0, -3, 0],
+        translateY: [0, 4, 0],
       },
       transition: {
         duration: 4,
@@ -136,57 +55,57 @@ const WORK_STYLE_ANIMATIONS = {
       }
     }
   },
-  'experimental': {
-    // Dynamic, creative movements - like artistic expression
+  'playful': {
+    // Animation 2: Bouncy, energetic movements - like play
     color1: {
       animate: {
-        scale: [1, 1.3, 0.8, 1.2, 1],
-        rotate: [0, 90, 180, 270, 360],
-        translateX: [0, 8, -6, 4, 0],
-        translateY: [0, -6, 8, -4, 0],
+        scale: [1, 1.2, 0.9, 1.1, 1],
+        translateX: [0, 6, -4, 3, 0],
+        translateY: [0, -4, 6, -3, 0],
       },
       transition: {
-        duration: 6,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.8, 1.2, 0.9, 1],
-        rotate: [0, -90, -180, -270, -360],
-        translateX: [0, -6, 4, -8, 0],
-        translateY: [0, 4, -8, 6, 0],
+        scale: [1, 0.8, 1.1, 0.9, 1],
+        translateX: [0, -4, 3, -6, 0],
+        translateY: [0, 3, -6, 4, 0],
       },
       transition: {
-        duration: 6,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     }
   },
-  'systematic': {
-    // Precise, rhythmic movements - like a metronome
+  'scalable': {
+    // Animation 3: Expanding, growing movements - like scaling up
     color1: {
       animate: {
-        scale: [1, 1.02, 1],
-        translateX: [0, 1, 0],
-        translateY: [0, 0.5, 0],
+        scale: [1, 1.3, 1],
+        rotate: [0, 180, 360],
+        translateX: [0, 8, 0],
+        translateY: [0, -6, 0],
       },
       transition: {
-        duration: 2,
+        duration: 5,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.98, 1],
-        translateX: [0, -0.5, 0],
-        translateY: [0, -1, 0],
+        scale: [1, 0.7, 1],
+        rotate: [0, -180, -360],
+        translateX: [0, -6, 0],
+        translateY: [0, 8, 0],
       },
       transition: {
-        duration: 2,
+        duration: 5,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
@@ -211,9 +130,9 @@ function AvatarFallback({
 }) {
   const titleId = React.useId();
   
-  // Use philosophy-based colors if available, otherwise use default colors
-  const colors = philosophy && PHILOSOPHY_COLORS[philosophy as keyof typeof PHILOSOPHY_COLORS] 
-    ? PHILOSOPHY_COLORS[philosophy as keyof typeof PHILOSOPHY_COLORS]
+  // Use Buzzvil value-based colors if available, otherwise use default colors
+  const colors = philosophy && BUZZVIL_VALUE_COLORS[philosophy as keyof typeof BUZZVIL_VALUE_COLORS] 
+    ? BUZZVIL_VALUE_COLORS[philosophy as keyof typeof BUZZVIL_VALUE_COLORS]
     : defaultColors;
     
   const properties = generateColors(name, colors);
@@ -221,9 +140,9 @@ function AvatarFallback({
   const maskId = React.useId();
   const filterId = React.useId();
 
-  // Get animation props based on working style
-  const animationConfig = workingStyle && WORK_STYLE_ANIMATIONS[workingStyle as keyof typeof WORK_STYLE_ANIMATIONS]
-    ? WORK_STYLE_ANIMATIONS[workingStyle as keyof typeof WORK_STYLE_ANIMATIONS]
+  // Get animation props based on Buzzvil principle
+  const animationConfig = workingStyle && BUZZVIL_PRINCIPLE_ANIMATIONS[workingStyle as keyof typeof BUZZVIL_PRINCIPLE_ANIMATIONS]
+    ? BUZZVIL_PRINCIPLE_ANIMATIONS[workingStyle as keyof typeof BUZZVIL_PRINCIPLE_ANIMATIONS]
     : null;
 
   return (
