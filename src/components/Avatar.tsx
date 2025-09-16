@@ -27,85 +27,85 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Smooth, flowing movements - like time passing (constrained to circle)
+    // Animation 1: Very subtle flowing movements - like gentle time passing
     color1: {
       animate: {
-        scale: [1, 1.05, 1],
-        rotate: [0, 120, 240, 360],
-        translateX: [0, 2, 0],
-        translateY: [0, -1.5, 0],
+        scale: [1, 1.02, 1],
+        rotate: [0, 90, 180, 270, 360],
+        translateX: [0, 0.8, 0],
+        translateY: [0, -0.6, 0],
       },
       transition: {
-        duration: 4,
+        duration: 6,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.98, 1],
-        rotate: [0, -120, -240, -360],
-        translateX: [0, -1.5, 0],
-        translateY: [0, 2, 0],
+        scale: [1, 0.99, 1],
+        rotate: [0, -90, -180, -270, -360],
+        translateX: [0, -0.6, 0],
+        translateY: [0, 0.8, 0],
       },
       transition: {
-        duration: 4,
+        duration: 6,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     }
   },
   'playful': {
-    // Animation 2: Bouncy, energetic movements - like play (constrained to circle)
+    // Animation 2: Subtle bouncy movements - like gentle play
     color1: {
       animate: {
-        scale: [1, 1.15, 0.95, 1.08, 1],
-        translateX: [0, 4, -3, 2, 0],
-        translateY: [0, -3, 4, -2, 0],
+        scale: [1, 1.08, 0.98, 1.05, 1],
+        translateX: [0, 2, -1.5, 1, 0],
+        translateY: [0, -1.5, 2, -1, 0],
       },
       transition: {
-        duration: 3,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.85, 1.08, 0.95, 1],
-        translateX: [0, -3, 2, -4, 0],
-        translateY: [0, 2, -4, 3, 0],
+        scale: [1, 0.92, 1.05, 0.98, 1],
+        translateX: [0, -1.5, 1, -2, 0],
+        translateY: [0, 1, -2, 1.5, 0],
       },
       transition: {
-        duration: 3,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     }
   },
   'scalable': {
-    // Animation 3: Expanding, growing movements - like scaling up (constrained to circle)
+    // Animation 3: Very subtle expanding movements - like gentle scaling
     color1: {
       animate: {
-        scale: [1, 1.2, 1],
-        rotate: [0, 180, 360],
-        translateX: [0, 5, 0],
-        translateY: [0, -4, 0],
+        scale: [1, 1.05, 1],
+        rotate: [0, 120, 240, 360],
+        translateX: [0, 1.5, 0],
+        translateY: [0, -1, 0],
       },
       transition: {
-        duration: 5,
+        duration: 7,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.8, 1],
-        rotate: [0, -180, -360],
-        translateX: [0, -4, 0],
-        translateY: [0, 5, 0],
+        scale: [1, 0.96, 1],
+        rotate: [0, -120, -240, -360],
+        translateX: [0, -1, 0],
+        translateY: [0, 1.5, 0],
       },
       transition: {
-        duration: 5,
+        duration: 7,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
