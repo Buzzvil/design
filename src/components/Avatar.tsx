@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from "react";
+import { motion } from "framer-motion";
 import { generateColors } from "@/utils/avatar";
 
 const DEFAULT_SIZE = 40;
@@ -9,27 +10,124 @@ interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   size?: number;
   className?: string;
+  philosophy?: string;
+  workingStyle?: string;
 }
 
-const colors = ["#F6C750", "#E63525", "#050D4C", "#D4EBEE"];
+// Philosophy-based color palettes
+const PHILOSOPHY_COLORS = {
+  'rewarded': ["#FF6B6B", "#FFE66D", "#4ECDC4"],
+  'playful': ["#667EEA", "#764BA2", "#F093FB"],
+  'scalable': ["#56AB2F", "#A8E6CF", "#FFD93D"],
+  'one-team': ["#FF416C", "#FF4B2B", "#FF6B6B"],
+  'clarity': ["#2C3E50", "#34495E", "#ECF0F1"],
+  'grit': ["#FF9A9E", "#FECFEF", "#FECFEF"],
+};
+
+// Work style-based animation variants
+const WORK_STYLE_ANIMATIONS = {
+  'iterative': {
+    animate: {
+      rotate: [0, 360],
+      scale: [1, 1.1, 1],
+    },
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "linear"
+    }
+  },
+  'detail-oriented': {
+    animate: {
+      scale: [1, 1.05, 1],
+    },
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  },
+  'big-picture': {
+    animate: {
+      rotate: [0, 180, 360],
+    },
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  },
+  'collaborative': {
+    animate: {
+      x: [0, 5, -5, 0],
+      y: [0, -5, 5, 0],
+    },
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  },
+  'experimental': {
+    animate: {
+      scale: [1, 1.2, 0.8, 1],
+      rotate: [0, 90, 180, 270, 360],
+    },
+    transition: {
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  },
+  'systematic': {
+    animate: {
+      scale: [1, 1.02, 1],
+    },
+    transition: {
+      duration: 1.5,
+      repeat: Infinity,
+      ease: "linear"
+    }
+  },
+};
+
+const defaultColors = ["#F6C750", "#E63525", "#050D4C", "#D4EBEE"];
 
 function AvatarFallback({
   name,
   size = DEFAULT_SIZE,
   className = "",
+  philosophy,
+  workingStyle,
 }: {
   name: string;
   size?: number;
   className?: string;
+  philosophy?: string;
+  workingStyle?: string;
 }) {
   const titleId = React.useId();
+  
+  // Use philosophy-based colors if available, otherwise use default colors
+  const colors = philosophy && PHILOSOPHY_COLORS[philosophy as keyof typeof PHILOSOPHY_COLORS] 
+    ? PHILOSOPHY_COLORS[philosophy as keyof typeof PHILOSOPHY_COLORS]
+    : defaultColors;
+    
   const properties = generateColors(name, colors);
 
   const maskId = React.useId();
   const filterId = React.useId();
 
+  // Get animation props based on working style
+  const animationProps = workingStyle && WORK_STYLE_ANIMATIONS[workingStyle as keyof typeof WORK_STYLE_ANIMATIONS]
+    ? WORK_STYLE_ANIMATIONS[workingStyle as keyof typeof WORK_STYLE_ANIMATIONS]
+    : {};
+
   return (
-    <div className={`inline-block ${className}`}>
+    <motion.div 
+      className={`inline-block ${className}`}
+      {...animationProps}
+    >
       <svg
         viewBox={`0 0 ${size} ${size}`}
         fill="none"
@@ -87,7 +185,7 @@ function AvatarFallback({
           </filter>
         </defs>
       </svg>
-    </div>
+    </motion.div>
   );
 }
 
@@ -97,6 +195,8 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       name,
       size = DEFAULT_SIZE,
       className = "",
+      philosophy,
+      workingStyle,
       ...rest
     },
     ref
@@ -107,7 +207,12 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
         className={className}
         {...rest}
       >
-        <AvatarFallback name={name} size={size} />
+        <AvatarFallback 
+          name={name} 
+          size={size} 
+          philosophy={philosophy}
+          workingStyle={workingStyle}
+        />
       </div>
     );
   }

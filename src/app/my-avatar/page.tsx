@@ -6,6 +6,9 @@ import { ArrowRight, ArrowLeft, Download, Palette, Zap, Sparkles } from 'lucide-
 import Avatar from '@/components/Avatar';
 
 interface AvatarData {
+  // Personal information
+  name: string;
+  
   // Style questions
   primaryColor: string;
   secondaryColor: string;
@@ -21,6 +24,7 @@ interface AvatarData {
 }
 
 const STEPS = [
+  { id: 'name', title: 'Personal Info', icon: Palette },
   { id: 'style', title: 'Design Style', icon: Palette },
   { id: 'role', title: 'Role & Organization', icon: Zap },
   { id: 'keywords', title: 'Expertise', icon: Sparkles },
@@ -104,6 +108,7 @@ export default function MyAvatarPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [showPreview, setShowPreview] = useState(false);
   const [avatarData, setAvatarData] = useState<AvatarData>({
+    name: '',
     primaryColor: '',
     secondaryColor: '',
     philosophy: '',
@@ -119,16 +124,19 @@ export default function MyAvatarPage() {
 
   const isStepComplete = (step: number) => {
     switch (step) {
-      case 0: // Philosophy selection
+      case 0: // Name input
+        return avatarData.name.trim();
+      case 1: // Philosophy selection
         return avatarData.philosophy;
-      case 1: // Working style selection
+      case 2: // Working style selection
         return avatarData.workingStyle;
-      case 2: // Role and organization
+      case 3: // Role and organization
         return avatarData.role && avatarData.organizationDescription;
-      case 3: // Keywords
+      case 4: // Keywords
         return avatarData.keywords[0]?.trim();
-      case 4: // Final step - check all required fields
+      case 5: // Final step - check all required fields
         return (
+          avatarData.name.trim() &&
           avatarData.philosophy &&
           avatarData.workingStyle &&
           avatarData.role &&
@@ -159,6 +167,9 @@ export default function MyAvatarPage() {
   const generateXML = () => {
     const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
+  <personal>
+    <name>${avatarData.name}</name>
+  </personal>
   <style>
     <primaryColor>${avatarData.primaryColor}</primaryColor>
     <secondaryColor>${avatarData.secondaryColor}</secondaryColor>
@@ -193,6 +204,31 @@ export default function MyAvatarPage() {
         return (
           <div className="space-y-8">
             <div className="text-center">
+              <h2 className="text-3xl font-bold text-foreground mb-4">What&apos;s your name?</h2>
+              <p className="text-muted-foreground text-lg">Let&apos;s start with the basics</p>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  value={avatarData.name}
+                  onChange={(e) => updateAvatarData('name', e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent text-lg"
+                  placeholder="Enter your name..."
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 1:
+        return (
+          <div className="space-y-8">
+            <div className="text-center">
               <h2 className="text-3xl font-bold text-foreground mb-4">What drives your design philosophy?</h2>
               <p className="text-muted-foreground text-lg">Choose the principle that resonates most with your approach</p>
             </div>
@@ -222,7 +258,7 @@ export default function MyAvatarPage() {
           </div>
         );
 
-      case 1:
+      case 2:
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -251,7 +287,7 @@ export default function MyAvatarPage() {
           </div>
         );
 
-      case 2:
+      case 3:
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -289,7 +325,7 @@ export default function MyAvatarPage() {
           </div>
         );
 
-      case 3:
+      case 4:
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -321,7 +357,7 @@ export default function MyAvatarPage() {
           </div>
         );
 
-      case 4:
+      case 5:
         return (
           <div className="space-y-8">
             <div className="text-center">
@@ -333,6 +369,11 @@ export default function MyAvatarPage() {
               {/* Summary Card */}
               <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-lg">
                 <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium text-foreground mb-2">Name</h4>
+                    <p className="text-foreground">{avatarData.name}</p>
+                  </div>
+                  
                   <div>
                     <h4 className="font-medium text-foreground mb-2">Design Philosophy</h4>
                     <p className="text-accent capitalize">{avatarData.philosophy}</p>
@@ -402,56 +443,31 @@ export default function MyAvatarPage() {
                     <div className="bg-gradient-to-br from-background to-muted/20 p-8 rounded-2xl border border-border shadow-lg">
                       <div className="flex items-center space-x-6 mb-6">
                         <div className="relative">
-                          <Avatar name="Your Name" size={80} />
-                          <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-background" 
-                               style={{ backgroundColor: avatarData.primaryColor }} />
+                          <Avatar 
+                            name={avatarData.name} 
+                            size={80} 
+                            philosophy={avatarData.philosophy}
+                            workingStyle={avatarData.workingStyle}
+                          />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-xl font-semibold text-foreground mb-1">{avatarData.role}</h3>
-                          <p className="text-muted-foreground text-sm mb-2">{avatarData.organizationDescription}</p>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-xs text-muted-foreground">Philosophy:</span>
-                            <span className="text-xs font-medium text-accent capitalize">{avatarData.philosophy}</span>
-                          </div>
+                          <h3 className="text-xl font-semibold text-foreground mb-1">{avatarData.name}</h3>
+                          <p className="text-muted-foreground text-sm mb-2">{avatarData.role}</p>
+                          <p className="text-muted-foreground text-sm">{avatarData.organizationDescription}</p>
                         </div>
                       </div>
                       
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-medium text-foreground mb-3">Expertise</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {avatarData.keywords.filter(k => k.trim()).map((keyword, index) => (
-                              <span
-                                key={index}
-                                className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
-                              >
-                                {keyword}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        <div className="pt-4 border-t border-border/50">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h4 className="font-medium text-foreground mb-2">Design Style</h4>
-                              <div className="flex items-center space-x-3">
-                                <div className="flex space-x-1">
-                                  <div
-                                    className="w-4 h-4 rounded-full"
-                                    style={{ backgroundColor: avatarData.primaryColor }}
-                                  />
-                                  <div
-                                    className="w-4 h-4 rounded-full"
-                                    style={{ backgroundColor: avatarData.secondaryColor }}
-                                  />
-                                </div>
-                                <span className="text-sm text-muted-foreground capitalize">
-                                  {avatarData.workingStyle.replace('-', ' ')} approach
-                                </span>
-                              </div>
-                            </div>
-                          </div>
+                      <div>
+                        <h4 className="font-medium text-foreground mb-3">Expertise</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {avatarData.keywords.filter(k => k.trim()).map((keyword, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium"
+                            >
+                              {keyword}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
