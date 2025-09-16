@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Joy</name>
-  <role>Product Designer</role>
-  <description>Bridging design and development with code and creativity.</description>
-  <keywords>Frontend Development, Design Systems, Animation</keywords>
+<avatar>
+  <personal>
+    <name>Joy</name>
+  </personal>
   <buzzvil>
-    <value>delight</value>
+    <value>clarity</value>
     <principle>playful</principle>
   </buzzvil>
-</teamMember>
-
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>Build and develop the user experience of an advertising product that connects agencies and media.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>Product Design</keyword>
+      <keyword>UX</keyword>
+      <keyword>UI</keyword>
+    </keywords>
+  </expertise>
+</avatar>
