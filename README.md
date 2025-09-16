@@ -1,4 +1,5 @@
-# Buzzvil Design System
+# Buzzvil Design
+<!-- Updated: Team members added --> System
 
 A modern, minimal design system website for Buzzvil, featuring a dark theme, interactive animations, and bilingual support (English/Korean).
 
