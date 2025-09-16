@@ -163,11 +163,15 @@ export default function MyAvatarPage() {
   </expertise>
 </avatar>`;
 
+    // Generate filename based on the designer's name
+    const sanitizedName = avatarData.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const filename = `${sanitizedName}.xml`;
+
     const blob = new Blob([xmlContent], { type: 'application/xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'my-avatar.xml';
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
