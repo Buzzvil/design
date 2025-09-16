@@ -106,18 +106,17 @@ export function loadTeamMembers(): TeamMember[] {
     <name>Jia</name>
   </personal>
   <buzzvil>
-    <value>clarity</value>
-    <principle>playful</principle>
+    <value>iterate-fast</value>
+    <principle>reward-time</principle>
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>Crafting intuitive user experiences that delight and engage.</organizationDescription>
+    <organizationDescription>Designing screens for Buzzvil's B2B2C products.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>User Research</keyword>
-      <keyword>UX Design</keyword>
-      <keyword>Prototyping</keyword>
+      <keyword>Fun experience</keyword>
+      <keyword>Fast Iteration</keyword>
     </keywords>
   </expertise>
 </avatar>`;
