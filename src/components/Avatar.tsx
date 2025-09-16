@@ -27,31 +27,26 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Very subtle flowing movements - like gentle time passing
+    // Animation 1: Gentle pulse scale - like a heartbeat or time passing
     color1: {
       animate: {
-        scale: [1, 1.02, 1],
-        rotate: [0, 90, 180, 270, 360],
-        translateX: [0, 0.8, 0],
-        translateY: [0, -0.6, 0],
+        scale: [1, 1.08, 1],
       },
       transition: {
-        duration: 6,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.99, 1],
-        rotate: [0, -90, -180, -270, -360],
-        translateX: [0, -0.6, 0],
-        translateY: [0, 0.8, 0],
+        scale: [1, 0.95, 1],
       },
       transition: {
-        duration: 6,
+        duration: 3,
         repeat: Infinity,
-        ease: "easeInOut" as const
+        ease: "easeInOut" as const,
+        delay: 0.5
       }
     }
   },
