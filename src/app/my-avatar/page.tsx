@@ -382,16 +382,6 @@ export default function MyAvatarPage() {
                   </div>
                 </div>
               </div>
-              
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={generateXML}
-                className="w-full mt-8 bg-accent text-white py-4 px-6 rounded-lg font-semibold hover:bg-accent/90 transition-colors flex items-center justify-center space-x-2"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download XML File</span>
-              </motion.button>
             </div>
           </div>
         );
@@ -442,16 +432,20 @@ export default function MyAvatarPage() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={nextStep}
-              disabled={currentStep === STEPS.length - 1 || !isStepComplete(currentStep)}
+              onClick={currentStep === STEPS.length - 1 ? generateXML : nextStep}
+              disabled={!isStepComplete(currentStep)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                currentStep === STEPS.length - 1 || !isStepComplete(currentStep)
+                !isStepComplete(currentStep)
                   ? 'text-muted-foreground cursor-not-allowed'
                   : 'bg-accent text-white hover:bg-accent/90'
               }`}
             >
               <span>{currentStep === STEPS.length - 1 ? 'Complete' : 'Next'}</span>
-              <ArrowRight className="w-4 h-4" />
+              {currentStep === STEPS.length - 1 ? (
+                <Download className="w-4 h-4" />
+              ) : (
+                <ArrowRight className="w-4 h-4" />
+              )}
             </motion.button>
           </div>
         </div>
