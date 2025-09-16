@@ -27,10 +27,34 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Gentle pulse scale - like a heartbeat or time passing
+    // Animation 1: Very gentle pulse scale - like a subtle heartbeat
     color1: {
       animate: {
-        scale: [1, 1.08, 1],
+        scale: [1, 1.03, 1],
+      },
+      transition: {
+        duration: 2.5,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    },
+    color2: {
+      animate: {
+        scale: [1, 0.98, 1],
+      },
+      transition: {
+        duration: 2.5,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+        delay: 0.3
+      }
+    }
+  },
+  'playful': {
+    // Animation 2: Very subtle bouncy pulse - like gentle play
+    color1: {
+      animate: {
+        scale: [1, 1.04, 0.99, 1.02, 1],
       },
       transition: {
         duration: 3,
@@ -40,69 +64,37 @@ const BUZZVIL_PRINCIPLE_ANIMATIONS = {
     },
     color2: {
       animate: {
-        scale: [1, 0.95, 1],
+        scale: [1, 0.97, 1.02, 0.99, 1],
       },
       transition: {
         duration: 3,
         repeat: Infinity,
         ease: "easeInOut" as const,
-        delay: 0.5
-      }
-    }
-  },
-  'playful': {
-    // Animation 2: Subtle bouncy movements - like gentle play
-    color1: {
-      animate: {
-        scale: [1, 1.08, 0.98, 1.05, 1],
-        translateX: [0, 2, -1.5, 1, 0],
-        translateY: [0, -1.5, 2, -1, 0],
-      },
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        scale: [1, 0.92, 1.05, 0.98, 1],
-        translateX: [0, -1.5, 1, -2, 0],
-        translateY: [0, 1, -2, 1.5, 0],
-      },
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut" as const
+        delay: 0.2
       }
     }
   },
   'scalable': {
-    // Animation 3: Very subtle expanding movements - like gentle scaling
+    // Animation 3: Ultra-subtle pulse only - no movement to avoid edges
     color1: {
       animate: {
-        scale: [1, 1.05, 1],
-        rotate: [0, 120, 240, 360],
-        translateX: [0, 1.5, 0],
-        translateY: [0, -1, 0],
+        scale: [1, 1.02, 1],
       },
       transition: {
-        duration: 7,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.96, 1],
-        rotate: [0, -120, -240, -360],
-        translateX: [0, -1, 0],
-        translateY: [0, 1.5, 0],
+        scale: [1, 0.99, 1],
       },
       transition: {
-        duration: 7,
+        duration: 4,
         repeat: Infinity,
-        ease: "easeInOut" as const
+        ease: "easeInOut" as const,
+        delay: 0.4
       }
     }
   },
