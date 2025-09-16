@@ -126,6 +126,14 @@ export default function MyAvatarPage() {
         return avatarData.role && avatarData.organizationDescription;
       case 3: // Keywords
         return avatarData.keywords[0]?.trim();
+      case 4: // Final step - check all required fields
+        return (
+          avatarData.philosophy &&
+          avatarData.workingStyle &&
+          avatarData.role &&
+          avatarData.organizationDescription &&
+          avatarData.keywords[0]?.trim()
+        );
       default:
         return false;
     }
