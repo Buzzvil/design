@@ -27,71 +27,71 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: Very gentle pulse scale - like a subtle heartbeat
+    // Animation 1: More visible pulse scale for testing
     color1: {
       animate: {
-        scale: [1, 1.03, 1],
+        scale: [1, 1.2, 1],
       },
       transition: {
-        duration: 2.5,
+        duration: 1,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.98, 1],
+        scale: [1, 0.8, 1],
       },
       transition: {
-        duration: 2.5,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
-        delay: 0.3
-      }
-    }
-  },
-  'playful': {
-    // Animation 2: Very subtle bouncy pulse - like gentle play
-    color1: {
-      animate: {
-        scale: [1, 1.04, 0.99, 1.02, 1],
-      },
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    },
-    color2: {
-      animate: {
-        scale: [1, 0.97, 1.02, 0.99, 1],
-      },
-      transition: {
-        duration: 3,
+        duration: 1,
         repeat: Infinity,
         ease: "easeInOut" as const,
         delay: 0.2
       }
     }
   },
-  'scalable': {
-    // Animation 3: Ultra-subtle pulse only - no movement to avoid edges
+  'playful': {
+    // Animation 2: More visible bouncy pulse for testing
     color1: {
       animate: {
-        scale: [1, 1.02, 1],
+        scale: [1, 1.3, 0.7, 1.1, 1],
       },
       transition: {
-        duration: 4,
+        duration: 1.5,
         repeat: Infinity,
         ease: "easeInOut" as const
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.99, 1],
+        scale: [1, 0.7, 1.3, 0.9, 1],
       },
       transition: {
-        duration: 4,
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+        delay: 0.3
+      }
+    }
+  },
+  'scalable': {
+    // Animation 3: More visible pulse for testing
+    color1: {
+      animate: {
+        scale: [1, 1.15, 1],
+      },
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    },
+    color2: {
+      animate: {
+        scale: [1, 0.85, 1],
+      },
+      transition: {
+        duration: 2,
         repeat: Infinity,
         ease: "easeInOut" as const,
         delay: 0.4
