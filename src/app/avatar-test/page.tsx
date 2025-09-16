@@ -8,8 +8,8 @@ import Avatar from '@/components/Avatar';
 interface TestAvatar {
   id: number;
   name: string;
-  philosophy: string;
-  workingStyle: string;
+  buzzvilValue: string;
+  buzzvilPrinciple: string;
   role: string;
   description: string;
   keywords: string[];
@@ -46,8 +46,8 @@ function generateRandomAvatar(id: number): TestAvatar {
   return {
     id,
     name: randomName,
-    philosophy: randomValue,
-    workingStyle: randomPrinciple,
+    buzzvilValue: randomValue,
+    buzzvilPrinciple: randomPrinciple,
     role: randomRole,
     description: randomDescription,
     keywords: randomKeywords,
@@ -129,8 +129,8 @@ export default function AvatarTestPage() {
                 <Avatar 
                   name={avatar.name} 
                   size={80} 
-                  philosophy={avatar.philosophy}
-                  workingStyle={avatar.workingStyle}
+                  philosophy={avatar.buzzvilValue}
+                  workingStyle={avatar.buzzvilPrinciple}
                 />
               </div>
 
@@ -147,13 +147,13 @@ export default function AvatarTestPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">Value:</span>
                     <span className="text-xs font-medium text-accent capitalize px-2 py-1 bg-accent/10 rounded-full">
-                      {avatar.philosophy.replace('-', ' ')}
+                      {avatar.buzzvilValue.replace('-', ' ')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">Principle:</span>
                     <span className="text-xs font-medium text-accent capitalize px-2 py-1 bg-accent/10 rounded-full">
-                      {avatar.workingStyle.replace('-', ' ')}
+                      {avatar.buzzvilPrinciple.replace('-', ' ')}
                     </span>
                   </div>
                 </div>
