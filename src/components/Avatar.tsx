@@ -27,74 +27,88 @@ const BUZZVIL_VALUE_COLORS = {
 // Buzzvil Design Principles - 3 distinct, smooth animations
 const BUZZVIL_PRINCIPLE_ANIMATIONS = {
   'reward-time': {
-    // Animation 1: More visible pulse scale for testing
+    // Animation 1: Organic breathing pattern with varied timing
     color1: {
       animate: {
-        scale: [1, 1.2, 1],
+        scale: [1, 1.15, 0.95, 1.08, 1],
+        opacity: [1, 0.8, 1, 0.9, 1],
       },
       transition: {
-        duration: 1,
+        duration: 2.3,
         repeat: Infinity,
-        ease: "easeInOut" as const
+        ease: "easeInOut" as const,
+        times: [0, 0.3, 0.6, 0.8, 1]
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.8, 1],
+        scale: [1, 0.85, 1.1, 0.9, 1],
+        opacity: [1, 0.9, 0.7, 1, 0.8],
       },
       transition: {
-        duration: 1,
+        duration: 1.9,
         repeat: Infinity,
-        ease: "easeInOut" as const,
-        delay: 0.2
+        ease: "easeOut" as const,
+        delay: 0.4,
+        times: [0, 0.25, 0.55, 0.75, 1]
       }
     }
   },
   'playful': {
-    // Animation 2: More visible bouncy pulse for testing
+    // Animation 2: Chaotic playful dance with unpredictable patterns
     color1: {
       animate: {
-        scale: [1, 1.3, 0.7, 1.1, 1],
+        scale: [1, 1.2, 0.8, 1.3, 0.9, 1.1, 1],
+        rotate: [0, 15, -10, 25, -5, 20, 0],
+        opacity: [1, 0.6, 1, 0.7, 0.9, 0.8, 1],
       },
       transition: {
-        duration: 1.5,
+        duration: 1.2,
         repeat: Infinity,
-        ease: "easeInOut" as const
+        ease: "easeOut" as const,
+        times: [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1]
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.7, 1.3, 0.9, 1],
+        scale: [1, 0.9, 1.25, 0.75, 1.15, 0.85, 1],
+        rotate: [0, -20, 12, -18, 8, -15, 0],
+        opacity: [1, 0.8, 0.5, 1, 0.6, 0.9, 1],
       },
       transition: {
-        duration: 1.5,
+        duration: 1.1,
         repeat: Infinity,
-        ease: "easeInOut" as const,
-        delay: 0.3
+        ease: "easeIn" as const,
+        delay: 0.2,
+        times: [0, 0.15, 0.35, 0.55, 0.75, 0.85, 1]
       }
     }
   },
   'scalable': {
-    // Animation 3: More visible pulse for testing
+    // Animation 3: Organic growth pattern with natural variations
     color1: {
       animate: {
-        scale: [1, 1.15, 1],
+        scale: [1, 1.12, 0.96, 1.18, 0.94, 1.08, 1],
+        opacity: [1, 0.85, 1, 0.75, 1, 0.9, 1],
       },
       transition: {
-        duration: 2,
+        duration: 2.8,
         repeat: Infinity,
-        ease: "easeInOut" as const
+        ease: "easeInOut" as const,
+        times: [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1]
       }
     },
     color2: {
       animate: {
-        scale: [1, 0.85, 1],
+        scale: [1, 0.88, 1.14, 0.92, 1.16, 0.86, 1],
+        opacity: [1, 0.9, 0.7, 1, 0.8, 0.95, 1],
       },
       transition: {
-        duration: 2,
+        duration: 2.1,
         repeat: Infinity,
-        ease: "easeInOut" as const,
-        delay: 0.4
+        ease: "easeOut" as const,
+        delay: 0.5,
+        times: [0, 0.18, 0.38, 0.58, 0.78, 0.88, 1]
       }
     }
   },
