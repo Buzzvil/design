@@ -110,14 +110,14 @@ const Team = () => {
                       />
                     </div>
                     {/* Tooltip - positioned 8px from top right of avatar */}
-                    <div className={`absolute -top-2 -right-2 bg-red-500 border-2 border-yellow-400 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
-                      hoveredMember === member.name ? 'opacity-100' : 'opacity-50'
+                    <div className={`absolute -top-2 -right-2 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
+                      hoveredMember === member.name ? 'opacity-100' : 'opacity-0'
                     }`}>
                       <div className="text-sm font-medium text-white">
                         {member.buzzvilValue.replace('-', ' ')} • {member.buzzvilPrinciple.replace('-', ' ')}
                       </div>
                       {/* Arrow pointing to avatar */}
-                      <div className="absolute top-full right-3 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-yellow-400"></div>
+                      <div className="absolute top-full right-3 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-700"></div>
                     </div>
                   </div>
                 </div>
