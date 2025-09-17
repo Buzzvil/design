@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Rina</name>
-  <role>Product Designer</role>
-  <description>Understanding users to inform better design decisions.</description>
-  <keywords>User Research, Data Analysis, Usability Testing</keywords>
+<avatar>
+  <personal>
+    <name>Rina Lee</name>
+  </personal>
   <buzzvil>
-    <value>grit</value>
-    <principle>reward-time</principle>
+    <value>clarity</value>
+    <principle>scalable</principle>
   </buzzvil>
-</teamMember>
-
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>I am a Product Designer on the Supply Experience Team, specializing in the UI/UX of the Benefit Hub and the internal operation system, Dash, that enables and monitors it.
+</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>UI/UX</keyword>
+      <keyword>Usability Improvement</keyword>
+      <keyword>System Design</keyword>
+    </keywords>
+  </expertise>
+</avatar>

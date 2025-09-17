@@ -3,7 +3,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Resources from '@/components/Resources';
-import Team from '@/components/Team';
+import TeamTest from '@/components/TeamTest';
 import Tools from '@/components/Tools';
 import Footer from '@/components/Footer';
 import PrinciplesValuesShowcase from '@/components/PrinciplesValuesShowcase';
@@ -29,9 +29,9 @@ export default function Home() {
           <Resources />
         </ParallaxSection>
         
-        <ParallaxSection speed={0.5} offset={150}>
-          <Team />
-        </ParallaxSection>
+                <ParallaxSection speed={0.5} offset={150}>
+                  <TeamTest />
+                </ParallaxSection>
         
         <ParallaxSection speed={0.6} offset={200}>
           <Tools />

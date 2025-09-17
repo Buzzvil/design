@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<teamMember>
-  <name>Jia</name>
-  <role>Product Designer</role>
-  <description>Crafting intuitive user experiences that delight and engage.</description>
-  <keywords>User Research, UX Design, Prototyping</keywords>
+<avatar>
+  <personal>
+    <name>Jia</name>
+  </personal>
   <buzzvil>
-    <value>clarity</value>
-    <principle>playful</principle>
+    <value>iterate-fast</value>
+    <principle>reward-time</principle>
   </buzzvil>
-</teamMember>
-
+  <role>
+    <title>Product Designer</title>
+    <organizationDescription>Designing screens for Buzzvil's B2B2C products.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>Fun experience</keyword>
+      <keyword>Fast Iteration</keyword>
+    </keywords>
+  </expertise>
+</avatar>
