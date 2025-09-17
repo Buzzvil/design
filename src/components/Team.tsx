@@ -101,14 +101,12 @@ const Team = () => {
                       setHoveredMember(null);
                     }}
                   >
-                    <div className="border-2 border-blue-500 bg-blue-500 bg-opacity-20 rounded-full p-2 hover:border-blue-300 transition-colors">
-                      <Avatar 
-                        name={member.name} 
-                        size={80}
-                        philosophy={member.buzzvilValue}
-                        workingStyle={member.buzzvilPrinciple}
-                      />
-                    </div>
+                    <Avatar 
+                      name={member.name} 
+                      size={80}
+                      philosophy={member.buzzvilValue}
+                      workingStyle={member.buzzvilPrinciple}
+                    />
                     {/* Tooltip - positioned 8px from top right of avatar */}
                     <div className={`absolute -top-2 -right-2 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
                       hoveredMember === member.name ? 'opacity-100' : 'opacity-0'
