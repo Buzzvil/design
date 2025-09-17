@@ -32,9 +32,9 @@ const config: Config = {
         ring: "hsl(var(--ring))",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-nunito)", "var(--font-noto-kr)", "system-ui", "sans-serif"],
         nunito: ["var(--font-nunito)", "system-ui", "sans-serif"],
-        pretendard: ["var(--font-pretendard)", "system-ui", "sans-serif"],
+        noto: ["var(--font-noto-kr)", "system-ui", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.3s ease-out",

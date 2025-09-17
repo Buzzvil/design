@@ -29,9 +29,9 @@ export default function Home() {
           <Resources />
         </ParallaxSection>
         
-                <ParallaxSection speed={0.5} offset={150}>
-                  <Team />
-                </ParallaxSection>
+        <ParallaxSection speed={0.5} offset={150}>
+          <Team />
+        </ParallaxSection>
         
         <ParallaxSection speed={0.6} offset={200}>
           <Tools />

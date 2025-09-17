@@ -90,22 +90,21 @@ const Team = () => {
               >
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
-                  <div 
-                    className="relative p-4 cursor-pointer"
-                    onMouseEnter={() => {
-                      console.log('Hovering over avatar:', member.name);
-                      setHoveredMember(member.name);
-                    }}
-                    onMouseLeave={() => {
-                      console.log('Leaving avatar:', member.name);
-                      setHoveredMember(null);
-                    }}
-                  >
+                  <div className="relative p-4">
                     <Avatar 
                       name={member.name} 
                       size={80}
                       philosophy={member.buzzvilValue}
                       workingStyle={member.buzzvilPrinciple}
+                      className="cursor-pointer"
+                      onMouseEnter={() => {
+                        console.log('Hovering over avatar:', member.name);
+                        setHoveredMember(member.name);
+                      }}
+                      onMouseLeave={() => {
+                        console.log('Leaving avatar:', member.name);
+                        setHoveredMember(null);
+                      }}
                     />
                     {/* Tooltip - positioned 8px from top right of avatar */}
                     <div className={`absolute -top-2 -right-2 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${

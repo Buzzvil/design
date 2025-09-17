@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const nunito = Nunito({ 
+  subsets: ["latin"], 
+  variable: "--font-nunito" 
+});
+
+const notoKR = Noto_Sans_KR({ 
+  subsets: ["latin"], 
+  weight: ["300", "400", "700"], 
+  variable: "--font-noto-kr" 
 });
 
 export const metadata: Metadata = {
@@ -32,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${nunito.variable} ${notoKR.variable}`}>
       <body className="min-h-screen bg-background antialiased">
         <LanguageProvider>
           {children}
