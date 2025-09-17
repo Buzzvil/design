@@ -26,25 +26,28 @@ const TeamTest = () => {
           {['Max', 'Jia', 'Elle'].map((name) => (
             <div
               key={name}
-              className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative cursor-pointer"
-              onMouseEnter={() => {
-                console.log('Hovering over card:', name);
-                setHoveredMember(name);
-              }}
-              onMouseLeave={() => {
-                console.log('Leaving card:', name);
-                setHoveredMember(null);
-              }}
+              className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative"
             >
               <div className="text-center">
-                <div className="w-20 h-20 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold">
+                {/* Avatar with hover detection */}
+                <div 
+                  className="w-20 h-20 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold cursor-pointer border-2 border-blue-300 hover:border-blue-100 transition-colors"
+                  onMouseEnter={() => {
+                    console.log('Hovering over avatar:', name);
+                    setHoveredMember(name);
+                  }}
+                  onMouseLeave={() => {
+                    console.log('Leaving avatar:', name);
+                    setHoveredMember(null);
+                  }}
+                >
                   {name[0]}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{name}</h3>
                 <p className="text-muted-foreground">Test team member</p>
                 
-                {/* Tooltip */}
-                <div className={`absolute -top-2 -right-2 bg-red-500 border-2 border-yellow-400 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
+                {/* Tooltip - positioned relative to avatar */}
+                <div className={`absolute top-8 right-8 bg-red-500 border-2 border-yellow-400 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
                   hoveredMember === name ? 'opacity-100' : 'opacity-50'
                 }`}>
                   <div className="text-sm font-medium text-white">
