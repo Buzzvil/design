@@ -14,9 +14,14 @@ const Team = () => {
   const [hoveredMember, setHoveredMember] = useState<string | null>(null);
   
   useEffect(() => {
-    // Load team members from XML files
-    const members = loadTeamMembers();
-    setTeamMembers(members);
+    try {
+      // Load team members from XML files
+      const members = loadTeamMembers();
+      setTeamMembers(members);
+    } catch (error) {
+      console.error('Error loading team members:', error);
+      setTeamMembers([]);
+    }
   }, []);
 
 
@@ -77,7 +82,7 @@ const Team = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {teamMembers.map((member) => (
+          {teamMembers.length > 0 ? teamMembers.map((member) => (
             <motion.div
               key={member.name}
               variants={itemVariants}
@@ -146,7 +151,11 @@ const Team = () => {
                 <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </motion.div>
-          ))}
+          )) : (
+            <div className="col-span-full text-center text-muted-foreground">
+              Loading team members...
+            </div>
+          )}
         </motion.div>
 
       </div>
