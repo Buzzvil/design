@@ -11,92 +11,101 @@ const Resources = () => {
   
   const resources = [
     {
-      category: 'Design Files',
+      category: 'Design System',
       icon: FileText,
       items: [
         {
-          title: 'Figma Design System',
-          description: 'Complete design system with components, patterns, and guidelines',
+          title: 'Buzzvil Design System',
+          description: 'Complete design system with tokens, components, and patterns for AdTech interfaces',
           type: 'Figma File',
-          size: '2.4 MB',
-          updated: '2 days ago',
-          icon: FileText,
-        },
-        {
-          title: 'Brand Assets Pack',
-          description: 'Logos, icons, and brand elements in various formats',
-          type: 'ZIP Archive',
-          size: '15.2 MB',
-          updated: '1 week ago',
-          icon: Download,
-        },
-        {
-          title: 'UI Component Library',
-          description: 'Reusable components with variants and states',
-          type: 'Figma File',
-          size: '8.7 MB',
+          size: '4.2 MB',
           updated: '3 days ago',
-          icon: Code2,
-        },
-      ],
-    },
-    {
-      category: 'Documentation',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Design Guidelines',
-          description: 'Comprehensive guide to our design principles and best practices',
-          type: 'PDF Document',
-          size: '4.1 MB',
-          updated: '1 week ago',
-          icon: BookOpen,
+          icon: FileText,
+          link: 'https://www.figma.com/@buzzvil',
         },
         {
-          title: 'Accessibility Standards',
-          description: 'WCAG compliance guidelines and accessibility checklist',
-          type: 'PDF Document',
+          title: 'Reward UI Components',
+          description: 'Specialized components for reward-based interactions and gamification',
+          type: 'Figma File',
           size: '2.8 MB',
-          updated: '2 weeks ago',
-          icon: BookOpen,
+          updated: '1 week ago',
+          icon: Code2,
+          link: 'https://www.figma.com/@buzzvil',
         },
         {
-          title: 'Component Documentation',
-          description: 'Detailed documentation for all UI components',
-          type: 'Web Page',
-          size: 'Online',
-          updated: '1 day ago',
-          icon: ExternalLink,
+          title: 'Mobile Design Kit',
+          description: 'Mobile-first components optimized for reward and engagement patterns',
+          type: 'Figma File',
+          size: '3.5 MB',
+          updated: '5 days ago',
+          icon: FileText,
+          link: 'https://www.figma.com/@buzzvil',
         },
       ],
     },
     {
-      category: 'Templates',
+      category: 'Templates & Patterns',
       icon: Image,
       items: [
         {
-          title: 'Presentation Templates',
-          description: 'PowerPoint and Keynote templates for design presentations',
-          type: 'Template Pack',
-          size: '12.3 MB',
+          title: 'AdTech Wireframes',
+          description: 'Wireframe templates for advertisement interfaces and user flows',
+          type: 'Figma File',
+          size: '2.1 MB',
+          updated: '2 weeks ago',
+          icon: FileText,
+          link: 'https://www.figma.com/@buzzvil',
+        },
+        {
+          title: 'User Journey Templates',
+          description: 'Templates for mapping reward-based user experiences',
+          type: 'Figma File',
+          size: '1.6 MB',
           updated: '1 week ago',
           icon: Image,
+          link: 'https://www.figma.com/@buzzvil',
         },
         {
-          title: 'Wireframe Templates',
-          description: 'Low-fidelity wireframe templates for rapid prototyping',
+          title: 'Dashboard Layouts',
+          description: 'Pre-built dashboard layouts for analytics and campaign management',
           type: 'Figma File',
-          size: '3.2 MB',
-          updated: '5 days ago',
+          size: '3.8 MB',
+          updated: '4 days ago',
           icon: FileText,
+          link: 'https://www.figma.com/@buzzvil',
         },
+      ],
+    },
+    {
+      category: 'Brand & Assets',
+      icon: Download,
+      items: [
         {
-          title: 'User Journey Maps',
-          description: 'Templates for mapping user experiences and touchpoints',
+          title: 'Brand Guidelines',
+          description: 'Complete brand guidelines with logo usage and color palettes',
           type: 'Figma File',
-          size: '1.8 MB',
+          size: '5.2 MB',
           updated: '1 week ago',
-          icon: FileText,
+          icon: BookOpen,
+          link: 'https://www.figma.com/@buzzvil',
+        },
+        {
+          title: 'Icon Library',
+          description: 'Comprehensive icon set for AdTech and reward interfaces',
+          type: 'Figma File',
+          size: '1.9 MB',
+          updated: '3 days ago',
+          icon: Image,
+          link: 'https://www.figma.com/@buzzvil',
+        },
+        {
+          title: 'Illustration Assets',
+          description: 'Custom illustrations for user onboarding and empty states',
+          type: 'Figma File',
+          size: '4.7 MB',
+          updated: '2 weeks ago',
+          icon: Image,
+          link: 'https://www.figma.com/@buzzvil',
         },
       ],
     },
@@ -202,14 +211,17 @@ const Resources = () => {
                       </div>
 
                       {/* Action Button */}
-                      <motion.button
+                      <motion.a
+                        href={resource.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="w-full flex items-center justify-center space-x-2 py-2 px-4 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-all duration-200 font-medium"
                       >
-                        <Download className="w-4 h-4 text-white" />
-                        <span>Download</span>
-                      </motion.button>
+                        <ExternalLink className="w-4 h-4 text-white" />
+                        <span>View in Figma</span>
+                      </motion.a>
                     </div>
                   </motion.div>
                 ))}
@@ -229,17 +241,19 @@ const Resources = () => {
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">Need Something Specific?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Can&apos;t find what you&apos;re looking for? Our design team is here to help. 
-              Request new resources or get support with existing ones.
+              Explore our complete collection of design resources on Figma Community. 
+              Follow us for updates and new releases.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="mailto:design@buzzvil.com"
+                href="https://www.figma.com/@buzzvil"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 bg-accent/10 text-accent rounded-lg font-semibold hover:bg-accent/20 transition-colors focus-ring"
               >
-                Contact Design Team
+                Visit Figma Community
               </motion.a>
               <motion.a
                 href="#tools"

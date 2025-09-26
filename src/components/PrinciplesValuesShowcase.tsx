@@ -115,8 +115,14 @@ const PrinciplesValuesShowcase = () => {
   const [selectedValue, setSelectedValue] = useState(0);
   const [selectedPrinciple, setSelectedPrinciple] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isValuesInView, setIsValuesInView] = useState(false);
+  const [isPrinciplesInView, setIsPrinciplesInView] = useState(false);
   const valuesIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const principlesIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const valuesSectionRef = useRef<HTMLDivElement>(null);
+  const principlesSectionRef = useRef<HTMLDivElement>(null);
+  const valuesNavRef = useRef<HTMLDivElement>(null);
+  const principlesNavRef = useRef<HTMLDivElement>(null);
 
   // Get translated data
   const getTranslatedValues = () => [
@@ -206,26 +212,58 @@ const PrinciplesValuesShowcase = () => {
   const translatedValues = getTranslatedValues();
   const translatedPrinciples = getTranslatedPrinciples();
 
-  // Auto-advance sliders every 5 seconds (pause on hover)
+  // Intersection Observer for detecting when sections are in view
   useEffect(() => {
-    if (!isHovered) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === valuesSectionRef.current) {
+            setIsValuesInView(entry.isIntersecting);
+          }
+          if (entry.target === principlesSectionRef.current) {
+            setIsPrinciplesInView(entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (valuesSectionRef.current) observer.observe(valuesSectionRef.current);
+    if (principlesSectionRef.current) observer.observe(principlesSectionRef.current);
+
+    return () => {
+      if (valuesSectionRef.current) observer.unobserve(valuesSectionRef.current);
+      if (principlesSectionRef.current) observer.unobserve(principlesSectionRef.current);
+    };
+  }, []);
+
+  // Auto-advance sliders every 5 seconds (pause on hover and only when in view)
+  useEffect(() => {
+    if (!isHovered && isValuesInView) {
       valuesIntervalRef.current = setInterval(() => {
         setSelectedValue(prev => (prev + 1) % translatedValues.length);
       }, 5000);
+    }
 
+    return () => {
+      if (valuesIntervalRef.current) clearInterval(valuesIntervalRef.current);
+    };
+  }, [isHovered, isValuesInView, translatedValues.length]);
+
+  useEffect(() => {
+    if (!isHovered && isPrinciplesInView) {
       principlesIntervalRef.current = setInterval(() => {
         setSelectedPrinciple(prev => (prev + 1) % translatedPrinciples.length);
       }, 5000);
     }
 
     return () => {
-      if (valuesIntervalRef.current) clearInterval(valuesIntervalRef.current);
       if (principlesIntervalRef.current) clearInterval(principlesIntervalRef.current);
     };
-  }, [isHovered, translatedValues.length, translatedPrinciples.length]);
+  }, [isHovered, isPrinciplesInView, translatedPrinciples.length]);
 
   return (
-    <div className="space-y-32 py-20">
+    <div id="foundations" className="space-y-32 py-20">
       {/* Mission & Vision Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-8">
@@ -279,7 +317,7 @@ const PrinciplesValuesShowcase = () => {
       </section>
 
       {/* Principles Section with Manual Slider */}
-      <section className="py-20">
+      <section ref={principlesSectionRef} className="py-20">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
@@ -292,7 +330,12 @@ const PrinciplesValuesShowcase = () => {
 
           {/* Principle Navigation */}
           <div className="flex justify-center mb-12">
-            <div className="flex gap-2 bg-muted/30 p-2 rounded-xl">
+            <div 
+              ref={principlesNavRef}
+              className="flex gap-2 bg-muted/30 p-2 rounded-xl"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               {translatedPrinciples.map((principle, index) => (
                 <button
                   key={principle.id}
@@ -382,7 +425,7 @@ const PrinciplesValuesShowcase = () => {
       </section>
 
       {/* Values Section with Manual Slider */}
-      <section className="py-20">
+      <section ref={valuesSectionRef} className="py-20">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
@@ -395,7 +438,12 @@ const PrinciplesValuesShowcase = () => {
 
           {/* Value Navigation */}
           <div className="flex justify-center mb-12">
-            <div className="flex gap-2 bg-muted/30 p-2 rounded-xl">
+            <div 
+              ref={valuesNavRef}
+              className="flex gap-2 bg-muted/30 p-2 rounded-xl"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               {translatedValues.map((value, index) => (
                 <button
                   key={value.id}
