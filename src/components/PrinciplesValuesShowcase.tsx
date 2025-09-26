@@ -133,7 +133,12 @@ const PrinciplesValuesShowcase = () => {
       description: t('values.build.content'),
       tagline: t('values.build.tagline'),
       colors: ['#FF6B35', '#FFD700', '#FFE135', '#FF8C00'],
-      characteristics: ['Rapid Prototyping', 'AI-Powered Exploration', 'Early Sharing', 'Quick Iteration']
+      characteristics: [
+        t('values.build.characteristics.0'),
+        t('values.build.characteristics.1'),
+        t('values.build.characteristics.2'),
+        t('values.build.characteristics.3')
+      ]
     },
     {
       id: 'clarity-feedback',
@@ -142,7 +147,12 @@ const PrinciplesValuesShowcase = () => {
       description: t('values.clarity.content'),
       tagline: t('values.clarity.tagline'),
       colors: ['#F0F8FF', '#E6E6FA', '#FFFFFF', '#B0C4DE'],
-      characteristics: ['Candor & Precision', 'Open Communication', 'Constructive Growth', 'Trust Building']
+      characteristics: [
+        t('values.clarity.characteristics.0'),
+        t('values.clarity.characteristics.1'),
+        t('values.clarity.characteristics.2'),
+        t('values.clarity.characteristics.3')
+      ]
     },
     {
       id: 'design-grit',
@@ -151,7 +161,12 @@ const PrinciplesValuesShowcase = () => {
       description: t('values.grit.content'),
       tagline: t('values.grit.tagline'),
       colors: ['#8B0000', '#DC143C', '#B22222', '#FF4500'],
-      characteristics: ['Full Ownership', 'End-to-End Delivery', 'Persistence', 'Production Focus']
+      characteristics: [
+        t('values.grit.characteristics.0'),
+        t('values.grit.characteristics.1'),
+        t('values.grit.characteristics.2'),
+        t('values.grit.characteristics.3')
+      ]
     },
     {
       id: 'bold-explorers',
@@ -160,7 +175,12 @@ const PrinciplesValuesShowcase = () => {
       description: t('values.explore.content'),
       tagline: t('values.explore.tagline'),
       colors: ['#4A90E2', '#7B68EE', '#9370DB', '#8A2BE2'],
-      characteristics: ['Research-Driven', 'AI Adoption', 'Wide Exploration', 'Rigorous Validation']
+      characteristics: [
+        t('values.explore.characteristics.0'),
+        t('values.explore.characteristics.1'),
+        t('values.explore.characteristics.2'),
+        t('values.explore.characteristics.3')
+      ]
     },
     {
       id: 'one-ux',
@@ -169,7 +189,12 @@ const PrinciplesValuesShowcase = () => {
       description: t('values.team.content'),
       tagline: t('values.team.tagline'),
       colors: ['#2E8B57', '#3CB371', '#20B2AA', '#00CED1'],
-      characteristics: ['Team Alignment', 'Shared Conventions', 'Consistent Practices', 'Coherent System']
+      characteristics: [
+        t('values.team.characteristics.0'),
+        t('values.team.characteristics.1'),
+        t('values.team.characteristics.2'),
+        t('values.team.characteristics.3')
+      ]
     },
     {
       id: 'delight',
@@ -178,7 +203,12 @@ const PrinciplesValuesShowcase = () => {
       description: t('values.delight.content'),
       tagline: t('values.delight.tagline'),
       colors: ['#FF69B4', '#FF1493', '#FF6347', '#FF4500'],
-      characteristics: ['Joyful Design', 'No Dark Patterns', 'Balanced Value', 'Long-term Trust']
+      characteristics: [
+        t('values.delight.characteristics.0'),
+        t('values.delight.characteristics.1'),
+        t('values.delight.characteristics.2'),
+        t('values.delight.characteristics.3')
+      ]
     }
   ];
 
@@ -189,7 +219,12 @@ const PrinciplesValuesShowcase = () => {
       shortTitle: t('principles.reward.shortTitle'),
       description: t('principles.reward.content'),
       icon: Clock,
-      characteristics: ['Transparent Exchange', 'Measurable Attention', 'User Consistency', 'Advertiser Predictability']
+      characteristics: [
+        t('principles.reward.characteristics.0'),
+        t('principles.reward.characteristics.1'),
+        t('principles.reward.characteristics.2'),
+        t('principles.reward.characteristics.3')
+      ]
     },
     {
       id: 'delight-deception',
@@ -197,7 +232,12 @@ const PrinciplesValuesShowcase = () => {
       shortTitle: t('principles.delight.shortTitle'),
       description: t('principles.delight.content'),
       icon: Sparkles,
-      characteristics: ['No Dark Patterns', 'Playful Interactions', 'Clear Communication', 'Respectful Design']
+      characteristics: [
+        t('principles.delight.characteristics.0'),
+        t('principles.delight.characteristics.1'),
+        t('principles.delight.characteristics.2'),
+        t('principles.delight.characteristics.3')
+      ]
     },
     {
       id: 'scalable-design',
@@ -205,7 +245,12 @@ const PrinciplesValuesShowcase = () => {
       shortTitle: t('principles.scalable.shortTitle'),
       description: t('principles.scalable.content'),
       icon: TrendingUp,
-      characteristics: ['Cross-Product Scale', 'Meaningful Customization', 'System Integrity', 'Decision Veto Power']
+      characteristics: [
+        t('principles.scalable.characteristics.0'),
+        t('principles.scalable.characteristics.1'),
+        t('principles.scalable.characteristics.2'),
+        t('principles.scalable.characteristics.3')
+      ]
     }
   ];
 

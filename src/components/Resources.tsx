@@ -11,7 +11,7 @@ const Resources = () => {
   
   const resources = [
     {
-      category: 'Design System',
+      category: t('resources.category.design-system'),
       icon: FileText,
       items: [
         {
@@ -44,7 +44,7 @@ const Resources = () => {
       ],
     },
     {
-      category: 'Templates & Patterns',
+      category: t('resources.category.templates-patterns'),
       icon: Image,
       items: [
         {
@@ -77,7 +77,7 @@ const Resources = () => {
       ],
     },
     {
-      category: 'Brand & Assets',
+      category: t('resources.category.brand-assets'),
       icon: Download,
       items: [
         {

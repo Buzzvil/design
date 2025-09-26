@@ -57,11 +57,21 @@ const Hero = () => {
         {/* Sentence with Keyword Animation */}
         <motion.div variants={itemVariants} className="mb-8">
           <div className="text-xl sm:text-2xl text-muted-foreground flex items-center justify-center flex-wrap gap-1">
-            <span>We build</span>
-            <div className="inline-block min-w-[112px] text-center">
+            <motion.span 
+              className="whitespace-nowrap"
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            >
+              {t('hero.sentence.start')}
+            </motion.span>
+            <div className="inline-block text-center">
               <KeywordAnimation />
             </div>
-            <span>experiences.</span>
+            <motion.span 
+              className="whitespace-nowrap"
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            >
+              {t('hero.sentence.end')}
+            </motion.span>
           </div>
         </motion.div>
 

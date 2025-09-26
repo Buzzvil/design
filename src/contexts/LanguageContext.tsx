@@ -25,6 +25,11 @@ const translations = {
     // Hero
     'hero.title': 'Buzzvil Design',
     'hero.subtitle': 'Rewarded. Playful. Scalable.',
+    'hero.sentence.start': 'We build',
+    'hero.sentence.end': 'experiences.',
+    'hero.keyword.rewarded': 'Rewarded',
+    'hero.keyword.playful': 'Playful',
+    'hero.keyword.scalable': 'Scalable',
     'hero.explore': 'Explore Foundations',
     'hero.browse': 'Browse Resources',
     'hero.scroll': 'Scroll to explore',
@@ -54,6 +59,20 @@ const translations = {
     'principles.scalable.shortTitle': 'Scalable',
     'principles.scalable.content': 'Every design decision must scale across products, partners, and business models. We provide meaningful customization, but avoid unsustainable exceptions. These principles can veto business or product decisions that fragment the system.',
     
+    // Principles Characteristics
+    'principles.reward.characteristics.0': 'Transparent Exchange',
+    'principles.reward.characteristics.1': 'Measurable Attention',
+    'principles.reward.characteristics.2': 'User Consistency',
+    'principles.reward.characteristics.3': 'Advertiser Predictability',
+    'principles.delight.characteristics.0': 'No Dark Patterns',
+    'principles.delight.characteristics.1': 'Playful Interactions',
+    'principles.delight.characteristics.2': 'Clear Communication',
+    'principles.delight.characteristics.3': 'Respectful Design',
+    'principles.scalable.characteristics.0': 'Cross-Product Scale',
+    'principles.scalable.characteristics.1': 'Meaningful Customization',
+    'principles.scalable.characteristics.2': 'System Integrity',
+    'principles.scalable.characteristics.3': 'Decision Veto Power',
+    
     // Values
     'values.title': 'Values',
     'values.subtitle': 'The core values that drive everything we do at Buzzvil.',
@@ -82,9 +101,38 @@ const translations = {
     'values.delight.content': 'We design for joy, playfulness, and engagement. No dark patterns, no tricks. Every interaction balances user delight, advertiser value, and long-term trust.',
     'values.delight.tagline': 'Joyful design, honest intent.',
     
+    // Values Characteristics
+    'values.build.characteristics.0': 'Rapid Prototyping',
+    'values.build.characteristics.1': 'AI-Powered Exploration',
+    'values.build.characteristics.2': 'Early Sharing',
+    'values.build.characteristics.3': 'Quick Iteration',
+    'values.clarity.characteristics.0': 'Candor & Precision',
+    'values.clarity.characteristics.1': 'Open Communication',
+    'values.clarity.characteristics.2': 'Constructive Growth',
+    'values.clarity.characteristics.3': 'Trust Building',
+    'values.grit.characteristics.0': 'Full Ownership',
+    'values.grit.characteristics.1': 'End-to-End Delivery',
+    'values.grit.characteristics.2': 'Persistence',
+    'values.grit.characteristics.3': 'Production Focus',
+    'values.explore.characteristics.0': 'Research-Driven',
+    'values.explore.characteristics.1': 'AI Adoption',
+    'values.explore.characteristics.2': 'Wide Exploration',
+    'values.explore.characteristics.3': 'Rigorous Validation',
+    'values.team.characteristics.0': 'Team Alignment',
+    'values.team.characteristics.1': 'Shared Conventions',
+    'values.team.characteristics.2': 'Consistent Practices',
+    'values.team.characteristics.3': 'Coherent System',
+    'values.delight.characteristics.0': 'Joyful Design',
+    'values.delight.characteristics.1': 'No Dark Patterns',
+    'values.delight.characteristics.2': 'Balanced Value',
+    'values.delight.characteristics.3': 'Long-term Trust',
+    
     // Resources
     'resources.title': 'Design Resources',
     'resources.subtitle': 'Everything you need to create exceptional user experiences. Download our latest design files, guidelines, and templates.',
+    'resources.category.design-system': 'Design System',
+    'resources.category.templates-patterns': 'Templates & Patterns',
+    'resources.category.brand-assets': 'Brand & Assets',
     
     // Team
     'team.title': 'Meet Our Design Team',
@@ -94,6 +142,7 @@ const translations = {
     'tools.title': 'Design Tools',
     'tools.subtitle': 'The tools and platforms we use to create, collaborate, and deliver exceptional design experiences. Stay updated with our tech stack.',
     'tools.visit': 'Visit Tool',
+    'tools.category.design-development': 'Design & Development Tools',
     
     // Footer
     'footer.description': 'Empowering designers with the tools, resources, and knowledge needed to create exceptional user experiences.',
@@ -112,6 +161,11 @@ const translations = {
     // Hero
     'hero.title': 'Buzzvil Design',
     'hero.subtitle': '보상받는. 재미있는. 확장 가능한.',
+    'hero.sentence.start': '우리는 구축합니다',
+    'hero.sentence.end': '경험을.',
+    'hero.keyword.rewarded': '보상받는',
+    'hero.keyword.playful': '재미있는',
+    'hero.keyword.scalable': '확장 가능한',
     'hero.explore': '기반 탐색',
     'hero.browse': '리소스 둘러보기',
     'hero.scroll': '스크롤하여 탐색',
@@ -141,6 +195,20 @@ const translations = {
     'principles.scalable.shortTitle': '확장성',
     'principles.scalable.content': '모든 디자인 결정은 제품, 파트너, 비즈니스 모델에 걸쳐 확장되어야 합니다. 우리는 의미 있는 맞춤화를 제공하지만 지속 불가능한 예외는 피합니다. 이러한 원칙은 시스템을 분할하는 비즈니스나 제품 결정을 거부할 수 있습니다.',
     
+    // Principles Characteristics
+    'principles.reward.characteristics.0': '투명한 교환',
+    'principles.reward.characteristics.1': '측정 가능한 주의',
+    'principles.reward.characteristics.2': '사용자 일관성',
+    'principles.reward.characteristics.3': '광고주 예측 가능성',
+    'principles.delight.characteristics.0': '다크 패턴 없음',
+    'principles.delight.characteristics.1': '재미있는 상호작용',
+    'principles.delight.characteristics.2': '명확한 소통',
+    'principles.delight.characteristics.3': '존중스러운 디자인',
+    'principles.scalable.characteristics.0': '크로스 제품 확장',
+    'principles.scalable.characteristics.1': '의미 있는 맞춤화',
+    'principles.scalable.characteristics.2': '시스템 무결성',
+    'principles.scalable.characteristics.3': '결정 거부 권한',
+    
     // Values
     'values.title': '가치',
     'values.subtitle': '버즈빌에서 우리가 하는 모든 일을 이끄는 핵심 가치들.',
@@ -169,9 +237,38 @@ const translations = {
     'values.delight.content': '우리는 기쁨, 재미, 참여를 위해 디자인합니다. 다크 패턴도, 속임수도 없습니다. 모든 상호작용은 사용자 기쁨, 광고주 가치, 장기적 신뢰의 균형을 맞춥니다.',
     'values.delight.tagline': '즐거운 디자인, 정직한 의도.',
     
+    // Values Characteristics
+    'values.build.characteristics.0': '빠른 프로토타이핑',
+    'values.build.characteristics.1': 'AI 기반 탐색',
+    'values.build.characteristics.2': '조기 공유',
+    'values.build.characteristics.3': '빠른 반복',
+    'values.clarity.characteristics.0': '솔직함과 정확성',
+    'values.clarity.characteristics.1': '열린 소통',
+    'values.clarity.characteristics.2': '건설적 성장',
+    'values.clarity.characteristics.3': '신뢰 구축',
+    'values.grit.characteristics.0': '완전한 소유권',
+    'values.grit.characteristics.1': '끝까지 배송',
+    'values.grit.characteristics.2': '끈기',
+    'values.grit.characteristics.3': '프로덕션 집중',
+    'values.explore.characteristics.0': '연구 중심',
+    'values.explore.characteristics.1': 'AI 채택',
+    'values.explore.characteristics.2': '넓은 탐색',
+    'values.explore.characteristics.3': '엄격한 검증',
+    'values.team.characteristics.0': '팀 정렬',
+    'values.team.characteristics.1': '공유된 관례',
+    'values.team.characteristics.2': '일관된 관행',
+    'values.team.characteristics.3': '일관된 시스템',
+    'values.delight.characteristics.0': '즐거운 디자인',
+    'values.delight.characteristics.1': '다크 패턴 없음',
+    'values.delight.characteristics.2': '균형잡힌 가치',
+    'values.delight.characteristics.3': '장기적 신뢰',
+    
     // Resources
     'resources.title': '디자인 리소스',
     'resources.subtitle': '탁월한 사용자 경험을 만들기 위해 필요한 모든 것. 최신 디자인 파일, 가이드라인, 템플릿을 다운로드하세요.',
+    'resources.category.design-system': '디자인 시스템',
+    'resources.category.templates-patterns': '템플릿 & 패턴',
+    'resources.category.brand-assets': '브랜드 & 자산',
     
     // Team
     'team.title': '우리 디자인 팀을 만나보세요',
@@ -181,6 +278,7 @@ const translations = {
     'tools.title': '디자인 도구',
     'tools.subtitle': '탁월한 디자인 경험을 만들고, 협업하고, 전달하기 위해 사용하는 도구와 플랫폼. 우리의 기술 스택을 최신 상태로 유지하세요.',
     'tools.visit': '도구 방문',
+    'tools.category.design-development': '디자인 & 개발 도구',
     
     // Footer
     'footer.description': '탁월한 사용자 경험을 만들기 위해 필요한 도구, 리소스, 지식으로 디자이너를 강화합니다.',

@@ -11,7 +11,7 @@ const Tools = () => {
   
   const tools = [
     {
-      category: 'Design & Development Tools',
+      category: t('tools.category.design-development'),
       icon: Palette,
       items: [
         {
