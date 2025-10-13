@@ -359,7 +359,7 @@ const PrinciplesValuesShowcase = () => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-              {translatedPrinciples.map((principle, index) => (
+                {translatedPrinciples.map((principle, index) => (
                 <button
                   key={principle.id}
                   onClick={() => setSelectedPrinciple(index)}
@@ -371,9 +371,9 @@ const PrinciplesValuesShowcase = () => {
                 >
                   {principle.shortTitle}
                 </button>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
           {/* Principle Content with Enhanced 3D Transitions */}
           <div className="max-w-4xl mx-auto">
@@ -468,7 +468,7 @@ const PrinciplesValuesShowcase = () => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-              {translatedValues.map((value, index) => (
+                {translatedValues.map((value, index) => (
                 <button
                   key={value.id}
                   onClick={() => setSelectedValue(index)}
@@ -480,9 +480,9 @@ const PrinciplesValuesShowcase = () => {
                 >
                   {value.shortTitle}
                 </button>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
           {/* Value Content with Enhanced 3D Transitions */}
           <div className="max-w-4xl mx-auto">
