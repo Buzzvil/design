@@ -12,7 +12,7 @@ const BUZZVIL_VALUES = [
   {
     id: 'build-open',
     title: 'Build in the Open',
-    shortTitle: 'Build',
+    shortTitle: 'Build in the Open',
     description: 'We start rough, share early, and iterate fast. Every designer has access to AI tools that accelerate exploration. Feedback and quick loops help us refine ideas into solid, production-ready solutions.',
     tagline: 'iterate fast.',
     colors: ['#FF6B35', '#FFD700', '#FFE135', '#FF8C00'],
@@ -21,7 +21,7 @@ const BUZZVIL_VALUES = [
   {
     id: 'clarity-feedback',
     title: 'Clarity Through Feedback',
-    shortTitle: 'Clarity',
+    shortTitle: 'Be Crystal Clear',
     description: 'We communicate with candor and precision. Feedback is how we grow: giving it clearly, receiving it openly, and applying it constructively. Clear communication builds trust and avoids wasted effort.',
     tagline: 'Clarity first, feedback always.',
     colors: ['#F0F8FF', '#E6E6FA', '#FFFFFF', '#B0C4DE'],
@@ -29,10 +29,10 @@ const BUZZVIL_VALUES = [
   },
   {
     id: 'design-grit',
-    title: 'Design with Grit',
-    shortTitle: 'Grit',
+    title: 'Own it, Ship It',
+    shortTitle: 'Own it, Ship It',
     description: 'Designers don\'t just stop at drafts. We take ownership of user stories and projects, pushing them from first sketches through to production. We lead with persistence and craft until the outcome is real.',
-    tagline: 'Own it, ship it.',
+    tagline: 'Grit.',
     colors: ['#8B0000', '#DC143C', '#B22222', '#FF4500'],
     characteristics: ['Full Ownership', 'End-to-End Delivery', 'Persistence', 'Production Focus']
   },
@@ -54,15 +54,6 @@ const BUZZVIL_VALUES = [
     colors: ['#2E8B57', '#3CB371', '#20B2AA', '#00CED1'],
     characteristics: ['Team Alignment', 'Shared Conventions', 'Consistent Practices', 'Coherent System']
   },
-  {
-    id: 'delight',
-    title: 'Delight',
-    shortTitle: 'Delight',
-    description: 'We design for joy, playfulness, and engagement. No dark patterns, no tricks. Every interaction balances user delight, advertiser value, and long-term trust.',
-    tagline: 'Joyful design, honest intent.',
-    colors: ['#FF69B4', '#FF1493', '#FF6347', '#FF4500'],
-    characteristics: ['Joyful Design', 'No Dark Patterns', 'Balanced Value', 'Long-term Trust']
-  }
 ];
 
 const BUZZVIL_PRINCIPLES = [
@@ -94,19 +85,19 @@ const BUZZVIL_PRINCIPLES = [
 
 const BUZZVIL_MISSION = {
   title: 'Mission',
-  description: 'We design meaningful interactions that engage and delight. Rewards are the tool we use to spark motivation and sustain attention, turning every interaction into a richer, more impactful experience.',
+  description: 'We design meaningful interactions that shape how people discover, experience, and keep engaging with ad campaigns. Rewards are our tool to spark motivation and sustain attention, turning campaigns into moments that delight users and drive results for advertisers.',
   icon: Target
 };
 
 const BUZZVIL_VISION = {
   title: 'Vision',
-  description: 'We define the next standard for AdTech design by shaping interactions that are scalable, rewarding, and engaging for our entire ecosystem.',
+  description: 'We set the next standard for AdTech design by transforming ad campaigns into engaging, repeatable experiences that connect users and advertisers. Through this new way of interaction, Buzzvil leads a future where advertising feels rewarding, sustainable, and scalable across the ecosystem.',
   icon: Rocket
 };
 
 const BUZZVIL_PHILOSOPHY = {
   title: 'Philosophy',
-  description: 'Buzzvil Design begins with the belief that rewards can transform attention into meaningful experiences. We design for the harmony of our entire ecosystem — users, advertisers, and publishers alike. As the connective layer across our organization, our role is to shape experiences that are rewarded, playful, and scalable. This philosophy lives in our principles: reward as time well spent, delight without deception, and design that scales by default. Together, these guide us to grow as One-Team and build the next standard of AdTech design.',
+  description: 'Design at buzzvil turns ad campaigns into experiences people enjoy and return to. We design the interactions that connect users, advertisers, and publishers, shaping how ads are found, felt, and remembered. As the connective layer across our organization, we build rewarded, playful, and scalable experiences guided by clear principles and a One-Team spirit.',
   icon: Users
 };
 
@@ -194,20 +185,6 @@ const PrinciplesValuesShowcase = () => {
         t('values.team.characteristics.1'),
         t('values.team.characteristics.2'),
         t('values.team.characteristics.3')
-      ]
-    },
-    {
-      id: 'delight',
-      title: t('values.delight.title'),
-      shortTitle: t('values.delight.shortTitle'),
-      description: t('values.delight.content'),
-      tagline: t('values.delight.tagline'),
-      colors: ['#FF69B4', '#FF1493', '#FF6347', '#FF4500'],
-      characteristics: [
-        t('values.delight.characteristics.0'),
-        t('values.delight.characteristics.1'),
-        t('values.delight.characteristics.2'),
-        t('values.delight.characteristics.3')
       ]
     }
   ];
