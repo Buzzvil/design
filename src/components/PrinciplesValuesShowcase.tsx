@@ -351,14 +351,15 @@ const PrinciplesValuesShowcase = () => {
           </div>
 
           {/* Principle Navigation */}
-          <div className="mb-12 px-4">
+          <div className="mb-12">
             <div className="overflow-x-auto scrollbar-hide">
-              <div 
-                ref={principlesNavRef}
-                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto min-w-full justify-center md:w-fit md:min-w-0"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
+              <div className="flex justify-center px-4">
+                <div 
+                  ref={principlesNavRef}
+                  className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
               {translatedPrinciples.map((principle, index) => (
                 <button
                   key={principle.id}
@@ -372,6 +373,7 @@ const PrinciplesValuesShowcase = () => {
                   {principle.shortTitle}
                 </button>
               ))}
+                </div>
               </div>
             </div>
           </div>
@@ -461,14 +463,15 @@ const PrinciplesValuesShowcase = () => {
           </div>
 
           {/* Value Navigation */}
-          <div className="mb-12 px-4">
+          <div className="mb-12">
             <div className="overflow-x-auto scrollbar-hide">
-              <div 
-                ref={valuesNavRef}
-                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto min-w-full justify-center md:w-fit md:min-w-0"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
+              <div className="flex justify-center px-4">
+                <div 
+                  ref={valuesNavRef}
+                  className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
               {translatedValues.map((value, index) => (
                 <button
                   key={value.id}
@@ -482,6 +485,7 @@ const PrinciplesValuesShowcase = () => {
                   {value.shortTitle}
                 </button>
               ))}
+                </div>
               </div>
             </div>
           </div>
