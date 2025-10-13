@@ -130,10 +130,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👥 Team
 
 - **Max** - Design Lead
-- **Jia** - Frontend Developer
-- **Elle** - UX Designer
+- **Jia** - Product Designer
+- **Elle** - Product Designer
 - **Joy** - Product Designer
-- **Rina** - Design System Engineer
+- **Rina** - Product Designer
 
 ## 🔗 Links
 
