@@ -284,6 +284,34 @@ const PrinciplesValuesShowcase = () => {
     };
   }, [isHovered, isPrinciplesInView, translatedPrinciples.length]);
 
+  // Auto-scroll to active value tab
+  useEffect(() => {
+    if (valuesNavRef.current) {
+      const activeButton = valuesNavRef.current.children[selectedValue] as HTMLElement;
+      if (activeButton) {
+        activeButton.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+  }, [selectedValue]);
+
+  // Auto-scroll to active principle tab
+  useEffect(() => {
+    if (principlesNavRef.current) {
+      const activeButton = principlesNavRef.current.children[selectedPrinciple] as HTMLElement;
+      if (activeButton) {
+        activeButton.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+  }, [selectedPrinciple]);
+
   return (
     <div id="foundations" className="space-y-32 py-20">
       {/* Mission & Vision Section */}
@@ -351,11 +379,11 @@ const PrinciplesValuesShowcase = () => {
           </div>
 
           {/* Principle Navigation */}
-          <div className="mb-12">
-            <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex justify-center mb-12 px-4">
+            <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-full">
               <div 
                 ref={principlesNavRef}
-                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto px-4"
+                className="flex gap-2"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
@@ -461,11 +489,11 @@ const PrinciplesValuesShowcase = () => {
           </div>
 
           {/* Value Navigation */}
-          <div className="mb-12">
-            <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex justify-center mb-12 px-4">
+            <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-full">
               <div 
                 ref={valuesNavRef}
-                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto px-4"
+                className="flex gap-2"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
