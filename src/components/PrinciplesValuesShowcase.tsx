@@ -374,6 +374,7 @@ const PrinciplesValuesShowcase = () => {
                 ))}
               </div>
             </div>
+          </div>
 
           {/* Principle Content with Enhanced 3D Transitions */}
           <div className="max-w-4xl mx-auto">
@@ -483,6 +484,7 @@ const PrinciplesValuesShowcase = () => {
                 ))}
               </div>
             </div>
+          </div>
 
           {/* Value Content with Enhanced 3D Transitions */}
           <div className="max-w-4xl mx-auto">
