@@ -352,10 +352,10 @@ const PrinciplesValuesShowcase = () => {
 
           {/* Principle Navigation */}
           <div className="mb-12">
-            <div className="overflow-x-auto scrollbar-hide px-4">
+            <div className="overflow-x-auto scrollbar-hide">
               <div 
                 ref={principlesNavRef}
-                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto"
+                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto px-4"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
@@ -462,10 +462,10 @@ const PrinciplesValuesShowcase = () => {
 
           {/* Value Navigation */}
           <div className="mb-12">
-            <div className="overflow-x-auto scrollbar-hide px-4">
+            <div className="overflow-x-auto scrollbar-hide">
               <div 
                 ref={valuesNavRef}
-                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto"
+                className="flex gap-2 bg-muted/30 p-2 rounded-xl w-fit mx-auto px-4"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
