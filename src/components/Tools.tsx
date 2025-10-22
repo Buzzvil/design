@@ -29,7 +29,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://openai.com',
           features: ['AI Assistant', 'Content Generation', 'Workflow Optimization'],
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg',
+          logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
         },
         {
           name: 'Midjourney',
@@ -37,7 +37,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://midjourney.com',
           features: ['AI Art', 'Visual Concepts', 'Design Inspiration'],
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/midjourney/midjourney-original.svg',
+          logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Midjourney_Emblem.png',
         },
         {
           name: 'Cursor',
@@ -45,7 +45,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://cursor.sh',
           features: ['AI Coding', 'Design System', 'Frontend Development'],
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cursor/cursor-original.svg',
+          logo: 'https://cursor.sh/favicon.ico',
         },
       ],
     },
@@ -135,6 +135,15 @@ const Tools = () => {
                             width={24}
                             height={24}
                             className="w-6 h-6 object-contain"
+                            onError={(e) => {
+                              // Fallback to a simple text-based icon if image fails
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const parent = target.parentElement;
+                              if (parent) {
+                                parent.innerHTML = `<div class="w-6 h-6 flex items-center justify-center text-white font-bold text-xs">${tool.name.charAt(0)}</div>`;
+                              }
+                            }}
                           />
                         </div>
                         <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">
