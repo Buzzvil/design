@@ -18,7 +18,7 @@ export default function BrandPage() {
   ];
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative">
       <Header />
       
       <SectionNavigation sections={sections} />
