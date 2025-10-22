@@ -7,7 +7,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useRouter } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
-import ContactBanner from './ContactBanner';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,9 +20,7 @@ const Header = () => {
   ];
 
   return (
-    <>
-      <ContactBanner />
-      <header className="fixed top-12 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -121,8 +118,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      </header>
-    </>
+    </header>
   );
 };
 

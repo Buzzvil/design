@@ -17,7 +17,7 @@ const ContactBanner = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-accent/10 via-accent/5 to-accent/10 border-b border-accent/20"
+      className="bg-gradient-to-r from-accent/10 via-accent/5 to-accent/10 border-b border-accent/20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3">

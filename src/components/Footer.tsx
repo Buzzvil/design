@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Palette, Mail, Twitter, Linkedin, Github, Heart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ContactBanner from './ContactBanner';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -62,7 +63,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-muted/50 border-t border-border">
+    <>
+      <ContactBanner />
+      <footer className="bg-muted/50 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           variants={containerVariants}
@@ -151,7 +154,8 @@ const Footer = () => {
           </div>
         </motion.div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

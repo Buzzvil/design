@@ -55,7 +55,7 @@ export default function BrandPage() {
         </div>
       </section>
       
-      <div id="principles" className="min-h-screen flex items-center justify-center scroll-mt-32">
+      <div id="principles" className="min-h-screen flex items-center justify-center scroll-mt-24">
         <SectionPlaceholder
           title={t('brand.principles.title')}
           description={t('brand.principles.description')}
@@ -63,7 +63,7 @@ export default function BrandPage() {
         />
       </div>
       
-      <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-32">
+      <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-24">
         <SectionPlaceholder
           title={t('brand.guidelines.title')}
           description={t('brand.guidelines.description')}
@@ -71,7 +71,7 @@ export default function BrandPage() {
         />
       </div>
       
-      <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-32">
+      <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">
         <SectionPlaceholder
           title={t('brand.resources.title')}
           description={t('brand.resources.description')}
