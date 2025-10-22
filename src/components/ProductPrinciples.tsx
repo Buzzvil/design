@@ -138,6 +138,46 @@ const ProductPrinciples = () => {
     }
   }, [selectedPrinciple, isHovered]);
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isPrinciplesInView) return;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          event.preventDefault();
+          setSelectedPrinciple(prev => prev === 0 ? translatedPrinciples.length - 1 : prev - 1);
+          break;
+        case 'ArrowRight':
+          event.preventDefault();
+          setSelectedPrinciple(prev => (prev + 1) % translatedPrinciples.length);
+          break;
+        case ' ':
+        case 'Enter':
+          event.preventDefault();
+          // Pause/resume auto-advance
+          setIsHovered(prev => !prev);
+          break;
+        case 'Home':
+          event.preventDefault();
+          setSelectedPrinciple(0);
+          break;
+        case 'End':
+          event.preventDefault();
+          setSelectedPrinciple(translatedPrinciples.length - 1);
+          break;
+      }
+    };
+
+    if (isPrinciplesInView) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isPrinciplesInView, translatedPrinciples.length]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -168,9 +208,14 @@ const ProductPrinciples = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 {t('principles.title')}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
                 {t('principles.subtitle')}
               </p>
+              <div className="text-sm text-muted-foreground/70 flex items-center justify-center gap-2">
+                <span>Use arrow keys to navigate</span>
+                <span>•</span>
+                <span>Space to pause/resume</span>
+              </div>
             </SectionTitle>
           </BlurReveal>
         </motion.div>

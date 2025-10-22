@@ -180,6 +180,46 @@ const Values = () => {
     }
   }, [selectedValue]);
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isValuesInView) return;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          event.preventDefault();
+          setSelectedValue(prev => prev === 0 ? translatedValues.length - 1 : prev - 1);
+          break;
+        case 'ArrowRight':
+          event.preventDefault();
+          setSelectedValue(prev => (prev + 1) % translatedValues.length);
+          break;
+        case ' ':
+        case 'Enter':
+          event.preventDefault();
+          // Pause/resume auto-advance
+          setIsHovered(prev => !prev);
+          break;
+        case 'Home':
+          event.preventDefault();
+          setSelectedValue(0);
+          break;
+        case 'End':
+          event.preventDefault();
+          setSelectedValue(translatedValues.length - 1);
+          break;
+      }
+    };
+
+    if (isValuesInView) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isValuesInView, translatedValues.length]);
+
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8" ref={valuesSectionRef}>
       <div className="max-w-7xl mx-auto">
@@ -187,9 +227,14 @@ const Values = () => {
           <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             {t('values.title')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
             {t('values.subtitle')}
           </p>
+          <div className="text-sm text-muted-foreground/70 flex items-center justify-center gap-2">
+            <span>Use arrow keys to navigate</span>
+            <span>•</span>
+            <span>Space to pause/resume</span>
+          </div>
         </div>
 
         {/* Value Navigation */}
