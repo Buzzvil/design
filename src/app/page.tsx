@@ -36,13 +36,13 @@ export default function Home() {
         </ParallaxSection>
         
         <ParallaxSection speed={0.3} offset={50}>
-          <div id="mission-vision" className="scroll-mt-24">
+          <div id="mission-vision" className="scroll-mt-32">
             <MissionVision />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.4} offset={100}>
-          <section id="philosophy" className="py-20 scroll-mt-24">
+          <section id="philosophy" className="py-20 scroll-mt-32">
             <div className="max-w-7xl mx-auto px-8">
               <div className="text-center mb-16">
                 <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
@@ -63,19 +63,19 @@ export default function Home() {
         </ParallaxSection>
         
         <ParallaxSection speed={0.5} offset={150}>
-          <div id="values" className="scroll-mt-24">
+          <div id="values" className="scroll-mt-32">
             <Values />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.6} offset={200}>
-          <div id="team" className="scroll-mt-24">
+          <div id="team" className="scroll-mt-32">
             <Team />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.7} offset={250}>
-          <div id="tools" className="scroll-mt-24">
+          <div id="tools" className="scroll-mt-32">
             <Tools />
           </div>
         </ParallaxSection>

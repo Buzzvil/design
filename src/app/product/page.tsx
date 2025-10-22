@@ -56,11 +56,11 @@ export default function ProductPage() {
         </div>
       </section>
       
-      <div id="principles" className="min-h-screen flex items-center justify-center scroll-mt-24">
+      <div id="principles" className="min-h-screen flex items-center justify-center scroll-mt-32">
         <ProductPrinciples />
       </div>
       
-      <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-24">
+      <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-32">
         <SectionPlaceholder
           title={t('product.guidelines.title')}
           description={t('product.guidelines.description')}
@@ -68,7 +68,7 @@ export default function ProductPage() {
         />
       </div>
       
-      <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">
+      <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-32">
         <SectionPlaceholder
           title={t('product.resources.title')}
           description={t('product.resources.description')}

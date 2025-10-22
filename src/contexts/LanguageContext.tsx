@@ -23,6 +23,13 @@ const translations = {
     'nav.team': 'Team',
     'nav.tools': 'Tools',
     
+    // Contact Banner
+    'banner.title': 'Want to meet us over coffee?',
+    'banner.cta': 'Schedule a meeting',
+    'banner.cta.short': 'Contact',
+    'banner.requirements.schedule': 'Schedule a time',
+    'banner.requirements.info': 'Include your info',
+    
     // Hero
     'hero.title': 'Buzzvil Design',
     'hero.subtitle': 'Engaging. Playful. Scalable.',
@@ -189,6 +196,13 @@ const translations = {
     'nav.product': '제품',
     'nav.team': '팀',
     'nav.tools': '도구',
+    
+    // Contact Banner
+    'banner.title': '커피 한 잔 하며 만나볼까요?',
+    'banner.cta': '미팅 예약하기',
+    'banner.cta.short': '연락',
+    'banner.requirements.schedule': '시간 예약',
+    'banner.requirements.info': '정보 포함',
     
     // Hero
     'hero.title': 'Buzzvil Design',
