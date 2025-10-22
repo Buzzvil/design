@@ -12,8 +12,11 @@ import InteractiveMinimap from '@/components/InteractiveMinimap';
 import SectionNavigation from '@/components/SectionNavigation';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { LanguageTransitionWrapper } from '@/components/LanguageTransitionWrapper';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   const sections = [
     { id: 'mission-vision', label: 'The Mission' },
     { id: 'philosophy', label: 'Our Mindset' },
@@ -43,7 +46,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto px-8">
               <div className="text-center mb-16">
                 <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                  Philosophy
+                  {t('philosophy.title')}
                 </h2>
               </div>
 
@@ -51,7 +54,7 @@ export default function Home() {
                 <div className="text-center p-12 bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border">
                   <PhilosophyAnimation isActive={true} />
                   <p className="text-xl text-muted-foreground leading-relaxed">
-                    At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as delightful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.
+                    {t('philosophy.content')}
                   </p>
                 </div>
               </div>
