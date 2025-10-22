@@ -81,13 +81,13 @@ const Hero = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <motion.a
-            href="#foundations"
+            href="#mission-vision"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
             className="px-6 py-3 bg-accent/10 text-accent rounded-lg font-medium hover:bg-accent/20 transition-all duration-150 focus-ring"
             onClick={(e) => {
               e.preventDefault();
-              const element = document.querySelector('#foundations');
+              const element = document.querySelector('#mission-vision');
               if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
@@ -96,12 +96,20 @@ const Hero = () => {
             {t('hero.explore')}
           </motion.a>
           <motion.a
-            href="#resources"
+            href="/design/brand"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
             className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"
           >
-            {t('hero.browse')}
+            {t('hero.brand')}
+          </motion.a>
+          <motion.a
+            href="/design/product"
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"
+          >
+            {t('hero.product')}
           </motion.a>
         </motion.div>
 

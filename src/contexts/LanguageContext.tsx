@@ -18,7 +18,8 @@ const translations = {
   en: {
     // Navigation
     'nav.foundations': 'Foundations',
-    'nav.resources': 'Resources',
+    'nav.brand': 'Brand',
+    'nav.product': 'Product',
     'nav.team': 'Team',
     'nav.tools': 'Tools',
     
@@ -30,9 +31,10 @@ const translations = {
     'hero.keyword.rewarded': 'Rewarded',
     'hero.keyword.playful': 'Playful',
     'hero.keyword.scalable': 'Scalable',
-    'hero.explore': 'Explore Foundations',
-    'hero.browse': 'Browse Resources',
-    'hero.scroll': 'Scroll to explore',
+            'hero.explore': 'Explore Foundations',
+            'hero.brand': 'Brand',
+            'hero.product': 'Product',
+            'hero.scroll': 'Scroll to explore',
     
     // Mission & Vision
     'mission.title': 'Mission & Vision',
@@ -74,7 +76,7 @@ const translations = {
     'principles.scalable.characteristics.3': 'Decision Veto Power',
     
     // Values
-    'values.title': 'Values',
+    'values.title': 'How we work',
     'values.subtitle': 'The core values that drive everything we do at Buzzvil.',
             'values.build.title': 'Build in the Open',
             'values.build.shortTitle': 'Build in the Open',
@@ -136,17 +138,53 @@ const translations = {
     'tools.visit': 'Visit Tool',
     'tools.category.design-development': 'Design & Development Tools',
     
-    // Footer
-    'footer.description': 'Empowering designers with the tools, resources, and knowledge needed to create exceptional user experiences.',
-    'footer.made': 'Made with',
-    'footer.by': 'by the Buzzvil Design Team',
-    'footer.privacy': 'Privacy Policy',
-    'footer.terms': 'Terms of Service',
+            // Brand
+            'brand.sections.principles': 'Principles',
+            'brand.sections.guidelines': 'Guidelines',
+            'brand.sections.resources': 'Resources',
+            'brand.principles.title': 'Brand Principles',
+            'brand.principles.description': 'Our core brand principles that guide every decision, interaction, and experience we create. These fundamental values ensure consistency and authenticity across all touchpoints.',
+            'brand.guidelines.title': 'Brand Guidelines',
+            'brand.guidelines.description': 'Comprehensive guidelines for applying our brand consistently across all platforms and touchpoints. From logo usage to color palettes, typography, and voice.',
+            'brand.resources.title': 'Brand Resources',
+            'brand.resources.description': 'Download our brand assets, templates, and resources. Everything you need to implement our brand consistently across your projects and campaigns.',
+            
+            // Product
+            'product.sections.principles': 'Principles',
+            'product.sections.guidelines': 'Guidelines',
+            'product.sections.resources': 'Resources',
+            'product.guidelines.title': 'Product Guidelines',
+            'product.guidelines.description': 'Comprehensive guidelines for designing consistent product experiences. From user interface patterns to interaction design, accessibility standards, and development workflows.',
+            'product.resources.title': 'Product Resources',
+            'product.resources.description': 'Download our design system components, templates, and development resources. Everything you need to build consistent product experiences.',
+            
+            // Footer
+            'footer.description': 'Empowering designers with the tools, resources, and knowledge needed to create exceptional user experiences.',
+            'footer.foundations.mission': 'The Mission',
+            'footer.foundations.philosophy': 'Our Mindset',
+            'footer.foundations.values': 'How we work',
+            'footer.foundations.team': 'The team',
+            'footer.foundations.tools': 'Tools',
+            'footer.brand.principles': 'Principles',
+            'footer.brand.guidelines': 'Guidelines',
+            'footer.brand.resources': 'Resources',
+            'footer.product.principles': 'Principles',
+            'footer.product.guidelines': 'Guidelines',
+            'footer.product.resources': 'Resources',
+            'footer.connect.contact': 'Contact',
+            'footer.connect.careers': 'Careers',
+            'footer.connect.github': 'GitHub',
+            'footer.connect.linkedin': 'LinkedIn',
+            'footer.made': 'Made with',
+            'footer.by': 'by the Buzzvil Design Team',
+            'footer.privacy': 'Privacy Policy',
+            'footer.terms': 'Terms of Service',
   },
   ko: {
     // Navigation
     'nav.foundations': '기반',
-    'nav.resources': '리소스',
+    'nav.brand': '브랜드',
+    'nav.product': '제품',
     'nav.team': '팀',
     'nav.tools': '도구',
     
@@ -158,9 +196,10 @@ const translations = {
     'hero.keyword.rewarded': '보상받는',
     'hero.keyword.playful': '재미있는',
     'hero.keyword.scalable': '확장 가능한',
-    'hero.explore': '기반 탐색',
-    'hero.browse': '리소스 둘러보기',
-    'hero.scroll': '스크롤하여 탐색',
+            'hero.explore': '기반 탐색',
+            'hero.brand': '브랜드',
+            'hero.product': '제품',
+            'hero.scroll': '스크롤하여 탐색',
     
     // Mission & Vision
     'mission.title': '미션 & 비전',
@@ -202,7 +241,7 @@ const translations = {
     'principles.scalable.characteristics.3': '결정 거부 권한',
     
     // Values
-    'values.title': '가치',
+    'values.title': '우리가 일하는 방식',
     'values.subtitle': '버즈빌에서 우리가 하는 모든 일을 이끄는 핵심 가치들.',
     'values.build.title': '열린 공간에서 구축',
     'values.build.shortTitle': '열린 공간에서 구축',
@@ -264,12 +303,47 @@ const translations = {
     'tools.visit': '도구 방문',
     'tools.category.design-development': '디자인 & 개발 도구',
     
-    // Footer
-    'footer.description': '탁월한 사용자 경험을 만들기 위해 필요한 도구, 리소스, 지식으로 디자이너를 강화합니다.',
-    'footer.made': '만든',
-    'footer.by': '버즈빌 디자인 팀',
-    'footer.privacy': '개인정보 보호정책',
-    'footer.terms': '서비스 약관',
+            // Brand
+            'brand.sections.principles': '원칙',
+            'brand.sections.guidelines': '가이드라인',
+            'brand.sections.resources': '리소스',
+            'brand.principles.title': '브랜드 원칙',
+            'brand.principles.description': '모든 결정, 상호작용, 우리가 만드는 경험을 이끄는 핵심 브랜드 원칙들. 이러한 근본적인 가치들은 모든 접점에서 일관성과 진정성을 보장합니다.',
+            'brand.guidelines.title': '브랜드 가이드라인',
+            'brand.guidelines.description': '모든 플랫폼과 접점에서 브랜드를 일관되게 적용하기 위한 포괄적인 가이드라인. 로고 사용법부터 색상 팔레트, 타이포그래피, 톤앤매너까지.',
+            'brand.resources.title': '브랜드 리소스',
+            'brand.resources.description': '브랜드 자산, 템플릿, 리소스를 다운로드하세요. 프로젝트와 캠페인에서 브랜드를 일관되게 구현하는 데 필요한 모든 것.',
+            
+            // Product
+            'product.sections.principles': '원칙',
+            'product.sections.guidelines': '가이드라인',
+            'product.sections.resources': '리소스',
+            'product.guidelines.title': '제품 가이드라인',
+            'product.guidelines.description': '일관된 제품 경험을 디자인하기 위한 포괄적인 가이드라인. 사용자 인터페이스 패턴부터 상호작용 디자인, 접근성 표준, 개발 워크플로우까지.',
+            'product.resources.title': '제품 리소스',
+            'product.resources.description': '디자인 시스템 컴포넌트, 템플릿, 개발 리소스를 다운로드하세요. 일관된 제품 경험을 구축하는 데 필요한 모든 것.',
+            
+            // Footer
+            'footer.description': '탁월한 사용자 경험을 만들기 위해 필요한 도구, 리소스, 지식으로 디자이너를 강화합니다.',
+            'footer.foundations.mission': '미션',
+            'footer.foundations.philosophy': '마인드셋',
+            'footer.foundations.values': '우리가 일하는 방식',
+            'footer.foundations.team': '팀',
+            'footer.foundations.tools': '도구',
+            'footer.brand.principles': '원칙',
+            'footer.brand.guidelines': '가이드라인',
+            'footer.brand.resources': '리소스',
+            'footer.product.principles': '원칙',
+            'footer.product.guidelines': '가이드라인',
+            'footer.product.resources': '리소스',
+            'footer.connect.contact': '연락처',
+            'footer.connect.careers': '채용',
+            'footer.connect.github': 'GitHub',
+            'footer.connect.linkedin': 'LinkedIn',
+            'footer.made': '만든',
+            'footer.by': '버즈빌 디자인 팀',
+            'footer.privacy': '개인정보 보호정책',
+            'footer.terms': '서비스 약관',
   },
 };
 

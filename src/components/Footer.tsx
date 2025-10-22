@@ -9,28 +9,27 @@ const Footer = () => {
   
   const footerLinks = {
     'Foundations': [
-      { name: 'Color System', href: '#foundations' },
-      { name: 'Typography', href: '#foundations' },
-      { name: 'Spacing & Grid', href: '#foundations' },
-      { name: 'Visual Identity', href: '#foundations' },
+      { name: t('footer.foundations.mission'), href: '#mission-vision' },
+      { name: t('footer.foundations.philosophy'), href: '#philosophy' },
+      { name: t('footer.foundations.values'), href: '#values' },
+      { name: t('footer.foundations.team'), href: '#team' },
+      { name: t('footer.foundations.tools'), href: '#tools' },
     ],
-    'Resources': [
-      { name: 'Design Files', href: '#resources' },
-      { name: 'Documentation', href: '#resources' },
-      { name: 'Templates', href: '#resources' },
-      { name: 'Guidelines', href: '#resources' },
+    'Brand': [
+      { name: t('footer.brand.principles'), href: '/design/brand#principles' },
+      { name: t('footer.brand.guidelines'), href: '/design/brand#guidelines' },
+      { name: t('footer.brand.resources'), href: '/design/brand#resources' },
     ],
-    'Team': [
-      { name: 'Meet the Team', href: '#team' },
-      { name: 'Join Us', href: 'mailto:design@buzzvil.com' },
-      { name: 'Contact', href: 'mailto:design@buzzvil.com' },
-      { name: 'Careers', href: 'https://buzzvil.com/careers' },
+    'Product': [
+      { name: t('footer.product.principles'), href: '/design/product#principles' },
+      { name: t('footer.product.guidelines'), href: '/design/product#guidelines' },
+      { name: t('footer.product.resources'), href: '/design/product#resources' },
     ],
-    'Tools': [
-      { name: 'Design Tools', href: '#tools' },
-      { name: 'Development', href: '#tools' },
-      { name: 'Research', href: '#tools' },
-      { name: 'Collaboration', href: '#tools' },
+    'Connect': [
+      { name: t('footer.connect.contact'), href: 'mailto:design@buzzvil.com' },
+      { name: t('footer.connect.careers'), href: 'https://buzzvil.com/careers' },
+      { name: t('footer.connect.github'), href: 'https://github.com/buzzvil' },
+      { name: t('footer.connect.linkedin'), href: 'https://linkedin.com/company/buzzvil' },
     ],
   };
 

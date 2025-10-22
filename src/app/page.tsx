@@ -2,42 +2,82 @@
 
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Resources from '@/components/Resources';
+import MissionVision from '@/components/MissionVision';
+import { PhilosophyAnimation } from '@/components/PhilosophyAnimation';
+import Values from '@/components/Values';
 import Team from '@/components/Team';
 import Tools from '@/components/Tools';
 import Footer from '@/components/Footer';
-import PrinciplesValuesShowcase from '@/components/PrinciplesValuesShowcase';
 import InteractiveMinimap from '@/components/InteractiveMinimap';
+import SectionNavigation from '@/components/SectionNavigation';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { LanguageTransitionWrapper } from '@/components/LanguageTransitionWrapper';
 
 export default function Home() {
-  
+  const sections = [
+    { id: 'mission-vision', label: 'The Mission' },
+    { id: 'philosophy', label: 'Our Mindset' },
+    { id: 'values', label: 'How we work' },
+    { id: 'team', label: 'The team' },
+    { id: 'tools', label: 'Tools' },
+  ];
+
   return (
     <main className="min-h-screen">
       <InteractiveMinimap />
       <Header />
+      <SectionNavigation sections={sections} />
       <LanguageTransitionWrapper>
         <ParallaxSection speed={0.2}>
           <Hero />
         </ParallaxSection>
-      
-        {/* Principles & Values Showcase */}
-        <PrinciplesValuesShowcase />
-
+        
+        <ParallaxSection speed={0.3} offset={50}>
+          <div id="mission-vision" className="scroll-mt-24">
+            <MissionVision />
+          </div>
+        </ParallaxSection>
+        
         <ParallaxSection speed={0.4} offset={100}>
-          <Resources />
+          <section id="philosophy" className="py-20 scroll-mt-24">
+            <div className="max-w-7xl mx-auto px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                  Philosophy
+                </h2>
+              </div>
+
+              <div className="max-w-4xl mx-auto">
+                <div className="text-center p-12 bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border">
+                  <PhilosophyAnimation isActive={true} />
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    Design at buzzvil turns ad campaigns into experiences people enjoy and return to. We design the interactions that connect users, advertisers, and publishers, shaping how ads are found, felt, and remembered. As the connective layer across our organization, we build rewarded, playful, and scalable experiences guided by clear principles and a One-Team spirit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
         </ParallaxSection>
         
         <ParallaxSection speed={0.5} offset={150}>
-          <Team />
+          <div id="values" className="scroll-mt-24">
+            <Values />
+          </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.6} offset={200}>
-          <Tools />
+          <div id="team" className="scroll-mt-24">
+            <Team />
+          </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.7} offset={250}>
+          <div id="tools" className="scroll-mt-24">
+            <Tools />
+          </div>
+        </ParallaxSection>
+        
+        <ParallaxSection speed={0.8} offset={300}>
           <Footer />
         </ParallaxSection>
       </LanguageTransitionWrapper>

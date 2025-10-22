@@ -1,44 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Palette, BookOpen, Users, Zap } from 'lucide-react';
+import { Menu, X, BookOpen, Award, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useRouter } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const router = useRouter();
 
   const navItems = [
-    { name: t('nav.foundations'), href: '#foundations', icon: Palette },
-    { name: t('nav.resources'), href: '#resources', icon: BookOpen },
-    { name: t('nav.team'), href: '#team', icon: Users },
-    { name: t('nav.tools'), href: '#tools', icon: Zap },
+    { name: t('nav.foundations'), href: '/', icon: BookOpen },
+    { name: t('nav.brand'), href: '/design/brand', icon: Award },
+    { name: t('nav.product'), href: '/design/product', icon: Code },
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-sm border-b border-border' 
-          : 'bg-transparent'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -46,7 +28,10 @@ const Header = () => {
             whileHover={{ scale: 1.02 }}
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              router.push('/');
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 100);
             }}
           >
             <Logo size={32} className="text-white" />
@@ -56,27 +41,25 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
                 whileHover={{ y: -1 }}
                 className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors duration-150 group cursor-pointer"
-                onClick={(e) => {
-                  if (item.href.startsWith('#')) {
-                    e.preventDefault();
-                    const element = document.querySelector(item.href);
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
+                onClick={() => {
+                  if (item.href === '/') {
+                    // For homepage, ensure we scroll to top
+                    router.push('/');
+                    setTimeout(() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 100);
+                  } else {
+                    router.push(item.href);
                   }
                 }}
               >
                 <item.icon className="w-4 h-4 text-white group-hover:scale-105 transition-transform duration-150" />
                 <span className="font-medium">{item.name}</span>
-              </motion.a>
+              </motion.button>
             ))}
             <LanguageSwitcher />
           </nav>
@@ -108,27 +91,25 @@ const Header = () => {
           >
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item, index) => (
-                <motion.a
+                <motion.button
                   key={item.name}
-                  href={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  onClick={(e) => {
+                  onClick={() => {
                     setIsMobileMenuOpen(false);
-                    if (item.href.startsWith('#')) {
-                      e.preventDefault();
-                      const element = document.querySelector(item.href);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
+                    if (item.href === '/') {
+                      // For homepage, ensure we scroll to top
+                      router.push('/');
+                      setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }, 100);
+                    } else {
+                      router.push(item.href);
                     }
                   }}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors cursor-pointer"
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
                 >
                   <item.icon className="w-5 h-5 text-white" />
                   <span className="font-medium">{item.name}</span>
-                </motion.a>
+                </motion.button>
               ))}
               <div className="px-4 py-3">
                 <LanguageSwitcher />
@@ -137,7 +118,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 
