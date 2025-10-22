@@ -25,10 +25,10 @@ const translations = {
     
     // Hero
     'hero.title': 'Buzzvil Design',
-    'hero.subtitle': 'Rewarded. Playful. Scalable.',
+    'hero.subtitle': 'Engaging. Playful. Scalable.',
     'hero.sentence.start': 'We build',
     'hero.sentence.end': 'experiences.',
-    'hero.keyword.rewarded': 'Rewarded',
+    'hero.keyword.engaging': 'Engaging',
     'hero.keyword.playful': 'Playful',
     'hero.keyword.scalable': 'Scalable',
             'hero.explore': 'Explore Foundations',
@@ -192,10 +192,10 @@ const translations = {
     
     // Hero
     'hero.title': 'Buzzvil Design',
-    'hero.subtitle': '보상받는. 재미있는. 확장 가능한.',
+    'hero.subtitle': '매력적인. 재미있는. 확장 가능한.',
     'hero.sentence.start': '우리는 구축합니다',
     'hero.sentence.end': '경험을.',
-    'hero.keyword.rewarded': '보상받는',
+    'hero.keyword.engaging': '매력적인',
     'hero.keyword.playful': '재미있는',
     'hero.keyword.scalable': '확장 가능한',
             'hero.explore': '기반 탐색',

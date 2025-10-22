@@ -11,7 +11,7 @@ export function KeywordAnimation() {
   const textRef = useRef<HTMLDivElement>(null);
 
   const keywords = [
-    t('hero.keyword.rewarded'),
+    t('hero.keyword.engaging'),
     t('hero.keyword.playful'),
     t('hero.keyword.scalable')
   ];
