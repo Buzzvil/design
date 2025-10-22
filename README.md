@@ -1,10 +1,11 @@
-# Buzzvil Design
-<!-- Updated: Team members added --> System
+# Buzzvil Design System
 
-A modern, minimal design system website for Buzzvil, featuring a dark theme, interactive animations, and bilingual support (English/Korean).
+A comprehensive design system website for Buzzvil, featuring a modern dark theme, interactive animations, bilingual support (English/Korean), and a structured information architecture.
 
 ## 🌟 Features
 
+- **Structured Information Architecture**: Organized into Foundations, Brand, and Product sections
+- **Interactive Navigation**: Elegant section navigation with auto-scroll and active states
 - **Dark Theme**: Minimal, Linear-inspired design with blue accent colors
 - **Interactive Minimap**: Full-screen animated minimap with scroll-based progress
 - **Bilingual Support**: Seamless language switching between English and Korean
@@ -55,6 +56,25 @@ npm run dev
 
 ## 🎨 Design System
 
+### Information Architecture
+
+#### Foundations (`/`)
+- **The Mission**: Mission & Vision statements
+- **Our Mindset**: Philosophy and design approach
+- **How we work**: Core values and working principles
+- **The team**: Meet the design team
+- **Tools**: Design and development tools
+
+#### Brand (`/design/brand`)
+- **Principles**: Brand principles and guidelines
+- **Guidelines**: Comprehensive brand guidelines
+- **Resources**: Brand assets and templates
+
+#### Product (`/design/product`)
+- **Principles**: Product design principles (Reward = Time, Delight Without Deception, Scalable by Design)
+- **Guidelines**: Product design guidelines
+- **Resources**: Product design resources
+
 ### Color Palette
 - **Primary**: Black (#000000)
 - **Accent**: Blue (#3B82F6)
@@ -68,10 +88,12 @@ npm run dev
 
 ### Components
 - Interactive Minimap
+- Section Navigation (auto-scroll, active states)
 - Language Switcher
 - Blur Reveal Animations
 - Parallax Sections
-- Avatar Generator
+- Values Slider (3D transitions)
+- Product Principles (interactive elements)
 
 ## 🌐 Internationalization
 
@@ -98,21 +120,29 @@ npm run deploy
 
 ```
 src/
-├── app/                 # Next.js App Router
-│   ├── globals.css     # Global styles and CSS variables
-│   ├── layout.tsx      # Root layout
-│   └── page.tsx        # Home page
-├── components/         # React components
-│   ├── Header.tsx      # Navigation header
-│   ├── Hero.tsx        # Hero section
-│   ├── InteractiveMinimap.tsx  # Animated minimap
-│   ├── LanguageSwitcher.tsx    # Language toggle
+├── app/                    # Next.js App Router
+│   ├── design/            # Design system pages
+│   │   ├── brand/         # Brand page (/design/brand)
+│   │   └── product/       # Product page (/design/product)
+│   ├── globals.css        # Global styles and CSS variables
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Homepage (Foundations)
+│   └── not-found.tsx      # 404 error page
+├── components/            # React components
+│   ├── Header.tsx         # Navigation header
+│   ├── Hero.tsx           # Hero section
+│   ├── SectionNavigation.tsx  # Section navigation
+│   ├── Values.tsx         # Values slider
+│   ├── ProductPrinciples.tsx  # Product principles
+│   ├── SectionPlaceholder.tsx # Placeholder components
+│   ├── InteractiveMinimap.tsx # Animated minimap
+│   ├── LanguageSwitcher.tsx   # Language toggle
 │   └── ...
-├── contexts/           # React contexts
-│   └── LanguageContext.tsx     # Language management
-└── utils/              # Utility functions
-    ├── avatar.ts       # Avatar generation
-    └── clamp.ts        # Math utilities
+├── contexts/              # React contexts
+│   └── LanguageContext.tsx # Language management & translations
+└── utils/                 # Utility functions
+    ├── avatar.ts          # Avatar generation
+    └── teamParser.ts      # Team data parsing
 ```
 
 ## 🤝 Contributing
@@ -138,9 +168,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Links
 
 - [Live Site](https://design.buzzvil.com)
+- [Foundations](https://design.buzzvil.com/) - Mission, Philosophy, Values, Team, Tools
+- [Brand](https://design.buzzvil.com/design/brand) - Brand principles, guidelines, and resources
+- [Product](https://design.buzzvil.com/design/product) - Product design principles and guidelines
 - [Buzzvil](https://buzzvil.com)
-- [Design System Documentation](https://design.buzzvil.com/foundations)
+
+## 🎯 Key Features
+
+### Navigation
+- **Elegant Section Navigation**: Fixed sub-navigation with auto-scroll and active states
+- **Smooth Transitions**: Seamless page transitions and scroll animations
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+
+### Content
+- **Interactive Principles**: 3D animated product principles with interactive elements
+- **Values Slider**: Auto-advancing values showcase with smooth transitions
+- **Team Showcase**: Dynamic team member profiles with avatars
+- **Bilingual Support**: Complete English and Korean translations
+
+### Technical
+- **Modern Architecture**: Next.js 15 with App Router
+- **Type Safety**: Full TypeScript implementation
+- **Performance**: Optimized with Tailwind CSS and Framer Motion
+- **Accessibility**: WCAG compliant navigation and interactions
 
 ---
 
-Built with ❤️ by the Buzzvil Design Team# Trigger deployment
+Built with ❤️ by the Buzzvil Design Team
