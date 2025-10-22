@@ -96,7 +96,7 @@ const Hero = () => {
             {t('hero.explore')}
           </motion.a>
           <motion.a
-            href="/brand/"
+            href="/design/brand/"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
             className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"
@@ -104,7 +104,7 @@ const Hero = () => {
             {t('hero.brand')}
           </motion.a>
           <motion.a
-            href="/product/"
+            href="/design/product/"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
             className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"

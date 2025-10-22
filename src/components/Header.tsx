@@ -15,8 +15,8 @@ const Header = () => {
 
   const navItems = [
     { name: t('nav.foundations'), href: '/', icon: BookOpen },
-    { name: t('nav.brand'), href: '/brand', icon: Award },
-    { name: t('nav.product'), href: '/product', icon: Code },
+    { name: t('nav.brand'), href: '/design/brand', icon: Award },
+    { name: t('nav.product'), href: '/design/product', icon: Code },
   ];
 
   return (
