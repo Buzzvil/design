@@ -44,9 +44,9 @@ const translations = {
     'mission.vision.title': 'Vision',
     'mission.vision.content': 'We set the next standard for AdTech design by transforming ad campaigns into engaging, repeatable experiences that connect users and advertisers. Through this new way of interaction, Buzzvil leads a future where advertising feels rewarding, sustainable, and scalable across the ecosystem.',
     
-    // Philosophy
-    'philosophy.title': 'Philosophy',
-    'philosophy.content': 'Design at buzzvil turns ad campaigns into experiences people enjoy and return to. We design the interactions that connect users, advertisers, and publishers, shaping how ads are found, felt, and remembered. As the connective layer across our organization, we build rewarded, playful, and scalable experiences guided by clear principles and a One-Team spirit.',
+            // Philosophy
+            'philosophy.title': 'Philosophy',
+            'philosophy.content': 'At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as meaningful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.',
     
     // Principles
     'principles.title': 'Principles',
@@ -209,9 +209,9 @@ const translations = {
     'mission.vision.title': '비전',
     'mission.vision.content': '우리는 광고 캠페인을 사용자와 광고주를 연결하는 매력적이고 반복 가능한 경험으로 변화시켜 AdTech 디자인의 새로운 표준을 제시합니다. 이러한 새로운 상호작용 방식을 통해, 버즈빌은 광고가 보상받고, 지속 가능하며, 생태계 전반에 걸쳐 확장 가능하다고 느껴지는 미래를 이끕니다.',
     
-    // Philosophy
-    'philosophy.title': '철학',
-    'philosophy.content': '버즈빌의 디자인은 광고 캠페인을 사람들이 즐기고 다시 찾는 경험으로 바꿉니다. 우리는 사용자, 광고주, 퍼블리셔를 연결하는 상호작용을 디자인하여 광고가 발견되고, 느껴지고, 기억되는 방식을 형성합니다. 조직 전반의 연결 레이어로서, 우리는 명확한 원칙과 원팀 정신에 이끌려 보상받고, 재미있고, 확장 가능한 경험을 구축합니다.',
+            // Philosophy
+            'philosophy.title': '철학',
+            'philosophy.content': '버즈빌에서 디자인은 사람들이 광고를 경험하는 방식을 형성합니다. 방해가 아닌 의미 있는 연결의 순간으로 말입니다. 우리는 브랜드 접점부터 제품 내 경험까지 모든 상호작용이 재미있고, 매력적이며, 자연스러워야 한다고 믿습니다. 우리의 역할은 버즈빌이 생태계 전반에서 어떻게 보이고, 느껴지고, 행동하는지를 통합하여 캠페인과 플랫폼을 하나의 일관되고 즐거운 경험으로 만드는 것입니다. 우리의 원칙과 원팀 정신에 이끌려, 우리는 신뢰를 영감하고, 성과를 추진하며, AdTech가 될 수 있는 새로운 표준을 설정하기 위해 디자인합니다.',
     
     // Principles
     'principles.title': '원칙',
