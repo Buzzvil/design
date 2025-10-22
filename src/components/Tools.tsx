@@ -1,10 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Palette } from 'lucide-react';
+import { ExternalLink, Palette } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from './BlurReveal';
 import { SectionTitle } from './SectionTitle';
+import Image from 'next/image';
 
 const Tools = () => {
   const { t } = useLanguage();
@@ -20,6 +21,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://figma.com',
           features: ['Design System', 'Prototyping', 'Team Collaboration'],
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
         },
         {
           name: 'GPT Business',
@@ -27,6 +29,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://openai.com',
           features: ['AI Assistant', 'Content Generation', 'Workflow Optimization'],
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg',
         },
         {
           name: 'Midjourney',
@@ -34,6 +37,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://midjourney.com',
           features: ['AI Art', 'Visual Concepts', 'Design Inspiration'],
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/midjourney/midjourney-original.svg',
         },
         {
           name: 'Cursor',
@@ -41,6 +45,7 @@ const Tools = () => {
           status: 'Active',
           link: 'https://cursor.sh',
           features: ['AI Coding', 'Design System', 'Frontend Development'],
+          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cursor/cursor-original.svg',
         },
       ],
     },
@@ -123,8 +128,14 @@ const Tools = () => {
                     <div className="h-full p-6 bg-background rounded-xl border border-border hover-lift glass">
                       {/* Tool Header */}
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                          <Zap className="w-6 h-6 text-white" />
+                        <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors overflow-hidden">
+                          <Image
+                            src={tool.logo}
+                            alt={`${tool.name} logo`}
+                            width={24}
+                            height={24}
+                            className="w-6 h-6 object-contain"
+                          />
                         </div>
                         <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">
                           {tool.status}
