@@ -36,13 +36,13 @@ const translations = {
             'hero.product': 'Product',
             'hero.scroll': 'Scroll to explore',
     
-    // Mission & Vision
-    'mission.title': 'Mission & Vision',
-    'mission.subtitle': 'Our mission and vision guide everything we do at Buzzvil.',
-    'mission.mission.title': 'Mission',
-    'mission.mission.content': 'We design meaningful interactions that shape how people discover, experience, and keep engaging with ad campaigns. Rewards are our tool to spark motivation and sustain attention, turning campaigns into moments that delight users and drive results for advertisers.',
-    'mission.vision.title': 'Vision',
-    'mission.vision.content': 'We set the next standard for AdTech design by transforming ad campaigns into engaging, repeatable experiences that connect users and advertisers. Through this new way of interaction, Buzzvil leads a future where advertising feels rewarding, sustainable, and scalable across the ecosystem.',
+            // Mission & Vision
+            'mission.title': 'Mission & Vision',
+            'mission.subtitle': 'Our mission and vision guide everything we do at Buzzvil.',
+            'mission.mission.title': 'Mission',
+            'mission.mission.content': 'We design meaningful interactions that shape how people discover, experience, and keep engaging with Buzzvil\'s ad campaigns and brand. Our work turns advertising into experiences people want to explore, moments that capture attention, spark curiosity, and drive results for advertisers.',
+            'mission.vision.title': 'Vision',
+            'mission.vision.content': 'We set the next standard for AdTech design by transforming ad campaigns and brand experiences into engaging, repeatable interactions that connect users and advertisers. Through this new way of engagement, Buzzvil leads a future where advertising feels enjoyable, seamlessly integrated into people\'s everyday experiences.',
     
             // Philosophy
             'philosophy.title': 'Philosophy',
@@ -201,13 +201,13 @@ const translations = {
             'hero.product': '제품',
             'hero.scroll': '스크롤하여 탐색',
     
-    // Mission & Vision
-    'mission.title': '미션 & 비전',
-    'mission.subtitle': '버즈빌에서 우리가 하는 모든 일을 이끄는 미션과 비전.',
-    'mission.mission.title': '미션',
-    'mission.mission.content': '우리는 사람들이 광고 캠페인을 발견하고, 경험하고, 지속적으로 참여하는 방식을 형성하는 의미 있는 상호작용을 디자인합니다. 보상은 동기를 불러일으키고 주의를 지속시키는 도구로, 캠페인을 사용자를 즐겁게 하고 광고주에게 성과를 가져다주는 순간으로 만듭니다.',
-    'mission.vision.title': '비전',
-    'mission.vision.content': '우리는 광고 캠페인을 사용자와 광고주를 연결하는 매력적이고 반복 가능한 경험으로 변화시켜 AdTech 디자인의 새로운 표준을 제시합니다. 이러한 새로운 상호작용 방식을 통해, 버즈빌은 광고가 보상받고, 지속 가능하며, 생태계 전반에 걸쳐 확장 가능하다고 느껴지는 미래를 이끕니다.',
+            // Mission & Vision
+            'mission.title': '미션 & 비전',
+            'mission.subtitle': '버즈빌에서 우리가 하는 모든 일을 이끄는 미션과 비전.',
+            'mission.mission.title': '미션',
+            'mission.mission.content': '우리는 사람들이 버즈빌의 광고 캠페인과 브랜드를 발견하고, 경험하고, 지속적으로 참여하는 방식을 형성하는 의미 있는 상호작용을 디자인합니다. 우리의 작업은 광고를 사람들이 탐험하고 싶어하는 경험으로 바꾸며, 주의를 끌고, 호기심을 자극하며, 광고주에게 성과를 가져다주는 순간들을 만듭니다.',
+            'mission.vision.title': '비전',
+            'mission.vision.content': '우리는 광고 캠페인과 브랜드 경험을 사용자와 광고주를 연결하는 매력적이고 반복 가능한 상호작용으로 변화시켜 AdTech 디자인의 새로운 표준을 제시합니다. 이러한 새로운 참여 방식을 통해, 버즈빌은 광고가 즐겁고, 사람들의 일상 경험에 자연스럽게 통합되는 미래를 이끕니다.',
     
             // Philosophy
             'philosophy.title': '철학',
