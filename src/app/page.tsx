@@ -20,7 +20,7 @@ export default function Home() {
   const sections = [
     { id: 'mission-vision', label: 'The Mission' },
     { id: 'philosophy', label: 'Our Mindset' },
-    { id: 'values', label: 'How we work' },
+    { id: 'values', label: 'The way we work' },
     { id: 'team', label: 'The team' },
     { id: 'tools', label: 'Tools' },
   ];

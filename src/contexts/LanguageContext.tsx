@@ -76,7 +76,7 @@ const translations = {
     'principles.scalable.characteristics.3': 'Decision Veto Power',
     
     // Values
-    'values.title': 'How we work',
+            'values.title': 'The way we work',
     'values.subtitle': 'The core values that drive everything we do at Buzzvil.',
             'values.build.title': 'Build in the Open',
             'values.build.shortTitle': 'Build in the Open',
