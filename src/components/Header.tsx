@@ -29,9 +29,6 @@ const Header = () => {
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => {
               router.push('/');
-              setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }, 100);
             }}
           >
             <Logo size={32} className="text-white" />
@@ -46,15 +43,7 @@ const Header = () => {
                 whileHover={{ y: -1 }}
                 className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors duration-150 group cursor-pointer"
                 onClick={() => {
-                  if (item.href === '/') {
-                    // For homepage, ensure we scroll to top
-                    router.push('/');
-                    setTimeout(() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 100);
-                  } else {
-                    router.push(item.href);
-                  }
+                  router.push(item.href);
                 }}
               >
                 <item.icon className="w-4 h-4 text-white group-hover:scale-105 transition-transform duration-150" />
@@ -95,15 +84,7 @@ const Header = () => {
                   key={item.name}
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    if (item.href === '/') {
-                      // For homepage, ensure we scroll to top
-                      router.push('/');
-                      setTimeout(() => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }, 100);
-                    } else {
-                      router.push(item.href);
-                    }
+                    router.push(item.href);
                   }}
                   className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
                 >
