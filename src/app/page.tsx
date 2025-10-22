@@ -51,7 +51,7 @@ export default function Home() {
                 <div className="text-center p-12 bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border">
                   <PhilosophyAnimation isActive={true} />
                   <p className="text-xl text-muted-foreground leading-relaxed">
-                    At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as meaningful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.
+                    At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as delightful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.
                   </p>
                 </div>
               </div>

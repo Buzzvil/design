@@ -46,7 +46,7 @@ const translations = {
     
             // Philosophy
             'philosophy.title': 'Philosophy',
-            'philosophy.content': 'At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as meaningful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.',
+            'philosophy.content': 'At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as delightful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.',
     
     // Principles
     'principles.title': 'Principles',
@@ -211,7 +211,7 @@ const translations = {
     
             // Philosophy
             'philosophy.title': '철학',
-            'philosophy.content': '버즈빌에서 디자인은 사람들이 광고를 경험하는 방식을 형성합니다. 방해가 아닌 의미 있는 연결의 순간으로 말입니다. 우리는 브랜드 접점부터 제품 내 경험까지 모든 상호작용이 재미있고, 매력적이며, 자연스러워야 한다고 믿습니다. 우리의 역할은 버즈빌이 생태계 전반에서 어떻게 보이고, 느껴지고, 행동하는지를 통합하여 캠페인과 플랫폼을 하나의 일관되고 즐거운 경험으로 만드는 것입니다. 우리의 원칙과 원팀 정신에 이끌려, 우리는 신뢰를 영감하고, 성과를 추진하며, AdTech가 될 수 있는 새로운 표준을 설정하기 위해 디자인합니다.',
+            'philosophy.content': '버즈빌에서 디자인은 사람들이 광고를 경험하는 방식을 형성합니다. 방해가 아닌 즐거운 연결의 순간으로 말입니다. 우리는 브랜드 접점부터 제품 내 경험까지 모든 상호작용이 재미있고, 매력적이며, 자연스러워야 한다고 믿습니다. 우리의 역할은 버즈빌이 생태계 전반에서 어떻게 보이고, 느껴지고, 행동하는지를 통합하여 캠페인과 플랫폼을 하나의 일관되고 즐거운 경험으로 만드는 것입니다. 우리의 원칙과 원팀 정신에 이끌려, 우리는 신뢰를 영감하고, 성과를 추진하며, AdTech가 될 수 있는 새로운 표준을 설정하기 위해 디자인합니다.',
     
     // Principles
     'principles.title': '원칙',
