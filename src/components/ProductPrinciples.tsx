@@ -124,9 +124,9 @@ const ProductPrinciples = () => {
     };
   }, [isHovered, isPrinciplesInView, translatedPrinciples.length]);
 
-  // Auto-scroll to active principle tab
+  // Auto-scroll to active principle tab (only when user is interacting)
   useEffect(() => {
-    if (principlesNavRef.current) {
+    if (principlesNavRef.current && isHovered) {
       const activeButton = principlesNavRef.current.children[selectedPrinciple] as HTMLElement;
       if (activeButton) {
         activeButton.scrollIntoView({
@@ -136,7 +136,7 @@ const ProductPrinciples = () => {
         });
       }
     }
-  }, [selectedPrinciple]);
+  }, [selectedPrinciple, isHovered]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

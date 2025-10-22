@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionNavigation from '@/components/SectionNavigation';
 import SectionPlaceholder from '@/components/SectionPlaceholder';
-import { Award, FileText, Download, Menu } from 'lucide-react';
+import { Award, FileText, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -32,7 +32,7 @@ export default function BrandPage() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="mb-8"
           >
-            <Menu className="w-16 h-16 text-white mx-auto mb-6" />
+            <Award className="w-16 h-16 text-white mx-auto mb-6" />
           </motion.div>
           
           <motion.h1
