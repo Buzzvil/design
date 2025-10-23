@@ -12,23 +12,45 @@ interface SectionNavigationProps {
 
 export default function SectionNavigation({ sections, className = '' }: SectionNavigationProps) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || '');
+  const [isInFooter, setIsInFooter] = useState(false);
   const mobileNavRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       let currentSection = sections[0]?.id || '';
+      let foundSection = false;
       
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
-            currentSection = section.id;
+      // Check if we're in the footer area (near bottom of page)
+      const scrollPosition = window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const footerThreshold = documentHeight - windowHeight - 200; // 200px before footer
+      
+      const inFooter = scrollPosition > footerThreshold;
+      setIsInFooter(inFooter);
+      
+      // If we're in footer, keep the last section active or hide navigation
+      if (inFooter) {
+        currentSection = sections[sections.length - 1]?.id || sections[0]?.id || '';
+        foundSection = true;
+      } else {
+        // Normal section detection
+        for (const section of sections) {
+          const element = document.getElementById(section.id);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+              currentSection = section.id;
+              foundSection = true;
+            }
           }
         }
       }
       
-      setActiveSection(currentSection);
+      // Only update if we found a section or we're in footer
+      if (foundSection || inFooter) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -119,7 +141,7 @@ export default function SectionNavigation({ sections, className = '' }: SectionN
       </nav>
 
       {/* Mobile Navigation - Horizontal Scroll */}
-      <nav className={`md:hidden fixed bottom-4 left-4 right-4 z-40 ${className}`}>
+      <nav className={`md:hidden fixed bottom-4 left-4 right-4 z-40 transition-all duration-300 ${isInFooter ? 'opacity-0 pointer-events-none' : 'opacity-100'} ${className}`}>
         <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-lg shadow-lg p-2">
           <div ref={mobileNavRef} className="flex space-x-1 overflow-x-auto scrollbar-hide">
             {sections.map((section, index) => (
