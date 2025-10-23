@@ -159,7 +159,7 @@ ${formData.discussion}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
-        className="fixed inset-0 z-50 bg-background flex flex-col"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
         style={{ 
           position: 'fixed', 
           top: 0, 
@@ -170,19 +170,21 @@ ${formData.discussion}
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
-          <h1 className="text-xl font-bold text-foreground">Coffee Chat Request</h1>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
-          >
-            <X className="w-5 h-5 text-muted-foreground" />
-          </button>
-        </div>
+        {/* Form Card */}
+        <div className="bg-background border border-border rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col">
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0">
+            <h1 className="text-2xl font-bold text-foreground">Coffee Chat Request</h1>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+            >
+              <X className="w-6 h-6 text-muted-foreground" />
+            </button>
+          </div>
 
-        {/* Form */}
-        <div className="flex-1 overflow-y-auto p-6">
+          {/* Form */}
+          <div className="flex-1 overflow-y-auto p-6">
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Section 1: About You */}
             <div className="space-y-4">
@@ -379,6 +381,7 @@ ${formData.discussion}
               </motion.button>
             </div>
           </form>
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>
