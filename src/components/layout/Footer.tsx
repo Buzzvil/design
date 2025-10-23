@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Twitter, Linkedin, Github, Heart } from 'lucide-react';
+import { Mail, Linkedin, Github, Heart, Figma } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactBanner from './ContactBanner';
 import Logo from './Logo';
@@ -28,18 +28,19 @@ const Footer = () => {
       { name: t('footer.product.resources'), href: '/product#resources' },
     ],
     'Connect': [
-      { name: t('footer.connect.contact'), href: 'mailto:design@buzzvil.com' },
-      { name: t('footer.connect.careers'), href: 'https://buzzvil.com/careers' },
-      { name: t('footer.connect.github'), href: 'https://github.com/buzzvil' },
-      { name: t('footer.connect.linkedin'), href: 'https://linkedin.com/company/buzzvil' },
+      { name: 'Buzzvil', href: 'https://www.buzzvil.com/en' },
+      { name: 'Careers', href: 'https://buzzvil.career.greetinghr.com/ko/home' },
+      { name: 'Figma', href: 'https://www.figma.com/@buzzvil' },
+      { name: 'GitHub', href: 'https://github.com/Buzzvil/design' },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/buzzvil/' },
     ],
   };
 
   const socialLinks = [
-    { name: 'Email', href: 'mailto:design@buzzvil.com', icon: Mail },
-    { name: 'Twitter', href: 'https://twitter.com/buzzvil', icon: Twitter },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/buzzvil', icon: Linkedin },
-    { name: 'GitHub', href: 'https://github.com/buzzvil', icon: Github },
+    { name: 'Email', href: 'mailto:design-team@buzzvil.com', icon: Mail },
+    { name: 'Figma', href: 'https://www.figma.com/@buzzvil', icon: Figma },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/buzzvil/', icon: Linkedin },
+    { name: 'GitHub', href: 'https://github.com/Buzzvil/design', icon: Github },
   ];
 
   const containerVariants = {
@@ -82,7 +83,7 @@ const Footer = () => {
               <span className="text-xl font-bold gradient-text">Design Buzzvil</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
-              {t('footer.description')}
+              Home to Buzzvil&apos;s design source of truth. We build in the open. This portal is primarily meant to be used internally and by our partners, but we also like anyone to have a look at how we work!
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
