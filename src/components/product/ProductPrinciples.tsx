@@ -205,13 +205,13 @@ const ProductPrinciples = () => {
         >
           <BlurReveal>
             <SectionTitle>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
                 {t('principles.title')}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
                 {t('principles.subtitle')}
               </p>
-              <div className="text-sm text-muted-foreground/70 flex items-center justify-center gap-2">
+              <div className="text-xs md:text-sm text-muted-foreground/70 flex items-center justify-center gap-2 flex-wrap">
                 <span>Use arrow keys to navigate</span>
                 <span>•</span>
                 <span>Space to pause/resume</span>
@@ -223,12 +223,12 @@ const ProductPrinciples = () => {
         {/* Principle Navigation */}
         <motion.div 
           variants={itemVariants}
-          className="flex justify-center mb-12 px-4"
+          className="flex justify-center mb-8 md:mb-12 px-4"
         >
-          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-full">
+          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-full w-full">
             <div 
               ref={principlesNavRef}
-              className="flex gap-2"
+              className="flex gap-1 md:gap-2"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -236,7 +236,7 @@ const ProductPrinciples = () => {
               <button
                 key={principle.id}
                 onClick={() => setSelectedPrinciple(index)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap ${
+                className={`px-3 py-2 md:px-4 md:py-2 rounded-lg font-medium transition-all duration-300 text-xs md:text-sm whitespace-nowrap flex-shrink-0 ${
                   selectedPrinciple === index
                     ? 'bg-white text-black'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -252,7 +252,7 @@ const ProductPrinciples = () => {
         {/* Principle Content with Enhanced 3D Transitions */}
         <motion.div 
           variants={itemVariants}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto px-4"
         >
           <div 
             className="relative overflow-hidden perspective-1000"
@@ -283,34 +283,34 @@ const ProductPrinciples = () => {
                       zIndex: isActive ? 10 : 5 - distance,
                     }}
                   >
-                    <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-12 shadow-2xl">
+                    <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-6 md:p-12 shadow-2xl">
                       {/* Interactive Component */}
                       {principle.id === 'reward-time' && <RewardCounter isActive={isActive} />}
                       {principle.id === 'delight-deception' && <DelightInteraction isActive={isActive} />}
                       {principle.id === 'scalable-design' && <ScalableGrowth isActive={isActive} />}
 
                       {/* Title */}
-                      <h3 className="text-4xl md:text-5xl font-bold text-center mb-6 transition-all duration-700">
+                      <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 transition-all duration-700">
                         {principle.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-xl text-muted-foreground text-center mb-8 leading-relaxed transition-all duration-700">
+                      <p className="text-base md:text-xl text-muted-foreground text-center mb-6 md:mb-8 leading-relaxed transition-all duration-700">
                         {principle.description}
                       </p>
 
                       {/* Characteristics */}
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                         {principle.characteristics.map((characteristic, charIndex) => (
                           <div
                             key={charIndex}
-                            className="p-4 bg-muted/30 rounded-xl border border-border text-center transition-all duration-700"
+                            className="p-3 md:p-4 bg-muted/30 rounded-xl border border-border text-center transition-all duration-700"
                             style={{
                               transform: isActive ? 'translateY(0px)' : 'translateY(20px)',
                               opacity: isActive ? 1 : 0.7,
                             }}
                           >
-                            <span className="text-sm font-medium">{characteristic}</span>
+                            <span className="text-xs md:text-sm font-medium">{characteristic}</span>
                           </div>
                         ))}
                       </div>
