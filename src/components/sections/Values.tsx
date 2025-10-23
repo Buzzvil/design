@@ -218,7 +218,7 @@ const Values = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8" ref={valuesSectionRef}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             {t('values.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

@@ -64,10 +64,10 @@ export default function Home() {
           <section id="philosophy" className="py-20 scroll-mt-24">
             <div className="max-w-7xl mx-auto px-8">
               <div className="text-center mb-16">
-                <h2 className="text-5xl md:text-7xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   {t('philosophy.title')}
                 </h2>
-                <p className="text-base text-muted-foreground/70 font-medium">
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                   {t('philosophy.subtitle')}
                 </p>
               </div>
