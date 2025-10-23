@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, User, Mail, MessageSquare, Briefcase, Linkedin, Building, Check, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -46,9 +47,44 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     setError('');
 
     try {
-      // For now, we'll use the mailto approach since EmailJS requires setup
-      // TODO: Set up EmailJS service for direct email sending
-      const emailBody = `
+      // Check if EmailJS is configured
+      const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      
+      if (emailjsPublicKey && emailjsPublicKey !== 'YOUR_PUBLIC_KEY') {
+        // Use EmailJS for direct email sending
+        emailjs.init(emailjsPublicKey);
+        
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          occupation: formData.occupation,
+          linkedin: formData.linkedin || 'Not provided',
+          employment_status: formData.employmentStatus === 'yes' ? 'Yes, employed' : formData.employmentStatus === 'no' ? 'No, not employed' : 'Student',
+          workplace: formData.employmentStatus === 'yes' ? formData.workplace : '',
+          message: formData.discussion,
+          to_email: 'max@buzzvil.com'
+        };
+
+        const result = await emailjs.send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          templateParams,
+          emailjsPublicKey
+        );
+
+        if (result.status === 200) {
+          setIsSubmitted(true);
+          setTimeout(() => {
+            setIsSubmitted(false);
+            onClose();
+            resetForm();
+          }, 2000);
+        } else {
+          throw new Error('Email sending failed');
+        }
+      } else {
+        // Fallback to mailto approach
+        const emailBody = `
 New Coffee Chat Request
 
 === About You ===
@@ -64,20 +100,21 @@ ${formData.employmentStatus === 'yes' ? `Current Workplace: ${formData.workplace
 === Discussion Topic ===
 What would you like to discuss:
 ${formData.discussion}
-      `.trim();
+        `.trim();
 
-      const mailtoLink = `mailto:max@buzzvil.com?subject=Coffee Chat Request from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
-      window.open(mailtoLink, '_blank');
-      
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        onClose();
-        resetForm();
-      }, 2000);
+        const mailtoLink = `mailto:max@buzzvil.com?subject=Coffee Chat Request from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
+        window.open(mailtoLink, '_blank');
+        
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          onClose();
+          resetForm();
+        }, 2000);
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setError('Something went wrong. Please try again.');
+      setError('Failed to send email. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -104,37 +141,28 @@ ${formData.discussion}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-background overflow-y-auto"
+        className="fixed inset-0 z-50 bg-background"
+        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between py-4">
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Coffee Chat Request</h1>
-                <p className="text-muted-foreground mt-1">Let&apos;s discuss design over coffee!</p>
-              </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
-              >
-                <X className="w-6 h-6 text-muted-foreground" />
-              </button>
-            </div>
-          </div>
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <h1 className="text-xl font-bold text-foreground">Coffee Chat Request</h1>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+          >
+            <X className="w-5 h-5 text-muted-foreground" />
+          </button>
         </div>
 
         {/* Form */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <form onSubmit={handleSubmit} className="space-y-12">
+        <div className="flex-1 overflow-y-auto p-6">
+          <form onSubmit={handleSubmit} className="space-y-8">
             {/* Section 1: About You */}
-            <div className="space-y-6">
-              <div className="border-l-4 border-primary pl-4">
-                <h2 className="text-xl font-semibold text-foreground">Tell us a bit about you!</h2>
-                <p className="text-muted-foreground mt-1">Help us get to know you better</p>
-              </div>
+            <div className="space-y-4">
+              <h2 className="text-lg font-semibold text-foreground">About You</h2>
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Name */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
@@ -205,93 +233,84 @@ ${formData.discussion}
             </div>
 
             {/* Section 2: Employment Status */}
-            <div className="space-y-6">
-              <div className="border-l-4 border-primary pl-4">
-                <h2 className="text-xl font-semibold text-foreground">Are you currently employed?</h2>
-                <p className="text-muted-foreground mt-1">This helps us understand your background</p>
-              </div>
+            <div className="space-y-4">
+              <h2 className="text-lg font-semibold text-foreground">Employment Status</h2>
               
-              <div className="space-y-4">
-                {/* Radio buttons */}
-                <div className="space-y-3">
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-muted/30 transition-colors">
-                    <input
-                      type="radio"
-                      name="employmentStatus"
-                      value="yes"
-                      checked={formData.employmentStatus === 'yes'}
-                      onChange={handleRadioChange}
-                      className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
-                    />
-                    <span className="text-foreground font-medium">Yes</span>
-                  </label>
-                  
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-muted/30 transition-colors">
-                    <input
-                      type="radio"
-                      name="employmentStatus"
-                      value="no"
-                      checked={formData.employmentStatus === 'no'}
-                      onChange={handleRadioChange}
-                      className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
-                    />
-                    <span className="text-foreground font-medium">No</span>
-                  </label>
-                  
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-muted/30 transition-colors">
-                    <input
-                      type="radio"
-                      name="employmentStatus"
-                      value="student"
-                      checked={formData.employmentStatus === 'student'}
-                      onChange={handleRadioChange}
-                      className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
-                    />
-                    <span className="text-foreground font-medium">I am a student</span>
-                  </label>
-                </div>
-
-                {/* Workplace Input - only show if employed */}
-                {formData.employmentStatus === 'yes' && (
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      <Building className="w-4 h-4 inline mr-2" />
-                      What is your current workplace? *
-                    </label>
-                    <input
-                      type="text"
-                      name="workplace"
-                      value={formData.workplace}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                      placeholder="Your current company or organization"
-                    />
-                  </div>
-                )}
+              <div className="flex flex-wrap gap-3">
+                <label className="flex items-center space-x-2 cursor-pointer px-4 py-2 rounded-lg border border-border hover:bg-muted/30 transition-colors">
+                  <input
+                    type="radio"
+                    name="employmentStatus"
+                    value="yes"
+                    checked={formData.employmentStatus === 'yes'}
+                    onChange={handleRadioChange}
+                    className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
+                  />
+                  <span className="text-sm font-medium">Yes</span>
+                </label>
+                
+                <label className="flex items-center space-x-2 cursor-pointer px-4 py-2 rounded-lg border border-border hover:bg-muted/30 transition-colors">
+                  <input
+                    type="radio"
+                    name="employmentStatus"
+                    value="no"
+                    checked={formData.employmentStatus === 'no'}
+                    onChange={handleRadioChange}
+                    className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
+                  />
+                  <span className="text-sm font-medium">No</span>
+                </label>
+                
+                <label className="flex items-center space-x-2 cursor-pointer px-4 py-2 rounded-lg border border-border hover:bg-muted/30 transition-colors">
+                  <input
+                    type="radio"
+                    name="employmentStatus"
+                    value="student"
+                    checked={formData.employmentStatus === 'student'}
+                    onChange={handleRadioChange}
+                    className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
+                  />
+                  <span className="text-sm font-medium">Student</span>
+                </label>
               </div>
+
+              {/* Workplace Input - only show if employed */}
+              {formData.employmentStatus === 'yes' && (
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    <Building className="w-4 h-4 inline mr-2" />
+                    What is your current workplace? *
+                  </label>
+                  <input
+                    type="text"
+                    name="workplace"
+                    value={formData.workplace}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    placeholder="Your current company or organization"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Section 3: Discussion Topic */}
-            <div className="space-y-6">
-              <div className="border-l-4 border-primary pl-4">
-                <h2 className="text-xl font-semibold text-foreground">What would you like to discuss with us?</h2>
-                <p className="text-muted-foreground mt-1">Tell us what&apos;s on your mind</p>
-              </div>
+            <div className="space-y-4">
+              <h2 className="text-lg font-semibold text-foreground">Discussion Topic</h2>
               
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   <MessageSquare className="w-4 h-4 inline mr-2" />
-                  Your message *
+                  What would you like to discuss? *
                 </label>
                 <textarea
                   name="discussion"
                   value={formData.discussion}
                   onChange={handleInputChange}
                   required
-                  rows={4}
+                  rows={3}
                   className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
-                  placeholder="What would you like to discuss? Any specific topics, questions, or areas of interest?"
+                  placeholder="Tell us what you'd like to discuss..."
                 />
               </div>
             </div>
