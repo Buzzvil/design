@@ -243,9 +243,6 @@ ${formData.discussion}
               
               {/* Employment Status - Small Pills */}
               <div>
-                <label className="block text-sm font-medium text-white mb-3">
-                  Are you currently employed? *
-                </label>
                 <div className="flex gap-2">
                   <label className="cursor-pointer">
                     <input
@@ -261,7 +258,7 @@ ${formData.discussion}
                         ? 'bg-white text-black border-white' 
                         : 'bg-white/10 text-white hover:bg-white/20'
                     }`}>
-                      Yes
+                      I am employed
                     </div>
                   </label>
                   
@@ -279,7 +276,7 @@ ${formData.discussion}
                         ? 'bg-white text-black border-white' 
                         : 'bg-white/10 text-white hover:bg-white/20'
                     }`}>
-                      No
+                      I am unemployed
                     </div>
                   </label>
                   
@@ -297,28 +294,46 @@ ${formData.discussion}
                         ? 'bg-white text-black border-white' 
                         : 'bg-white/10 text-white hover:bg-white/20'
                     }`}>
-                      Student
+                      I am a student
                     </div>
                   </label>
                 </div>
               </div>
 
-              {/* Occupation - only show if employed */}
+              {/* Occupation and Workplace - only show if employed */}
               {formData.employmentStatus === 'yes' && (
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    <Briefcase className="w-4 h-4 inline mr-2" />
-                    Occupation *
-                  </label>
-                  <input
-                    type="text"
-                    name="occupation"
-                    value={formData.occupation}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
-                    placeholder="e.g., Product Designer, UX Researcher, Developer"
-                  />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      <Briefcase className="w-4 h-4 inline mr-2" />
+                      Occupation *
+                    </label>
+                    <input
+                      type="text"
+                      name="occupation"
+                      value={formData.occupation}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
+                      placeholder="e.g., Product Designer, UX Researcher, Developer"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      <Building className="w-4 h-4 inline mr-2" />
+                      Current Workplace *
+                    </label>
+                    <input
+                      type="text"
+                      name="workplace"
+                      value={formData.workplace}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
+                      placeholder="Your current company or organization"
+                    />
+                  </div>
                 </div>
               )}
 
@@ -337,25 +352,6 @@ ${formData.discussion}
                     required
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
                     placeholder="e.g., Computer Science, Design, Business"
-                  />
-                </div>
-              )}
-
-              {/* Workplace Input - only show if employed */}
-              {formData.employmentStatus === 'yes' && (
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    <Building className="w-4 h-4 inline mr-2" />
-                    Current Workplace *
-                  </label>
-                  <input
-                    type="text"
-                    name="workplace"
-                    value={formData.workplace}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
-                    placeholder="Your current company or organization"
                   />
                 </div>
               )}
