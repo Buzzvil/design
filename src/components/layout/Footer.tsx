@@ -94,9 +94,9 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors group"
                 >
-                  <social.icon className="w-5 h-5 text-white" />
+                  <social.icon className="w-5 h-5 text-white group-hover:text-black transition-colors" />
                 </motion.a>
               ))}
             </div>
