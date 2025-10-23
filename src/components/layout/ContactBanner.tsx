@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Coffee } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import ContactForm from '../ui/ContactForm';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 const ContactBanner = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const { openForm } = useContactForm();
   const { t } = useLanguage();
 
   return (
@@ -30,7 +29,7 @@ const ContactBanner = () => {
 
           {/* CTA Button */}
           <motion.button
-            onClick={() => setIsFormOpen(true)}
+            onClick={openForm}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="ml-4 flex items-center space-x-2 px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-200 text-sm font-medium shadow-sm"
@@ -40,12 +39,6 @@ const ContactBanner = () => {
           </motion.button>
         </div>
       </div>
-      
-      {/* Contact Form Modal */}
-      <ContactForm 
-        isOpen={isFormOpen} 
-        onClose={() => setIsFormOpen(false)} 
-      />
     </motion.div>
   );
 };

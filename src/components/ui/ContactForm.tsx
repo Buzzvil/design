@@ -4,13 +4,10 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, User, Mail, Briefcase, Linkedin, Building, Check, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
-interface ContactFormProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
+const ContactForm = () => {
+  const { isFormOpen, closeForm } = useContactForm();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -76,7 +73,7 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
           setIsSubmitted(true);
           setTimeout(() => {
             setIsSubmitted(false);
-            onClose();
+            closeForm();
             resetForm();
           }, 2000);
         } else {
@@ -108,7 +105,7 @@ ${formData.discussion}
         setIsSubmitted(true);
         setTimeout(() => {
           setIsSubmitted(false);
-          onClose();
+          closeForm();
           resetForm();
         }, 2000);
       }
@@ -133,7 +130,7 @@ ${formData.discussion}
     setError('');
   };
 
-  if (!isOpen) return null;
+  if (!isFormOpen) return null;
 
   return (
     <AnimatePresence>
@@ -151,7 +148,7 @@ ${formData.discussion}
           bottom: 0,
           zIndex: 9998
         }}
-        onClick={onClose}
+        onClick={closeForm}
       />
       
       {/* Form Container */}
@@ -173,7 +170,7 @@ ${formData.discussion}
         {/* Header */}
         <div className="absolute top-8 right-8 z-10">
           <button
-            onClick={onClose}
+            onClick={closeForm}
             className="p-2 rounded-lg hover:bg-white/10 transition-colors"
           >
             <X className="w-6 h-6 text-white" />
@@ -244,13 +241,13 @@ ${formData.discussion}
             <div className="space-y-4">
               <h2 className="text-lg font-semibold text-white">Employment Status</h2>
               
-              {/* Employment Status - Connected Pills */}
+              {/* Employment Status - Small Pills */}
               <div>
                 <label className="block text-sm font-medium text-white mb-3">
                   Are you currently employed? *
                 </label>
-                <div className="flex">
-                  <label className="flex-1 cursor-pointer">
+                <div className="flex gap-2">
+                  <label className="cursor-pointer">
                     <input
                       type="radio"
                       name="employmentStatus"
@@ -259,7 +256,7 @@ ${formData.discussion}
                       onChange={handleRadioChange}
                       className="sr-only"
                     />
-                    <div className={`px-4 py-3 text-center border border-white/20 transition-all ${
+                    <div className={`px-3 py-1.5 text-sm rounded-full border border-white/20 transition-all ${
                       formData.employmentStatus === 'yes' 
                         ? 'bg-white text-black border-white' 
                         : 'bg-white/10 text-white hover:bg-white/20'
@@ -268,7 +265,7 @@ ${formData.discussion}
                     </div>
                   </label>
                   
-                  <label className="flex-1 cursor-pointer">
+                  <label className="cursor-pointer">
                     <input
                       type="radio"
                       name="employmentStatus"
@@ -277,7 +274,7 @@ ${formData.discussion}
                       onChange={handleRadioChange}
                       className="sr-only"
                     />
-                    <div className={`px-4 py-3 text-center border-t border-b border-white/20 transition-all ${
+                    <div className={`px-3 py-1.5 text-sm rounded-full border border-white/20 transition-all ${
                       formData.employmentStatus === 'no' 
                         ? 'bg-white text-black border-white' 
                         : 'bg-white/10 text-white hover:bg-white/20'
@@ -286,7 +283,7 @@ ${formData.discussion}
                     </div>
                   </label>
                   
-                  <label className="flex-1 cursor-pointer">
+                  <label className="cursor-pointer">
                     <input
                       type="radio"
                       name="employmentStatus"
@@ -295,7 +292,7 @@ ${formData.discussion}
                       onChange={handleRadioChange}
                       className="sr-only"
                     />
-                    <div className={`px-4 py-3 text-center border border-white/20 transition-all ${
+                    <div className={`px-3 py-1.5 text-sm rounded-full border border-white/20 transition-all ${
                       formData.employmentStatus === 'student' 
                         ? 'bg-white text-black border-white' 
                         : 'bg-white/10 text-white hover:bg-white/20'
@@ -393,7 +390,7 @@ ${formData.discussion}
             <div className="flex justify-end space-x-4 pt-8">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={closeForm}
                 className="px-8 py-3 text-white/70 hover:text-white transition-colors font-medium"
               >
                 Cancel

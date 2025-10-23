@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Nunito, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ContactFormProvider } from "@/contexts/ContactFormContext";
+import ContactForm from "@/components/ui/ContactForm";
 
 const nunito = Nunito({ 
   subsets: ["latin"], 
@@ -41,7 +43,10 @@ export default function RootLayout({
     <html lang="en" className={`${nunito.variable} ${notoKR.variable}`}>
       <body className="min-h-screen bg-background antialiased">
         <LanguageProvider>
-          {children}
+          <ContactFormProvider>
+            {children}
+            <ContactForm />
+          </ContactFormProvider>
         </LanguageProvider>
       </body>
     </html>
