@@ -194,12 +194,6 @@ const Values = () => {
           event.preventDefault();
           setSelectedValue(prev => (prev + 1) % translatedValues.length);
           break;
-        case ' ':
-        case 'Enter':
-          event.preventDefault();
-          // Pause/resume auto-advance
-          setIsHovered(prev => !prev);
-          break;
         case 'Home':
           event.preventDefault();
           setSelectedValue(0);
@@ -227,14 +221,9 @@ const Values = () => {
           <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
             {t('values.title')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('values.subtitle')}
           </p>
-          <div className="text-sm text-muted-foreground/70 flex items-center justify-center gap-2">
-            <span>Use arrow keys to navigate</span>
-            <span>•</span>
-            <span>Space to pause/resume</span>
-          </div>
         </div>
 
         {/* Value Navigation */}

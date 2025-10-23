@@ -152,12 +152,6 @@ const ProductPrinciples = () => {
           event.preventDefault();
           setSelectedPrinciple(prev => (prev + 1) % translatedPrinciples.length);
           break;
-        case ' ':
-        case 'Enter':
-          event.preventDefault();
-          // Pause/resume auto-advance
-          setIsHovered(prev => !prev);
-          break;
         case 'Home':
           event.preventDefault();
           setSelectedPrinciple(0);
