@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, User, Mail, Briefcase, Linkedin, Building, Check, AlertCircle } from 'lucide-react';
+import { X, Send, User, Mail, Briefcase, Building, Check, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useContactForm } from '@/contexts/ContactFormContext';
 
@@ -12,7 +12,6 @@ const ContactForm = () => {
     name: '',
     email: '',
     occupation: '',
-    linkedin: '',
     employmentStatus: '', // 'yes', 'no', 'student', or empty
     workplace: '',
     discussion: '',
@@ -20,6 +19,29 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+
+  // Prevent body scroll when form is open
+  useEffect(() => {
+    if (isFormOpen) {
+      // Store the current scroll position
+      const scrollY = window.scrollY;
+      
+      // Disable body scroll
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      return () => {
+        // Re-enable body scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isFormOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -51,16 +73,15 @@ const ContactForm = () => {
         // Use EmailJS for direct email sending
         emailjs.init(emailjsPublicKey);
         
-        const templateParams = {
-          from_name: formData.name,
-          from_email: formData.email,
-          occupation: formData.occupation,
-          linkedin: formData.linkedin || 'Not provided',
-          employment_status: formData.employmentStatus === 'yes' ? 'Yes, employed' : formData.employmentStatus === 'no' ? 'No, not employed' : 'Student',
-          workplace: formData.employmentStatus === 'yes' ? formData.workplace : '',
-          message: formData.discussion,
-          to_email: 'max@buzzvil.com'
-        };
+                const templateParams = {
+                  from_name: formData.name,
+                  from_email: formData.email,
+                  occupation: formData.occupation,
+                  employment_status: formData.employmentStatus === 'yes' ? 'Yes, employed' : formData.employmentStatus === 'no' ? 'No, not employed' : 'Student',
+                  workplace: formData.employmentStatus === 'yes' ? formData.workplace : '',
+                  message: formData.discussion,
+                  to_email: 'max@buzzvil.com'
+                };
 
         const result = await emailjs.send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -87,12 +108,12 @@ New Coffee Chat Request
 === About You ===
 Name: ${formData.name}
 Email: ${formData.email}
-Occupation: ${formData.occupation}
-LinkedIn: ${formData.linkedin || 'Not provided'}
 
 === Current Status ===
 Employment Status: ${formData.employmentStatus === 'yes' ? 'Yes, employed' : formData.employmentStatus === 'no' ? 'No, not employed' : 'Student'}
-${formData.employmentStatus === 'yes' ? `Current Workplace: ${formData.workplace}` : ''}
+${formData.employmentStatus === 'yes' ? `Job: ${formData.occupation}` : ''}
+${formData.employmentStatus === 'student' ? `Study Field: ${formData.occupation}` : ''}
+${formData.employmentStatus === 'yes' ? `Workplace: ${formData.workplace}` : ''}
 
 === Discussion Topic ===
 What would you like to discuss:
@@ -122,7 +143,6 @@ ${formData.discussion}
       name: '',
       email: '',
       occupation: '',
-      linkedin: '',
       employmentStatus: '',
       workplace: '',
       discussion: '',
@@ -219,21 +239,6 @@ ${formData.discussion}
                   />
                 </div>
 
-                {/* LinkedIn */}
-                <div className="lg:col-span-2">
-                  <label className="block text-sm font-medium text-white mb-2">
-                    <Linkedin className="w-4 h-4 inline mr-2" />
-                    LinkedIn Profile
-                  </label>
-                  <input
-                    type="url"
-                    name="linkedin"
-                    value={formData.linkedin}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
-                    placeholder="https://linkedin.com/in/yourname"
-                  />
-                </div>
               </div>
             </div>
 
@@ -300,29 +305,13 @@ ${formData.discussion}
                 </div>
               </div>
 
-              {/* Occupation and Workplace - only show if employed */}
+              {/* Workplace and Job - only show if employed */}
               {formData.employmentStatus === 'yes' && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">
-                      <Briefcase className="w-4 h-4 inline mr-2" />
-                      Occupation *
-                    </label>
-                    <input
-                      type="text"
-                      name="occupation"
-                      value={formData.occupation}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
-                      placeholder="e.g., Product Designer, UX Researcher, Developer"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">
                       <Building className="w-4 h-4 inline mr-2" />
-                      Current Workplace *
+                      Your workplace *
                     </label>
                     <input
                       type="text"
@@ -332,6 +321,22 @@ ${formData.discussion}
                       required
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
                       placeholder="Your current company or organization"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      <Briefcase className="w-4 h-4 inline mr-2" />
+                      Your job *
+                    </label>
+                    <input
+                      type="text"
+                      name="occupation"
+                      value={formData.occupation}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
+                      placeholder="e.g., Product Designer, UX Researcher, Developer"
                     />
                   </div>
                 </div>
