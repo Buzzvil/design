@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
 import MissionVision from '@/components/sections/MissionVision';
@@ -16,6 +17,24 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
   const { t } = useLanguage();
+
+  // Prevent unwanted scroll behavior on page load
+  useEffect(() => {
+    // Disable browser scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Ensure page starts at top on load
+    window.scrollTo(0, 0);
+    
+    // Clean up on unmount
+    return () => {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
   
   const sections = [
     { id: 'mission-vision', label: 'The Mission' },
