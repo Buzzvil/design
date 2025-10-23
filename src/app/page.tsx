@@ -37,11 +37,11 @@ export default function Home() {
   }, []);
   
   const sections = [
-    { id: 'mission-vision', label: 'The Mission' },
-    { id: 'philosophy', label: 'Our Mindset' },
-    { id: 'values', label: 'Working Principles' },
-    { id: 'team', label: 'Our Team' },
-    { id: 'tools', label: 'Our Stack' },
+    { id: 'mission-vision', label: t('nav.sections.mission') },
+    { id: 'philosophy', label: t('nav.sections.philosophy') },
+    { id: 'values', label: t('nav.sections.values') },
+    { id: 'team', label: t('nav.sections.team') },
+    { id: 'tools', label: t('nav.sections.tools') },
   ];
 
   return (

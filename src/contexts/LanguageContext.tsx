@@ -22,6 +22,11 @@ const translations = {
     'nav.product': 'Product',
     'nav.team': 'Team',
     'nav.tools': 'Tools',
+    'nav.sections.mission': 'The Mission',
+    'nav.sections.philosophy': 'Our Mindset',
+    'nav.sections.values': 'Working Principles',
+    'nav.sections.team': 'Our Team',
+    'nav.sections.tools': 'Our Stack',
     
     // Contact Banner
     'banner.title': 'Want to meet us over coffee?',
@@ -211,6 +216,11 @@ const translations = {
     'nav.product': '제품',
     'nav.team': '팀',
     'nav.tools': '도구',
+    'nav.sections.mission': '미션',
+    'nav.sections.philosophy': '마인드셋',
+    'nav.sections.values': '작업 원칙',
+    'nav.sections.team': '우리의 팀',
+    'nav.sections.tools': '우리의 스택',
     
     // Contact Banner
     'banner.title': '커피 한 잔 하며 만나볼까요?',
@@ -236,12 +246,15 @@ const translations = {
             'mission.title': '미션 & 비전',
             'mission.subtitle': '버즈빌에서 우리가 하는 모든 일을 이끄는 미션과 비전.',
             'mission.mission.title': '미션',
+            'mission.mission.subtitle': '지금 우리가 하는 일',
             'mission.mission.content': '우리는 사람들이 버즈빌의 광고 캠페인과 브랜드를 발견하고, 경험하고, 지속적으로 참여하는 방식을 형성하는 의미 있는 상호작용을 디자인합니다. 우리의 작업은 광고를 사람들이 탐험하고 싶어하는 경험으로 바꾸며, 주의를 끌고, 호기심을 자극하며, 광고주에게 성과를 가져다주는 순간들을 만듭니다.',
             'mission.vision.title': '비전',
+            'mission.vision.subtitle': '우리가 구축하는 미래',
             'mission.vision.content': '우리는 광고 캠페인과 브랜드 경험을 사용자와 광고주를 연결하는 매력적이고 반복 가능한 상호작용으로 변화시켜 AdTech 디자인의 새로운 표준을 제시합니다. 이러한 새로운 참여 방식을 통해, 버즈빌은 광고가 즐겁고, 사람들의 일상 경험에 자연스럽게 통합되는 미래를 이끕니다.',
     
             // Philosophy
             'philosophy.title': '철학',
+            'philosophy.subtitle': '우리가 접근하는 방식',
             'philosophy.content': '버즈빌에서 디자인은 사람들이 광고를 경험하는 방식을 형성합니다. 방해가 아닌 즐거운 연결의 순간으로 말입니다. 우리는 브랜드 접점부터 제품 내 경험까지 모든 상호작용이 재미있고, 매력적이며, 자연스러워야 한다고 믿습니다. 우리의 역할은 버즈빌이 생태계 전반에서 어떻게 보이고, 느껴지고, 행동하는지를 통합하여 캠페인과 플랫폼을 하나의 일관되고 즐거운 경험으로 만드는 것입니다. 우리의 원칙과 원팀 정신에 이끌려, 우리는 신뢰를 영감하고, 성과를 추진하며, AdTech가 될 수 있는 새로운 표준을 설정하기 위해 디자인합니다.',
     
             // Ways of Working

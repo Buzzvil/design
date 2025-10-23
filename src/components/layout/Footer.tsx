@@ -11,21 +11,21 @@ const Footer = () => {
   
   const footerLinks = {
     'Foundations': [
-      { name: t('footer.foundations.mission'), href: '#mission-vision' },
-      { name: t('footer.foundations.philosophy'), href: '#philosophy' },
-      { name: t('footer.foundations.values'), href: '#values' },
-      { name: t('footer.foundations.team'), href: '#team' },
-      { name: t('footer.foundations.tools'), href: '#tools' },
+      { name: t('footer.foundations.mission'), href: '/#mission-vision' },
+      { name: t('footer.foundations.philosophy'), href: '/#philosophy' },
+      { name: t('footer.foundations.values'), href: '/#values' },
+      { name: t('footer.foundations.team'), href: '/#team' },
+      { name: t('footer.foundations.tools'), href: '/#tools' },
     ],
     'Brand': [
-      { name: t('footer.brand.principles'), href: '/brand#principles' },
-      { name: t('footer.brand.guidelines'), href: '/brand#guidelines' },
-      { name: t('footer.brand.resources'), href: '/brand#resources' },
+      { name: t('footer.brand.principles'), href: '/design/brand#principles' },
+      { name: t('footer.brand.guidelines'), href: '/design/brand#guidelines' },
+      { name: t('footer.brand.resources'), href: '/design/brand#resources' },
     ],
     'Product': [
-      { name: t('footer.product.principles'), href: '/product#principles' },
-      { name: t('footer.product.guidelines'), href: '/product#guidelines' },
-      { name: t('footer.product.resources'), href: '/product#resources' },
+      { name: t('footer.product.principles'), href: '/design/product#principles' },
+      { name: t('footer.product.guidelines'), href: '/design/product#guidelines' },
+      { name: t('footer.product.resources'), href: '/design/product#resources' },
     ],
     'Connect': [
       { name: t('footer.connect.buzzvil'), href: 'https://www.buzzvil.com/en' },
