@@ -58,6 +58,16 @@ const translations = {
             'philosophy.subtitle': 'how we approach it',
             'philosophy.content': 'At Buzzvil, design shapes how people experience advertising—not as interruptions, but as moments of connection and delight.\nWe believe every touchpoint, from brand to product, should feel playful, engaging, and effortless.\nOur role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, building trust, driving performance, and inspiring what AdTech can become.',
     
+            // Ways of Working
+            'waysOfWorking.title': 'Ways of Working',
+            'waysOfWorking.subtitle': 'How we think, create, and collaborate at Buzzvil Design.',
+            'waysOfWorking.principles.title': 'Our Principles',
+            'waysOfWorking.principles.subtitle': 'How we work together to design at Buzzvil.',
+            'waysOfWorking.team.title': 'Our Team',
+            'waysOfWorking.team.subtitle': 'The people behind Buzzvil Design.',
+            'waysOfWorking.stack.title': 'Our Stack',
+            'waysOfWorking.stack.subtitle': 'The tools that power our design work.',
+    
     // Principles
     'principles.title': 'Principles',
     'principles.subtitle': 'The principles that guide our approach to design and development.',
@@ -231,6 +241,16 @@ const translations = {
             // Philosophy
             'philosophy.title': '철학',
             'philosophy.content': '버즈빌에서 디자인은 사람들이 광고를 경험하는 방식을 형성합니다. 방해가 아닌 즐거운 연결의 순간으로 말입니다. 우리는 브랜드 접점부터 제품 내 경험까지 모든 상호작용이 재미있고, 매력적이며, 자연스러워야 한다고 믿습니다. 우리의 역할은 버즈빌이 생태계 전반에서 어떻게 보이고, 느껴지고, 행동하는지를 통합하여 캠페인과 플랫폼을 하나의 일관되고 즐거운 경험으로 만드는 것입니다. 우리의 원칙과 원팀 정신에 이끌려, 우리는 신뢰를 영감하고, 성과를 추진하며, AdTech가 될 수 있는 새로운 표준을 설정하기 위해 디자인합니다.',
+    
+            // Ways of Working
+            'waysOfWorking.title': '작업 방식',
+            'waysOfWorking.subtitle': '버즈빌 디자인에서 우리가 생각하고, 창조하고, 협업하는 방식.',
+            'waysOfWorking.principles.title': '우리의 원칙',
+            'waysOfWorking.principles.subtitle': '버즈빌에서 디자인하기 위해 함께 작업하는 방식.',
+            'waysOfWorking.team.title': '우리의 팀',
+            'waysOfWorking.team.subtitle': '버즈빌 디자인을 만드는 사람들.',
+            'waysOfWorking.stack.title': '우리의 스택',
+            'waysOfWorking.stack.subtitle': '우리의 디자인 작업을 지원하는 도구들.',
     
     // Principles
     'principles.title': '원칙',

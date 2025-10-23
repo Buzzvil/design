@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Palette } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from '../ui/BlurReveal';
-import { SectionTitle } from '../ui/SectionTitle';
 import Image from 'next/image';
 
 const Tools = () => {
@@ -73,27 +71,7 @@ const Tools = () => {
   };
 
   return (
-    <section id="tools" className="py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <SectionTitle className="mb-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              {t('tools.title')}
-            </h2>
-          </SectionTitle>
-          <BlurReveal>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('tools.subtitle')}
-            </p>
-          </BlurReveal>
-        </motion.div>
+    <div>
 
         {/* Tools Grid */}
         <motion.div
@@ -188,8 +166,7 @@ const Tools = () => {
           ))}
         </motion.div>
 
-      </div>
-    </section>
+    </div>
   );
 };
 

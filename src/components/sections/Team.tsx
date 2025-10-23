@@ -2,8 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from '../ui/BlurReveal';
-import { SectionTitle } from '../ui/SectionTitle';
 import Avatar from '../ui/Avatar';
 import { loadTeamMembers, TeamMember } from '@/utils/teamParser';
 import { useState, useEffect } from 'react';
@@ -47,27 +45,7 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="py-32 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <SectionTitle className="mb-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              {t('team.title')}
-            </h2>
-          </SectionTitle>
-          <BlurReveal>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('team.subtitle')}
-            </p>
-          </BlurReveal>
-        </motion.div>
+    <div>
 
 
         {/* Team Members */}
@@ -152,9 +130,7 @@ const Team = () => {
             </div>
           )}
         </motion.div>
-
-      </div>
-    </section>
+    </div>
   );
 };
 
