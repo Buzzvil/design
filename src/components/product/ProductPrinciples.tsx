@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from '../ui/BlurReveal';
 import { SectionTitle } from '../ui/SectionTitle';
+import { RewardCounter } from './RewardCounter';
+import { DelightInteraction } from './DelightInteraction';
+import { ScalableGrowth } from './ScalableGrowth';
 
 const BUZZVIL_PRINCIPLES = [
   {
@@ -282,7 +285,9 @@ const ProductPrinciples = () => {
                   >
                     <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-12 shadow-2xl">
                       {/* Interactive Component */}
-                      {/* Component placeholders for future implementation */}
+                      {principle.id === 'reward-time' && <RewardCounter isActive={isActive} />}
+                      {principle.id === 'delight-deception' && <DelightInteraction isActive={isActive} />}
+                      {principle.id === 'scalable-design' && <ScalableGrowth isActive={isActive} />}
 
                       {/* Title */}
                       <h3 className="text-4xl md:text-5xl font-bold text-center mb-6 transition-all duration-700">
