@@ -211,11 +211,6 @@ const ProductPrinciples = () => {
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {t('principles.subtitle')}
               </p>
-              <div className="text-xs md:text-sm text-muted-foreground/70 flex items-center justify-center gap-2 flex-wrap">
-                <span>Use arrow keys to navigate</span>
-                <span>•</span>
-                <span>Space to pause/resume</span>
-              </div>
             </SectionTitle>
           </BlurReveal>
         </motion.div>
