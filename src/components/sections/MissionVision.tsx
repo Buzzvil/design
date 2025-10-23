@@ -64,7 +64,7 @@ const MissionVision = () => {
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
               {t('mission.mission.title')}
             </h3>
-            <p className="text-sm text-muted-foreground/70 mb-6 font-medium">
+            <p className="text-base text-muted-foreground/70 mb-6 font-medium">
               {t('mission.mission.subtitle')}
             </p>
             <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
@@ -85,7 +85,7 @@ const MissionVision = () => {
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
               {t('mission.vision.title')}
             </h3>
-            <p className="text-sm text-muted-foreground/70 mb-6 font-medium">
+            <p className="text-base text-muted-foreground/70 mb-6 font-medium">
               {t('mission.vision.subtitle')}
             </p>
             <div className="text-lg text-muted-foreground leading-relaxed space-y-4">

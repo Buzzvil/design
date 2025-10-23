@@ -96,8 +96,8 @@ const translations = {
     'principles.scalable.characteristics.3': 'Decision Veto Power',
     
     // Values
-            'values.title': 'The way we work',
-    'values.subtitle': 'The core values that drive everything we do at Buzzvil.',
+            'values.title': 'Working Principles',
+    'values.subtitle': 'How we work together to design at Buzzvil.',
             'values.build.title': 'Build in the Open',
             'values.build.shortTitle': 'Build in the Open',
     'values.build.content': 'We start rough, share early, and iterate fast. Every designer has access to AI tools that accelerate exploration. Feedback and quick loops help us refine ideas into solid, production-ready solutions.',
@@ -153,8 +153,8 @@ const translations = {
     'team.subtitle': 'A diverse group of creative minds working together to create exceptional user experiences and drive design excellence.',
     
     // Tools
-    'tools.title': 'Design Tools',
-    'tools.subtitle': 'The tools and platforms we use to create, collaborate, and deliver exceptional design experiences. Stay updated with our tech stack.',
+    'tools.title': 'Our Stack',
+    'tools.subtitle': 'The tools that power our design work.',
     'tools.visit': 'Visit Tool',
     'tools.category.design-development': 'Design & Development Tools',
     
@@ -280,8 +280,8 @@ const translations = {
     'principles.scalable.characteristics.3': '결정 거부 권한',
     
     // Values
-    'values.title': '우리가 일하는 방식',
-    'values.subtitle': '버즈빌에서 우리가 하는 모든 일을 이끄는 핵심 가치들.',
+    'values.title': '작업 원칙',
+    'values.subtitle': '버즈빌에서 디자인하기 위해 함께 작업하는 방식.',
     'values.build.title': '열린 공간에서 구축',
     'values.build.shortTitle': '열린 공간에서 구축',
     'values.build.content': '우리는 거칠게 시작하고, 일찍 공유하며, 빠르게 반복합니다. 모든 디자이너는 탐색을 가속화하는 AI 도구에 접근할 수 있습니다. 피드백과 빠른 루프는 아이디어를 견고하고 프로덕션 준비된 솔루션으로 정제하는 데 도움이 됩니다.',
@@ -337,8 +337,8 @@ const translations = {
     'team.subtitle': '탁월한 사용자 경험을 만들고 디자인 우수성을 추진하기 위해 함께 일하는 다양한 창의적 마음의 그룹.',
     
     // Tools
-    'tools.title': '디자인 도구',
-    'tools.subtitle': '탁월한 디자인 경험을 만들고, 협업하고, 전달하기 위해 사용하는 도구와 플랫폼. 우리의 기술 스택을 최신 상태로 유지하세요.',
+    'tools.title': '우리의 스택',
+    'tools.subtitle': '우리의 디자인 작업을 지원하는 도구들.',
     'tools.visit': '도구 방문',
     'tools.category.design-development': '디자인 & 개발 도구',
     

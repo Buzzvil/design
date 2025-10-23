@@ -5,7 +5,9 @@ import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
 import MissionVision from '@/components/sections/MissionVision';
 import { PhilosophyAnimation } from '@/components/sections/PhilosophyAnimation';
-import WaysOfWorking from '@/components/sections/WaysOfWorking';
+import Values from '@/components/sections/Values';
+import Team from '@/components/sections/Team';
+import Tools from '@/components/sections/Tools';
 import Footer from '@/components/layout/Footer';
 import InteractiveMinimap from '@/components/ui/InteractiveMinimap';
 import SectionNavigation from '@/components/ui/SectionNavigation';
@@ -37,7 +39,9 @@ export default function Home() {
   const sections = [
     { id: 'mission-vision', label: 'The Mission' },
     { id: 'philosophy', label: 'Our Mindset' },
-    { id: 'ways-of-working', label: 'Ways of Working' },
+    { id: 'values', label: 'Working Principles' },
+    { id: 'team', label: 'Our Team' },
+    { id: 'tools', label: 'Our Stack' },
   ];
 
   return (
@@ -63,7 +67,7 @@ export default function Home() {
                 <h2 className="text-5xl md:text-7xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   {t('philosophy.title')}
                 </h2>
-                <p className="text-sm text-muted-foreground/70 font-medium">
+                <p className="text-base text-muted-foreground/70 font-medium">
                   {t('philosophy.subtitle')}
                 </p>
               </div>
@@ -83,8 +87,20 @@ export default function Home() {
         </ParallaxSection>
         
         <ParallaxSection speed={0.5} offset={150}>
-          <div id="ways-of-working" className="scroll-mt-24">
-            <WaysOfWorking />
+          <div id="values" className="scroll-mt-24">
+            <Values />
+          </div>
+        </ParallaxSection>
+        
+        <ParallaxSection speed={0.6} offset={200}>
+          <div id="team" className="scroll-mt-24">
+            <Team />
+          </div>
+        </ParallaxSection>
+        
+        <ParallaxSection speed={0.7} offset={250}>
+          <div id="tools" className="scroll-mt-24">
+            <Tools />
           </div>
         </ParallaxSection>
         

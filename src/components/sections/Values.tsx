@@ -215,7 +215,16 @@ const Values = () => {
   }, [isValuesInView, translatedValues.length]);
 
   return (
-    <div ref={valuesSectionRef}>
+    <section className="py-20 px-4 sm:px-6 lg:px-8" ref={valuesSectionRef}>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-7xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+            {t('values.title')}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            {t('values.subtitle')}
+          </p>
+        </div>
 
         {/* Value Navigation */}
         <div className="flex justify-center mb-12 px-4">
@@ -329,7 +338,8 @@ const Values = () => {
             </div>
           </div>
         </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

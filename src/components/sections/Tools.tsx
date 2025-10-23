@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Palette } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
 
 const Tools = () => {
   const { t } = useLanguage();
@@ -71,7 +73,27 @@ const Tools = () => {
   };
 
   return (
-    <div>
+    <section id="tools" className="py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <SectionTitle className="mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+              {t('tools.title')}
+            </h2>
+          </SectionTitle>
+          <BlurReveal>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              {t('tools.subtitle')}
+            </p>
+          </BlurReveal>
+        </motion.div>
 
         {/* Tools Grid */}
         <motion.div
@@ -87,13 +109,6 @@ const Tools = () => {
               variants={itemVariants}
               className="space-y-6"
             >
-              {/* Category Header */}
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <category.icon className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold">{category.category}</h3>
-              </div>
 
               {/* Tools Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -166,7 +181,8 @@ const Tools = () => {
           ))}
         </motion.div>
 
-    </div>
+      </div>
+    </section>
   );
 };
 
