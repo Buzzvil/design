@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Palette, Mail, Twitter, Linkedin, Github, Heart } from 'lucide-react';
+import { Mail, Twitter, Linkedin, Github, Heart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactBanner from './ContactBanner';
+import Logo from './Logo';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -76,10 +77,8 @@ const Footer = () => {
         >
           {/* Brand Section */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center">
-                <Palette className="w-5 h-5 text-white" />
-              </div>
+            <div className="flex items-center space-x-3 mb-6">
+              <Logo size={32} className="text-white" />
               <span className="text-xl font-bold gradient-text">Design Buzzvil</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
