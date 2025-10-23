@@ -11,11 +11,11 @@ const Footer = () => {
   
   const footerLinks = {
     'Foundations': [
-      { name: t('footer.foundations.mission'), href: '/#mission-vision' },
-      { name: t('footer.foundations.philosophy'), href: '/#philosophy' },
-      { name: t('footer.foundations.values'), href: '/#values' },
-      { name: t('footer.foundations.team'), href: '/#team' },
-      { name: t('footer.foundations.tools'), href: '/#tools' },
+      { name: t('footer.foundations.mission'), href: '/design/#mission-vision' },
+      { name: t('footer.foundations.philosophy'), href: '/design/#philosophy' },
+      { name: t('footer.foundations.values'), href: '/design/#values' },
+      { name: t('footer.foundations.team'), href: '/design/#team' },
+      { name: t('footer.foundations.tools'), href: '/design/#tools' },
     ],
     'Brand': [
       { name: t('footer.brand.principles'), href: '/design/brand#principles' },
