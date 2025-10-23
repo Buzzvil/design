@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface SectionNavigationProps {
   sections: Array<{
@@ -12,6 +12,7 @@ interface SectionNavigationProps {
 
 export default function SectionNavigation({ sections, className = '' }: SectionNavigationProps) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || '');
+  const mobileNavRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +36,37 @@ export default function SectionNavigation({ sections, className = '' }: SectionN
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
+
+  // Auto-scroll mobile navigation to keep active section in view
+  useEffect(() => {
+    if (!mobileNavRef.current) return;
+
+    const activeIndex = sections.findIndex(section => section.id === activeSection);
+    if (activeIndex === -1) return;
+
+    const container = mobileNavRef.current;
+    const activeButton = container.children[activeIndex] as HTMLElement;
+    
+    if (activeButton) {
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = activeButton.getBoundingClientRect();
+      
+      // Calculate if button is fully visible
+      const isFullyVisible = 
+        buttonRect.left >= containerRect.left && 
+        buttonRect.right <= containerRect.right;
+      
+      if (!isFullyVisible) {
+        // Scroll to center the active button
+        const scrollLeft = activeButton.offsetLeft - (container.offsetWidth / 2) + (activeButton.offsetWidth / 2);
+        
+        container.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [activeSection, sections]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -89,7 +121,7 @@ export default function SectionNavigation({ sections, className = '' }: SectionN
       {/* Mobile Navigation - Horizontal Scroll */}
       <nav className={`md:hidden fixed bottom-4 left-4 right-4 z-40 ${className}`}>
         <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-lg shadow-lg p-2">
-          <div className="flex space-x-1 overflow-x-auto scrollbar-hide">
+          <div ref={mobileNavRef} className="flex space-x-1 overflow-x-auto scrollbar-hide">
             {sections.map((section, index) => (
               <button
                 key={section.id}
