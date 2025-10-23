@@ -137,15 +137,41 @@ ${formData.discussion}
 
   return (
     <AnimatePresence>
+      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-background"
-        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0,
+          zIndex: 9998
+        }}
+        onClick={onClose}
+      />
+      
+      {/* Form Container */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        className="fixed inset-0 z-50 bg-background flex flex-col"
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0,
+          zIndex: 9999
+        }}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
           <h1 className="text-xl font-bold text-foreground">Coffee Chat Request</h1>
           <button
             onClick={onClose}
