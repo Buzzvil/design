@@ -61,12 +61,17 @@ const MissionVision = () => {
             <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6 mx-auto">
               <Target className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
               {t('mission.mission.title')}
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {t('mission.mission.content')}
+            <p className="text-sm text-muted-foreground/70 mb-6 font-medium">
+              {t('mission.mission.subtitle')}
             </p>
+            <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+              {t('mission.mission.content').split('\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
           </motion.div>
 
           {/* Vision */}
@@ -77,12 +82,17 @@ const MissionVision = () => {
             <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6 mx-auto">
               <Rocket className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
               {t('mission.vision.title')}
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {t('mission.vision.content')}
+            <p className="text-sm text-muted-foreground/70 mb-6 font-medium">
+              {t('mission.vision.subtitle')}
             </p>
+            <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+              {t('mission.vision.content').split('\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>

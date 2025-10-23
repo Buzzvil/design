@@ -64,17 +64,22 @@ export default function Home() {
           <section id="philosophy" className="py-20 scroll-mt-24">
             <div className="max-w-7xl mx-auto px-8">
               <div className="text-center mb-16">
-                <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                <h2 className="text-5xl md:text-7xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   {t('philosophy.title')}
                 </h2>
+                <p className="text-sm text-muted-foreground/70 font-medium">
+                  {t('philosophy.subtitle')}
+                </p>
               </div>
 
               <div className="max-w-4xl mx-auto">
                 <div className="text-center p-12 bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border">
                   <PhilosophyAnimation isActive={true} />
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    {t('philosophy.content')}
-                  </p>
+                  <div className="text-xl text-muted-foreground leading-relaxed space-y-4">
+                    {t('philosophy.content').split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

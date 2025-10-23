@@ -47,13 +47,16 @@ const translations = {
             'mission.title': 'Mission & Vision',
             'mission.subtitle': 'Our mission and vision guide everything we do at Buzzvil.',
             'mission.mission.title': 'Mission',
-            'mission.mission.content': 'We design meaningful interactions that shape how people discover, experience, and keep engaging with Buzzvil\'s ad campaigns and brand. Our work turns advertising into experiences people want to explore, moments that capture attention, spark curiosity, and drive results for advertisers.',
+            'mission.mission.subtitle': 'what we do now',
+            'mission.mission.content': 'We design meaningful interactions that shape how people discover, experience, and stay connected with Buzzvil\'s campaigns and brand.\nOur goal is to turn advertising into experiences people choose to explore—moments that capture attention, spark curiosity, and drive real results for advertisers.',
             'mission.vision.title': 'Vision',
-            'mission.vision.content': 'We set the next standard for AdTech design by transforming ad campaigns and brand experiences into engaging, repeatable interactions that connect users and advertisers. Through this new way of engagement, Buzzvil leads a future where advertising feels enjoyable, seamlessly integrated into people\'s everyday experiences.',
+            'mission.vision.subtitle': 'what future we\'re building',
+            'mission.vision.content': 'We set the next standard for AdTech design by transforming ads and brand touchpoints into engaging, repeatable experiences that connect users and advertisers.\nWe envision a future where advertising feels natural, enjoyable, and seamlessly part of everyday life.',
     
             // Philosophy
             'philosophy.title': 'Philosophy',
-            'philosophy.content': 'At Buzzvil, Design shapes how people experience advertising, not as interruptions, but as delightful moments of connection. We believe every interaction, from brand touchpoints to in-product experiences, should feel playful, engaging, and effortless. Our role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, turning campaigns and platforms into one coherent, delightful experience. Guided by our principles and a One-Team spirit, we design to inspire trust, drive performance, and set new standards for what AdTech can be.',
+            'philosophy.subtitle': 'how we approach it',
+            'philosophy.content': 'At Buzzvil, design shapes how people experience advertising—not as interruptions, but as moments of connection and delight.\nWe believe every touchpoint, from brand to product, should feel playful, engaging, and effortless.\nOur role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, building trust, driving performance, and inspiring what AdTech can become.',
     
     // Principles
     'principles.title': 'Principles',
