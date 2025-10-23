@@ -194,7 +194,7 @@ const ProductPrinciples = () => {
   };
 
   return (
-    <section ref={principlesSectionRef} className="py-20 px-4 sm:px-6 lg:px-8">
+    <section ref={principlesSectionRef} className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
@@ -225,7 +225,7 @@ const ProductPrinciples = () => {
           variants={itemVariants}
           className="flex justify-center mb-12 px-4"
         >
-          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl w-full max-w-2xl">
+          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-md">
             <div 
               ref={principlesNavRef}
               className="flex gap-2"
@@ -236,7 +236,7 @@ const ProductPrinciples = () => {
               <button
                 key={principle.id}
                 onClick={() => setSelectedPrinciple(index)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 ${
+                className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 ${
                   selectedPrinciple === index
                     ? 'bg-white text-black'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -252,15 +252,15 @@ const ProductPrinciples = () => {
         {/* Principle Content with Enhanced 3D Transitions */}
         <motion.div 
           variants={itemVariants}
-          className="max-w-6xl mx-auto px-4"
+          className="max-w-4xl mx-auto px-4"
         >
           <div 
-            className="relative overflow-hidden perspective-1000"
+            className="relative overflow-hidden perspective-1000 w-full"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <div 
-              className="flex transition-all duration-700 ease-out"
+              className="flex transition-all duration-700 ease-out w-full"
               style={{ 
                 transform: `translateX(-${selectedPrinciple * 100}%)`,
                 transformStyle: 'preserve-3d'
@@ -273,7 +273,7 @@ const ProductPrinciples = () => {
                 return (
                   <div
                     key={principle.id}
-                    className="w-full flex-shrink-0 transition-all duration-700 ease-out min-w-0"
+                    className="w-full flex-shrink-0 transition-all duration-700 ease-out"
                     style={{
                       transform: isActive 
                         ? 'translateZ(0px) rotateY(0deg) scale(1)' 
@@ -281,9 +281,11 @@ const ProductPrinciples = () => {
                       opacity: isActive ? 1 : Math.max(0.3, 1 - distance * 0.3),
                       filter: isActive ? 'blur(0px)' : `blur(${distance * 2}px)`,
                       zIndex: isActive ? 10 : 5 - distance,
+                      minWidth: 0,
+                      maxWidth: '100%'
                     }}
                   >
-                    <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl">
+                    <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl w-full overflow-hidden">
                       {/* Interactive Component */}
                       {principle.id === 'reward-time' && <RewardCounter isActive={isActive} />}
                       {principle.id === 'delight-deception' && <DelightInteraction isActive={isActive} />}
