@@ -17,7 +17,7 @@ const ContactBanner = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className="bg-gradient-to-r from-accent/10 via-accent/5 to-accent/10 border-b border-accent/20"
+      className="bg-gradient-to-r from-white/10 via-white/5 to-white/10 border-b border-white/20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3">
@@ -25,7 +25,7 @@ const ContactBanner = () => {
           <div className="flex items-center space-x-4 flex-1">
             <div className="flex items-center space-x-3">
               <div className="flex items-center space-x-2">
-                <Coffee className="w-4 h-4 text-accent" />
+                <Coffee className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-foreground">
                   {t('banner.title')}
                 </span>
@@ -53,7 +53,7 @@ const ContactBanner = () => {
             href="mailto:design-team@buzzvil.com?subject=Design Team Meeting Request&body=Hi there!%0A%0AI'd like to schedule a meeting to discuss:%0A%0A[Please describe what you'd like to discuss]%0A%0AAbout me:%0A- Name:%0A- Company/Role:%0A- Brief background:%0A%0AWhen would be a good time for you?%0A%0AThanks!"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center space-x-2 px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition-all duration-200 text-sm font-medium shadow-sm"
+            className="flex items-center space-x-2 px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-200 text-sm font-medium shadow-sm"
           >
             <Mail className="w-4 h-4" />
             <span className="hidden sm:inline">{t('banner.cta')}</span>

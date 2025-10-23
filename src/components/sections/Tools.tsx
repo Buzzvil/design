@@ -178,7 +178,7 @@ const Tools = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full flex items-center justify-center space-x-2 py-2 px-4 bg-accent/10 text-accent rounded-lg hover:bg-accent/20 transition-all duration-200 font-medium"
+                        className="w-full flex items-center justify-center space-x-2 py-2 px-4 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-200 font-medium"
                       >
                         <ExternalLink className="w-4 h-4 text-white" />
                         <span>{t('tools.visit')}</span>
