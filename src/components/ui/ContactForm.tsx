@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, User, Mail, MessageSquare, Briefcase, Linkedin, Building, Check, AlertCircle } from 'lucide-react';
+import { X, Send, User, Mail, Briefcase, Linkedin, Building, Check, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 interface ContactFormProps {
@@ -16,7 +16,7 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     email: '',
     occupation: '',
     linkedin: '',
-    employmentStatus: 'yes', // 'yes', 'no', 'student'
+    employmentStatus: '', // 'yes', 'no', 'student', or empty
     workplace: '',
     discussion: '',
   });
@@ -126,7 +126,7 @@ ${formData.discussion}
       email: '',
       occupation: '',
       linkedin: '',
-      employmentStatus: 'yes',
+      employmentStatus: '',
       workplace: '',
       discussion: '',
     });
@@ -170,30 +170,27 @@ ${formData.discussion}
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Form Card */}
-        <div className="bg-background border border-border rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col">
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0">
-            <h1 className="text-2xl font-bold text-foreground">Coffee Chat Request</h1>
-            <button
-              onClick={onClose}
-              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
-            >
-              <X className="w-6 h-6 text-muted-foreground" />
-            </button>
-          </div>
+        {/* Header */}
+        <div className="absolute top-4 right-4 z-10">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+        </div>
 
-          {/* Form */}
-          <div className="flex-1 overflow-y-auto p-6">
+        {/* Form */}
+        <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Section 1: About You */}
+            {/* Section 1: Basic Info */}
             <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">About You</h2>
+              <h2 className="text-lg font-semibold text-white">Basic Information</h2>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Name */}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     <User className="w-4 h-4 inline mr-2" />
                     Name *
                   </label>
@@ -203,14 +200,14 @@ ${formData.discussion}
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
                     placeholder="Your full name"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     <Mail className="w-4 h-4 inline mr-2" />
                     Email *
                   </label>
@@ -220,31 +217,14 @@ ${formData.discussion}
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
-                {/* Occupation */}
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    <Briefcase className="w-4 h-4 inline mr-2" />
-                    Occupation *
-                  </label>
-                  <input
-                    type="text"
-                    name="occupation"
-                    value={formData.occupation}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="e.g., Product Designer, UX Researcher, Developer"
-                  />
-                </div>
-
                 {/* LinkedIn */}
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                <div className="lg:col-span-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     <Linkedin className="w-4 h-4 inline mr-2" />
                     LinkedIn Profile
                   </label>
@@ -253,61 +233,102 @@ ${formData.discussion}
                     name="linkedin"
                     value={formData.linkedin}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
                     placeholder="https://linkedin.com/in/yourname"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Section 2: Employment Status */}
+            {/* Section 2: Professional Background */}
             <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">Employment Status</h2>
+              <h2 className="text-lg font-semibold text-white">Professional Background</h2>
               
-              <div className="flex flex-wrap gap-3">
-                <label className="flex items-center space-x-2 cursor-pointer px-4 py-2 rounded-lg border border-border hover:bg-muted/30 transition-colors">
-                  <input
-                    type="radio"
-                    name="employmentStatus"
-                    value="yes"
-                    checked={formData.employmentStatus === 'yes'}
-                    onChange={handleRadioChange}
-                    className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
-                  />
-                  <span className="text-sm font-medium">Yes</span>
+              {/* Occupation */}
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">
+                  <Briefcase className="w-4 h-4 inline mr-2" />
+                  Occupation *
                 </label>
-                
-                <label className="flex items-center space-x-2 cursor-pointer px-4 py-2 rounded-lg border border-border hover:bg-muted/30 transition-colors">
-                  <input
-                    type="radio"
-                    name="employmentStatus"
-                    value="no"
-                    checked={formData.employmentStatus === 'no'}
-                    onChange={handleRadioChange}
-                    className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
-                  />
-                  <span className="text-sm font-medium">No</span>
+                <input
+                  type="text"
+                  name="occupation"
+                  value={formData.occupation}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
+                  placeholder="e.g., Product Designer, UX Researcher, Developer"
+                />
+              </div>
+
+              {/* Employment Status - Connected Pills */}
+              <div>
+                <label className="block text-sm font-medium text-white mb-3">
+                  Are you currently employed? *
                 </label>
-                
-                <label className="flex items-center space-x-2 cursor-pointer px-4 py-2 rounded-lg border border-border hover:bg-muted/30 transition-colors">
-                  <input
-                    type="radio"
-                    name="employmentStatus"
-                    value="student"
-                    checked={formData.employmentStatus === 'student'}
-                    onChange={handleRadioChange}
-                    className="w-4 h-4 text-primary bg-muted/30 border-border focus:ring-primary"
-                  />
-                  <span className="text-sm font-medium">Student</span>
-                </label>
+                <div className="flex">
+                  <label className="flex-1 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="employmentStatus"
+                      value="yes"
+                      checked={formData.employmentStatus === 'yes'}
+                      onChange={handleRadioChange}
+                      className="sr-only"
+                    />
+                    <div className={`px-4 py-3 text-center border border-white/20 transition-all ${
+                      formData.employmentStatus === 'yes' 
+                        ? 'bg-white text-black border-white' 
+                        : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}>
+                      Yes
+                    </div>
+                  </label>
+                  
+                  <label className="flex-1 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="employmentStatus"
+                      value="no"
+                      checked={formData.employmentStatus === 'no'}
+                      onChange={handleRadioChange}
+                      className="sr-only"
+                    />
+                    <div className={`px-4 py-3 text-center border-t border-b border-white/20 transition-all ${
+                      formData.employmentStatus === 'no' 
+                        ? 'bg-white text-black border-white' 
+                        : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}>
+                      No
+                    </div>
+                  </label>
+                  
+                  <label className="flex-1 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="employmentStatus"
+                      value="student"
+                      checked={formData.employmentStatus === 'student'}
+                      onChange={handleRadioChange}
+                      className="sr-only"
+                    />
+                    <div className={`px-4 py-3 text-center border border-white/20 transition-all ${
+                      formData.employmentStatus === 'student' 
+                        ? 'bg-white text-black border-white' 
+                        : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}>
+                      Student
+                    </div>
+                  </label>
+                </div>
               </div>
 
               {/* Workplace Input - only show if employed */}
               {formData.employmentStatus === 'yes' && (
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     <Building className="w-4 h-4 inline mr-2" />
-                    What is your current workplace? *
+                    Current Workplace *
                   </label>
                   <input
                     type="text"
@@ -315,7 +336,7 @@ ${formData.discussion}
                     value={formData.workplace}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all text-white placeholder-white/70"
                     placeholder="Your current company or organization"
                   />
                 </div>
@@ -324,20 +345,16 @@ ${formData.discussion}
 
             {/* Section 3: Discussion Topic */}
             <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">Discussion Topic</h2>
+              <h2 className="text-lg font-semibold text-white">What would you like to discuss with us?</h2>
               
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  <MessageSquare className="w-4 h-4 inline mr-2" />
-                  What would you like to discuss? *
-                </label>
                 <textarea
                   name="discussion"
                   value={formData.discussion}
                   onChange={handleInputChange}
                   required
-                  rows={3}
-                  className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                  rows={4}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all resize-none text-white placeholder-white/70"
                   placeholder="Tell us what you'd like to discuss..."
                 />
               </div>
@@ -345,18 +362,18 @@ ${formData.discussion}
 
             {/* Error Message */}
             {error && (
-              <div className="flex items-center space-x-2 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-600">
+              <div className="flex items-center space-x-2 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
                 <AlertCircle className="w-5 h-5" />
                 <span>{error}</span>
               </div>
             )}
 
             {/* Submit Button */}
-            <div className="flex justify-end space-x-4 pt-8 border-t border-border">
+            <div className="flex justify-end space-x-4 pt-8">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-8 py-3 text-muted-foreground hover:text-foreground transition-colors font-medium"
+                className="px-8 py-3 text-white/70 hover:text-white transition-colors font-medium"
               >
                 Cancel
               </button>
@@ -365,7 +382,7 @@ ${formData.discussion}
                 disabled={isSubmitting || isSubmitted}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center space-x-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                className="flex items-center space-x-2 px-8 py-3 bg-white text-black rounded-lg hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
               >
                 {isSubmitted ? (
                   <>
@@ -381,7 +398,6 @@ ${formData.discussion}
               </motion.button>
             </div>
           </form>
-          </div>
         </div>
       </motion.div>
     </AnimatePresence>
