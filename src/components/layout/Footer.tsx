@@ -18,21 +18,21 @@ const Footer = () => {
       { name: t('footer.foundations.tools'), href: '#tools' },
     ],
     'Brand': [
-      { name: t('footer.brand.principles'), href: '/design/brand#principles' },
-      { name: t('footer.brand.guidelines'), href: '/design/brand#guidelines' },
-      { name: t('footer.brand.resources'), href: '/design/brand#resources' },
+      { name: t('footer.brand.principles'), href: '/brand#principles' },
+      { name: t('footer.brand.guidelines'), href: '/brand#guidelines' },
+      { name: t('footer.brand.resources'), href: '/brand#resources' },
     ],
     'Product': [
-      { name: t('footer.product.principles'), href: '/design/product#principles' },
-      { name: t('footer.product.guidelines'), href: '/design/product#guidelines' },
-      { name: t('footer.product.resources'), href: '/design/product#resources' },
+      { name: t('footer.product.principles'), href: '/product#principles' },
+      { name: t('footer.product.guidelines'), href: '/product#guidelines' },
+      { name: t('footer.product.resources'), href: '/product#resources' },
     ],
     'Connect': [
-      { name: 'Buzzvil', href: 'https://www.buzzvil.com/en' },
-      { name: 'Careers', href: 'https://buzzvil.career.greetinghr.com/ko/home' },
-      { name: 'Figma', href: 'https://www.figma.com/@buzzvil' },
-      { name: 'GitHub', href: 'https://github.com/Buzzvil/design' },
-      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/buzzvil/' },
+      { name: t('footer.connect.buzzvil'), href: 'https://www.buzzvil.com/en' },
+      { name: t('footer.connect.careers'), href: 'https://buzzvil.career.greetinghr.com/ko/home' },
+      { name: t('footer.connect.figma'), href: 'https://www.figma.com/@buzzvil' },
+      { name: t('footer.connect.github'), href: 'https://github.com/Buzzvil/design' },
+      { name: t('footer.connect.linkedin'), href: 'https://www.linkedin.com/company/buzzvil/' },
     ],
   };
 
@@ -83,7 +83,7 @@ const Footer = () => {
               <span className="text-xl font-bold gradient-text">Design Buzzvil</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
-              Home to Buzzvil&apos;s design source of truth. We build in the open. This portal is primarily meant to be used internally and by our partners, but we also like anyone to have a look at how we work!
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (

@@ -181,7 +181,7 @@ const translations = {
             'product.resources.description': 'Download our design system components, templates, and development resources. Everything you need to build consistent product experiences.',
             
             // Footer
-            'footer.description': 'Empowering designers with the tools, resources, and knowledge needed to create exceptional user experiences.',
+            'footer.description': 'Home to Buzzvil\'s design source of truth. We build in the open. This portal is primarily meant to be used internally and by our partners, but we also like anyone to have a look at how we work!',
             'footer.foundations.mission': 'The Mission',
             'footer.foundations.philosophy': 'Our Mindset',
             'footer.foundations.values': 'Working Principles',
@@ -193,8 +193,10 @@ const translations = {
             'footer.product.principles': 'Principles',
             'footer.product.guidelines': 'Guidelines',
             'footer.product.resources': 'Resources',
+            'footer.connect.buzzvil': 'Buzzvil',
             'footer.connect.contact': 'Contact',
             'footer.connect.careers': 'Careers',
+            'footer.connect.figma': 'Figma',
             'footer.connect.github': 'GitHub',
             'footer.connect.linkedin': 'LinkedIn',
             'footer.made': 'Made with',
@@ -365,7 +367,7 @@ const translations = {
             'product.resources.description': '디자인 시스템 컴포넌트, 템플릿, 개발 리소스를 다운로드하세요. 일관된 제품 경험을 구축하는 데 필요한 모든 것.',
             
             // Footer
-            'footer.description': '탁월한 사용자 경험을 만들기 위해 필요한 도구, 리소스, 지식으로 디자이너를 강화합니다.',
+            'footer.description': '버즈빌의 디자인 진실의 원천이 되는 곳입니다. 우리는 공개적으로 구축합니다. 이 포털은 주로 내부적으로 그리고 파트너들이 사용하도록 의도되었지만, 우리가 어떻게 일하는지 누구나 살펴볼 수 있기를 좋아합니다!',
             'footer.foundations.mission': '미션',
             'footer.foundations.philosophy': '마인드셋',
             'footer.foundations.values': '작업 원칙',
@@ -377,8 +379,10 @@ const translations = {
             'footer.product.principles': '원칙',
             'footer.product.guidelines': '가이드라인',
             'footer.product.resources': '리소스',
+            'footer.connect.buzzvil': '버즈빌',
             'footer.connect.contact': '연락처',
             'footer.connect.careers': '채용',
+            'footer.connect.figma': 'Figma',
             'footer.connect.github': 'GitHub',
             'footer.connect.linkedin': 'LinkedIn',
             'footer.made': '만든',
