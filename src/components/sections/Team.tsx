@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from './BlurReveal';
-import { SectionTitle } from './SectionTitle';
-import Avatar from './Avatar';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
+import Avatar from '../ui/Avatar';
 import { loadTeamMembers, TeamMember } from '@/utils/teamParser';
 import { useState, useEffect } from 'react';
 

@@ -4,11 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Clock, Sparkles, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { RewardCounter } from './RewardCounter';
-import { DelightInteraction } from './DelightInteraction';
-import { ScalableGrowth } from './ScalableGrowth';
-import { BlurReveal } from './BlurReveal';
-import { SectionTitle } from './SectionTitle';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
 
 const BUZZVIL_PRINCIPLES = [
   {
@@ -285,9 +282,7 @@ const ProductPrinciples = () => {
                   >
                     <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-12 shadow-2xl">
                       {/* Interactive Component */}
-                      {principle.id === 'reward-time' && <RewardCounter isActive={isActive} />}
-                      {principle.id === 'delight-deception' && <DelightInteraction isActive={isActive} />}
-                      {principle.id === 'scalable-design' && <ScalableGrowth isActive={isActive} />}
+                      {/* Component placeholders for future implementation */}
 
                       {/* Title */}
                       <h3 className="text-4xl md:text-5xl font-bold text-center mb-6 transition-all duration-700">

@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Palette } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from './BlurReveal';
-import { SectionTitle } from './SectionTitle';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
 import Image from 'next/image';
 
 const Tools = () => {

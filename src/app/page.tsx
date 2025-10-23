@@ -1,17 +1,17 @@
 'use client';
 
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import MissionVision from '@/components/MissionVision';
-import { PhilosophyAnimation } from '@/components/PhilosophyAnimation';
-import Values from '@/components/Values';
-import Team from '@/components/Team';
-import Tools from '@/components/Tools';
-import Footer from '@/components/Footer';
-import InteractiveMinimap from '@/components/InteractiveMinimap';
-import SectionNavigation from '@/components/SectionNavigation';
-import { ParallaxSection } from '@/components/ParallaxSection';
-import { LanguageTransitionWrapper } from '@/components/LanguageTransitionWrapper';
+import Header from '@/components/layout/Header';
+import Hero from '@/components/sections/Hero';
+import MissionVision from '@/components/sections/MissionVision';
+import { PhilosophyAnimation } from '@/components/sections/PhilosophyAnimation';
+import Values from '@/components/sections/Values';
+import Team from '@/components/sections/Team';
+import Tools from '@/components/sections/Tools';
+import Footer from '@/components/layout/Footer';
+import InteractiveMinimap from '@/components/ui/InteractiveMinimap';
+import SectionNavigation from '@/components/ui/SectionNavigation';
+import { ParallaxSection } from '@/components/ui/ParallaxSection';
+import { LanguageTransitionWrapper } from '@/components/layout/LanguageTransitionWrapper';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {

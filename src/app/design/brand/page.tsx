@@ -1,9 +1,9 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import SectionNavigation from '@/components/SectionNavigation';
-import SectionPlaceholder from '@/components/SectionPlaceholder';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import SectionNavigation from '@/components/ui/SectionNavigation';
+import SectionPlaceholder from '@/components/ui/SectionPlaceholder';
 import { Award, FileText, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';

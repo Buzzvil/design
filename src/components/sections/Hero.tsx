@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from './BlurReveal';
-import { KeywordAnimation } from './KeywordAnimation';
+import { BlurReveal } from '../ui/BlurReveal';
+import { KeywordAnimation } from '../ui/KeywordAnimation';
 
 const Hero = () => {
   const { t } = useLanguage();

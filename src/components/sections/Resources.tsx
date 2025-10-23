@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Download, BookOpen, FileText, Image, Code2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from './BlurReveal';
-import { SectionTitle } from './SectionTitle';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
 
 const Resources = () => {
   const { t } = useLanguage();

@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { BlurReveal } from './BlurReveal';
-import { SectionTitle } from './SectionTitle';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
 
 const Philosophy = () => {
   const { t } = useLanguage();
