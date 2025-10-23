@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, X, Coffee, Calendar, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ContactForm from '../ui/ContactForm';
 
 const ContactBanner = () => {
   const [isDismissed, setIsDismissed] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const { t } = useLanguage();
 
   if (isDismissed) return null;
@@ -49,8 +51,8 @@ const ContactBanner = () => {
           </div>
 
           {/* CTA Button */}
-          <motion.a
-            href="mailto:design-team@buzzvil.com?subject=Design Team Meeting Request&body=Hi there!%0A%0AI'd like to schedule a meeting to discuss:%0A%0A[Please describe what you'd like to discuss]%0A%0AAbout me:%0A- Name:%0A- Company/Role:%0A- Brief background:%0A%0AWhen would be a good time for you?%0A%0AThanks!"
+          <motion.button
+            onClick={() => setIsFormOpen(true)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="flex items-center space-x-2 px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-all duration-200 text-sm font-medium shadow-sm"
@@ -58,7 +60,7 @@ const ContactBanner = () => {
             <Mail className="w-4 h-4" />
             <span className="hidden sm:inline">{t('banner.cta')}</span>
             <span className="sm:hidden">{t('banner.cta.short')}</span>
-          </motion.a>
+          </motion.button>
 
           {/* Dismiss Button */}
           <motion.button
@@ -86,6 +88,12 @@ const ContactBanner = () => {
           </div>
         </div>
       </div>
+      
+      {/* Contact Form Modal */}
+      <ContactForm 
+        isOpen={isFormOpen} 
+        onClose={() => setIsFormOpen(false)} 
+      />
     </motion.div>
   );
 };
