@@ -223,9 +223,9 @@ const ProductPrinciples = () => {
         {/* Principle Navigation */}
         <motion.div 
           variants={itemVariants}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-12 px-4"
         >
-          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-full">
+          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl w-full max-w-2xl">
             <div 
               ref={principlesNavRef}
               className="flex gap-2"
@@ -236,7 +236,7 @@ const ProductPrinciples = () => {
               <button
                 key={principle.id}
                 onClick={() => setSelectedPrinciple(index)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap ${
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 ${
                   selectedPrinciple === index
                     ? 'bg-white text-black'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -252,7 +252,7 @@ const ProductPrinciples = () => {
         {/* Principle Content with Enhanced 3D Transitions */}
         <motion.div 
           variants={itemVariants}
-          className="max-w-4xl mx-auto"
+          className="max-w-6xl mx-auto px-4"
         >
           <div 
             className="relative overflow-hidden perspective-1000"
@@ -273,7 +273,7 @@ const ProductPrinciples = () => {
                 return (
                   <div
                     key={principle.id}
-                    className="w-full flex-shrink-0 transition-all duration-700 ease-out"
+                    className="w-full flex-shrink-0 transition-all duration-700 ease-out min-w-0"
                     style={{
                       transform: isActive 
                         ? 'translateZ(0px) rotateY(0deg) scale(1)' 
@@ -295,7 +295,7 @@ const ProductPrinciples = () => {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-lg text-muted-foreground text-center mb-8 leading-relaxed transition-all duration-700">
+                      <p className="text-lg text-muted-foreground text-center mb-8 leading-relaxed transition-all duration-700 break-words">
                         {principle.description}
                       </p>
 
@@ -304,13 +304,13 @@ const ProductPrinciples = () => {
                         {principle.characteristics.map((characteristic, charIndex) => (
                           <div
                             key={charIndex}
-                            className="p-4 bg-muted/30 rounded-xl border border-border text-center transition-all duration-700"
+                            className="p-4 bg-muted/30 rounded-xl border border-border text-center transition-all duration-700 min-w-0"
                             style={{
                               transform: isActive ? 'translateY(0px)' : 'translateY(20px)',
                               opacity: isActive ? 1 : 0.7,
                             }}
                           >
-                            <span className="text-sm font-medium">{characteristic}</span>
+                            <span className="text-sm font-medium break-words">{characteristic}</span>
                           </div>
                         ))}
                       </div>
