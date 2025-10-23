@@ -146,9 +146,6 @@ const Tools = () => {
                             }}
                           />
                         </div>
-                        <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">
-                          {tool.status}
-                        </span>
                       </div>
 
                       {/* Tool Content */}
