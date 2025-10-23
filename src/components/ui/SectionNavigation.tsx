@@ -20,13 +20,24 @@ export default function SectionNavigation({ sections, className = '' }: SectionN
       let currentSection = sections[0]?.id || '';
       let foundSection = false;
       
-      // Check if we're in the footer area (near bottom of page)
+      // Check if we're in the footer area or leaving the last section
       const scrollPosition = window.scrollY;
       const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
-      const footerThreshold = documentHeight - windowHeight - 200; // 200px before footer
+      const footerThreshold = documentHeight - windowHeight - 100; // 100px before footer
       
-      const inFooter = scrollPosition > footerThreshold;
+      // Also check if we're past the last section
+      const lastSection = sections[sections.length - 1];
+      let pastLastSection = false;
+      if (lastSection) {
+        const lastSectionElement = document.getElementById(lastSection.id);
+        if (lastSectionElement) {
+          const lastSectionRect = lastSectionElement.getBoundingClientRect();
+          pastLastSection = lastSectionRect.bottom < windowHeight * 0.3; // 30% from top
+        }
+      }
+      
+      const inFooter = scrollPosition > footerThreshold || pastLastSection;
       setIsInFooter(inFooter);
       
       // If we're in footer, keep the last section active or hide navigation
@@ -141,7 +152,7 @@ export default function SectionNavigation({ sections, className = '' }: SectionN
       </nav>
 
       {/* Mobile Navigation - Horizontal Scroll */}
-      <nav className={`md:hidden fixed bottom-4 left-4 right-4 z-40 transition-all duration-300 ${isInFooter ? 'opacity-0 pointer-events-none' : 'opacity-100'} ${className}`}>
+      <nav className={`md:hidden fixed left-4 right-4 z-40 transition-all duration-500 ease-in-out ${isInFooter ? 'bottom-[-100px] opacity-0 pointer-events-none' : 'bottom-4 opacity-100'} ${className}`}>
         <div className="bg-white/5 backdrop-blur-md border border-white/5 rounded-lg shadow-lg p-2">
           <div ref={mobileNavRef} className="flex space-x-1 overflow-x-auto scrollbar-hide">
             {sections.map((section, index) => (
