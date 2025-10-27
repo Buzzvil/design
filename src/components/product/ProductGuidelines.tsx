@@ -2,7 +2,18 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MousePointer, Palette, Zap, Eye, Workflow } from 'lucide-react';
+import { MousePointer, Palette, Zap, Eye, Workflow, LucideIcon } from 'lucide-react';
+
+interface Subsection {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  description: string;
+  patterns?: string[];
+  structure?: string[];
+  principles?: string[];
+}
 
 const ProductGuidelines = () => {
   const { t } = useLanguage();
@@ -19,11 +30,16 @@ const ProductGuidelines = () => {
           title: t('product.guidelines.interactionPatterns.title'),
           subtitle: t('product.guidelines.interactionPatterns.subtitle'),
           description: t('product.guidelines.interactionPatterns.description'),
-          principles: [
-            t('product.guidelines.interactionPatterns.principle1'),
-            t('product.guidelines.interactionPatterns.principle2'),
-            t('product.guidelines.interactionPatterns.principle3'),
-            t('product.guidelines.interactionPatterns.principle4')
+          patterns: [
+            t('product.guidelines.interactionPatterns.onLoad'),
+            t('product.guidelines.interactionPatterns.onScroll'),
+            t('product.guidelines.interactionPatterns.notify'),
+            t('product.guidelines.interactionPatterns.alert'),
+            t('product.guidelines.interactionPatterns.pauseAsk'),
+            t('product.guidelines.interactionPatterns.magnify'),
+            t('product.guidelines.interactionPatterns.screenToScreen'),
+            t('product.guidelines.interactionPatterns.feedback'),
+            t('product.guidelines.interactionPatterns.moreToCome')
           ]
         },
         {
@@ -32,11 +48,10 @@ const ProductGuidelines = () => {
           title: t('product.guidelines.uiKit.title'),
           subtitle: t('product.guidelines.uiKit.subtitle'),
           description: t('product.guidelines.uiKit.description'),
-          principles: [
-            t('product.guidelines.uiKit.principle1'),
-            t('product.guidelines.uiKit.principle2'),
-            t('product.guidelines.uiKit.principle3'),
-            t('product.guidelines.uiKit.principle4')
+          structure: [
+            t('product.guidelines.uiKit.atoms'),
+            t('product.guidelines.uiKit.modules'),
+            t('product.guidelines.uiKit.views')
           ]
         },
         {
@@ -45,11 +60,11 @@ const ProductGuidelines = () => {
           title: t('product.guidelines.microInteractionPatterns.title'),
           subtitle: t('product.guidelines.microInteractionPatterns.subtitle'),
           description: t('product.guidelines.microInteractionPatterns.description'),
-          principles: [
-            t('product.guidelines.microInteractionPatterns.principle1'),
-            t('product.guidelines.microInteractionPatterns.principle2'),
-            t('product.guidelines.microInteractionPatterns.principle3'),
-            t('product.guidelines.microInteractionPatterns.principle4')
+          patterns: [
+            t('product.guidelines.microInteractionPatterns.livingIcons'),
+            t('product.guidelines.microInteractionPatterns.emphasisOn'),
+            t('product.guidelines.microInteractionPatterns.rewardDelights'),
+            t('product.guidelines.microInteractionPatterns.moreToCome')
           ]
         }
       ]
@@ -138,7 +153,7 @@ const ProductGuidelines = () => {
               {section.subsections ? (
                 // UX Patterns with subsections
                 <div className="space-y-8">
-                  {section.subsections.map((subsection, subsectionIndex) => (
+                  {section.subsections.map((subsection: Subsection, subsectionIndex) => (
                     <motion.div
                       key={subsection.id}
                       initial={{ opacity: 0, y: 20 }}
@@ -165,14 +180,14 @@ const ProductGuidelines = () => {
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {subsection.principles.map((principle, principleIndex) => (
+                        {(subsection.patterns || subsection.structure || subsection.principles || []).map((item: string, itemIndex: number) => (
                           <div
-                            key={principleIndex}
+                            key={itemIndex}
                             className="flex items-start space-x-3 p-3 bg-muted/30 rounded-lg"
                           >
                             <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                             <p className="text-muted-foreground text-sm leading-relaxed">
-                              {principle}
+                              {item}
                             </p>
                           </div>
                         ))}
