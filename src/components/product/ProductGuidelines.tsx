@@ -27,48 +27,57 @@ const ProductGuidelines = () => {
   const interactionPatterns = [
     {
       id: 'onLoad',
-      title: t('product.guidelines.interactionPatterns.onLoad'),
-      description: t('product.guidelines.interactionPatterns.onLoad.description')
+      title: 'While loading',
+      description: t('product.guidelines.interactionPatterns.onLoad.description'),
+      tags: ['Skeleton UI', 'Loading states']
     },
     {
       id: 'onScroll',
-      title: t('product.guidelines.interactionPatterns.onScroll'),
-      description: t('product.guidelines.interactionPatterns.onScroll.description')
+      title: 'Page Scroll',
+      description: t('product.guidelines.interactionPatterns.onScroll.description'),
+      tags: ['Vertical scroll', 'Primary interaction']
     },
     {
       id: 'notify',
-      title: t('product.guidelines.interactionPatterns.notify'),
-      description: t('product.guidelines.interactionPatterns.notify.description')
+      title: 'Notify',
+      description: t('product.guidelines.interactionPatterns.notify.description'),
+      tags: ['Toast', 'Banner']
     },
     {
       id: 'alert',
-      title: t('product.guidelines.interactionPatterns.alert'),
-      description: t('product.guidelines.interactionPatterns.alert.description')
+      title: 'Alert',
+      description: t('product.guidelines.interactionPatterns.alert.description'),
+      tags: ['Toast', 'Urgent notification']
     },
     {
       id: 'pauseAsk',
-      title: t('product.guidelines.interactionPatterns.pauseAsk'),
-      description: t('product.guidelines.interactionPatterns.pauseAsk.description')
+      title: 'Pause & Ask',
+      description: t('product.guidelines.interactionPatterns.pauseAsk.description'),
+      tags: ['Popup', 'Modal']
     },
     {
       id: 'magnify',
-      title: t('product.guidelines.interactionPatterns.magnify'),
-      description: t('product.guidelines.interactionPatterns.magnify.description')
+      title: 'Magnify',
+      description: t('product.guidelines.interactionPatterns.magnify.description'),
+      tags: ['Bottomsheet', 'Expandable content']
     },
     {
       id: 'screenToScreen',
-      title: t('product.guidelines.interactionPatterns.screenToScreen'),
-      description: t('product.guidelines.interactionPatterns.screenToScreen.description')
+      title: 'Screen to Screen',
+      description: t('product.guidelines.interactionPatterns.screenToScreen.description'),
+      tags: ['Navigation', 'Transitions']
     },
     {
       id: 'feedback',
-      title: t('product.guidelines.interactionPatterns.feedback'),
-      description: t('product.guidelines.interactionPatterns.feedback.description')
+      title: 'Feedback',
+      description: t('product.guidelines.interactionPatterns.feedback.description'),
+      tags: ['Touch', 'Swipe', 'Haptic']
     },
     {
       id: 'moreToCome',
-      title: t('product.guidelines.interactionPatterns.moreToCome'),
-      description: t('product.guidelines.interactionPatterns.moreToCome.description')
+      title: 'More to come',
+      description: t('product.guidelines.interactionPatterns.moreToCome.description'),
+      tags: ['Future patterns']
     }
   ];
 
@@ -314,6 +323,18 @@ const ProductGuidelines = () => {
                                             <p className="text-muted-foreground leading-relaxed text-sm">
                                               {pattern.description}
                                             </p>
+                                            
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-2 mt-3">
+                                              {pattern.tags.map((tag, tagIndex) => (
+                                                <span
+                                                  key={tagIndex}
+                                                  className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30"
+                                                >
+                                                  {tag}
+                                                </span>
+                                              ))}
+                                            </div>
                                           </div>
 
                                           {/* Live Preview */}
@@ -322,12 +343,12 @@ const ProductGuidelines = () => {
                                               Live Preview
                                             </h6>
                                             <div className="relative">
-                                              {/* Mobile Frame with proper phone ratio (9:16) */}
-                                              <div className="w-full max-w-[200px] mx-auto bg-black rounded-[2rem] p-1 shadow-2xl">
-                                                <div className="bg-muted/20 rounded-[1.5rem] h-[355px] flex items-center justify-center" style={{ aspectRatio: '9/16' }}>
-                                                  <div className="text-center space-y-3">
-                                                    <Smartphone className="w-8 h-8 text-muted-foreground mx-auto" />
-                                                    <p className="text-xs text-muted-foreground">
+                                              {/* Mobile Frame with 16:9~10 ratio */}
+                                              <div className="w-full max-w-[280px] mx-auto bg-black rounded-[1.5rem] p-1 shadow-2xl">
+                                                <div className="bg-muted/20 rounded-[1.25rem] h-[157px] flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
+                                                  <div className="text-center space-y-2 px-4">
+                                                    <Smartphone className="w-6 h-6 text-muted-foreground mx-auto" />
+                                                    <p className="text-xs sm:text-sm text-muted-foreground break-words">
                                                       {pattern.title}
                                                     </p>
                                                     <p className="text-xs text-muted-foreground/70">

@@ -61,7 +61,7 @@ const translations = {
             // Philosophy
             'philosophy.title': 'Philosophy',
             'philosophy.subtitle': 'how we approach it',
-            'philosophy.content': 'At Buzzvil, design shapes how people experience advertising—not as interruptions, but as moments of connection and delight.\nWe believe every touchpoint, from brand to product, should feel playful, engaging, and effortless.\nOur role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, building trust, driving performance, and inspiring what AdTech can become.',
+            'philosophy.content': 'At Buzzvil, design shapes how people experience advertising, not as interruptions, but as moments of connection and delight.\nWe believe every touchpoint, from brand to product, should feel playful, engaging, and effortless.\nOur role is to unify how Buzzvil looks, feels, and behaves across the ecosystem, building trust, driving performance, and inspiring what AdTech can become.',
     
             // Ways of Working
             'waysOfWorking.title': 'Ways of Working',
