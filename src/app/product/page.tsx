@@ -4,8 +4,9 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import ProductPrinciples from '@/components/product/ProductPrinciples';
+import ProductGuidelines from '@/components/product/ProductGuidelines';
 import SectionPlaceholder from '@/components/ui/SectionPlaceholder';
-import { FileText, Download, Code } from 'lucide-react';
+import { Download, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -60,12 +61,8 @@ export default function ProductPage() {
         <ProductPrinciples />
       </div>
       
-      <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <SectionPlaceholder
-          title={t('product.guidelines.title')}
-          description={t('product.guidelines.description')}
-          icon={FileText}
-        />
+      <div id="guidelines" className="scroll-mt-24">
+        <ProductGuidelines />
       </div>
       
       <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">
