@@ -2,49 +2,82 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MousePointer, Palette, Zap } from 'lucide-react';
+import { MousePointer, Palette, Zap, Eye, Workflow } from 'lucide-react';
 
 const ProductGuidelines = () => {
   const { t } = useLanguage();
 
-  const guidelines = [
+  const mainSections = [
     {
-      id: 'interaction',
-      icon: MousePointer,
-      title: t('product.guidelines.interaction.title'),
-      subtitle: t('product.guidelines.interaction.subtitle'),
-      description: t('product.guidelines.interaction.description'),
-      principles: [
-        t('product.guidelines.interaction.principle1'),
-        t('product.guidelines.interaction.principle2'),
-        t('product.guidelines.interaction.principle3'),
-        t('product.guidelines.interaction.principle4')
+      id: 'ux-patterns',
+      title: t('product.guidelines.uxPatterns.title'),
+      description: t('product.guidelines.uxPatterns.description'),
+      subsections: [
+        {
+          id: 'interaction-patterns',
+          icon: MousePointer,
+          title: t('product.guidelines.interactionPatterns.title'),
+          subtitle: t('product.guidelines.interactionPatterns.subtitle'),
+          description: t('product.guidelines.interactionPatterns.description'),
+          principles: [
+            t('product.guidelines.interactionPatterns.principle1'),
+            t('product.guidelines.interactionPatterns.principle2'),
+            t('product.guidelines.interactionPatterns.principle3'),
+            t('product.guidelines.interactionPatterns.principle4')
+          ]
+        },
+        {
+          id: 'ui-kit',
+          icon: Palette,
+          title: t('product.guidelines.uiKit.title'),
+          subtitle: t('product.guidelines.uiKit.subtitle'),
+          description: t('product.guidelines.uiKit.description'),
+          principles: [
+            t('product.guidelines.uiKit.principle1'),
+            t('product.guidelines.uiKit.principle2'),
+            t('product.guidelines.uiKit.principle3'),
+            t('product.guidelines.uiKit.principle4')
+          ]
+        },
+        {
+          id: 'micro-interaction-patterns',
+          icon: Zap,
+          title: t('product.guidelines.microInteractionPatterns.title'),
+          subtitle: t('product.guidelines.microInteractionPatterns.subtitle'),
+          description: t('product.guidelines.microInteractionPatterns.description'),
+          principles: [
+            t('product.guidelines.microInteractionPatterns.principle1'),
+            t('product.guidelines.microInteractionPatterns.principle2'),
+            t('product.guidelines.microInteractionPatterns.principle3'),
+            t('product.guidelines.microInteractionPatterns.principle4')
+          ]
+        }
       ]
     },
     {
-      id: 'ui-kit',
-      icon: Palette,
-      title: t('product.guidelines.uiKit.title'),
-      subtitle: t('product.guidelines.uiKit.subtitle'),
-      description: t('product.guidelines.uiKit.description'),
+      id: 'visual-patterns',
+      icon: Eye,
+      title: t('product.guidelines.visualPatterns.title'),
+      subtitle: t('product.guidelines.visualPatterns.subtitle'),
+      description: t('product.guidelines.visualPatterns.description'),
       principles: [
-        t('product.guidelines.uiKit.principle1'),
-        t('product.guidelines.uiKit.principle2'),
-        t('product.guidelines.uiKit.principle3'),
-        t('product.guidelines.uiKit.principle4')
+        t('product.guidelines.visualPatterns.principle1'),
+        t('product.guidelines.visualPatterns.principle2'),
+        t('product.guidelines.visualPatterns.principle3'),
+        t('product.guidelines.visualPatterns.principle4')
       ]
     },
     {
-      id: 'micro-interactions',
-      icon: Zap,
-      title: t('product.guidelines.microInteractions.title'),
-      subtitle: t('product.guidelines.microInteractions.subtitle'),
-      description: t('product.guidelines.microInteractions.description'),
+      id: 'integration-workflow',
+      icon: Workflow,
+      title: t('product.guidelines.integrationWorkflow.title'),
+      subtitle: t('product.guidelines.integrationWorkflow.subtitle'),
+      description: t('product.guidelines.integrationWorkflow.description'),
       principles: [
-        t('product.guidelines.microInteractions.principle1'),
-        t('product.guidelines.microInteractions.principle2'),
-        t('product.guidelines.microInteractions.principle3'),
-        t('product.guidelines.microInteractions.principle4')
+        t('product.guidelines.integrationWorkflow.principle1'),
+        t('product.guidelines.integrationWorkflow.principle2'),
+        t('product.guidelines.integrationWorkflow.principle3'),
+        t('product.guidelines.integrationWorkflow.principle4')
       ]
     }
   ];
@@ -68,53 +101,105 @@ const ProductGuidelines = () => {
           </p>
         </motion.div>
 
-        {/* Guidelines Grid */}
-        <div className="space-y-16">
-          {guidelines.map((guideline, index) => (
+        {/* Guidelines Sections */}
+        <div className="space-y-20">
+          {mainSections.map((section, sectionIndex) => (
             <motion.div
-              key={guideline.id}
+              key={section.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.6, delay: sectionIndex * 0.2 }}
               viewport={{ once: true }}
               className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl"
             >
-              {/* Guideline Header */}
+              {/* Main Section Header */}
               <div className="flex items-start space-x-6 mb-8">
-                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <guideline.icon className="w-8 h-8 text-white" />
-                </div>
+                {section.icon && (
+                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <section.icon className="w-8 h-8 text-white" />
+                  </div>
+                )}
                 <div className="flex-1">
                   <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-                    {guideline.title}
+                    {section.title}
                   </h3>
-                  <p className="text-lg text-muted-foreground font-medium mb-4">
-                    {guideline.subtitle}
-                  </p>
+                  {section.subtitle && (
+                    <p className="text-lg text-muted-foreground font-medium mb-4">
+                      {section.subtitle}
+                    </p>
+                  )}
                   <p className="text-muted-foreground leading-relaxed">
-                    {guideline.description}
+                    {section.description}
                   </p>
                 </div>
               </div>
 
-              {/* Principles List */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {guideline.principles.map((principle, principleIndex) => (
-                  <motion.div
-                    key={principleIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: (index * 0.2) + (principleIndex * 0.1) }}
-                    viewport={{ once: true }}
-                    className="flex items-start space-x-3 p-4 bg-muted/30 rounded-lg border border-border/50"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {principle}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+              {/* Subsections or Principles */}
+              {section.subsections ? (
+                // UX Patterns with subsections
+                <div className="space-y-8">
+                  {section.subsections.map((subsection, subsectionIndex) => (
+                    <motion.div
+                      key={subsection.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: (sectionIndex * 0.2) + (subsectionIndex * 0.1) }}
+                      viewport={{ once: true }}
+                      className="bg-muted/20 rounded-xl border border-border/50 p-6"
+                    >
+                      <div className="flex items-start space-x-4 mb-4">
+                        <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                          <subsection.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-xl font-semibold text-white mb-1">
+                            {subsection.title}
+                          </h4>
+                          <p className="text-muted-foreground font-medium mb-2">
+                            {subsection.subtitle}
+                          </p>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
+                            {subsection.description}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {subsection.principles.map((principle, principleIndex) => (
+                          <div
+                            key={principleIndex}
+                            className="flex items-start space-x-3 p-3 bg-muted/30 rounded-lg"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                              {principle}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                // Other sections with direct principles
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {section.principles.map((principle, principleIndex) => (
+                    <motion.div
+                      key={principleIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: (sectionIndex * 0.2) + (principleIndex * 0.1) }}
+                      viewport={{ once: true }}
+                      className="flex items-start space-x-3 p-4 bg-muted/30 rounded-lg border border-border/50"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {principle}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
