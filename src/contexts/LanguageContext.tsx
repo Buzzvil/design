@@ -177,7 +177,7 @@ const translations = {
             
             // Product
             'product.sections.principles': 'Principles',
-            'product.sections.patterns': 'Interaction Patterns',
+            'product.sections.guidelines': 'Guidelines',
             'product.sections.resources': 'Resources',
             'product.intro.catchphrase': 'Designing delightful experiences that users love to engage with.',
             'product.guidelines.title': 'Product Guidelines',
@@ -436,7 +436,7 @@ const translations = {
             
             // Product
             'product.sections.principles': '원칙',
-            'product.sections.patterns': '상호작용 패턴',
+            'product.sections.guidelines': '가이드라인',
             'product.sections.resources': '리소스',
             'product.intro.catchphrase': '사용자가 참여하고 싶어하는 즐거운 경험을 디자인합니다.',
             'product.guidelines.title': '제품 가이드라인',

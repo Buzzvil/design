@@ -4,7 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import ProductPrinciples from '@/components/product/ProductPrinciples';
-import InteractionPatterns from '@/components/product/InteractionPatterns';
+import ProductGuidelines from '@/components/product/ProductGuidelines';
 import SectionPlaceholder from '@/components/ui/SectionPlaceholder';
 import { Download, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -15,7 +15,7 @@ export default function ProductPage() {
   
   const sections = [
     { id: 'principles', label: t('product.sections.principles') },
-    { id: 'patterns', label: t('product.sections.patterns') },
+    { id: 'guidelines', label: t('product.sections.guidelines') },
     { id: 'resources', label: t('product.sections.resources') }
   ];
 
@@ -61,8 +61,8 @@ export default function ProductPage() {
         <ProductPrinciples />
       </div>
       
-      <div id="patterns" className="scroll-mt-24">
-        <InteractionPatterns />
+      <div id="guidelines" className="scroll-mt-24">
+        <ProductGuidelines />
       </div>
       
       <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">

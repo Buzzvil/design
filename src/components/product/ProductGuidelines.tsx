@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MousePointer, Palette, Zap, Eye, Workflow, LucideIcon } from 'lucide-react';
+import { MousePointer, Palette, Zap, Eye, Workflow, LucideIcon, Smartphone, ChevronDown, CheckCircle, XCircle } from 'lucide-react';
 
 interface Subsection {
   id: string;
@@ -17,6 +18,59 @@ interface Subsection {
 
 const ProductGuidelines = () => {
   const { t } = useLanguage();
+  const [openPattern, setOpenPattern] = useState<string | null>(null);
+
+  const handlePatternToggle = (patternId: string) => {
+    setOpenPattern(openPattern === patternId ? null : patternId);
+  };
+
+  const interactionPatterns = [
+    {
+      id: 'onLoad',
+      title: t('product.guidelines.interactionPatterns.onLoad'),
+      description: t('product.guidelines.interactionPatterns.onLoad.description')
+    },
+    {
+      id: 'onScroll',
+      title: t('product.guidelines.interactionPatterns.onScroll'),
+      description: t('product.guidelines.interactionPatterns.onScroll.description')
+    },
+    {
+      id: 'notify',
+      title: t('product.guidelines.interactionPatterns.notify'),
+      description: t('product.guidelines.interactionPatterns.notify.description')
+    },
+    {
+      id: 'alert',
+      title: t('product.guidelines.interactionPatterns.alert'),
+      description: t('product.guidelines.interactionPatterns.alert.description')
+    },
+    {
+      id: 'pauseAsk',
+      title: t('product.guidelines.interactionPatterns.pauseAsk'),
+      description: t('product.guidelines.interactionPatterns.pauseAsk.description')
+    },
+    {
+      id: 'magnify',
+      title: t('product.guidelines.interactionPatterns.magnify'),
+      description: t('product.guidelines.interactionPatterns.magnify.description')
+    },
+    {
+      id: 'screenToScreen',
+      title: t('product.guidelines.interactionPatterns.screenToScreen'),
+      description: t('product.guidelines.interactionPatterns.screenToScreen.description')
+    },
+    {
+      id: 'feedback',
+      title: t('product.guidelines.interactionPatterns.feedback'),
+      description: t('product.guidelines.interactionPatterns.feedback.description')
+    },
+    {
+      id: 'moreToCome',
+      title: t('product.guidelines.interactionPatterns.moreToCome'),
+      description: t('product.guidelines.interactionPatterns.moreToCome.description')
+    }
+  ];
 
   const mainSections = [
     {
@@ -179,19 +233,136 @@ const ProductGuidelines = () => {
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {(subsection.patterns || subsection.structure || subsection.principles || []).map((item: string, itemIndex: number) => (
-                          <div
-                            key={itemIndex}
-                            className="flex items-start space-x-3 p-3 bg-muted/30 rounded-lg"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                            <p className="text-muted-foreground text-sm leading-relaxed">
-                              {item}
-                            </p>
+                      {subsection.id === 'interaction-patterns' ? (
+                        // Special accordion UI for Interaction Patterns
+                        <div className="space-y-4">
+                          {/* Best Practices & Dark Patterns */}
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                            {/* Best Practices */}
+                            <div className="bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/20 rounded-xl p-6">
+                              <div className="flex items-center space-x-3 mb-4">
+                                <CheckCircle className="w-5 h-5 text-green-400" />
+                                <h5 className="text-lg font-semibold text-white">
+                                  {t('product.guidelines.interactionPatterns.bestPractices')}
+                                </h5>
+                              </div>
+                              <div className="text-muted-foreground leading-relaxed whitespace-pre-line text-sm">
+                                {t('product.guidelines.interactionPatterns.bestPractices.content')}
+                              </div>
+                            </div>
+
+                            {/* Dark Patterns */}
+                            <div className="bg-gradient-to-br from-red-500/10 to-red-600/5 border border-red-500/20 rounded-xl p-6">
+                              <div className="flex items-center space-x-3 mb-4">
+                                <XCircle className="w-5 h-5 text-red-400" />
+                                <h5 className="text-lg font-semibold text-white">
+                                  {t('product.guidelines.interactionPatterns.darkPatterns')}
+                                </h5>
+                              </div>
+                              <div className="text-muted-foreground leading-relaxed whitespace-pre-line text-sm">
+                                {t('product.guidelines.interactionPatterns.darkPatterns.content')}
+                              </div>
+                            </div>
                           </div>
-                        ))}
-                      </div>
+
+                          {/* Patterns Accordion */}
+                          <div className="space-y-3">
+                            {interactionPatterns.map((pattern, patternIndex) => (
+                              <motion.div
+                                key={pattern.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: patternIndex * 0.05 }}
+                                viewport={{ once: true }}
+                                className="bg-gradient-to-br from-background to-muted/20 border border-border rounded-xl overflow-hidden"
+                              >
+                                {/* Pattern Header */}
+                                <button
+                                  onClick={() => handlePatternToggle(pattern.id)}
+                                  className="w-full p-4 text-left flex items-center justify-between hover:bg-muted/10 transition-colors"
+                                >
+                                  <div className="flex-1">
+                                    <h6 className="text-base font-semibold text-white">
+                                      {pattern.title}
+                                    </h6>
+                                  </div>
+                                  <motion.div
+                                    animate={{ rotate: openPattern === pattern.id ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                  >
+                                    <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                                  </motion.div>
+                                </button>
+
+                                {/* Pattern Content */}
+                                <AnimatePresence>
+                                  {openPattern === pattern.id && (
+                                    <motion.div
+                                      initial={{ height: 0, opacity: 0 }}
+                                      animate={{ height: 'auto', opacity: 1 }}
+                                      exit={{ height: 0, opacity: 0 }}
+                                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                      className="overflow-hidden"
+                                    >
+                                      <div className="px-4 pb-4">
+                                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                          {/* Description */}
+                                          <div className="space-y-3">
+                                            <h6 className="text-sm font-medium text-white">
+                                              Description
+                                            </h6>
+                                            <p className="text-muted-foreground leading-relaxed text-sm">
+                                              {pattern.description}
+                                            </p>
+                                          </div>
+
+                                          {/* Live Preview */}
+                                          <div className="space-y-3">
+                                            <h6 className="text-sm font-medium text-white">
+                                              Live Preview
+                                            </h6>
+                                            <div className="relative">
+                                              {/* Mobile Frame with proper phone ratio (9:16) */}
+                                              <div className="w-full max-w-[200px] mx-auto bg-black rounded-[2rem] p-1 shadow-2xl">
+                                                <div className="bg-muted/20 rounded-[1.5rem] h-[355px] flex items-center justify-center" style={{ aspectRatio: '9/16' }}>
+                                                  <div className="text-center space-y-3">
+                                                    <Smartphone className="w-8 h-8 text-muted-foreground mx-auto" />
+                                                    <p className="text-xs text-muted-foreground">
+                                                      {pattern.title}
+                                                    </p>
+                                                    <p className="text-xs text-muted-foreground/70">
+                                                      Preview coming soon
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        // Regular grid for other subsections
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {(subsection.patterns || subsection.structure || subsection.principles || []).map((item: string, itemIndex: number) => (
+                            <div
+                              key={itemIndex}
+                              className="flex items-start space-x-3 p-3 bg-muted/30 rounded-lg"
+                            >
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                              <p className="text-muted-foreground text-sm leading-relaxed">
+                                {item}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>
