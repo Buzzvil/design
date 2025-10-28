@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MousePointer, ChevronDown, CheckCircle, XCircle, ArrowLeft, Copy } from 'lucide-react';
+import { MousePointer, Smartphone, ChevronDown, CheckCircle, XCircle, ArrowLeft, Copy } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -15,9 +15,20 @@ const UXPatternsPage = () => {
   const { t } = useLanguage();
   const router = useRouter();
   const [openPattern, setOpenPattern] = useState<string | null>(null);
+  const [copiedPattern, setCopiedPattern] = useState<string | null>(null);
 
   const handlePatternToggle = (patternId: string) => {
     setOpenPattern(openPattern === patternId ? null : patternId);
+  };
+
+  const handleCopyCode = async (patternId: string, code: string) => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopiedPattern(patternId);
+      setTimeout(() => setCopiedPattern(null), 3000);
+    } catch (err) {
+      console.error('Failed to copy code:', err);
+    }
   };
 
   const sections = [
@@ -387,44 +398,71 @@ const ComingSoonPattern = () => (
                       >
                         <div className="px-4 pb-4">
                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            {/* Description */}
-                            <div className="space-y-3">
-                              <h5 className="text-sm font-medium text-white">
-                                Description
-                              </h5>
-                              <p className="text-muted-foreground leading-relaxed text-sm">
-                                {pattern.description}
-                              </p>
-                              
-                              {/* Tags */}
-                              <div className="flex flex-wrap gap-2 mt-3">
-                                {pattern.tags.map((tag, tagIndex) => (
-                                  <span
-                                    key={tagIndex}
-                                    className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30"
-                                  >
-                                    {tag}
-                                  </span>
-                                ))}
+                            {/* Left Column - Description, Tags, and Code */}
+                            <div className="space-y-4">
+                              {/* Description */}
+                              <div className="space-y-3">
+                                <h5 className="text-sm font-medium text-white">
+                                  Description
+                                </h5>
+                                <p className="text-muted-foreground leading-relaxed text-sm">
+                                  {pattern.description}
+                                </p>
+                                
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-2 mt-3">
+                                  {pattern.tags.map((tag, tagIndex) => (
+                                    <span
+                                      key={tagIndex}
+                                      className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30"
+                                    >
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
                               </div>
+
+                              {/* Code Preview */}
+                              {pattern.code && (
+                                <div className="space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <h5 className="text-sm font-medium text-white">
+                                      Code Example
+                                    </h5>
+                                    <motion.button
+                                      onClick={() => handleCopyCode(pattern.id, pattern.code)}
+                                      className="flex items-center space-x-1 text-xs text-muted-foreground hover:text-white transition-colors"
+                                      whileTap={{ scale: 0.95 }}
+                                    >
+                                      <Copy className="w-3 h-3" />
+                                      <span>{copiedPattern === pattern.id ? 'Copied!' : 'Copy'}</span>
+                                    </motion.button>
+                                  </div>
+                                  <div className="bg-muted/10 border border-border/50 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-xs text-muted-foreground font-mono leading-relaxed">
+                                      <code>{pattern.code}</code>
+                                    </pre>
+                                  </div>
+                                </div>
+                              )}
                             </div>
 
-                            {/* Live Preview */}
+                            {/* Right Column - Live Preview */}
                             <div className="space-y-3">
                               <h5 className="text-sm font-medium text-white">
                                 Live Preview
                               </h5>
-                              <div className="relative">
+                              <div className="relative flex justify-center">
                                 {/* Mobile Frame with 9:16 ratio (vertical phone) */}
-                                <div className="w-full max-w-[180px] mx-auto bg-gray-900 rounded-[2rem] p-1 shadow-2xl border border-gray-700">
-                                  <div className="bg-gray-800 rounded-[1.5rem] h-[320px] flex items-center justify-center" style={{ aspectRatio: '9/16' }}>
-                                    <div className="text-center space-y-2 px-3">
-                                      <div className="w-6 h-6 bg-gray-600 rounded-full mx-auto mb-2"></div>
-                                      <p className="text-xs text-gray-400 break-words font-medium">
+                                <div className="w-full max-w-[200px] bg-black rounded-[1.5rem] p-1 shadow-2xl">
+                                  <div className="bg-muted/20 rounded-[1.25rem] h-[400px] flex items-center justify-center" style={{ aspectRatio: '9/16' }}>
+                                    <div className="text-center space-y-3 px-4">
+                                      <Smartphone className="w-8 h-8 text-muted-foreground mx-auto" />
+                                      <p className="text-sm text-muted-foreground break-words font-medium">
                                         {pattern.title}
                                       </p>
-                                      <p className="text-xs text-gray-500">
-                                        Preview
+                                      <p className="text-xs text-muted-foreground/70">
+                                        Preview coming soon
                                       </p>
                                     </div>
                                   </div>
@@ -432,29 +470,6 @@ const ComingSoonPattern = () => (
                               </div>
                             </div>
                           </div>
-
-                          {/* Code Preview */}
-                          {pattern.code && (
-                            <div className="mt-6 space-y-3">
-                              <div className="flex items-center justify-between">
-                                <h5 className="text-sm font-medium text-white">
-                                  Code Example
-                                </h5>
-                                <button
-                                  onClick={() => navigator.clipboard.writeText(pattern.code)}
-                                  className="flex items-center space-x-1 text-xs text-muted-foreground hover:text-white transition-colors"
-                                >
-                                  <Copy className="w-3 h-3" />
-                                  <span>Copy</span>
-                                </button>
-                              </div>
-                              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-xs text-gray-300 font-mono leading-relaxed">
-                                  <code>{pattern.code}</code>
-                                </pre>
-                              </div>
-                            </div>
-                          )}
                         </div>
                       </motion.div>
                     )}
