@@ -25,6 +25,9 @@ const Footer = () => {
     'Product': [
       { name: t('footer.product.principles'), href: '/design/product#principles' },
       { name: t('footer.product.guidelines'), href: '/design/product#guidelines' },
+      { name: 'UX Patterns', href: '/design/product/UX-patterns' },
+      { name: 'Visual Patterns', href: '/design/product/visual-patterns' },
+      { name: 'Workflow & Rituals', href: '/design/product/workflow-rituals' },
       { name: t('footer.product.resources'), href: '/design/product#resources' },
     ],
     'Connect': [
