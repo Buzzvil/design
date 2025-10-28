@@ -3,10 +3,10 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
-import SectionPlaceholder from '@/components/ui/SectionPlaceholder';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { PageHero } from '@/components/ui/PageHero';
-import { Award, FileText, Download } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Award } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function BrandPage() {
@@ -32,34 +32,43 @@ export default function BrandPage() {
         maxWidth="4xl"
       />
       
-      <div id="principles" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <AnimatedSection delay={0.1}>
-          <SectionPlaceholder
-            title={t('brand.principles.title')}
-            description={t('brand.principles.description')}
-            icon={Award}
-          />
-        </AnimatedSection>
+      <div id="principles" className="scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <AnimatedSection delay={0.1}>
+              <SectionHeader
+                title={t('brand.principles.title')}
+                description={t('brand.principles.description')}
+              />
+            </AnimatedSection>
+          </div>
+        </section>
       </div>
       
-      <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <AnimatedSection delay={0.2}>
-          <SectionPlaceholder
-            title={t('brand.guidelines.title')}
-            description={t('brand.guidelines.description')}
-            icon={FileText}
-          />
-        </AnimatedSection>
+      <div id="guidelines" className="scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <AnimatedSection delay={0.2}>
+              <SectionHeader
+                title={t('brand.guidelines.title')}
+                description={t('brand.guidelines.description')}
+              />
+            </AnimatedSection>
+          </div>
+        </section>
       </div>
       
-      <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <AnimatedSection delay={0.3}>
-          <SectionPlaceholder
-            title={t('brand.resources.title')}
-            description={t('brand.resources.description')}
-            icon={Download}
-          />
-        </AnimatedSection>
+      <div id="resources" className="scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <AnimatedSection delay={0.3}>
+              <SectionHeader
+                title={t('brand.resources.title')}
+                description={t('brand.resources.description')}
+              />
+            </AnimatedSection>
+          </div>
+        </section>
       </div>
       <Footer />
     </main>

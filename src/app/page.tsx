@@ -13,6 +13,7 @@ import InteractiveMinimap from '@/components/ui/InteractiveMinimap';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import { ParallaxSection } from '@/components/ui/ParallaxSection';
 import { LanguageTransitionWrapper } from '@/components/layout/LanguageTransitionWrapper';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
@@ -63,14 +64,12 @@ export default function Home() {
         <ParallaxSection speed={0.4} offset={100}>
           <section id="philosophy" className="py-20 scroll-mt-24">
             <div className="max-w-7xl mx-auto px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                  {t('philosophy.title')}
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  {t('philosophy.subtitle')}
-                </p>
-              </div>
+              <SectionHeader
+                title={t('philosophy.title')}
+                description={t('philosophy.subtitle')}
+                titleSize="5xl"
+                descriptionSize="xl"
+              />
 
               <div className="max-w-4xl mx-auto">
                 <div className="text-center p-12 bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border">

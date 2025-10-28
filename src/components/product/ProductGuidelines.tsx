@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MousePointer, Eye, Workflow, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { SectionHeader } from '../ui/SectionHeader';
 
 const ProductGuidelines = () => {
   const { t } = useLanguage();
@@ -52,20 +53,12 @@ const ProductGuidelines = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-            {t('product.guidelines.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            {t('product.guidelines.intro')}
-          </p>
-        </motion.div>
+        <SectionHeader
+          title={t('product.guidelines.title')}
+          description={t('product.guidelines.intro')}
+          titleSize="5xl"
+          descriptionSize="xl"
+        />
 
         {/* Guidelines Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
