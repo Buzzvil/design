@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { BlurReveal } from '@/components/ui/BlurReveal';
 
 const WorkflowRitualsPage = () => {
   const { t } = useLanguage();
@@ -87,12 +89,16 @@ const WorkflowRitualsPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                Core Principles
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                {t('product.guidelines.workflowRituals.subtitle')}
-              </p>
+              <BlurReveal>
+                <SectionTitle>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Core Principles
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    {t('product.guidelines.workflowRituals.subtitle')}
+                  </p>
+                </SectionTitle>
+              </BlurReveal>
             </motion.div>
 
             {/* Principles Grid */}
@@ -131,12 +137,16 @@ const WorkflowRitualsPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                Workflow Steps
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Our streamlined process for design and development collaboration.
-              </p>
+              <BlurReveal>
+                <SectionTitle>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Workflow Steps
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Our streamlined process for design and development collaboration.
+                  </p>
+                </SectionTitle>
+              </BlurReveal>
             </motion.div>
 
             {/* Workflow Steps */}

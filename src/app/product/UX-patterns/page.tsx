@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { BlurReveal } from '@/components/ui/BlurReveal';
 
 const UXPatternsPage = () => {
   const { t } = useLanguage();
@@ -360,25 +362,16 @@ const UXPatternsPage = () => {
               <Palette className="w-16 h-16 text-white mx-auto mb-6" />
             </motion.div>
             
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-            >
-              UI Kit
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
-            >
-              From atoms to modules to views - our comprehensive design system components.
-            </motion.p>
+            <BlurReveal>
+              <SectionTitle>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  UI Kit
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  From atoms to modules to views - our comprehensive design system components.
+                </p>
+              </SectionTitle>
+            </BlurReveal>
           </div>
         </section>
       </div>
@@ -396,25 +389,16 @@ const UXPatternsPage = () => {
               <Zap className="w-16 h-16 text-white mx-auto mb-6" />
             </motion.div>
             
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-            >
-              Micro-interactions
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
-            >
-              Delightful details that bring our interfaces to life.
-            </motion.p>
+            <BlurReveal>
+              <SectionTitle>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Micro-interactions
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Delightful details that bring our interfaces to life.
+                </p>
+              </SectionTitle>
+            </BlurReveal>
           </div>
         </section>
       </div>

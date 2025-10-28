@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { BlurReveal } from '@/components/ui/BlurReveal';
 
 const VisualPatternsPage = () => {
   const { t } = useLanguage();
@@ -87,12 +89,16 @@ const VisualPatternsPage = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                Design Principles
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                {t('product.guidelines.visualPatterns.subtitle')}
-              </p>
+              <BlurReveal>
+                <SectionTitle>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Design Principles
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    {t('product.guidelines.visualPatterns.subtitle')}
+                  </p>
+                </SectionTitle>
+              </BlurReveal>
             </motion.div>
 
             {/* Principles Grid */}
@@ -134,25 +140,16 @@ const VisualPatternsPage = () => {
               <Eye className="w-16 h-16 text-white mx-auto mb-6" />
             </motion.div>
             
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-            >
-              Visual Guidelines
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
-            >
-              Comprehensive visual standards and brand integration guidelines.
-            </motion.p>
+            <BlurReveal>
+              <SectionTitle>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Visual Guidelines
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Comprehensive visual standards and brand integration guidelines.
+                </p>
+              </SectionTitle>
+            </BlurReveal>
           </div>
         </section>
       </div>
