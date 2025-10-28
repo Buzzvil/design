@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Award, Code, ChevronDown, MousePointer, Eye, Workflow } from 'lucide-react';
+import { Menu, X, BookOpen, Award, Code, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useRouter } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -11,6 +11,7 @@ import Logo from './Logo';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductSubmenuOpen, setIsProductSubmenuOpen] = useState(false);
+  const [isGuidelinesSubmenuOpen, setIsGuidelinesSubmenuOpen] = useState(false);
   const { t } = useLanguage();
   const router = useRouter();
 
@@ -24,11 +25,17 @@ const Header = () => {
       hasSubmenu: true,
       submenuItems: [
         { name: t('product.sections.principles'), href: '/product#principles' },
-        { name: t('product.sections.guidelines'), href: '/product#guidelines' },
+        { 
+          name: t('product.sections.guidelines'), 
+          href: '/product#guidelines',
+          hasSubmenu: true,
+          submenuItems: [
+            { name: 'UX Patterns', href: '/product/UX-patterns' },
+            { name: 'Visual Patterns', href: '/product/visual-patterns' },
+            { name: 'Workflow & Rituals', href: '/product/workflow-rituals' },
+          ]
+        },
         { name: t('product.sections.resources'), href: '/product#resources' },
-        { name: 'UX Patterns', href: '/product/UX-patterns', icon: MousePointer },
-        { name: 'Visual Patterns', href: '/product/visual-patterns', icon: Eye },
-        { name: 'Workflow & Rituals', href: '/product/workflow-rituals', icon: Workflow },
       ]
     },
   ];
@@ -79,24 +86,78 @@ const Header = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-64 bg-background/98 backdrop-blur-sm border border-border rounded-lg shadow-xl z-50"
+                          className="absolute top-full left-0 mt-2 w-64 bg-background/98 backdrop-blur-sm border border-border rounded-lg shadow-xl z-[60]"
                         >
                           <div className="py-2">
                             {item.submenuItems?.map((subItem, subIndex) => (
-                              <motion.button
-                                key={subItem.name}
-                                whileHover={{ x: 4 }}
-                                onClick={() => {
-                                  router.push(subItem.href);
-                                  setIsProductSubmenuOpen(false);
-                                }}
-                                className="w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-accent transition-colors"
-                              >
-                                {subItem.icon && <subItem.icon className="w-4 h-4 text-muted-foreground" />}
-                                <span className={`font-medium ${subItem.icon ? 'text-muted-foreground' : 'text-foreground pl-7'}`}>
-                                  {subItem.name}
-                                </span>
-                              </motion.button>
+                              <div key={subItem.name} className="relative">
+                                {subItem.hasSubmenu ? (
+                                  <div
+                                    onMouseEnter={() => setIsGuidelinesSubmenuOpen(true)}
+                                    onMouseLeave={() => setIsGuidelinesSubmenuOpen(false)}
+                                    className="relative"
+                                  >
+                                    <motion.button
+                                      whileHover={{ x: 4 }}
+                                      onClick={() => {
+                                        router.push(subItem.href);
+                                        setIsProductSubmenuOpen(false);
+                                      }}
+                                      className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-accent transition-colors"
+                                    >
+                                      <span className="font-medium text-foreground">
+                                        {subItem.name}
+                                      </span>
+                                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isGuidelinesSubmenuOpen ? 'rotate-180' : ''}`} />
+                                    </motion.button>
+                                    
+                                    {/* Guidelines Submenu */}
+                                    <AnimatePresence>
+                                      {isGuidelinesSubmenuOpen && (
+                                        <motion.div
+                                          initial={{ opacity: 0, x: 10 }}
+                                          animate={{ opacity: 1, x: 0 }}
+                                          exit={{ opacity: 0, x: 10 }}
+                                          transition={{ duration: 0.2 }}
+                                          className="absolute top-0 left-full ml-2 w-56 bg-background/98 backdrop-blur-sm border border-border rounded-lg shadow-xl z-[70]"
+                                        >
+                                          <div className="py-2">
+                                            {subItem.submenuItems?.map((guidelineItem, guidelineIndex) => (
+                                              <motion.button
+                                                key={guidelineItem.name}
+                                                whileHover={{ x: 4 }}
+                                                onClick={() => {
+                                                  router.push(guidelineItem.href);
+                                                  setIsProductSubmenuOpen(false);
+                                                  setIsGuidelinesSubmenuOpen(false);
+                                                }}
+                                                className="w-full flex items-center px-4 py-3 text-left hover:bg-accent transition-colors"
+                                              >
+                                                <span className="font-medium text-muted-foreground pl-4">
+                                                  {guidelineItem.name}
+                                                </span>
+                                              </motion.button>
+                                            ))}
+                                          </div>
+                                        </motion.div>
+                                      )}
+                                    </AnimatePresence>
+                                  </div>
+                                ) : (
+                                  <motion.button
+                                    whileHover={{ x: 4 }}
+                                    onClick={() => {
+                                      router.push(subItem.href);
+                                      setIsProductSubmenuOpen(false);
+                                    }}
+                                    className="w-full flex items-center px-4 py-3 text-left hover:bg-accent transition-colors"
+                                  >
+                                    <span className="font-medium text-foreground">
+                                      {subItem.name}
+                                    </span>
+                                  </motion.button>
+                                )}
+                              </div>
                             ))}
                           </div>
                         </motion.div>
@@ -174,20 +235,67 @@ const Header = () => {
                           >
                             <div className="ml-6 space-y-1">
                               {item.submenuItems?.map((subItem, subIndex) => (
-                                <motion.button
-                                  key={subItem.name}
-                                  onClick={() => {
-                                    setIsMobileMenuOpen(false);
-                                    setIsProductSubmenuOpen(false);
-                                    router.push(subItem.href);
-                                  }}
-                                  className="flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
-                                >
-                                  {subItem.icon && <subItem.icon className="w-4 h-4 text-muted-foreground" />}
-                                  <span className={`font-medium text-sm ${subItem.icon ? 'text-muted-foreground' : 'text-foreground'}`}>
-                                    {subItem.name}
-                                  </span>
-                                </motion.button>
+                                <div key={subItem.name}>
+                                  {subItem.hasSubmenu ? (
+                                    <div>
+                                      <motion.button
+                                        onClick={() => {
+                                          setIsGuidelinesSubmenuOpen(!isGuidelinesSubmenuOpen);
+                                        }}
+                                        className="flex items-center justify-between w-full px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer text-left"
+                                      >
+                                        <span className="font-medium text-sm text-foreground">
+                                          {subItem.name}
+                                        </span>
+                                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isGuidelinesSubmenuOpen ? 'rotate-180' : ''}`} />
+                                      </motion.button>
+                                      
+                                      <AnimatePresence>
+                                        {isGuidelinesSubmenuOpen && (
+                                          <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="overflow-hidden"
+                                          >
+                                            <div className="ml-6 space-y-1">
+                                              {subItem.submenuItems?.map((guidelineItem, guidelineIndex) => (
+                                                <motion.button
+                                                  key={guidelineItem.name}
+                                                  onClick={() => {
+                                                    setIsMobileMenuOpen(false);
+                                                    setIsProductSubmenuOpen(false);
+                                                    setIsGuidelinesSubmenuOpen(false);
+                                                    router.push(guidelineItem.href);
+                                                  }}
+                                                  className="flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
+                                                >
+                                                  <span className="font-medium text-sm text-muted-foreground">
+                                                    {guidelineItem.name}
+                                                  </span>
+                                                </motion.button>
+                                              ))}
+                                            </div>
+                                          </motion.div>
+                                        )}
+                                      </AnimatePresence>
+                                    </div>
+                                  ) : (
+                                    <motion.button
+                                      onClick={() => {
+                                        setIsMobileMenuOpen(false);
+                                        setIsProductSubmenuOpen(false);
+                                        router.push(subItem.href);
+                                      }}
+                                      className="flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
+                                    >
+                                      <span className="font-medium text-sm text-foreground">
+                                        {subItem.name}
+                                      </span>
+                                    </motion.button>
+                                  )}
+                                </div>
                               ))}
                             </div>
                           </motion.div>
