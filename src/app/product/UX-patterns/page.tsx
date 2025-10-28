@@ -7,6 +7,7 @@ import { MousePointer, Palette, Zap, Smartphone, ChevronDown, CheckCircle, XCirc
 import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SectionNavigation from '@/components/ui/SectionNavigation';
 
 const UXPatternsPage = () => {
   const { t } = useLanguage();
@@ -16,6 +17,12 @@ const UXPatternsPage = () => {
   const handlePatternToggle = (patternId: string) => {
     setOpenPattern(openPattern === patternId ? null : patternId);
   };
+
+  const sections = [
+    { id: 'interaction-patterns', label: 'Interaction Patterns' },
+    { id: 'ui-kit', label: 'UI Kit' },
+    { id: 'micro-interactions', label: 'Micro-interactions' }
+  ];
 
   const interactionPatterns = [
     {
@@ -113,6 +120,8 @@ const UXPatternsPage = () => {
     <main className="min-h-screen relative">
       <Header />
       
+      <SectionNavigation sections={sections} />
+      
       {/* Back Button */}
       <div className="pt-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -127,26 +136,41 @@ const UXPatternsPage = () => {
         </div>
       </div>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
+      {/* Intro Screen */}
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="mb-8"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              {t('product.guidelines.uxPatterns.title')}
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              {t('product.guidelines.uxPatterns.description')}
-            </p>
+            <MousePointer className="w-16 h-16 text-white mx-auto mb-6" />
           </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
+          >
+            UX Patterns
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+            className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          >
+            {t('product.guidelines.uxPatterns.description')}
+          </motion.p>
+        </div>
+      </section>
 
-          {/* Subsections */}
-          <div className="space-y-20">
+      <div id="interaction-patterns" className="scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
             {subsections.map((subsection, sectionIndex) => (
               <motion.div
                 key={subsection.id}
@@ -154,7 +178,7 @@ const UXPatternsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: sectionIndex * 0.2 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl"
+                className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl mb-20"
               >
                 {/* Subsection Header */}
                 <div className="flex items-start space-x-6 mb-8">
@@ -320,8 +344,80 @@ const UXPatternsPage = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
+
+      <div id="ui-kit" className="min-h-screen flex items-center justify-center scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <Palette className="w-16 h-16 text-white mx-auto mb-6" />
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
+            >
+              UI Kit
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            >
+              From atoms to modules to views - our comprehensive design system components.
+            </motion.p>
+          </div>
+        </section>
+      </div>
+
+      <div id="micro-interactions" className="min-h-screen flex items-center justify-center scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <Zap className="w-16 h-16 text-white mx-auto mb-6" />
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
+            >
+              Micro-interactions
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            >
+              Delightful details that bring our interfaces to life.
+            </motion.p>
+          </div>
+        </section>
+      </div>
 
       <Footer />
     </main>

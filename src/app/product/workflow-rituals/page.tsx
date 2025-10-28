@@ -6,10 +6,17 @@ import { Workflow, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SectionNavigation from '@/components/ui/SectionNavigation';
 
-const IntegrationWorkflowPage = () => {
+const WorkflowRitualsPage = () => {
   const { t } = useLanguage();
   const router = useRouter();
+
+  const sections = [
+    { id: 'principles', label: 'Core Principles' },
+    { id: 'workflow', label: 'Workflow Steps' },
+    { id: 'coming-soon', label: 'Coming Soon' }
+  ];
 
   const principles = [
     t('product.guidelines.workflowRituals.principle1'),
@@ -21,6 +28,8 @@ const IntegrationWorkflowPage = () => {
   return (
     <main className="min-h-screen relative">
       <Header />
+      
+      <SectionNavigation sections={sections} />
       
       {/* Back Button */}
       <div className="pt-20 px-4 sm:px-6 lg:px-8">
@@ -36,52 +45,55 @@ const IntegrationWorkflowPage = () => {
         </div>
       </div>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
+      {/* Intro Screen */}
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="mb-8"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              {t('product.guidelines.workflowRituals.title')}
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-4">
-              {t('product.guidelines.workflowRituals.subtitle')}
-            </p>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              {t('product.guidelines.workflowRituals.description')}
-            </p>
+            <Workflow className="w-16 h-16 text-white mx-auto mb-6" />
           </motion.div>
-
-          {/* Integration Workflow Content */}
-          <motion.div
+          
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
           >
-            {/* Section Header */}
-            <div className="flex items-start space-x-6 mb-8">
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Workflow className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-                  {t('product.guidelines.workflowRituals.title')}
-                </h2>
-                <p className="text-lg text-muted-foreground font-medium mb-4">
-                  {t('product.guidelines.workflowRituals.subtitle')}
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  {t('product.guidelines.workflowRituals.description')}
-                </p>
-              </div>
-            </div>
+            Workflow & Rituals
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+            className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          >
+            {t('product.guidelines.workflowRituals.description')}
+          </motion.p>
+        </div>
+      </section>
+
+      <div id="principles" className="scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                Core Principles
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                {t('product.guidelines.workflowRituals.subtitle')}
+              </p>
+            </motion.div>
 
             {/* Principles Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,70 +117,107 @@ const IntegrationWorkflowPage = () => {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+      </div>
 
-            {/* Workflow Steps */}
+      <div id="workflow" className="min-h-screen flex items-center justify-center scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mt-12"
+              className="text-center mb-16"
             >
-              <h3 className="text-xl font-semibold text-white mb-6">Workflow Steps</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-muted/20 rounded-xl border border-border/50">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-primary font-bold">1</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Design</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Create designs following our guidelines and patterns
-                  </p>
-                </div>
-                <div className="text-center p-6 bg-muted/20 rounded-xl border border-border/50">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-primary font-bold">2</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Review</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Team review and feedback collection process
-                  </p>
-                </div>
-                <div className="text-center p-6 bg-muted/20 rounded-xl border border-border/50">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-primary font-bold">3</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Implement</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Development handoff and implementation
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Coming Soon Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="mt-12 p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border border-primary/20"
-            >
-              <h3 className="text-xl font-semibold text-white mb-4">
-                Detailed Workflow Documentation Coming Soon
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We&apos;re developing comprehensive workflow documentation including design handoff processes, 
-                development guidelines, and quality assurance checklists. Stay tuned for updates.
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                Workflow Steps
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                Our streamlined process for design and development collaboration.
               </p>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
+
+            {/* Workflow Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-center p-6 bg-muted/20 rounded-xl border border-border/50"
+              >
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-primary font-bold">1</span>
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-2">Design</h4>
+                <p className="text-muted-foreground text-sm">
+                  Create designs following our guidelines and patterns
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center p-6 bg-muted/20 rounded-xl border border-border/50"
+              >
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-primary font-bold">2</span>
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-2">Review</h4>
+                <p className="text-muted-foreground text-sm">
+                  Team review and feedback collection process
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center p-6 bg-muted/20 rounded-xl border border-border/50"
+              >
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-primary font-bold">3</span>
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-2">Implement</h4>
+                <p className="text-muted-foreground text-sm">
+                  Development handoff and implementation
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="coming-soon" className="min-h-screen flex items-center justify-center scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl border border-primary/20 p-12">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                  Detailed Workflow Documentation Coming Soon
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                  We&apos;re developing comprehensive workflow documentation including design handoff processes, 
+                  development guidelines, and quality assurance checklists. Stay tuned for updates.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       <Footer />
     </main>
   );
 };
 
-export default IntegrationWorkflowPage;
+export default WorkflowRitualsPage;
