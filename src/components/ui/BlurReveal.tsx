@@ -3,7 +3,7 @@
 import React from 'react';
 
 const DEFAULT_BLUR = 10;
-const DEFAULT_DURATION = 1200; // Faster animation
+const DEFAULT_DURATION = 800; // Shorter deblur animation
 
 export function BlurReveal({
   children,
@@ -43,7 +43,7 @@ function Effects() {
       <div 
         className="blur-reveal-blur absolute inset-0"
         style={{
-          animation: `blurRevealBlur ${800}ms ease-out forwards`,
+          animation: `blurRevealBlur ${600}ms ease-out forwards`,
         }}
       />
     </div>

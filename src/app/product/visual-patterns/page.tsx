@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { BlurReveal } from '@/components/ui/BlurReveal';
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 const VisualPatternsPage = () => {
   const { t } = useLanguage();

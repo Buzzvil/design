@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { BlurReveal } from '@/components/ui/BlurReveal';
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import PatternAccordion from '@/components/ui/PatternAccordion';
 import { interactionPatterns } from '@/data/interactionPatterns';
 
@@ -78,13 +79,7 @@ const UXPatternsPage = () => {
       <div id="interaction-patterns" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <AnimatedSection className="text-center mb-16" delay={0.1}>
               <BlurReveal>
                 <SectionTitle>
                   <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -95,7 +90,7 @@ const UXPatternsPage = () => {
                   </p>
                 </SectionTitle>
               </BlurReveal>
-            </motion.div>
+            </AnimatedSection>
 
             {/* Best Practices & Dark Patterns */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
@@ -154,13 +149,7 @@ const UXPatternsPage = () => {
       <div id="ui-kit" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <AnimatedSection className="text-center mb-16" delay={0.1}>
               <BlurReveal>
                 <SectionTitle>
                   <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -171,7 +160,7 @@ const UXPatternsPage = () => {
                   </p>
                 </SectionTitle>
               </BlurReveal>
-            </motion.div>
+            </AnimatedSection>
 
             {/* UI Kit Structure */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -203,13 +192,7 @@ const UXPatternsPage = () => {
       <div id="micro-interactions" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <AnimatedSection className="text-center mb-16" delay={0.1}>
               <BlurReveal>
                 <SectionTitle>
                   <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -220,7 +203,7 @@ const UXPatternsPage = () => {
                   </p>
                 </SectionTitle>
               </BlurReveal>
-            </motion.div>
+            </AnimatedSection>
 
             {/* Micro-interactions Examples */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -6,6 +6,7 @@ import SectionNavigation from '@/components/ui/SectionNavigation';
 import ProductPrinciples from '@/components/product/ProductPrinciples';
 import ProductGuidelines from '@/components/product/ProductGuidelines';
 import SectionPlaceholder from '@/components/ui/SectionPlaceholder';
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Download, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
@@ -58,19 +59,25 @@ export default function ProductPage() {
       </section>
       
       <div id="principles" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <ProductPrinciples />
+        <AnimatedSection delay={0.1}>
+          <ProductPrinciples />
+        </AnimatedSection>
       </div>
       
       <div id="guidelines" className="scroll-mt-24">
-        <ProductGuidelines />
+        <AnimatedSection delay={0.2}>
+          <ProductGuidelines />
+        </AnimatedSection>
       </div>
       
       <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <SectionPlaceholder
-          title={t('product.resources.title')}
-          description={t('product.resources.description')}
-          icon={Download}
-        />
+        <AnimatedSection delay={0.3}>
+          <SectionPlaceholder
+            title={t('product.resources.title')}
+            description={t('product.resources.description')}
+            icon={Download}
+          />
+        </AnimatedSection>
       </div>
       <Footer />
     </main>
