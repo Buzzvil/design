@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MousePointer, Palette, Zap, Smartphone, ChevronDown, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
+import { MousePointer, Smartphone, ChevronDown, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -273,12 +273,12 @@ const UXPatternsPage = () => {
                                 Live Preview
                               </h5>
                               <div className="relative">
-                                {/* Mobile Frame with 16:9 ratio */}
-                                <div className="w-full max-w-[280px] mx-auto bg-black rounded-[1.5rem] p-1 shadow-2xl">
-                                  <div className="bg-muted/20 rounded-[1.25rem] h-[157px] flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
-                                    <div className="text-center space-y-2 px-4">
-                                      <Smartphone className="w-6 h-6 text-muted-foreground mx-auto" />
-                                      <p className="text-xs sm:text-sm text-muted-foreground break-words">
+                                {/* Mobile Frame with 9:16 ratio (vertical phone) */}
+                                <div className="w-full max-w-[200px] mx-auto bg-black rounded-[2rem] p-2 shadow-2xl">
+                                  <div className="bg-muted/20 rounded-[1.5rem] h-[400px] flex items-center justify-center" style={{ aspectRatio: '9/16' }}>
+                                    <div className="text-center space-y-3 px-4">
+                                      <Smartphone className="w-8 h-8 text-muted-foreground mx-auto" />
+                                      <p className="text-sm text-muted-foreground break-words font-medium">
                                         {pattern.title}
                                       </p>
                                       <p className="text-xs text-muted-foreground/70">
@@ -301,56 +301,123 @@ const UXPatternsPage = () => {
         </section>
       </div>
 
-      <div id="ui-kit" className="min-h-screen flex items-center justify-center scroll-mt-24">
+      <div id="ui-kit" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
+          <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="text-center mb-16"
             >
-              <Palette className="w-16 h-16 text-white mx-auto mb-6" />
+              <BlurReveal>
+                <SectionTitle>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    UI Kit
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    From atoms to modules to views - our comprehensive design system components.
+                  </p>
+                </SectionTitle>
+              </BlurReveal>
             </motion.div>
-            
-            <BlurReveal>
-              <SectionTitle>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  UI Kit
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  From atoms to modules to views - our comprehensive design system components.
-                </p>
-              </SectionTitle>
-            </BlurReveal>
+
+            {/* UI Kit Structure */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { level: 'Atoms', description: 'Basic building blocks like buttons, inputs, and icons', color: 'from-blue-500/10 to-blue-600/5', borderColor: 'border-blue-500/20' },
+                { level: 'Molecules', description: 'Simple combinations of atoms like form fields and search bars', color: 'from-green-500/10 to-green-600/5', borderColor: 'border-green-500/20' },
+                { level: 'Organisms', description: 'Complex UI components like headers, sidebars, and cards', color: 'from-purple-500/10 to-purple-600/5', borderColor: 'border-purple-500/20' },
+                { level: 'Templates', description: 'Page-level layouts and wireframes without content', color: 'from-orange-500/10 to-orange-600/5', borderColor: 'border-orange-500/20' },
+                { level: 'Pages', description: 'Specific instances of templates with real content', color: 'from-pink-500/10 to-pink-600/5', borderColor: 'border-pink-500/20' },
+                { level: 'More to come', description: 'Additional components and patterns as we grow', color: 'from-gray-500/10 to-gray-600/5', borderColor: 'border-gray-500/20' }
+              ].map((item, index) => (
+                <motion.div
+                  key={item.level}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`bg-gradient-to-br ${item.color} border ${item.borderColor} rounded-xl p-6 hover:scale-105 transition-transform duration-300`}
+                >
+                  <h3 className="text-lg font-semibold text-white mb-3">{item.level}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </div>
 
-      <div id="micro-interactions" className="min-h-screen flex items-center justify-center scroll-mt-24">
+      <div id="micro-interactions" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
+          <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="text-center mb-16"
             >
-              <Zap className="w-16 h-16 text-white mx-auto mb-6" />
+              <BlurReveal>
+                <SectionTitle>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Micro-interactions
+                  </h2>
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Delightful details that bring our interfaces to life.
+                  </p>
+                </SectionTitle>
+              </BlurReveal>
             </motion.div>
-            
-            <BlurReveal>
-              <SectionTitle>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Micro-interactions
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Delightful details that bring our interfaces to life.
-                </p>
-              </SectionTitle>
-            </BlurReveal>
+
+            {/* Micro-interactions Examples */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { 
+                  title: 'Living Icons', 
+                  description: 'Icons that respond to user actions with subtle animations and state changes',
+                  example: 'Button hover states, loading spinners, and interactive icons',
+                  color: 'from-cyan-500/10 to-cyan-600/5',
+                  borderColor: 'border-cyan-500/20'
+                },
+                { 
+                  title: 'Emphasis On', 
+                  description: 'Visual emphasis through scale, color, and motion to guide user attention',
+                  example: 'Focus states, selection highlights, and call-to-action animations',
+                  color: 'from-yellow-500/10 to-yellow-600/5',
+                  borderColor: 'border-yellow-500/20'
+                },
+                { 
+                  title: 'Reward Delights', 
+                  description: 'Celebratory animations that provide positive feedback for user actions',
+                  example: 'Success animations, achievement unlocks, and completion celebrations',
+                  color: 'from-emerald-500/10 to-emerald-600/5',
+                  borderColor: 'border-emerald-500/20'
+                },
+                { 
+                  title: 'More to come', 
+                  description: 'Additional micro-interaction patterns as we discover new ways to delight users',
+                  example: 'Gesture feedback, haptic responses, and contextual animations',
+                  color: 'from-gray-500/10 to-gray-600/5',
+                  borderColor: 'border-gray-500/20'
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`bg-gradient-to-br ${item.color} border ${item.borderColor} rounded-xl p-6 hover:scale-105 transition-transform duration-300`}
+                >
+                  <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-3">{item.description}</p>
+                  <p className="text-muted-foreground/70 text-xs italic">{item.example}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </div>

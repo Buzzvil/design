@@ -9,7 +9,13 @@ import Logo from './Logo';
 const Footer = () => {
   const { t } = useLanguage();
   
-  const footerLinks = {
+  interface FooterLink {
+    name: string;
+    href: string;
+    isIndented?: boolean;
+  }
+
+  const footerLinks: Record<string, FooterLink[]> = {
     'Foundations': [
       { name: t('footer.foundations.mission'), href: '/design/#mission-vision' },
       { name: t('footer.foundations.philosophy'), href: '/design/#philosophy' },
@@ -25,9 +31,9 @@ const Footer = () => {
     'Product': [
       { name: t('footer.product.principles'), href: '/design/product#principles' },
       { name: t('footer.product.guidelines'), href: '/design/product#guidelines' },
-      { name: 'UX Patterns', href: '/design/product/UX-patterns' },
-      { name: 'Visual Patterns', href: '/design/product/visual-patterns' },
-      { name: 'Workflow & Rituals', href: '/design/product/workflow-rituals' },
+      { name: 'UX Patterns', href: '/design/product/UX-patterns', isIndented: true },
+      { name: 'Visual Patterns', href: '/design/product/visual-patterns', isIndented: true },
+      { name: 'Workflow & Rituals', href: '/design/product/workflow-rituals', isIndented: true },
       { name: t('footer.product.resources'), href: '/design/product#resources' },
     ],
     'Connect': [
@@ -115,7 +121,9 @@ const Footer = () => {
                     <motion.a
                       href={link.href}
                       whileHover={{ x: 4 }}
-                      className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                      className={`text-muted-foreground hover:text-foreground transition-colors text-sm ${
+                        link.isIndented ? 'ml-4' : ''
+                      }`}
                     >
                       {link.name}
                     </motion.a>
