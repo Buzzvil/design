@@ -35,9 +35,8 @@ export function PageHero({
       <div className={`${maxWidthClass} mx-auto text-center`}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true, margin: "-100px" }}
           className="mb-8"
         >
           <BlurReveal duration={600}>
@@ -47,9 +46,8 @@ export function PageHero({
         
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          viewport={{ once: true, margin: "-100px" }}
           className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
         >
           <BlurReveal duration={600}>
@@ -59,9 +57,8 @@ export function PageHero({
         
         <motion.p
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-          viewport={{ once: true, margin: "-100px" }}
           className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
         >
           <BlurReveal duration={600}>
