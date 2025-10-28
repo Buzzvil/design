@@ -35,11 +35,11 @@ const ProductGuidelines = () => {
       ]
     },
     {
-      id: 'integration-workflow',
-      title: t('product.guidelines.integrationWorkflow.title'),
-      description: t('product.guidelines.integrationWorkflow.description'),
+      id: 'workflow-rituals',
+      title: t('product.guidelines.workflowRituals.title'),
+      description: t('product.guidelines.workflowRituals.description'),
       icon: Workflow,
-      href: '/product/integration-workflow',
+      href: '/product/workflow-rituals',
       features: [
         'Design Handoff',
         'Development Process',

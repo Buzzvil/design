@@ -12,10 +12,10 @@ const IntegrationWorkflowPage = () => {
   const router = useRouter();
 
   const principles = [
-    t('product.guidelines.integrationWorkflow.principle1'),
-    t('product.guidelines.integrationWorkflow.principle2'),
-    t('product.guidelines.integrationWorkflow.principle3'),
-    t('product.guidelines.integrationWorkflow.principle4')
+    t('product.guidelines.workflowRituals.principle1'),
+    t('product.guidelines.workflowRituals.principle2'),
+    t('product.guidelines.workflowRituals.principle3'),
+    t('product.guidelines.workflowRituals.principle4')
   ];
 
   return (
@@ -47,13 +47,13 @@ const IntegrationWorkflowPage = () => {
             className="text-center mb-16"
           >
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              {t('product.guidelines.integrationWorkflow.title')}
+              {t('product.guidelines.workflowRituals.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-4">
-              {t('product.guidelines.integrationWorkflow.subtitle')}
+              {t('product.guidelines.workflowRituals.subtitle')}
             </p>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              {t('product.guidelines.integrationWorkflow.description')}
+              {t('product.guidelines.workflowRituals.description')}
             </p>
           </motion.div>
 
@@ -72,13 +72,13 @@ const IntegrationWorkflowPage = () => {
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-                  {t('product.guidelines.integrationWorkflow.title')}
+                  {t('product.guidelines.workflowRituals.title')}
                 </h2>
                 <p className="text-lg text-muted-foreground font-medium mb-4">
-                  {t('product.guidelines.integrationWorkflow.subtitle')}
+                  {t('product.guidelines.workflowRituals.subtitle')}
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  {t('product.guidelines.integrationWorkflow.description')}
+                  {t('product.guidelines.workflowRituals.description')}
                 </p>
               </div>
             </div>
