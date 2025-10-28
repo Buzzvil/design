@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { BlurReveal } from './BlurReveal';
 import { SectionTitle } from './SectionTitle';
 
 interface SectionHeaderProps {
@@ -43,18 +42,16 @@ export function SectionHeader({
 
   return (
     <div className={`${containerClass} mb-16 ${className}`}>
-      <BlurReveal duration={600}>
-        <SectionTitle>
-          <h2 className={`${titleSizeClass} font-bold text-white mb-6`}>
-            {title}
-          </h2>
-          {description && (
-            <p className={`${descriptionSizeClass} text-muted-foreground max-w-3xl mx-auto leading-relaxed`}>
-              {description}
-            </p>
-          )}
-        </SectionTitle>
-      </BlurReveal>
+      <SectionTitle duration={600}>
+        <h2 className={`${titleSizeClass} font-bold text-white mb-6`}>
+          {title}
+        </h2>
+        {description && (
+          <p className={`${descriptionSizeClass} text-muted-foreground max-w-3xl mx-auto leading-relaxed`}>
+            {description}
+          </p>
+        )}
+      </SectionTitle>
     </div>
   );
 }
