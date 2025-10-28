@@ -250,6 +250,65 @@ const translations = {
             'product.resources.title': 'Product Resources',
             'product.resources.description': 'Download our design system components, templates, and development resources. Everything you need to build consistent product experiences.',
             
+            // New submenu items
+            'nav.product.uxPatterns': 'UX Patterns',
+            'nav.product.visualPatterns': 'Visual Patterns',
+            'nav.product.workflowRituals': 'Workflow & Rituals',
+            
+            // Page-specific translations
+            'pages.backToGuidelines': 'Back to Guidelines',
+            'pages.sections.interactionPatterns': 'Interaction Patterns',
+            'pages.sections.uiKit': 'UI Kit',
+            'pages.sections.microInteractions': 'Micro-interactions',
+            'pages.sections.designPrinciples': 'Design Principles',
+            'pages.sections.visualGuidelines': 'Visual Guidelines',
+            'pages.sections.comingSoon': 'Coming Soon',
+            'pages.sections.corePrinciples': 'Core Principles',
+            'pages.sections.workflowSteps': 'Workflow Steps',
+            
+            // Interaction Patterns specific
+            'interactionPatterns.whileLoading': 'While loading',
+            'interactionPatterns.whileLoading.description': 'Skeleton screens, loading states, and progressive disclosure patterns that keep users engaged during wait times.',
+            'interactionPatterns.pageScroll': 'Page Scroll',
+            'interactionPatterns.pageScroll.description': 'Default vertical scrolling as the primary interaction pattern, with parallax and reveal animations.',
+            'interactionPatterns.notify': 'Notify',
+            'interactionPatterns.notify.description': 'Toast notifications, banners, and system messages that provide feedback without interrupting user flow.',
+            'interactionPatterns.alert': 'Alert',
+            'interactionPatterns.alert.description': 'Critical notifications and warnings that require immediate user attention and action.',
+            'interactionPatterns.pauseAsk': 'Pause & Ask',
+            'interactionPatterns.pauseAsk.description': 'Modal dialogs and popups that pause user flow to gather information or confirm actions.',
+            'interactionPatterns.magnify': 'Magnify',
+            'interactionPatterns.magnify.description': 'Expandable content and bottom sheets that reveal additional information or options.',
+            'interactionPatterns.screenToScreen': 'Screen to Screen',
+            'interactionPatterns.screenToScreen.description': 'Smooth transitions between different views or screens with clear navigation hierarchy.',
+            'interactionPatterns.feedback': 'Feedback',
+            'interactionPatterns.feedback.description': 'Immediate visual or haptic feedback for user interactions to create responsive experiences.',
+            'interactionPatterns.moreToCome': 'More to come',
+            'interactionPatterns.moreToCome.description': 'Additional patterns will be added as we discover and document new interaction needs.',
+            
+            // UI Kit specific
+            'uiKit.atoms': 'Atoms',
+            'uiKit.molecules': 'Molecules',
+            'uiKit.organisms': 'Organisms',
+            'uiKit.templates': 'Templates',
+            'uiKit.pages': 'Pages',
+            'uiKit.moreToCome': 'More to come',
+            
+            // Micro-interactions specific
+            'microInteractions.livingIcons': 'Living Icons',
+            'microInteractions.emphasisOn': 'Emphasis On',
+            'microInteractions.rewardDelights': 'Reward Delights',
+            'microInteractions.moreToCome': 'More to come',
+            
+            // Code preview
+            'codePreview.title': 'Code Example',
+            'codePreview.copy': 'Copy',
+            'codePreview.copied': 'Copied!',
+            
+            // Live preview
+            'livePreview.title': 'Live Preview',
+            'livePreview.comingSoon': 'Preview coming soon',
+            
             // Footer
             'footer.description': 'Home to Buzzvil\'s design source of truth. We build in the open. This portal is primarily meant to be used internally and by our partners, but we also like anyone to have a look at how we work!',
             'footer.foundations.mission': 'The Mission',
@@ -508,6 +567,65 @@ const translations = {
             'product.guidelines.cta.button': '리소스 보기',
             'product.resources.title': '제품 리소스',
             'product.resources.description': '디자인 시스템 컴포넌트, 템플릿, 개발 리소스를 다운로드하세요. 일관된 제품 경험을 구축하는 데 필요한 모든 것.',
+            
+            // New submenu items
+            'nav.product.uxPatterns': 'UX 패턴',
+            'nav.product.visualPatterns': '시각적 패턴',
+            'nav.product.workflowRituals': '워크플로우 & 의식',
+            
+            // Page-specific translations
+            'pages.backToGuidelines': '가이드라인으로 돌아가기',
+            'pages.sections.interactionPatterns': '상호작용 패턴',
+            'pages.sections.uiKit': 'UI 키트',
+            'pages.sections.microInteractions': '마이크로 상호작용',
+            'pages.sections.designPrinciples': '디자인 원칙',
+            'pages.sections.visualGuidelines': '시각적 가이드라인',
+            'pages.sections.comingSoon': '곧 출시',
+            'pages.sections.corePrinciples': '핵심 원칙',
+            'pages.sections.workflowSteps': '워크플로우 단계',
+            
+            // Interaction Patterns specific
+            'interactionPatterns.whileLoading': '로딩 중',
+            'interactionPatterns.whileLoading.description': '사용자가 대기하는 동안 참여를 유지하는 스켈레톤 화면, 로딩 상태, 점진적 공개 패턴입니다.',
+            'interactionPatterns.pageScroll': '페이지 스크롤',
+            'interactionPatterns.pageScroll.description': '패럴랙스와 공개 애니메이션을 포함한 주요 상호작용 패턴으로서의 기본 세로 스크롤입니다.',
+            'interactionPatterns.notify': '알림',
+            'interactionPatterns.notify.description': '사용자 플로우를 방해하지 않고 피드백을 제공하는 토스트 알림, 배너, 시스템 메시지입니다.',
+            'interactionPatterns.alert': '경고',
+            'interactionPatterns.alert.description': '즉각적인 사용자 주의와 조치가 필요한 중요한 알림과 경고입니다.',
+            'interactionPatterns.pauseAsk': '일시정지 & 질문',
+            'interactionPatterns.pauseAsk.description': '정보를 수집하거나 작업을 확인하기 위해 사용자 플로우를 일시 중지하는 모달 대화상자와 팝업입니다.',
+            'interactionPatterns.magnify': '확대',
+            'interactionPatterns.magnify.description': '추가 정보나 옵션을 보여주는 확장 가능한 콘텐츠와 바텀시트입니다.',
+            'interactionPatterns.screenToScreen': '화면 간 이동',
+            'interactionPatterns.screenToScreen.description': '명확한 네비게이션 계층을 가진 다른 뷰나 화면 간의 부드러운 전환입니다.',
+            'interactionPatterns.feedback': '피드백',
+            'interactionPatterns.feedback.description': '반응적인 경험을 만들기 위한 사용자 상호작용에 대한 즉각적인 시각적 또는 햅틱 피드백입니다.',
+            'interactionPatterns.moreToCome': '더 많은 패턴 예정',
+            'interactionPatterns.moreToCome.description': '새로운 상호작용 요구를 발견하고 문서화함에 따라 추가 패턴이 추가될 예정입니다.',
+            
+            // UI Kit specific
+            'uiKit.atoms': '원자',
+            'uiKit.molecules': '분자',
+            'uiKit.organisms': '유기체',
+            'uiKit.templates': '템플릿',
+            'uiKit.pages': '페이지',
+            'uiKit.moreToCome': '더 많은 컴포넌트 예정',
+            
+            // Micro-interactions specific
+            'microInteractions.livingIcons': '살아있는 아이콘',
+            'microInteractions.emphasisOn': '강조',
+            'microInteractions.rewardDelights': '보상 기쁨',
+            'microInteractions.moreToCome': '더 많은 패턴 예정',
+            
+            // Code preview
+            'codePreview.title': '코드 예제',
+            'codePreview.copy': '복사',
+            'codePreview.copied': '복사됨!',
+            
+            // Live preview
+            'livePreview.title': '라이브 미리보기',
+            'livePreview.comingSoon': '미리보기 곧 출시',
             
             // Footer
             'footer.description': '버즈빌의 디자인 진실의 원천이 되는 곳입니다. 우리는 공개적으로 구축합니다. 이 포털은 주로 내부적으로 그리고 파트너들이 사용하도록 의도되었지만, 우리가 어떻게 일하는지 누구나 살펴볼 수 있기를 좋아합니다!',

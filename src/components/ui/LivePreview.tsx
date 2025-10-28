@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react';
 import { Smartphone } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LivePreviewProps {
   title: string;
@@ -10,10 +11,12 @@ interface LivePreviewProps {
 }
 
 const LivePreview = ({ title, children, className = '' }: LivePreviewProps) => {
+  const { t } = useLanguage();
+  
   return (
     <div className={`space-y-3 ${className}`}>
       <h5 className="text-sm font-medium text-white">
-        Live Preview
+        {t('livePreview.title')}
       </h5>
       <div className="flex justify-center">
         {/* Mobile Frame with 9:16 ratio (vertical phone) */}
@@ -30,7 +33,7 @@ const LivePreview = ({ title, children, className = '' }: LivePreviewProps) => {
                   {title}
                 </p>
                 <p className="text-xs text-muted-foreground/70">
-                  Preview coming soon
+                  {t('livePreview.comingSoon')}
                 </p>
               </div>
             )}

@@ -31,9 +31,9 @@ const Footer = () => {
     'Product': [
       { name: t('footer.product.principles'), href: '/design/product#principles' },
       { name: t('footer.product.guidelines'), href: '/design/product#guidelines' },
-      { name: 'UX Patterns', href: '/design/product/UX-patterns', isIndented: true },
-      { name: 'Visual Patterns', href: '/design/product/visual-patterns', isIndented: true },
-      { name: 'Workflow & Rituals', href: '/design/product/workflow-rituals', isIndented: true },
+      { name: t('nav.product.uxPatterns'), href: '/design/product/UX-patterns', isIndented: true },
+      { name: t('nav.product.visualPatterns'), href: '/design/product/visual-patterns', isIndented: true },
+      { name: t('nav.product.workflowRituals'), href: '/design/product/workflow-rituals', isIndented: true },
       { name: t('footer.product.resources'), href: '/design/product#resources' },
     ],
     'Connect': [

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Copy } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CodePreviewProps {
   code: string;
@@ -12,6 +13,7 @@ interface CodePreviewProps {
 
 const CodePreview = ({ code, patternId, className = '' }: CodePreviewProps) => {
   const [copiedPattern, setCopiedPattern] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const handleCopyCode = async () => {
     try {
@@ -27,7 +29,7 @@ const CodePreview = ({ code, patternId, className = '' }: CodePreviewProps) => {
     <div className={`space-y-3 ${className}`}>
       <div className="flex items-center justify-between">
         <h5 className="text-sm font-medium text-white">
-          Code Example
+          {t('codePreview.title')}
         </h5>
         <motion.button
           onClick={handleCopyCode}
@@ -35,7 +37,7 @@ const CodePreview = ({ code, patternId, className = '' }: CodePreviewProps) => {
           whileTap={{ scale: 0.95 }}
         >
           <Copy className="w-3 h-3" />
-          <span>{copiedPattern === patternId ? 'Copied!' : 'Copy'}</span>
+          <span>{copiedPattern === patternId ? t('codePreview.copied') : t('codePreview.copy')}</span>
         </motion.button>
       </div>
       <div className="bg-muted/10 border border-border/50 rounded-lg p-4 overflow-x-auto">

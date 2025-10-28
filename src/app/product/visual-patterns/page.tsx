@@ -15,9 +15,9 @@ const VisualPatternsPage = () => {
   const router = useRouter();
 
   const sections = [
-    { id: 'principles', label: 'Design Principles' },
-    { id: 'guidelines', label: 'Visual Guidelines' },
-    { id: 'coming-soon', label: 'Coming Soon' }
+    { id: 'principles', label: t('pages.sections.designPrinciples') },
+    { id: 'guidelines', label: t('pages.sections.visualGuidelines') },
+    { id: 'coming-soon', label: t('pages.sections.comingSoon') }
   ];
 
   const principles = [
@@ -42,7 +42,7 @@ const VisualPatternsPage = () => {
             whileHover={{ x: -4 }}
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Guidelines</span>
+            <span>{t('pages.backToGuidelines')}</span>
           </motion.button>
         </div>
       </div>

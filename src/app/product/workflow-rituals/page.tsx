@@ -15,9 +15,9 @@ const WorkflowRitualsPage = () => {
   const router = useRouter();
 
   const sections = [
-    { id: 'principles', label: 'Core Principles' },
-    { id: 'workflow', label: 'Workflow Steps' },
-    { id: 'coming-soon', label: 'Coming Soon' }
+    { id: 'principles', label: t('pages.sections.corePrinciples') },
+    { id: 'workflow', label: t('pages.sections.workflowSteps') },
+    { id: 'coming-soon', label: t('pages.sections.comingSoon') }
   ];
 
   const principles = [
@@ -42,7 +42,7 @@ const WorkflowRitualsPage = () => {
             whileHover={{ x: -4 }}
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Guidelines</span>
+            <span>{t('pages.backToGuidelines')}</span>
           </motion.button>
         </div>
       </div>

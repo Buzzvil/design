@@ -1,7 +1,7 @@
 export interface InteractionPattern {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   tags: string[];
   code?: string;
 }
@@ -9,8 +9,8 @@ export interface InteractionPattern {
 export const interactionPatterns: InteractionPattern[] = [
   {
     id: 'onLoad',
-    title: 'While loading',
-    description: 'Skeleton screens, loading states, and progressive disclosure patterns that keep users engaged during wait times.',
+    titleKey: 'interactionPatterns.whileLoading',
+    descriptionKey: 'interactionPatterns.whileLoading.description',
     tags: ['Skeleton UI', 'Loading States', 'Progressive Disclosure'],
     code: `// Skeleton Loading Component
 const SkeletonCard = () => (
@@ -25,8 +25,8 @@ const SkeletonCard = () => (
   },
   {
     id: 'onScroll',
-    title: 'Page Scroll',
-    description: 'Default vertical scrolling as the primary interaction pattern, with parallax and reveal animations.',
+    titleKey: 'interactionPatterns.pageScroll',
+    descriptionKey: 'interactionPatterns.pageScroll.description',
     tags: ['Vertical Scroll', 'Parallax', 'Reveal Animations'],
     code: `// Scroll-triggered Animation
 const useScrollAnimation = () => {
@@ -50,8 +50,8 @@ const useScrollAnimation = () => {
   },
   {
     id: 'notify',
-    title: 'Notify',
-    description: 'Toast notifications, banners, and system messages that provide feedback without interrupting user flow.',
+    titleKey: 'interactionPatterns.notify',
+    descriptionKey: 'interactionPatterns.notify.description',
     tags: ['Toast', 'Banner', 'System Messages'],
     code: `// Toast Notification Hook
 const useToast = () => {
@@ -71,8 +71,8 @@ const useToast = () => {
   },
   {
     id: 'alert',
-    title: 'Alert',
-    description: 'Critical notifications and warnings that require immediate user attention and action.',
+    titleKey: 'interactionPatterns.alert',
+    descriptionKey: 'interactionPatterns.alert.description',
     tags: ['Critical Alerts', 'Warnings', 'User Attention'],
     code: `// Alert Modal Component
 const AlertModal = ({ isOpen, onClose, title, message, type }) => {
@@ -96,8 +96,8 @@ const AlertModal = ({ isOpen, onClose, title, message, type }) => {
   },
   {
     id: 'pauseAsk',
-    title: 'Pause & Ask',
-    description: 'Modal dialogs and popups that pause user flow to gather information or confirm actions.',
+    titleKey: 'interactionPatterns.pauseAsk',
+    descriptionKey: 'interactionPatterns.pauseAsk.description',
     tags: ['Modal', 'Popup', 'Confirmation'],
     code: `// Confirmation Dialog
 const ConfirmationDialog = ({ isOpen, onConfirm, onCancel, message }) => {
@@ -122,8 +122,8 @@ const ConfirmationDialog = ({ isOpen, onConfirm, onCancel, message }) => {
   },
   {
     id: 'magnify',
-    title: 'Magnify',
-    description: 'Bottom sheets and expandable content that provides detailed information without leaving the current context.',
+    titleKey: 'interactionPatterns.magnify',
+    descriptionKey: 'interactionPatterns.magnify.description',
     tags: ['Bottom Sheet', 'Expandable', 'Detail View'],
     code: `// Bottom Sheet Component
 const BottomSheet = ({ isOpen, onClose, children }) => {
@@ -140,8 +140,8 @@ const BottomSheet = ({ isOpen, onClose, children }) => {
   },
   {
     id: 'screenToScreen',
-    title: 'Screen to Screen',
-    description: 'Navigation patterns and transitions between different screens and sections of the application.',
+    titleKey: 'interactionPatterns.screenToScreen',
+    descriptionKey: 'interactionPatterns.screenToScreen.description',
     tags: ['Navigation', 'Transitions', 'Screen Flow'],
     code: `// Page Transition Hook
 const usePageTransition = () => {
@@ -161,8 +161,8 @@ const usePageTransition = () => {
   },
   {
     id: 'feedback',
-    title: 'Feedback',
-    description: 'Touch, swipe, and gesture-based interactions that provide immediate visual and haptic feedback.',
+    titleKey: 'interactionPatterns.feedback',
+    descriptionKey: 'interactionPatterns.feedback.description',
     tags: ['Touch', 'Swipe', 'Gestures', 'Haptic'],
     code: `// Touch Feedback Hook
 const useTouchFeedback = () => {
@@ -185,8 +185,8 @@ const useTouchFeedback = () => {
   },
   {
     id: 'moreToCome',
-    title: 'More to come',
-    description: 'Additional interaction patterns are continuously being developed and refined based on user needs.',
+    titleKey: 'interactionPatterns.moreToCome',
+    descriptionKey: 'interactionPatterns.moreToCome.description',
     tags: ['Coming Soon', 'Development', 'User Needs'],
     code: `// Coming Soon Placeholder
 const ComingSoonPattern = () => (

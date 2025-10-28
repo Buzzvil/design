@@ -5,11 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import LivePreview from './LivePreview';
 import CodePreview from './CodePreview';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface InteractionPattern {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   tags: string[];
   code?: string;
 }
@@ -21,6 +22,7 @@ interface PatternAccordionProps {
 
 const PatternAccordion = ({ patterns, className = '' }: PatternAccordionProps) => {
   const [openPattern, setOpenPattern] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const handlePatternToggle = (patternId: string) => {
     setOpenPattern(openPattern === patternId ? null : patternId);
@@ -44,7 +46,7 @@ const PatternAccordion = ({ patterns, className = '' }: PatternAccordionProps) =
           >
             <div className="flex-1">
               <h4 className="text-base font-semibold text-white">
-                {pattern.title}
+                {t(pattern.titleKey)}
               </h4>
             </div>
             <motion.div
@@ -74,9 +76,9 @@ const PatternAccordion = ({ patterns, className = '' }: PatternAccordionProps) =
                         <h5 className="text-sm font-medium text-white">
                           Description
                         </h5>
-                        <p className="text-muted-foreground leading-relaxed text-sm">
-                          {pattern.description}
-                        </p>
+                                <p className="text-muted-foreground leading-relaxed text-sm">
+                                  {t(pattern.descriptionKey)}
+                                </p>
                         
                         {/* Tags */}
                         <div className="flex flex-wrap gap-2 mt-3">
@@ -102,7 +104,7 @@ const PatternAccordion = ({ patterns, className = '' }: PatternAccordionProps) =
 
                     {/* Right Column - Live Preview */}
                     <div className="lg:col-span-1">
-                      <LivePreview title={pattern.title} />
+                      <LivePreview title={t(pattern.titleKey)} />
                     </div>
                   </div>
                 </div>

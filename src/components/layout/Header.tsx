@@ -25,9 +25,9 @@ const Header = () => {
       submenuItems: [
         { name: t('product.sections.principles'), href: '/product#principles' },
         { name: t('product.sections.guidelines'), href: '/product#guidelines' },
-        { name: 'UX Patterns', href: '/product/UX-patterns', isIndented: true },
-        { name: 'Visual Patterns', href: '/product/visual-patterns', isIndented: true },
-        { name: 'Workflow & Rituals', href: '/product/workflow-rituals', isIndented: true },
+        { name: t('nav.product.uxPatterns'), href: '/product/UX-patterns', isIndented: true },
+        { name: t('nav.product.visualPatterns'), href: '/product/visual-patterns', isIndented: true },
+        { name: t('nav.product.workflowRituals'), href: '/product/workflow-rituals', isIndented: true },
         { name: t('product.sections.resources'), href: '/product#resources' },
       ]
     },
@@ -46,7 +46,7 @@ const Header = () => {
             }}
           >
             <Logo size={32} className="text-white" />
-            <span className="text-lg font-semibold text-foreground">Buzzvil Design</span>
+            <span className="text-lg font-extrabold text-foreground">buzzvil / design</span>
           </motion.div>
 
           {/* Desktop Navigation */}

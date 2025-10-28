@@ -17,9 +17,9 @@ const UXPatternsPage = () => {
   const router = useRouter();
 
   const sections = [
-    { id: 'interaction-patterns', label: 'Interaction Patterns' },
-    { id: 'ui-kit', label: 'UI Kit' },
-    { id: 'micro-interactions', label: 'Micro-interactions' }
+    { id: 'interaction-patterns', label: t('pages.sections.interactionPatterns') },
+    { id: 'ui-kit', label: t('pages.sections.uiKit') },
+    { id: 'micro-interactions', label: t('pages.sections.microInteractions') }
   ];
 
 
@@ -38,7 +38,7 @@ const UXPatternsPage = () => {
             whileHover={{ x: -4 }}
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Guidelines</span>
+            <span>{t('pages.backToGuidelines')}</span>
           </motion.button>
         </div>
       </div>
