@@ -661,6 +661,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const savedLanguage = localStorage.getItem('language') as Language;
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ko')) {
       setLanguage(savedLanguage);
+    } else {
+      // Auto-detect browser language if no saved preference
+      const browserLanguage = navigator.language || navigator.languages?.[0] || 'en';
+      const detectedLanguage = browserLanguage.startsWith('ko') ? 'ko' : 'en';
+      setLanguage(detectedLanguage);
     }
   }, []);
 
