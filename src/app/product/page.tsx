@@ -5,10 +5,10 @@ import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import ProductPrinciples from '@/components/product/ProductPrinciples';
 import ProductGuidelines from '@/components/product/ProductGuidelines';
-import SectionPlaceholder from '@/components/ui/SectionPlaceholder';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { PageHero } from '@/components/ui/PageHero';
-import { Download, Code } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ProductPage() {
@@ -46,14 +46,17 @@ export default function ProductPage() {
         </AnimatedSection>
       </div>
       
-      <div id="resources" className="min-h-screen flex items-center justify-center scroll-mt-24">
-        <AnimatedSection delay={0.3}>
-          <SectionPlaceholder
-            title={t('product.resources.title')}
-            description={t('product.resources.description')}
-            icon={Download}
-          />
-        </AnimatedSection>
+      <div id="resources" className="scroll-mt-24">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <AnimatedSection delay={0.3}>
+              <SectionHeader
+                title={t('product.resources.title')}
+                description={t('product.resources.description')}
+              />
+            </AnimatedSection>
+          </div>
+        </section>
       </div>
       <Footer />
     </main>
