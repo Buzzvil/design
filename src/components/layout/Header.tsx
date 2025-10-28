@@ -11,7 +11,6 @@ import Logo from './Logo';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductSubmenuOpen, setIsProductSubmenuOpen] = useState(false);
-  const [isGuidelinesSubmenuOpen, setIsGuidelinesSubmenuOpen] = useState(false);
   const { t } = useLanguage();
   const router = useRouter();
 
@@ -25,16 +24,10 @@ const Header = () => {
       hasSubmenu: true,
       submenuItems: [
         { name: t('product.sections.principles'), href: '/product#principles' },
-        { 
-          name: t('product.sections.guidelines'), 
-          href: '/product#guidelines',
-          hasSubmenu: true,
-          submenuItems: [
-            { name: 'UX Patterns', href: '/product/UX-patterns' },
-            { name: 'Visual Patterns', href: '/product/visual-patterns' },
-            { name: 'Workflow & Rituals', href: '/product/workflow-rituals' },
-          ]
-        },
+        { name: t('product.sections.guidelines'), href: '/product#guidelines' },
+        { name: 'UX Patterns', href: '/product/UX-patterns', isIndented: true },
+        { name: 'Visual Patterns', href: '/product/visual-patterns', isIndented: true },
+        { name: 'Workflow & Rituals', href: '/product/workflow-rituals', isIndented: true },
         { name: t('product.sections.resources'), href: '/product#resources' },
       ]
     },
@@ -90,74 +83,23 @@ const Header = () => {
                         >
                           <div className="py-2">
                             {item.submenuItems?.map((subItem, subIndex) => (
-                              <div key={subItem.name} className="relative">
-                                {subItem.hasSubmenu ? (
-                                  <div
-                                    onMouseEnter={() => setIsGuidelinesSubmenuOpen(true)}
-                                    onMouseLeave={() => setIsGuidelinesSubmenuOpen(false)}
-                                    className="relative"
-                                  >
-                                    <motion.button
-                                      whileHover={{ x: 4 }}
-                                      onClick={() => {
-                                        router.push(subItem.href);
-                                        setIsProductSubmenuOpen(false);
-                                      }}
-                                      className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-accent transition-colors"
-                                    >
-                                      <span className="font-medium text-foreground">
-                                        {subItem.name}
-                                      </span>
-                                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isGuidelinesSubmenuOpen ? 'rotate-180' : ''}`} />
-                                    </motion.button>
-                                    
-                                    {/* Guidelines Submenu */}
-                                    <AnimatePresence>
-                                      {isGuidelinesSubmenuOpen && (
-                                        <motion.div
-                                          initial={{ opacity: 0, x: 10 }}
-                                          animate={{ opacity: 1, x: 0 }}
-                                          exit={{ opacity: 0, x: 10 }}
-                                          transition={{ duration: 0.2 }}
-                                          className="absolute top-0 left-full ml-2 w-56 bg-background/98 backdrop-blur-sm border border-border rounded-lg shadow-xl z-[70]"
-                                        >
-                                          <div className="py-2">
-                                            {subItem.submenuItems?.map((guidelineItem, guidelineIndex) => (
-                                              <motion.button
-                                                key={guidelineItem.name}
-                                                whileHover={{ x: 4 }}
-                                                onClick={() => {
-                                                  router.push(guidelineItem.href);
-                                                  setIsProductSubmenuOpen(false);
-                                                  setIsGuidelinesSubmenuOpen(false);
-                                                }}
-                                                className="w-full flex items-center px-4 py-3 text-left hover:bg-accent transition-colors"
-                                              >
-                                                <span className="font-medium text-muted-foreground pl-4">
-                                                  {guidelineItem.name}
-                                                </span>
-                                              </motion.button>
-                                            ))}
-                                          </div>
-                                        </motion.div>
-                                      )}
-                                    </AnimatePresence>
-                                  </div>
-                                ) : (
-                                  <motion.button
-                                    whileHover={{ x: 4 }}
-                                    onClick={() => {
-                                      router.push(subItem.href);
-                                      setIsProductSubmenuOpen(false);
-                                    }}
-                                    className="w-full flex items-center px-4 py-3 text-left hover:bg-accent transition-colors"
-                                  >
-                                    <span className="font-medium text-foreground">
-                                      {subItem.name}
-                                    </span>
-                                  </motion.button>
-                                )}
-                              </div>
+                              <motion.button
+                                key={subItem.name}
+                                whileHover={{ x: 4 }}
+                                onClick={() => {
+                                  router.push(subItem.href);
+                                  setIsProductSubmenuOpen(false);
+                                }}
+                                className={`w-full flex items-center px-4 py-3 text-left hover:bg-accent transition-colors ${
+                                  subItem.isIndented ? 'pl-8' : ''
+                                }`}
+                              >
+                                <span className={`font-medium ${
+                                  subItem.isIndented ? 'text-muted-foreground' : 'text-foreground'
+                                }`}>
+                                  {subItem.name}
+                                </span>
+                              </motion.button>
                             ))}
                           </div>
                         </motion.div>
@@ -235,67 +177,23 @@ const Header = () => {
                           >
                             <div className="ml-6 space-y-1">
                               {item.submenuItems?.map((subItem, subIndex) => (
-                                <div key={subItem.name}>
-                                  {subItem.hasSubmenu ? (
-                                    <div>
-                                      <motion.button
-                                        onClick={() => {
-                                          setIsGuidelinesSubmenuOpen(!isGuidelinesSubmenuOpen);
-                                        }}
-                                        className="flex items-center justify-between w-full px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer text-left"
-                                      >
-                                        <span className="font-medium text-sm text-foreground">
-                                          {subItem.name}
-                                        </span>
-                                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isGuidelinesSubmenuOpen ? 'rotate-180' : ''}`} />
-                                      </motion.button>
-                                      
-                                      <AnimatePresence>
-                                        {isGuidelinesSubmenuOpen && (
-                                          <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                            className="overflow-hidden"
-                                          >
-                                            <div className="ml-6 space-y-1">
-                                              {subItem.submenuItems?.map((guidelineItem, guidelineIndex) => (
-                                                <motion.button
-                                                  key={guidelineItem.name}
-                                                  onClick={() => {
-                                                    setIsMobileMenuOpen(false);
-                                                    setIsProductSubmenuOpen(false);
-                                                    setIsGuidelinesSubmenuOpen(false);
-                                                    router.push(guidelineItem.href);
-                                                  }}
-                                                  className="flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
-                                                >
-                                                  <span className="font-medium text-sm text-muted-foreground">
-                                                    {guidelineItem.name}
-                                                  </span>
-                                                </motion.button>
-                                              ))}
-                                            </div>
-                                          </motion.div>
-                                        )}
-                                      </AnimatePresence>
-                                    </div>
-                                  ) : (
-                                    <motion.button
-                                      onClick={() => {
-                                        setIsMobileMenuOpen(false);
-                                        setIsProductSubmenuOpen(false);
-                                        router.push(subItem.href);
-                                      }}
-                                      className="flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
-                                    >
-                                      <span className="font-medium text-sm text-foreground">
-                                        {subItem.name}
-                                      </span>
-                                    </motion.button>
-                                  )}
-                                </div>
+                                <motion.button
+                                  key={subItem.name}
+                                  onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    setIsProductSubmenuOpen(false);
+                                    router.push(subItem.href);
+                                  }}
+                                  className={`flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left ${
+                                    subItem.isIndented ? 'ml-4' : ''
+                                  }`}
+                                >
+                                  <span className={`font-medium text-sm ${
+                                    subItem.isIndented ? 'text-muted-foreground' : 'text-foreground'
+                                  }`}>
+                                    {subItem.name}
+                                  </span>
+                                </motion.button>
                               ))}
                             </div>
                           </motion.div>
