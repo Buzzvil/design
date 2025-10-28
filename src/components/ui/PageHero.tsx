@@ -55,7 +55,7 @@ export function PageHero({
           </BlurReveal>
         </motion.h1>
         
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
@@ -64,7 +64,7 @@ export function PageHero({
           <BlurReveal duration={600}>
             {description}
           </BlurReveal>
-        </motion.p>
+        </motion.div>
       </div>
     </section>
   );
