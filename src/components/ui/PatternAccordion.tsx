@@ -66,9 +66,9 @@ const PatternAccordion = ({ patterns, className = '' }: PatternAccordionProps) =
                 className="overflow-hidden"
               >
                 <div className="px-4 pb-4">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Left Column - Description, Tags, and Code */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 lg:col-span-2">
                       {/* Description */}
                       <div className="space-y-3">
                         <h5 className="text-sm font-medium text-white">
@@ -101,7 +101,9 @@ const PatternAccordion = ({ patterns, className = '' }: PatternAccordionProps) =
                     </div>
 
                     {/* Right Column - Live Preview */}
-                    <LivePreview title={pattern.title} />
+                    <div className="lg:col-span-1">
+                      <LivePreview title={pattern.title} />
+                    </div>
                   </div>
                 </div>
               </motion.div>

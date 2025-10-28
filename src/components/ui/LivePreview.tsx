@@ -17,8 +17,8 @@ const LivePreview = ({ title, children, className = '' }: LivePreviewProps) => {
       </h5>
       <div className="flex justify-center">
         {/* Mobile Frame with 9:16 ratio (vertical phone) */}
-        <div className="w-[200px] bg-black rounded-[1.5rem] p-1 shadow-2xl">
-          <div className="bg-muted/20 rounded-[1.25rem] h-[400px] flex items-center justify-center" style={{ aspectRatio: '9/16' }}>
+        <div className="bg-black rounded-[1.5rem] p-1 shadow-2xl">
+          <div className="rounded-[1.25rem] h-[400px] flex items-center justify-center" style={{ aspectRatio: '9/18' }}>
             {children ? (
               <div className="w-full h-full flex items-center justify-center">
                 {children}
