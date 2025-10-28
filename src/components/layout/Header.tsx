@@ -79,7 +79,7 @@ const Header = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-64 bg-background/98 backdrop-blur-xl border border-border/30 rounded-lg shadow-2xl z-[60]"
+                          className="absolute top-full left-0 mt-2 w-64 bg-background/95 backdrop-blur-md border border-border/50 rounded-lg shadow-2xl z-[60]"
                         >
                           <div className="py-2">
                             {item.submenuItems?.map((subItem, subIndex) => (
@@ -90,7 +90,7 @@ const Header = () => {
                                   router.push(subItem.href);
                                   setIsProductSubmenuOpen(false);
                                 }}
-                                className={`w-full flex items-center px-4 py-3 text-left hover:bg-accent transition-colors ${
+                                className={`w-full flex items-center px-4 py-3 text-left hover:bg-muted/30 transition-colors duration-200 ${
                                   subItem.isIndented ? 'pl-8' : ''
                                 }`}
                               >
