@@ -7,9 +7,8 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
-import { SectionTitle } from '@/components/ui/SectionTitle';
-import { BlurReveal } from '@/components/ui/BlurReveal';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { PageHero } from '@/components/ui/PageHero';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 import PatternAccordion from '@/components/ui/PatternAccordion';
 import { interactionPatterns } from '@/data/interactionPatterns';
 
@@ -45,52 +44,20 @@ const UXPatternsPage = () => {
       </div>
 
       {/* Intro Screen */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="mb-8"
-          >
-            <MousePointer className="w-16 h-16 text-white mx-auto mb-6" />
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-          >
-            UX Patterns
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-          >
-            {t('product.guidelines.uxPatterns.description')}
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        icon={MousePointer}
+        title="UX Patterns"
+        description={t('product.guidelines.uxPatterns.description')}
+        maxWidth="7xl"
+      />
 
       <div id="interaction-patterns" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <AnimatedSection className="text-center mb-16" delay={0.1}>
-              <BlurReveal>
-                <SectionTitle>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Interaction Patterns
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    {t('product.guidelines.uxPatterns.description')}
-                  </p>
-                </SectionTitle>
-              </BlurReveal>
-            </AnimatedSection>
+            <SectionHeader
+              title="Interaction Patterns"
+              description={t('product.guidelines.uxPatterns.description')}
+            />
 
             {/* Best Practices & Dark Patterns */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
@@ -149,18 +116,10 @@ const UXPatternsPage = () => {
       <div id="ui-kit" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <AnimatedSection className="text-center mb-16" delay={0.1}>
-              <BlurReveal>
-                <SectionTitle>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    UI Kit
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    From atoms to modules to views - our comprehensive design system components.
-                  </p>
-                </SectionTitle>
-              </BlurReveal>
-            </AnimatedSection>
+            <SectionHeader
+              title="UI Kit"
+              description="From atoms to modules to views - our comprehensive design system components."
+            />
 
             {/* UI Kit Structure */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -192,18 +151,10 @@ const UXPatternsPage = () => {
       <div id="micro-interactions" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <AnimatedSection className="text-center mb-16" delay={0.1}>
-              <BlurReveal>
-                <SectionTitle>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Micro-interactions
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Delightful details that bring our interfaces to life.
-                  </p>
-                </SectionTitle>
-              </BlurReveal>
-            </AnimatedSection>
+            <SectionHeader
+              title="Micro-interactions"
+              description="Delightful details that bring our interfaces to life."
+            />
 
             {/* Micro-interactions Examples */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

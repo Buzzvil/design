@@ -7,9 +7,8 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
-import { SectionTitle } from '@/components/ui/SectionTitle';
-import { BlurReveal } from '@/components/ui/BlurReveal';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { PageHero } from '@/components/ui/PageHero';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 const VisualPatternsPage = () => {
   const { t } = useLanguage();
@@ -49,58 +48,20 @@ const VisualPatternsPage = () => {
       </div>
 
       {/* Intro Screen */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="mb-8"
-          >
-            <Eye className="w-16 h-16 text-white mx-auto mb-6" />
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-          >
-            Visual Patterns
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-          >
-            {t('product.guidelines.visualPatterns.description')}
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        icon={Eye}
+        title="Visual Patterns"
+        description={t('product.guidelines.visualPatterns.description')}
+        maxWidth="7xl"
+      />
 
       <div id="principles" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <BlurReveal>
-                <SectionTitle>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Design Principles
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    {t('product.guidelines.visualPatterns.subtitle')}
-                  </p>
-                </SectionTitle>
-              </BlurReveal>
-            </motion.div>
+            <SectionHeader
+              title="Design Principles"
+              description={t('product.guidelines.visualPatterns.subtitle')}
+            />
 
             {/* Principles Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -131,26 +92,10 @@ const VisualPatternsPage = () => {
       <div id="guidelines" className="min-h-screen flex items-center justify-center scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
-              <Eye className="w-16 h-16 text-white mx-auto mb-6" />
-            </motion.div>
-            
-            <BlurReveal>
-              <SectionTitle>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Visual Guidelines
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Comprehensive visual standards and brand integration guidelines.
-                </p>
-              </SectionTitle>
-            </BlurReveal>
+            <SectionHeader
+              title="Visual Guidelines"
+              description="Comprehensive visual standards and brand integration guidelines."
+            />
           </div>
         </section>
       </div>

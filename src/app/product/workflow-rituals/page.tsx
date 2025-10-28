@@ -7,9 +7,8 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
-import { SectionTitle } from '@/components/ui/SectionTitle';
-import { BlurReveal } from '@/components/ui/BlurReveal';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { PageHero } from '@/components/ui/PageHero';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 const WorkflowRitualsPage = () => {
   const { t } = useLanguage();
@@ -49,58 +48,20 @@ const WorkflowRitualsPage = () => {
       </div>
 
       {/* Intro Screen */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="mb-8"
-          >
-            <Workflow className="w-16 h-16 text-white mx-auto mb-6" />
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
-          >
-            Workflow & Rituals
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-          >
-            {t('product.guidelines.workflowRituals.description')}
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        icon={Workflow}
+        title="Workflow & Rituals"
+        description={t('product.guidelines.workflowRituals.description')}
+        maxWidth="7xl"
+      />
 
       <div id="principles" className="scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <BlurReveal>
-                <SectionTitle>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Core Principles
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    {t('product.guidelines.workflowRituals.subtitle')}
-                  </p>
-                </SectionTitle>
-              </BlurReveal>
-            </motion.div>
+            <SectionHeader
+              title="Core Principles"
+              description={t('product.guidelines.workflowRituals.subtitle')}
+            />
 
             {/* Principles Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -131,24 +92,10 @@ const WorkflowRitualsPage = () => {
       <div id="workflow" className="min-h-screen flex items-center justify-center scroll-mt-24">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <BlurReveal>
-                <SectionTitle>
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Workflow Steps
-                  </h2>
-                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Our streamlined process for design and development collaboration.
-                  </p>
-                </SectionTitle>
-              </BlurReveal>
-            </motion.div>
+            <SectionHeader
+              title="Workflow Steps"
+              description="Our streamlined process for design and development collaboration."
+            />
 
             {/* Workflow Steps */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

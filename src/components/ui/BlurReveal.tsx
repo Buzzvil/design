@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const DEFAULT_BLUR = 10;
+const DEFAULT_BLUR = 8;
 const DEFAULT_DURATION = 800; // Shorter deblur animation
 
 export function BlurReveal({
