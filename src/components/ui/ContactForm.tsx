@@ -156,6 +156,7 @@ ${formData.discussion}
     <AnimatePresence>
       {/* Backdrop */}
       <motion.div
+        key="backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -173,6 +174,7 @@ ${formData.discussion}
       
       {/* Form Container */}
       <motion.div
+        key="form-container"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
