@@ -48,10 +48,12 @@ export function PageHero({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-muted-foreground bg-clip-text"
+          className="text-5xl md:text-7xl font-bold mb-6"
         >
           <BlurReveal duration={600}>
-            {title}
+            <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+              {title}
+            </span>
           </BlurReveal>
         </motion.h1>
         
