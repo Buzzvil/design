@@ -37,7 +37,7 @@ export function IntroOutro({
       opacity: 1,
       scale: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         damping: 25,
         stiffness: 300,
         mass: 0.8,
@@ -49,7 +49,7 @@ export function IntroOutro({
       scale: 0.95,
       transition: {
         duration: 0.2,
-        ease: 'easeIn',
+        ease: 'easeIn' as const,
       },
     },
   };
@@ -65,7 +65,7 @@ export function IntroOutro({
         opacity: 1,
         scale: 1,
         transition: {
-          type: 'spring',
+          type: 'spring' as const,
           damping: 20,
           stiffness: 300,
         },
@@ -75,7 +75,7 @@ export function IntroOutro({
         scale: 0.9,
         transition: {
           duration: 0.15,
-          ease: 'easeIn',
+          ease: 'easeIn' as const,
         },
       },
     };

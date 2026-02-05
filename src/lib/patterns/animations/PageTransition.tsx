@@ -3,11 +3,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
+type CubicBezier = [number, number, number, number];
+
 interface PageTransitionProps {
   children: React.ReactNode;
   direction: 'forward' | 'back'; // Forward navigation (slide left, fade) or back (slide right, fade)
   duration?: number;
-  easing?: number[]; // Cubic bezier easing
+  easing?: CubicBezier; // Cubic bezier easing
 }
 
 /**
@@ -19,7 +21,7 @@ export function PageTransition({
   children,
   direction = 'forward',
   duration = 0.3,
-  easing = [0.4, 0, 0.2, 1], // easeInOut cubic bezier
+  easing = [0.4, 0, 0.2, 1] as CubicBezier, // easeInOut cubic bezier
 }: PageTransitionProps) {
   const variants = {
     forward: {
@@ -91,7 +93,7 @@ export function PageTransitionWrapper({
   key,
   direction = 'forward',
   duration = 0.3,
-  easing = [0.4, 0, 0.2, 1],
+  easing = [0.4, 0, 0.2, 1] as CubicBezier,
 }: PageTransitionProps & { key?: string | number }) {
   return (
     <AnimatePresence mode="wait">

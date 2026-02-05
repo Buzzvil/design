@@ -31,7 +31,7 @@ export function FeedbackAnimations({
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { duration: 0.5, ease: 'easeOut' },
+        pathLength: { duration: 0.5, ease: 'easeOut' as const },
         opacity: { duration: 0.3 },
       },
     },
@@ -44,7 +44,7 @@ export function FeedbackAnimations({
       x: [0, -10, 10, -10, 10, 0],
       transition: {
         duration: 0.5,
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
       },
     },
   };
@@ -70,8 +70,8 @@ export function FeedbackAnimations({
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={type === 'error' ? 'hidden' : { opacity: 0, scale: 0.8 }}
+          animate={type === 'error' ? 'visible' : { opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
           className={`flex items-center gap-2 px-4 py-2 rounded ${className}`}
@@ -82,7 +82,6 @@ export function FeedbackAnimations({
             borderRadius: 'var(--lib-radius-md)',
           }}
           variants={type === 'error' ? shakeVariants : undefined}
-          {...(type === 'error' ? { animate: 'visible' } : {})}
         >
           {type === 'success' && (
             <motion.svg

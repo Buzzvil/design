@@ -67,6 +67,8 @@ const config: Config = {
         nunito: ["var(--font-nunito)", "system-ui", "sans-serif"],
         noto: ["var(--font-noto-kr)", "system-ui", "sans-serif"],
         mono: ["var(--font-anonymous-pro)", "ui-monospace", "monospace"],
+        'lib-sans': ['var(--lib-font-sans)', 'system-ui', 'sans-serif'],
+        'lib-mono': ['var(--lib-font-mono)', 'ui-monospace', 'monospace'],
       },
       animation: {
         "fade-in": "fadeIn 0.3s ease-out",
@@ -113,10 +115,6 @@ const config: Config = {
         'lib-xl': 'var(--lib-radius-xl)',
         'lib-2xl': 'var(--lib-radius-2xl)',
         'lib-full': 'var(--lib-radius-full)',
-      },
-      fontFamily: {
-        'lib-sans': ['var(--lib-font-sans)', 'system-ui', 'sans-serif'],
-        'lib-mono': ['var(--lib-font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         'lib-xs': ['var(--lib-font-size-xs)', { lineHeight: 'var(--lib-line-height-xs)' }],

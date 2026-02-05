@@ -1,5 +1,6 @@
 'use client';
 
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export function BrandTypography() {
@@ -9,6 +10,8 @@ export function BrandTypography() {
     {
       title: t('brand.typography.primaryTitle'),
       desc: t('brand.typography.primaryDesc'),
+      link: 'https://github.com/orioncactus/pretendard',
+      linkLabel: 'Pretendard',
       style: { fontFamily: 'var(--font-inter)' },
       samples: [
         { meta: t('brand.typography.h1Meta'), text: t('brand.typography.h1Text'), className: 'text-2xl font-bold tracking-tight' },
@@ -19,6 +22,8 @@ export function BrandTypography() {
     {
       title: t('brand.typography.heroTitle'),
       desc: t('brand.typography.heroDesc'),
+      link: 'https://github.com/googlefonts/nunito',
+      linkLabel: 'Nunito',
       style: { fontFamily: 'var(--font-nunito)' },
       samples: [
         { meta: t('brand.typography.heroMeta'), text: 'buzzvil / design', className: 'text-2xl font-extrabold tracking-tight' },
@@ -27,6 +32,8 @@ export function BrandTypography() {
     {
       title: t('brand.typography.secondaryTitle'),
       desc: t('brand.typography.secondaryDesc'),
+      link: 'https://fonts.google.com/specimen/Anonymous+Pro',
+      linkLabel: 'Anonymous Pro',
       style: { fontFamily: 'var(--font-mono)' },
       samples: [
         { meta: t('brand.typography.kickerMeta'), text: t('brand.typography.kickerText'), className: 'text-xs font-bold uppercase tracking-wider text-muted-foreground' },
@@ -74,6 +81,17 @@ export function BrandTypography() {
                 </div>
               ))}
             </div>
+            {card.link && (
+              <a
+                href={card.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 pt-4 border-t border-border flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ExternalLink className="w-4 h-4 shrink-0" aria-hidden />
+                {card.linkLabel}
+              </a>
+            )}
           </div>
         ))}
       </div>
