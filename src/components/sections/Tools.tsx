@@ -32,14 +32,6 @@ const Tools = () => {
           logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
         },
         {
-          name: 'Midjourney',
-          description: 'AI image generation tool for creating visual concepts, mockups, and design inspiration',
-          status: 'Active',
-          link: 'https://midjourney.com',
-          features: ['AI Art', 'Visual Concepts', 'Design Inspiration'],
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Midjourney_Emblem.png',
-        },
-        {
           name: 'Cursor',
           description: 'AI-powered code editor for design system development and frontend implementation',
           status: 'Active',

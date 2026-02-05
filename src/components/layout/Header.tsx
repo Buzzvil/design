@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Award, Code, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useRouter } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -15,12 +15,11 @@ const Header = () => {
   const router = useRouter();
 
   const navItems = [
-    { name: t('nav.foundations'), href: '/', icon: BookOpen },
-    { name: t('nav.brand'), href: '/brand', icon: Award },
+    { name: t('nav.foundations'), href: '/' },
+    { name: t('nav.brand'), href: '/brand' },
     { 
       name: t('nav.product'), 
       href: '/product', 
-      icon: Code,
       hasSubmenu: true,
       submenuItems: [
         { name: t('product.sections.principles'), href: '/product#principles' },
@@ -34,19 +33,20 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className="page-header fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - tech.buzzvil.com style: icon + buzzvil (bold) + :design (regular, muted) */}
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer"
             onClick={() => {
               router.push('/');
             }}
           >
-            <Logo size={32} className="text-white" />
-            <span className="text-lg font-extrabold text-foreground">buzzvil / design</span>
+            <Logo size={28} className="shrink-0 text-foreground" />
+            <span className="text-lg font-extrabold text-foreground">buzzvil</span>
+            <span className="text-lg font-normal text-muted-foreground">:design</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -61,12 +61,11 @@ const Header = () => {
                   >
                     <motion.button
                       whileHover={{ y: -1 }}
-                      className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors duration-150 group cursor-pointer"
+                      className="flex items-center space-x-2 text-white hover:opacity-90 transition-colors duration-150 cursor-pointer"
                       onClick={() => {
                         router.push(item.href);
                       }}
                     >
-                      <item.icon className="w-4 h-4 text-white group-hover:scale-105 transition-transform duration-150" />
                       <span className="font-medium">{item.name}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isProductSubmenuOpen ? 'rotate-180' : ''}`} />
                     </motion.button>
@@ -109,12 +108,11 @@ const Header = () => {
                 ) : (
                   <motion.button
                     whileHover={{ y: -1 }}
-                    className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors duration-150 group cursor-pointer"
+                    className="flex items-center space-x-2 text-white hover:opacity-90 transition-colors duration-150 cursor-pointer"
                     onClick={() => {
                       router.push(item.href);
                     }}
                   >
-                    <item.icon className="w-4 h-4 text-white group-hover:scale-105 transition-transform duration-150" />
                     <span className="font-medium">{item.name}</span>
                   </motion.button>
                 )}
@@ -159,11 +157,8 @@ const Header = () => {
                         }}
                         className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-accent transition-colors cursor-pointer text-left"
                       >
-                        <div className="flex items-center space-x-3">
-                          <item.icon className="w-5 h-5 text-white" />
-                          <span className="font-medium">{item.name}</span>
-                        </div>
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isProductSubmenuOpen ? 'rotate-180' : ''}`} />
+                        <span className="font-medium text-white">{item.name}</span>
+                        <ChevronDown className={`w-4 h-4 text-white transition-transform duration-200 ${isProductSubmenuOpen ? 'rotate-180' : ''}`} />
                       </motion.button>
                       
                       <AnimatePresence>
@@ -206,10 +201,9 @@ const Header = () => {
                         setIsMobileMenuOpen(false);
                         router.push(item.href);
                       }}
-                      className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
+                      className="flex items-center px-4 py-3 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
                     >
-                      <item.icon className="w-5 h-5 text-white" />
-                      <span className="font-medium">{item.name}</span>
+                      <span className="font-medium text-white">{item.name}</span>
                     </motion.button>
                   )}
                 </div>

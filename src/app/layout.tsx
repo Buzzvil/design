@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Noto_Sans_KR } from "next/font/google";
+import { Nunito, Noto_Sans_KR, Anonymous_Pro, Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ContactFormProvider } from "@/contexts/ContactFormContext";
@@ -14,6 +14,17 @@ const notoKR = Noto_Sans_KR({
   subsets: ["latin"], 
   weight: ["300", "400", "700"], 
   variable: "--font-noto-kr" 
+});
+
+const anonymousPro = Anonymous_Pro({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-anonymous-pro",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -40,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${nunito.variable} ${notoKR.variable}`}>
+    <html lang="en" className={`${nunito.variable} ${notoKR.variable} ${anonymousPro.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background antialiased">
         <LanguageProvider>
           <ContactFormProvider>

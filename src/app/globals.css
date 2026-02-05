@@ -185,6 +185,15 @@ body::before {
   }
 }
 
+/* Brand hero - Chameleon background animation */
+@keyframes chameleon {
+  0% { background-color: #000000; }
+  25% { background-color: #2a0a0a; }
+  50% { background-color: #1f1005; }
+  75% { background-color: #2a0a0a; }
+  100% { background-color: #000000; }
+}
+
 .blur-reveal-banner {
   position: relative;
   z-index: 2;
@@ -222,4 +231,124 @@ body::before {
 
 .card-hover {
   @apply card hover:shadow-md transition-shadow duration-200;
+}
+
+/* Page header - no extra top padding */
+header.page-header {
+  padding-top: 0;
+}
+
+/* Filter bar styles */
+.filter-bar {
+  display: flex;
+  gap: 1rem; /* Space between filter groups */
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  flex-shrink: 0;
+}
+
+.publisher-filter {
+  width: fit-content;
+  min-width: auto;
+}
+
+/* Library theme CSS variables (separate namespace) */
+/* These will be dynamically set by ThemeProvider */
+:root {
+  /* Default library theme variables - will be overridden by ThemeProvider */
+  --lib-color-primary: hsl(217, 91%, 60%);
+  --lib-color-primaryHover: hsl(217, 91%, 55%);
+  --lib-color-primaryActive: hsl(217, 91%, 50%);
+  --lib-color-primaryForeground: hsl(0, 0%, 100%);
+  --lib-color-secondary: hsl(210, 40%, 96%);
+  --lib-color-secondaryHover: hsl(210, 40%, 92%);
+  --lib-color-secondaryActive: hsl(210, 40%, 88%);
+  --lib-color-secondaryForeground: hsl(222, 47%, 11%);
+  --lib-color-accent: hsl(217, 91%, 60%);
+  --lib-color-accentHover: hsl(217, 91%, 55%);
+  --lib-color-accentActive: hsl(217, 91%, 50%);
+  --lib-color-accentForeground: hsl(0, 0%, 100%);
+  --lib-color-background: hsl(0, 0%, 100%);
+  --lib-color-foreground: hsl(222, 47%, 11%);
+  --lib-color-card: hsl(0, 0%, 100%);
+  --lib-color-cardForeground: hsl(222, 47%, 11%);
+  --lib-color-muted: hsl(210, 40%, 96%);
+  --lib-color-mutedForeground: hsl(215, 16%, 47%);
+  --lib-color-border: hsl(214, 32%, 91%);
+  --lib-color-input: hsl(0, 0%, 100%);
+  --lib-color-ring: hsl(217, 91%, 60%);
+  --lib-color-success: hsl(142, 76%, 36%);
+  --lib-color-successForeground: hsl(0, 0%, 100%);
+  --lib-color-warning: hsl(38, 92%, 50%);
+  --lib-color-warningForeground: hsl(0, 0%, 100%);
+  --lib-color-error: hsl(0, 84%, 60%);
+  --lib-color-errorForeground: hsl(0, 0%, 100%);
+  --lib-color-info: hsl(217, 91%, 60%);
+  --lib-color-infoForeground: hsl(0, 0%, 100%);
+
+  /* Spacing */
+  --lib-spacing-xs: 0.25rem;
+  --lib-spacing-sm: 0.5rem;
+  --lib-spacing-md: 0.75rem;
+  --lib-spacing-lg: 1rem;
+  --lib-spacing-xl: 1.5rem;
+  --lib-spacing-2xl: 2rem;
+  --lib-spacing-3xl: 3rem;
+  --lib-spacing-4xl: 4rem;
+  --lib-spacing-5xl: 6rem;
+  --lib-spacing-6xl: 8rem;
+
+  /* Radius */
+  --lib-radius-none: 0;
+  --lib-radius-sm: 0.25rem;
+  --lib-radius-md: 0.5rem;
+  --lib-radius-lg: 0.75rem;
+  --lib-radius-xl: 1rem;
+  --lib-radius-2xl: 1.5rem;
+  --lib-radius-full: 9999px;
+
+  /* Typography */
+  --lib-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --lib-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --lib-font-size-xs: 0.75rem;
+  --lib-line-height-xs: 1rem;
+  --lib-font-size-sm: 0.875rem;
+  --lib-line-height-sm: 1.25rem;
+  --lib-font-size-base: 1rem;
+  --lib-line-height-base: 1.5rem;
+  --lib-font-size-lg: 1.125rem;
+  --lib-line-height-lg: 1.75rem;
+  --lib-font-size-xl: 1.25rem;
+  --lib-line-height-xl: 1.75rem;
+  --lib-font-size-2xl: 1.5rem;
+  --lib-line-height-2xl: 2rem;
+  --lib-font-size-3xl: 1.875rem;
+  --lib-line-height-3xl: 2.25rem;
+  --lib-font-size-4xl: 2.25rem;
+  --lib-line-height-4xl: 2.5rem;
+
+  /* Component tokens */
+  --lib-cta-primary: var(--lib-color-primary);
+  --lib-cta-primaryHover: var(--lib-color-primaryHover);
+  --lib-cta-primaryActive: var(--lib-color-primaryActive);
+  --lib-cta-primaryForeground: var(--lib-color-primaryForeground);
+  --lib-cta-radius: var(--lib-radius-lg);
+  --lib-cta-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  --lib-card-background: var(--lib-color-card);
+  --lib-card-foreground: var(--lib-color-cardForeground);
+  --lib-card-border: var(--lib-color-border);
+  --lib-card-radius: var(--lib-radius-lg);
+  --lib-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+  --lib-input-background: var(--lib-color-input);
+  --lib-input-foreground: var(--lib-color-foreground);
+  --lib-input-border: var(--lib-color-border);
+  --lib-input-focusBorder: var(--lib-color-ring);
+  --lib-input-radius: var(--lib-radius-md);
 }

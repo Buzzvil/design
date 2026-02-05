@@ -1,14 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from '../ui/BlurReveal';
 import { KeywordAnimation } from '../ui/KeywordAnimation';
+import { HeroBackground } from '../ui/HeroBackground';
 
 const Hero = () => {
   const { t } = useLanguage();
-  
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const heroY = useTransform(scrollY, [0, 500], [0, 200]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,111 +29,80 @@ const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-      },
+      transition: { duration: 0.6 },
     },
   };
 
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Minimal background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+      <HeroBackground />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+        style={{ opacity: heroOpacity, y: heroY }}
+        className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white"
       >
-        {/* Main Heading */}
-        <div className="py-2">
+        <motion.div variants={itemVariants} className="py-2">
           <BlurReveal>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                {t('hero.title')}
-              </span>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight drop-shadow-xl text-white">
+              {t('hero.title')}
             </h1>
           </BlurReveal>
-        </div>
+        </motion.div>
 
-        {/* Sentence with Keyword Animation */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <div className="text-xl sm:text-2xl text-muted-foreground flex items-center justify-center flex-wrap gap-1">
-            <motion.span 
-              className="whitespace-nowrap"
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            >
-              {t('hero.sentence.start')}
-            </motion.span>
+        <motion.div variants={itemVariants} className="mb-10">
+          <div className="text-xl sm:text-2xl text-white/90 flex items-center justify-center flex-wrap gap-1 drop-shadow-md">
+            <span className="whitespace-nowrap">{t('hero.sentence.start')}</span>
             <div className="inline-block text-center">
               <KeywordAnimation />
             </div>
-            <motion.span 
-              className="whitespace-nowrap"
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            >
-              {t('hero.sentence.end')}
-            </motion.span>
+            <span className="whitespace-nowrap">{t('hero.sentence.end')}</span>
           </div>
         </motion.div>
 
-        {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
           <motion.a
             href="#mission-vision"
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-6 py-3 bg-accent/10 text-accent rounded-lg font-medium hover:bg-accent/20 transition-all duration-150 focus-ring"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 backdrop-blur-md px-8 py-4 text-sm font-bold tracking-wide text-white transition-all hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
             onClick={(e) => {
               e.preventDefault();
-              const element = document.querySelector('#mission-vision');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
+              document.querySelector('#mission-vision')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             {t('hero.explore')}
           </motion.a>
           <motion.a
             href="/design/brand/"
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/20"
           >
             {t('hero.brand')}
           </motion.a>
           <motion.a
             href="/design/product/"
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-6 py-3 border border-border/50 text-foreground rounded-lg font-medium hover:border-border hover:bg-muted/50 transition-all duration-150 focus-ring"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/20"
           >
             {t('hero.product')}
           </motion.a>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col items-center"
-        >
-          <span className="text-sm text-muted-foreground mb-2">{t('hero.scroll')}</span>
-          <motion.div
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+        <motion.div variants={itemVariants} className="flex flex-col items-center">
+          <span className="text-sm text-white/70 mb-2">{t('hero.scroll')}</span>
+          <motion.div animate={{ y: [0, 4, 0] }} transition={{ duration: 2, repeat: Infinity }}>
             <ArrowDown className="w-5 h-5 text-white" />
           </motion.div>
         </motion.div>
       </motion.div>
-
-      {/* Minimal fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };

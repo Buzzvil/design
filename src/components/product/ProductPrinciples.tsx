@@ -1,41 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Clock, Sparkles, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from '../ui/BlurReveal';
 import { SectionTitle } from '../ui/SectionTitle';
-import { RewardCounter } from './RewardCounter';
-import { DelightInteraction } from './DelightInteraction';
-import { ScalableGrowth } from './ScalableGrowth';
-
-const BUZZVIL_PRINCIPLES = [
-  {
-    id: 'reward-time',
-    title: 'Reward = Time',
-    shortTitle: 'Reward',
-    description: 'Rewards are a transparent and measurable exchange of user attention. Mechanism: 1P ≈ 1 second of attention. This gives consistency to users and predictability to advertisers.',
-    icon: Clock,
-    characteristics: ['Transparent Exchange', 'Measurable Attention', 'User Consistency', 'Advertiser Predictability']
-  },
-  {
-    id: 'delight-deception',
-    title: 'Delight Without Deception',
-    shortTitle: 'Delight',
-    description: 'Rewards spark motivation, but experiences sustain engagement. We never use dark patterns: never overlay one ad on another, never mislead, never trap. Interactions must feel playful, clear, and respectful.',
-    icon: Sparkles,
-    characteristics: ['No Dark Patterns', 'Playful Interactions', 'Clear Communication', 'Respectful Design']
-  },
-  {
-    id: 'scalable-design',
-    title: 'Scalable by Design',
-    shortTitle: 'Scalable',
-    description: 'Every design decision must scale across products, partners, and business models. We provide meaningful customization, but avoid unsustainable exceptions. These principles can veto business or product decisions that fragment the system.',
-    icon: TrendingUp,
-    characteristics: ['Cross-Product Scale', 'Meaningful Customization', 'System Integrity', 'Decision Veto Power']
-  }
-];
 
 const ProductPrinciples = () => {
   const { t } = useLanguage();
@@ -46,52 +15,46 @@ const ProductPrinciples = () => {
   const principlesSectionRef = useRef<HTMLDivElement>(null);
   const principlesNavRef = useRef<HTMLDivElement>(null);
 
-  // Get translated principles
   const getTranslatedPrinciples = () => [
     {
-      id: 'reward-time',
-      title: t('principles.reward.title'),
-      shortTitle: t('principles.reward.shortTitle'),
-      description: t('principles.reward.content'),
-      icon: Clock,
-      characteristics: [
-        t('principles.reward.characteristics.0'),
-        t('principles.reward.characteristics.1'),
-        t('principles.reward.characteristics.2'),
-        t('principles.reward.characteristics.3')
-      ]
+      id: 'simple',
+      shortTitle: t('product.principles.simple.shortTitle'),
+      title: t('product.principles.simple.title'),
+      description: t('product.principles.simple.description'),
+      alignmentQuestion: t('product.principles.simple.alignmentQuestion'),
     },
     {
-      id: 'delight-deception',
-      title: t('principles.delight.title'),
-      shortTitle: t('principles.delight.shortTitle'),
-      description: t('principles.delight.content'),
-      icon: Sparkles,
-      characteristics: [
-        t('principles.delight.characteristics.0'),
-        t('principles.delight.characteristics.1'),
-        t('principles.delight.characteristics.2'),
-        t('principles.delight.characteristics.3')
-      ]
+      id: 'iconic',
+      shortTitle: t('product.principles.iconic.shortTitle'),
+      title: t('product.principles.iconic.title'),
+      description: t('product.principles.iconic.description'),
+      alignmentQuestion: t('product.principles.iconic.alignmentQuestion'),
     },
     {
-      id: 'scalable-design',
-      title: t('principles.scalable.title'),
-      shortTitle: t('principles.scalable.shortTitle'),
-      description: t('principles.scalable.content'),
-      icon: TrendingUp,
-      characteristics: [
-        t('principles.scalable.characteristics.0'),
-        t('principles.scalable.characteristics.1'),
-        t('principles.scalable.characteristics.2'),
-        t('principles.scalable.characteristics.3')
-      ]
-    }
+      id: 'delightful',
+      shortTitle: t('product.principles.delightful.shortTitle'),
+      title: t('product.principles.delightful.title'),
+      description: t('product.principles.delightful.description'),
+      alignmentQuestion: t('product.principles.delightful.alignmentQuestion'),
+    },
+    {
+      id: 'purposeful',
+      shortTitle: t('product.principles.purposeful.shortTitle'),
+      title: t('product.principles.purposeful.title'),
+      description: t('product.principles.purposeful.description'),
+      alignmentQuestion: t('product.principles.purposeful.alignmentQuestion'),
+    },
+    {
+      id: 'trustworthy',
+      shortTitle: t('product.principles.trustworthy.shortTitle'),
+      title: t('product.principles.trustworthy.title'),
+      description: t('product.principles.trustworthy.description'),
+      alignmentQuestion: t('product.principles.trustworthy.alignmentQuestion'),
+    },
   ];
 
   const translatedPrinciples = getTranslatedPrinciples();
 
-  // Intersection Observer for detecting when section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -111,11 +74,10 @@ const ProductPrinciples = () => {
     };
   }, []);
 
-  // Auto-advance slider every 5 seconds (pause on hover and only when in view)
   useEffect(() => {
     if (!isHovered && isPrinciplesInView) {
       principlesIntervalRef.current = setInterval(() => {
-        setSelectedPrinciple(prev => (prev + 1) % translatedPrinciples.length);
+        setSelectedPrinciple((prev) => (prev + 1) % translatedPrinciples.length);
       }, 5000);
     }
 
@@ -124,7 +86,6 @@ const ProductPrinciples = () => {
     };
   }, [isHovered, isPrinciplesInView, translatedPrinciples.length]);
 
-  // Auto-scroll to active principle tab (only when user is interacting)
   useEffect(() => {
     if (principlesNavRef.current && isHovered) {
       const activeButton = principlesNavRef.current.children[selectedPrinciple] as HTMLElement;
@@ -132,13 +93,12 @@ const ProductPrinciples = () => {
         activeButton.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
-          inline: 'center'
+          inline: 'center',
         });
       }
     }
   }, [selectedPrinciple, isHovered]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isPrinciplesInView) return;
@@ -146,11 +106,13 @@ const ProductPrinciples = () => {
       switch (event.key) {
         case 'ArrowLeft':
           event.preventDefault();
-          setSelectedPrinciple(prev => prev === 0 ? translatedPrinciples.length - 1 : prev - 1);
+          setSelectedPrinciple((prev) =>
+            prev === 0 ? translatedPrinciples.length - 1 : prev - 1
+          );
           break;
         case 'ArrowRight':
           event.preventDefault();
-          setSelectedPrinciple(prev => (prev + 1) % translatedPrinciples.length);
+          setSelectedPrinciple((prev) => (prev + 1) % translatedPrinciples.length);
           break;
         case 'Home':
           event.preventDefault();
@@ -176,9 +138,7 @@ const ProductPrinciples = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -188,13 +148,16 @@ const ProductPrinciples = () => {
   };
 
   return (
-    <section ref={principlesSectionRef} className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section
+      ref={principlesSectionRef}
+      className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           className="text-center mb-16"
         >
           <BlurReveal>
@@ -209,101 +172,82 @@ const ProductPrinciples = () => {
           </BlurReveal>
         </motion.div>
 
-        {/* Principle Navigation */}
-        <motion.div 
-          variants={itemVariants}
-          className="flex justify-center mb-12 px-4"
-        >
-          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-md">
-            <div 
+        <motion.div variants={itemVariants} className="flex justify-center mb-12 px-4">
+          <div className="overflow-x-auto scrollbar-hide bg-muted/30 p-2 rounded-xl max-w-lg">
+            <div
               ref={principlesNavRef}
               className="flex gap-2"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               {translatedPrinciples.map((principle, index) => (
-              <button
-                key={principle.id}
-                onClick={() => setSelectedPrinciple(index)}
-                className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 ${
-                  selectedPrinciple === index
-                    ? 'bg-white text-black'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                }`}
-              >
-                {principle.shortTitle}
-              </button>
+                <button
+                  key={principle.id}
+                  onClick={() => setSelectedPrinciple(index)}
+                  className={`px-3 py-2 rounded-lg font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 ${
+                    selectedPrinciple === index
+                      ? 'bg-white text-black'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  }`}
+                >
+                  {principle.shortTitle}
+                </button>
               ))}
             </div>
           </div>
         </motion.div>
 
-        {/* Principle Content with Enhanced 3D Transitions */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="max-w-4xl mx-auto px-4"
         >
-          <div 
+          <div
             className="relative overflow-hidden perspective-1000 w-full"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div 
+            <div
               className="flex transition-all duration-700 ease-out w-full"
-              style={{ 
+              style={{
                 transform: `translateX(-${selectedPrinciple * 100}%)`,
-                transformStyle: 'preserve-3d'
+                transformStyle: 'preserve-3d',
               }}
             >
               {translatedPrinciples.map((principle, index) => {
                 const isActive = index === selectedPrinciple;
                 const distance = Math.abs(index - selectedPrinciple);
-                
+
                 return (
                   <div
                     key={principle.id}
                     className="w-full flex-shrink-0 transition-all duration-700 ease-out"
                     style={{
-                      transform: isActive 
-                        ? 'translateZ(0px) rotateY(0deg) scale(1)' 
+                      transform: isActive
+                        ? 'translateZ(0px) rotateY(0deg) scale(1)'
                         : `translateZ(-${distance * 20}px) rotateY(${distance * 5}deg) scale(${1 - distance * 0.05})`,
                       opacity: isActive ? 1 : Math.max(0.3, 1 - distance * 0.3),
                       filter: isActive ? 'blur(0px)' : `blur(${distance * 2}px)`,
                       zIndex: isActive ? 10 : 5 - distance,
                       minWidth: 0,
-                      maxWidth: '100%'
+                      maxWidth: '100%',
                     }}
                   >
                     <div className="bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 lg:p-12 shadow-2xl w-full overflow-hidden">
-                      {/* Interactive Component */}
-                      {principle.id === 'reward-time' && <RewardCounter isActive={isActive} />}
-                      {principle.id === 'delight-deception' && <DelightInteraction isActive={isActive} />}
-                      {principle.id === 'scalable-design' && <ScalableGrowth isActive={isActive} />}
-
-                      {/* Title */}
-                      <h3 className="text-2xl lg:text-3xl font-bold text-center mb-6 transition-all duration-700">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-center mb-6 transition-all duration-700 uppercase tracking-wider">
                         {principle.title}
                       </h3>
 
-                      {/* Description */}
-                      <p className="text-lg text-muted-foreground text-center mb-8 leading-relaxed transition-all duration-700 break-words">
+                      <p className="text-lg text-muted-foreground text-center mb-8 leading-relaxed transition-all duration-700">
                         {principle.description}
                       </p>
 
-                      {/* Characteristics */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                        {principle.characteristics.map((characteristic, charIndex) => (
-                          <div
-                            key={charIndex}
-                            className="p-4 bg-muted/30 rounded-xl border border-border text-center transition-all duration-700 min-w-0"
-                            style={{
-                              transform: isActive ? 'translateY(0px)' : 'translateY(20px)',
-                              opacity: isActive ? 1 : 0.7,
-                            }}
-                          >
-                            <span className="text-sm font-medium break-words">{characteristic}</span>
-                          </div>
-                        ))}
+                      <div className="border-t border-border pt-6">
+                        <p className="text-sm font-mono text-muted-foreground text-center italic">
+                          {t('product.principles.alignmentQuestionLabel')}
+                        </p>
+                        <p className="text-base text-foreground text-center mt-2 font-medium">
+                          &ldquo;{principle.alignmentQuestion}&rdquo;
+                        </p>
                       </div>
                     </div>
                   </div>
