@@ -19,12 +19,12 @@ export function BrandImagery() {
         </p>
         <div className="grid gap-8 md:grid-cols-2">
           <div className="group overflow-hidden rounded-xl border border-border bg-muted/30">
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src={`${BASE_PATH}/brand/cc8486b755a5e9170b9179041d244a6ae4e8f63c.png`}
                 alt="Visual Identity Application"
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 unoptimized
               />
@@ -36,12 +36,12 @@ export function BrandImagery() {
             </div>
           </div>
           <div className="group overflow-hidden rounded-xl border border-border bg-muted/30">
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src={`${BASE_PATH}/brand/7387332a42ee4c4b8b8e2ba38d0485c9f6c96eb2.png`}
                 alt="Web Interface"
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 unoptimized
               />

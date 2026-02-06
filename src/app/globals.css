@@ -18,20 +18,20 @@
 }
 
 :root {
-  /* Dark theme with blue accent */
+  /* Dark theme with brand red accent */
   --background: 0 0% 3%;
   --foreground: 0 0% 98%;
   --primary: 0 0% 98%; /* white in dark mode */
   --primary-foreground: 0 0% 9%;
   --secondary: 0 0% 9%;
   --secondary-foreground: 0 0% 98%;
-  --accent: 217 91% 60%; /* blue-500 as accent */
+  --accent: 0 84% 60%; /* Red 50 (#EF4444) */
   --accent-foreground: 0 0% 100%;
   --muted: 0 0% 15%;
   --muted-foreground: 0 0% 65%;
   --border: 0 0% 20%;
   --input: 0 0% 20%;
-  --ring: 217 91% 60%;
+  --ring: 0 84% 60%; /* Red 50 */
   --radius: 0.375rem;
   /* Font stack for multilingual support (English + Korean) */
   --font-stack: var(--font-nunito), var(--font-noto-kr), system-ui, sans-serif;
@@ -49,13 +49,13 @@ html, body {
   --primary-foreground: 0 0% 9%;
   --secondary: 0 0% 9%;
   --secondary-foreground: 0 0% 98%;
-  --accent: 217 91% 60%; /* blue-500 as accent */
+  --accent: 0 84% 60%; /* Red 50 */
   --accent-foreground: 0 0% 100%;
   --muted: 0 0% 9%;
   --muted-foreground: 0 0% 64%;
   --border: 0 0% 15%;
   --input: 0 0% 15%;
-  --ring: 0 0% 98%;
+  --ring: 0 84% 60%; /* Red 50 */
 }
 
 * {
@@ -261,17 +261,17 @@ header.page-header {
 /* These will be dynamically set by ThemeProvider */
 :root {
   /* Default library theme variables - will be overridden by ThemeProvider */
-  --lib-color-primary: hsl(217, 91%, 60%);
-  --lib-color-primaryHover: hsl(217, 91%, 55%);
-  --lib-color-primaryActive: hsl(217, 91%, 50%);
+  --lib-color-primary: hsl(0, 84%, 60%);
+  --lib-color-primaryHover: hsl(0, 84%, 55%);
+  --lib-color-primaryActive: hsl(0, 84%, 50%);
   --lib-color-primaryForeground: hsl(0, 0%, 100%);
   --lib-color-secondary: hsl(210, 40%, 96%);
   --lib-color-secondaryHover: hsl(210, 40%, 92%);
   --lib-color-secondaryActive: hsl(210, 40%, 88%);
   --lib-color-secondaryForeground: hsl(222, 47%, 11%);
-  --lib-color-accent: hsl(217, 91%, 60%);
-  --lib-color-accentHover: hsl(217, 91%, 55%);
-  --lib-color-accentActive: hsl(217, 91%, 50%);
+  --lib-color-accent: hsl(0, 84%, 60%);
+  --lib-color-accentHover: hsl(0, 84%, 55%);
+  --lib-color-accentActive: hsl(0, 84%, 50%);
   --lib-color-accentForeground: hsl(0, 0%, 100%);
   --lib-color-background: hsl(0, 0%, 100%);
   --lib-color-foreground: hsl(222, 47%, 11%);
@@ -281,14 +281,14 @@ header.page-header {
   --lib-color-mutedForeground: hsl(215, 16%, 47%);
   --lib-color-border: hsl(214, 32%, 91%);
   --lib-color-input: hsl(0, 0%, 100%);
-  --lib-color-ring: hsl(217, 91%, 60%);
+  --lib-color-ring: hsl(0, 84%, 60%);
   --lib-color-success: hsl(142, 76%, 36%);
   --lib-color-successForeground: hsl(0, 0%, 100%);
   --lib-color-warning: hsl(38, 92%, 50%);
   --lib-color-warningForeground: hsl(0, 0%, 100%);
   --lib-color-error: hsl(0, 84%, 60%);
   --lib-color-errorForeground: hsl(0, 0%, 100%);
-  --lib-color-info: hsl(217, 91%, 60%);
+  --lib-color-info: hsl(24, 95%, 53%);
   --lib-color-infoForeground: hsl(0, 0%, 100%);
 
   /* Spacing */

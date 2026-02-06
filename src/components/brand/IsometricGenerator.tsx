@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import { Download, RotateCw } from 'lucide-react';
+import { toPng } from 'html-to-image';
 import { LogoMark } from './LogoMark';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -51,90 +52,25 @@ export function IsometricGenerator() {
   }, [angle, zRotDeg]);
 
   const handleDownload = useCallback(async () => {
+    if (!previewRef.current) return;
     setIsDownloading(true);
-    const previewSize = 512;
-    const exportScale = 3;
-    const size = previewSize * exportScale;
 
     try {
-      const angleRad = (angle * Math.PI) / 180;
-      const zRotRad = (zRotDeg * Math.PI) / 180;
-      const logoSize = (previewSize / 2) * exportScale;
-      const perspective = 1000;
-      const offsetScale = 0.7 * exportScale;
-      const cx = size / 2;
-      const cy = size / 2;
-
-      const tiltBoost = 1.15;
-      const cosA = Math.cos(angleRad);
-      const sinA = Math.sin(angleRad);
-      const cosATilted = Math.cos(angleRad * tiltBoost);
-      const cosZ = Math.cos(zRotRad);
-      const sinZ = Math.sin(zRotRad);
-
-      const canvas = document.createElement('canvas');
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Canvas context not found');
-
-      ctx.clearRect(0, 0, size, size);
-
-      const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1395 887"><path fill-rule="evenodd" clip-rule="evenodd" d="${LOGO_PATH}" fill="${logoColor}"/></svg>`;
-      const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
-      const svgUrl = URL.createObjectURL(svgBlob);
-
-      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
-        const i = new Image();
-        i.onload = () => resolve(i);
-        i.onerror = reject;
-        i.src = svgUrl;
+      const dataUrl = await toPng(previewRef.current, {
+        pixelRatio: 3,
+        backgroundColor: 'transparent',
       });
-
-      const m11 = cosZ;
-      const m12 = sinZ;
-      const m21 = -cosATilted * sinZ;
-      const m22 = cosATilted * cosZ;
-
-      const drawLayer = (z: number, opacity: number, brightness: number) => {
-        const perspScale = perspective / (perspective + z);
-        const w = logoSize * perspScale;
-        const h = (887 / 1395) * w;
-        const offsetX = -z * sinA * sinZ * offsetScale * perspScale;
-        const offsetY = z * sinA * cosZ * offsetScale * perspScale;
-
-        ctx.save();
-        ctx.globalAlpha = opacity;
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
-        if (z > 0 && brightness < 1) {
-          ctx.filter = `brightness(${brightness})`;
-        }
-        ctx.translate(cx + offsetX, cy + offsetY);
-        ctx.transform(m11, m12, m21, m22, 0, 0);
-        ctx.drawImage(img, -w / 2, -h / 2, w, h);
-        ctx.restore();
-      };
-
-      for (let i = layers.length - 1; i >= 0; i--) {
-        const opacity = Math.max(0.3, 0.92 - i * 0.08);
-        const brightness = Math.max(0.45, 0.95 - i * 0.06);
-        drawLayer(layers[i], opacity, brightness);
-      }
-      drawLayer(0, 1, 1);
-
-      URL.revokeObjectURL(svgUrl);
 
       const link = document.createElement('a');
       link.download = `Buzzvil_Isometric_${angleKey}_${direction}_depth${depthLayers}.png`;
-      link.href = canvas.toDataURL('image/png');
+      link.href = dataUrl;
       link.click();
     } catch (err) {
       console.error('Download failed', err);
     } finally {
       setIsDownloading(false);
     }
-  }, [angle, zRotDeg, angleKey, direction, depthLayers, logoColor, layers]);
+  }, [angleKey, direction, depthLayers]);
 
   const angleOptions: AngleKey[] = ['subtle', 'standard', 'strong'];
 

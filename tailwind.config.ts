@@ -66,7 +66,7 @@ const config: Config = {
         sans: ["var(--font-nunito)", "var(--font-noto-kr)", "system-ui", "sans-serif"],
         nunito: ["var(--font-nunito)", "system-ui", "sans-serif"],
         noto: ["var(--font-noto-kr)", "system-ui", "sans-serif"],
-        mono: ["var(--font-anonymous-pro)", "ui-monospace", "monospace"],
+        mono: ["var(--font-anonymous-pro)", "var(--font-nanum-gothic-coding)", "ui-monospace", "monospace"],
         'lib-sans': ['var(--lib-font-sans)', 'system-ui', 'sans-serif'],
         'lib-mono': ['var(--lib-font-mono)', 'ui-monospace', 'monospace'],
       },

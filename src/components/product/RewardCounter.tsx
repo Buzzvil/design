@@ -59,7 +59,7 @@ export function RewardCounter({ isActive }: RewardCounterProps) {
       className="mb-6 flex justify-center"
     >
       <motion.div 
-        className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30 rounded-xl p-4 backdrop-blur-sm w-32 h-32 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20 cursor-pointer"
+        className="bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-400/30 rounded-xl p-4 backdrop-blur-sm w-32 h-32 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-red-400/50 hover:shadow-lg hover:shadow-red-500/20 cursor-pointer"
         onClick={handleClick}
         animate={{
           scale: isClicked ? 0.8 : 1,
@@ -77,10 +77,10 @@ export function RewardCounter({ isActive }: RewardCounterProps) {
           {/* Session Time and Points in Vertical Layout */}
           <div className="space-y-3">
             <div className="text-center">
-              <div className="text-sm text-blue-300 mb-1">Time</div>
+              <div className="text-sm text-red-300 mb-1">Time</div>
               <motion.div
                 key={sessionTime}
-                initial={{ scale: 1.1, color: '#60a5fa' }}
+                initial={{ scale: 1.1, color: '#fca5a5' }}
                 animate={{ scale: 1, color: '#ffffff' }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
                 className="text-sm font-mono font-bold text-white"

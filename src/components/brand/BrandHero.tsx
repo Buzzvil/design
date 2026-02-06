@@ -36,11 +36,11 @@ export function BrandHero() {
             {t('brand.hero.tag')}
           </span>
 
-          <h1 className="mb-8 text-7xl font-extrabold tracking-tight md:text-9xl drop-shadow-xl text-white whitespace-pre-line">
+          <h1 className="mb-8 text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight drop-shadow-xl text-white whitespace-pre-line">
             {t('brand.hero.title')}
           </h1>
 
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl font-light drop-shadow-md">
+          <p className="mx-auto max-w-2xl text-xl sm:text-2xl leading-relaxed text-white/90 font-light drop-shadow-md">
             {t('brand.hero.description')}
           </p>
 

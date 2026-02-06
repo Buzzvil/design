@@ -47,38 +47,38 @@ export function generateTheme(colors: ColorTokens): ThemeTokens {
  * Theme 1: Default (Neutral, Professional)
  */
 export const defaultThemeColors: ColorTokens = {
-  primary: 'hsl(217, 91%, 60%)',
-  primaryHover: 'hsl(217, 91%, 55%)',
-  primaryActive: 'hsl(217, 91%, 50%)',
+  primary: 'hsl(0, 84%, 60%)',       // Red 50
+  primaryHover: 'hsl(0, 84%, 55%)',
+  primaryActive: 'hsl(0, 84%, 50%)',
   primaryForeground: 'hsl(0, 0%, 100%)',
 
-  secondary: 'hsl(210, 40%, 96%)',
-  secondaryHover: 'hsl(210, 40%, 92%)',
-  secondaryActive: 'hsl(210, 40%, 88%)',
-  secondaryForeground: 'hsl(222, 47%, 11%)',
+  secondary: 'hsl(0, 0%, 96%)',
+  secondaryHover: 'hsl(0, 0%, 92%)',
+  secondaryActive: 'hsl(0, 0%, 88%)',
+  secondaryForeground: 'hsl(0, 0%, 9%)',
 
-  accent: 'hsl(217, 91%, 60%)',
-  accentHover: 'hsl(217, 91%, 55%)',
-  accentActive: 'hsl(217, 91%, 50%)',
+  accent: 'hsl(0, 84%, 60%)',        // Red 50
+  accentHover: 'hsl(0, 84%, 55%)',
+  accentActive: 'hsl(0, 84%, 50%)',
   accentForeground: 'hsl(0, 0%, 100%)',
 
   background: 'hsl(0, 0%, 100%)',
-  foreground: 'hsl(222, 47%, 11%)',
+  foreground: 'hsl(0, 0%, 9%)',
   card: 'hsl(0, 0%, 100%)',
-  cardForeground: 'hsl(222, 47%, 11%)',
-  muted: 'hsl(210, 40%, 96%)',
-  mutedForeground: 'hsl(215, 16%, 47%)',
-  border: 'hsl(214, 32%, 91%)',
+  cardForeground: 'hsl(0, 0%, 9%)',
+  muted: 'hsl(0, 0%, 96%)',
+  mutedForeground: 'hsl(0, 0%, 45%)',
+  border: 'hsl(0, 0%, 90%)',
   input: 'hsl(0, 0%, 100%)',
-  ring: 'hsl(217, 91%, 60%)',
+  ring: 'hsl(0, 84%, 60%)',          // Red 50
 
   success: 'hsl(142, 76%, 36%)',
   successForeground: 'hsl(0, 0%, 100%)',
-  warning: 'hsl(38, 92%, 50%)',
+  warning: 'hsl(24, 95%, 53%)',      // Orange 60
   warningForeground: 'hsl(0, 0%, 100%)',
-  error: 'hsl(0, 84%, 60%)',
+  error: 'hsl(0, 84%, 60%)',         // Red 50
   errorForeground: 'hsl(0, 0%, 100%)',
-  info: 'hsl(217, 91%, 60%)',
+  info: 'hsl(24, 95%, 53%)',         // Orange 60
   infoForeground: 'hsl(0, 0%, 100%)',
 };
 
@@ -86,38 +86,38 @@ export const defaultThemeColors: ColorTokens = {
  * Theme 2: Light (Bright, Clean)
  */
 export const lightThemeColors: ColorTokens = {
-  primary: 'hsl(221, 83%, 53%)',
-  primaryHover: 'hsl(221, 83%, 48%)',
-  primaryActive: 'hsl(221, 83%, 43%)',
+  primary: 'hsl(0, 84%, 60%)',       // Red 50
+  primaryHover: 'hsl(0, 84%, 55%)',
+  primaryActive: 'hsl(0, 84%, 50%)',
   primaryForeground: 'hsl(0, 0%, 100%)',
 
-  secondary: 'hsl(210, 40%, 98%)',
-  secondaryHover: 'hsl(210, 40%, 94%)',
-  secondaryActive: 'hsl(210, 40%, 90%)',
-  secondaryForeground: 'hsl(222, 47%, 11%)',
+  secondary: 'hsl(0, 0%, 98%)',
+  secondaryHover: 'hsl(0, 0%, 94%)',
+  secondaryActive: 'hsl(0, 0%, 90%)',
+  secondaryForeground: 'hsl(0, 0%, 9%)',
 
-  accent: 'hsl(221, 83%, 53%)',
-  accentHover: 'hsl(221, 83%, 48%)',
-  accentActive: 'hsl(221, 83%, 43%)',
+  accent: 'hsl(0, 84%, 60%)',        // Red 50
+  accentHover: 'hsl(0, 84%, 55%)',
+  accentActive: 'hsl(0, 84%, 50%)',
   accentForeground: 'hsl(0, 0%, 100%)',
 
   background: 'hsl(0, 0%, 100%)',
-  foreground: 'hsl(222, 47%, 11%)',
+  foreground: 'hsl(0, 0%, 9%)',
   card: 'hsl(0, 0%, 100%)',
-  cardForeground: 'hsl(222, 47%, 11%)',
-  muted: 'hsl(210, 40%, 98%)',
-  mutedForeground: 'hsl(215, 16%, 47%)',
-  border: 'hsl(214, 32%, 95%)',
+  cardForeground: 'hsl(0, 0%, 9%)',
+  muted: 'hsl(0, 0%, 98%)',
+  mutedForeground: 'hsl(0, 0%, 45%)',
+  border: 'hsl(0, 0%, 93%)',
   input: 'hsl(0, 0%, 100%)',
-  ring: 'hsl(221, 83%, 53%)',
+  ring: 'hsl(0, 84%, 60%)',          // Red 50
 
   success: 'hsl(142, 76%, 36%)',
   successForeground: 'hsl(0, 0%, 100%)',
-  warning: 'hsl(38, 92%, 50%)',
+  warning: 'hsl(24, 95%, 53%)',      // Orange 60
   warningForeground: 'hsl(0, 0%, 100%)',
-  error: 'hsl(0, 84%, 60%)',
+  error: 'hsl(0, 84%, 60%)',         // Red 50
   errorForeground: 'hsl(0, 0%, 100%)',
-  info: 'hsl(221, 83%, 53%)',
+  info: 'hsl(24, 95%, 53%)',         // Orange 60
   infoForeground: 'hsl(0, 0%, 100%)',
 };
 
@@ -125,38 +125,38 @@ export const lightThemeColors: ColorTokens = {
  * Theme 3: Dark (Dark Background, High Contrast)
  */
 export const darkThemeColors: ColorTokens = {
-  primary: 'hsl(217, 91%, 60%)',
-  primaryHover: 'hsl(217, 91%, 65%)',
-  primaryActive: 'hsl(217, 91%, 70%)',
+  primary: 'hsl(0, 84%, 60%)',       // Red 50
+  primaryHover: 'hsl(0, 84%, 65%)',
+  primaryActive: 'hsl(0, 84%, 70%)',
   primaryForeground: 'hsl(0, 0%, 100%)',
 
-  secondary: 'hsl(217, 33%, 17%)',
-  secondaryHover: 'hsl(217, 33%, 22%)',
-  secondaryActive: 'hsl(217, 33%, 27%)',
-  secondaryForeground: 'hsl(210, 40%, 98%)',
+  secondary: 'hsl(0, 0%, 15%)',
+  secondaryHover: 'hsl(0, 0%, 20%)',
+  secondaryActive: 'hsl(0, 0%, 25%)',
+  secondaryForeground: 'hsl(0, 0%, 98%)',
 
-  accent: 'hsl(217, 91%, 60%)',
-  accentHover: 'hsl(217, 91%, 65%)',
-  accentActive: 'hsl(217, 91%, 70%)',
+  accent: 'hsl(0, 84%, 60%)',        // Red 50
+  accentHover: 'hsl(0, 84%, 65%)',
+  accentActive: 'hsl(0, 84%, 70%)',
   accentForeground: 'hsl(0, 0%, 100%)',
 
-  background: 'hsl(222, 47%, 11%)',
-  foreground: 'hsl(210, 40%, 98%)',
-  card: 'hsl(222, 47%, 11%)',
-  cardForeground: 'hsl(210, 40%, 98%)',
-  muted: 'hsl(217, 33%, 17%)',
-  mutedForeground: 'hsl(215, 20%, 65%)',
-  border: 'hsl(217, 33%, 17%)',
-  input: 'hsl(217, 33%, 17%)',
-  ring: 'hsl(217, 91%, 60%)',
+  background: 'hsl(0, 0%, 3%)',
+  foreground: 'hsl(0, 0%, 98%)',
+  card: 'hsl(0, 0%, 3%)',
+  cardForeground: 'hsl(0, 0%, 98%)',
+  muted: 'hsl(0, 0%, 15%)',
+  mutedForeground: 'hsl(0, 0%, 65%)',
+  border: 'hsl(0, 0%, 15%)',
+  input: 'hsl(0, 0%, 15%)',
+  ring: 'hsl(0, 84%, 60%)',          // Red 50
 
   success: 'hsl(142, 71%, 45%)',
   successForeground: 'hsl(0, 0%, 100%)',
-  warning: 'hsl(38, 92%, 50%)',
+  warning: 'hsl(24, 95%, 53%)',      // Orange 60
   warningForeground: 'hsl(0, 0%, 100%)',
-  error: 'hsl(0, 72%, 51%)',
+  error: 'hsl(0, 72%, 51%)',         // Red 60
   errorForeground: 'hsl(0, 0%, 100%)',
-  info: 'hsl(217, 91%, 60%)',
+  info: 'hsl(24, 95%, 53%)',         // Orange 60
   infoForeground: 'hsl(0, 0%, 100%)',
 };
 
