@@ -79,8 +79,8 @@ export function BrandTypography() {
                   <span className="text-xs text-muted-foreground">
                     {sample.meta}
                   </span>
-                  {sample.custom ?? (
-                    <p className={sample.className}>{sample.text}</p>
+                  {'custom' in sample && sample.custom ? sample.custom : (
+                    <p className={'className' in sample ? sample.className : ''}>{('text' in sample && sample.text) || ''}</p>
                   )}
                 </div>
               ))}
