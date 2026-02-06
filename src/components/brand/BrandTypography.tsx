@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 /* ── Smooth animated counter (intro + live drift) ── */
 function useAnimatedValue(target: number, duration: number, inView: boolean) {
   const [display, setDisplay] = useState(0);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number>(0);
   const currentRef = useRef(0);
 
   useEffect(() => {
