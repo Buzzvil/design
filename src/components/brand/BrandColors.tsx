@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { ColorComposition } from './ColorComposition';
 
 export const COLORS = {
   grayscale: [
@@ -108,6 +109,7 @@ export function BrandColors() {
 
   return (
     <div className="space-y-12">
+      <ColorComposition />
       <section>
         <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-foreground mb-6">
           {t('brand.colors.grayscale')}
