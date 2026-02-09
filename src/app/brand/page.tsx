@@ -38,6 +38,11 @@ export default function BrandPage() {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={0.1}>
+              <div className="mb-12 border-b border-border pb-4">
+                <h2 className="text-3xl font-bold tracking-tight">
+                  {t('brand.nav.logo')}
+                </h2>
+              </div>
               <BrandLogoSection />
             </AnimatedSection>
           </div>

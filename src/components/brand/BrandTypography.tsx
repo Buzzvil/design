@@ -5,6 +5,34 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+/* ── Font tooltip on hover ── */
+function FontTooltip({ font, children }: { font: string; children: React.ReactNode }) {
+  const [show, setShow] = useState(false);
+  return (
+    <div
+      className="relative cursor-default"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+    >
+      {children}
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            className="absolute left-1/2 bottom-[calc(100%+8px)] -translate-x-1/2 pointer-events-none z-50 whitespace-nowrap rounded-md bg-white px-3 py-1.5 text-xs font-bold text-[#0A0A0A] shadow-lg font-mono tracking-wider"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15 }}
+          >
+            {font}
+            <span className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-white" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 /* ── Smooth animated counter (intro + live drift) ── */
 function useAnimatedValue(target: number, duration: number, inView: boolean) {
   const [display, setDisplay] = useState(0);
@@ -232,78 +260,69 @@ function TypographyComposition() {
         {/* Left — Typography statement */}
         <div className="flex flex-col gap-6">
           {/* Mono kicker */}
-          <motion.p
-            className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-[#F97316]"
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Design System 26.1 — Typography
-          </motion.p>
+            <FontTooltip font="Anonymous Pro · 나눔고딕코딩">
+              <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-[#F97316]">
+                Design System 26.1 — Typography
+              </p>
+            </FontTooltip>
+          </motion.div>
 
           {/* Hero headline — Nunito */}
-          <motion.h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]"
-            style={{ fontFamily: 'var(--font-nunito)' }}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Every word{' '}
-            <span className="bg-gradient-to-r from-[#EF4444] to-[#F97316] bg-clip-text text-transparent">
-              carries
-            </span>
-            <br />
-            intention.
-          </motion.h2>
+            <FontTooltip font="Nunito">
+              <h2
+                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]"
+                style={{ fontFamily: 'var(--font-nunito)' }}
+              >
+                Every word{' '}
+                <span className="bg-gradient-to-r from-[#EF4444] to-[#F97316] bg-clip-text text-transparent">
+                  carries
+                </span>
+                <br />
+                intention.
+              </h2>
+            </FontTooltip>
+          </motion.div>
 
           {/* Body copy — Inter / Pretendard */}
-          <motion.p
-            className="max-w-md text-base sm:text-lg leading-relaxed text-white/60"
-            style={{ fontFamily: 'var(--font-inter)' }}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Three typefaces, one voice. From bold headlines to quiet labels,
-            our typography is calibrated to feel calm, precise, and unmistakably Buzzvil.
-          </motion.p>
-
-          {/* Font specimen strip */}
-          <motion.div
-            className="mt-auto flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-white/10 pt-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-          >
-            <span
-              className="text-2xl sm:text-3xl font-extrabold text-white/90"
-              style={{ fontFamily: 'var(--font-nunito)' }}
-            >
-              Nunito
-            </span>
-            <span
-              className="text-xl sm:text-2xl font-semibold text-white/60"
-              style={{ fontFamily: 'var(--font-inter)' }}
-            >
-              Inter · Pretendard
-            </span>
-            <span className="font-mono text-sm sm:text-base font-bold uppercase tracking-wider text-white/35">
-              Anonymous Pro · 나눔고딕코딩
-            </span>
+            <FontTooltip font="Inter · Pretendard">
+              <p
+                className="max-w-md text-base sm:text-lg leading-relaxed text-white/60"
+                style={{ fontFamily: 'var(--font-inter)' }}
+              >
+                Three typefaces, one voice. From bold headlines to quiet labels,
+                our typography is calibrated to feel calm, precise, and unmistakably Buzzvil.
+              </p>
+            </FontTooltip>
           </motion.div>
+
         </div>
 
         {/* Right — Animated dataviz (mono) */}
-        <div className="flex items-center">
-          <div className="w-full rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 backdrop-blur-sm">
-            <DatavizPanel />
+        <FontTooltip font="Anonymous Pro · 나눔고딕코딩">
+          <div className="flex items-center h-full">
+            <div className="w-full rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 backdrop-blur-sm">
+              <DatavizPanel />
+            </div>
           </div>
-        </div>
+        </FontTooltip>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LogoMark } from './LogoMark';
 import { LogoWordmark } from './LogoWordmark';
+import { LogoComposition } from './LogoComposition';
 import { MaskingBackground } from '@/components/ui/MaskingBackground';
 
 const LOGO_PATH =
@@ -13,6 +14,9 @@ export function BrandLogoSection() {
 
   return (
     <div className="space-y-16">
+      {/* Animated logo composition — right after the page-level title */}
+      <LogoComposition />
+
       <section>
         <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-foreground mb-6">
           {t('brand.logo.title')}
