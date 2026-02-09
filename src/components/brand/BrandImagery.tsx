@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -58,48 +58,166 @@ function TeamPhoto() {
   );
 }
 
-/* ── Motion placeholder (animated) ── */
-function MotionPlaceholder() {
+/* ── Square drawing + slingshot animation ── */
+/*
+ * 1. Draw edges one by one
+ * 2. Fill with color + round corners
+ * 3. Pull left slowly (tension building)
+ * 4. Release: spring flings right then bounces back to x:0
+ * 5. Fade out → next color → restart
+ */
+// Brighter/lighter version of each shape color for text
+const TEXT_COLOR_MAP: Record<string, string> = {
+  '#EF4444': '#FCA5A5', // Red 50 → Red 30
+  '#F97316': '#FDBA74', // Orange 60 → Orange 40
+  '#DC2626': '#FCA5A5', // Red 60 → Red 30
+  '#FB923C': '#FED7AA', // Orange 50 → Orange 30
+  '#B91C1C': '#F87171', // Red 70 → Red 40
+  '#EA580C': '#FB923C', // Orange 70 → Orange 50
+};
+
+function MotionPlaceholder({ onColorChange }: { onColorChange?: (color: string) => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
+  const COLORS = ['#EF4444', '#F97316', '#DC2626', '#FB923C', '#B91C1C', '#EA580C'];
+  const colorIdx = useRef(0);
+  const [color, setColor] = useState(COLORS[0]);
+  const [key, setKey] = useState(0);
+
+  type Phase = 'draw' | 'fill' | 'pull' | 'release' | 'fadeout';
+  const [phase, setPhase] = useState<Phase>('draw');
+
+  useEffect(() => {
+    if (!inView) return;
+    let timeout: ReturnType<typeof setTimeout>;
+    let cancelled = false;
+
+    const cycle = (p: Phase) => {
+      if (cancelled) return;
+      setPhase(p);
+      switch (p) {
+        case 'draw':
+          timeout = setTimeout(() => cycle('fill'), 1500);
+          break;
+        case 'fill':
+          timeout = setTimeout(() => cycle('pull'), 500);
+          break;
+        case 'pull':
+          timeout = setTimeout(() => cycle('release'), 800);
+          break;
+        case 'release':
+          timeout = setTimeout(() => cycle('fadeout'), 3800);
+          break;
+        case 'fadeout':
+          timeout = setTimeout(() => {
+            colorIdx.current = (colorIdx.current + 1) % COLORS.length;
+            const next = COLORS[colorIdx.current];
+            setColor(next);
+            onColorChange?.(next);
+            setKey((k) => k + 1);
+            cycle('draw');
+          }, 700);
+          break;
+      }
+    };
+
+    cycle('draw');
+    return () => { cancelled = true; clearTimeout(timeout); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  const S = 90;
+
+  // Edge definitions for sequential drawing
+  const edges = [
+    { x1: 0, y1: 0, x2: S, y2: 0 },
+    { x1: S, y1: 0, x2: S, y2: S },
+    { x1: S, y1: S, x2: 0, y2: S },
+    { x1: 0, y1: S, x2: 0, y2: 0 },
+  ];
+
+  const showFill = phase !== 'draw';
+  const hasRadius = phase !== 'draw';
+  const isFading = phase === 'fadeout';
+
+  // Pull to the far left edge, release with massive energy
+  const containerWidth = ref.current?.parentElement?.offsetWidth ?? 1200;
+  const pullDistance = -(containerWidth * 0.4); // pull 40% of frame width to the left
+
+  const xTarget =
+    phase === 'pull' ? pullDistance :
+    phase === 'release' ? 0 :
+    0;
+
+  const xTransition =
+    phase === 'pull'
+      ? { duration: 0.8, ease: [0.4, 0, 1, 1] as const }
+      : phase === 'release'
+      ? { type: 'spring' as const, stiffness: 150, damping: 3.5, mass: 0.4, velocity: 4000 }
+      : { duration: 0 };
 
   return (
-    <div ref={ref} className="relative w-full h-full bg-[#0A0A0A] flex items-center justify-center overflow-hidden">
-      {/* Animated circles */}
+    <div ref={ref} className="relative w-full h-full flex items-center justify-center overflow-hidden">
       <motion.div
-        className="absolute w-16 h-16 rounded-full border border-[#EF4444]/40"
-        animate={inView ? {
-          scale: [1, 1.8, 1],
-          opacity: [0.4, 0.1, 0.4],
-        } : {}}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
-      />
-      <motion.div
-        className="absolute w-10 h-10 rounded-full bg-[#F97316]/20"
-        animate={inView ? {
-          scale: [1, 1.4, 1],
-          x: [-10, 10, -10],
-          y: [5, -5, 5],
-        } : {}}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
-      />
-      <motion.div
-        className="absolute w-6 h-6 rounded bg-[#EF4444]/30 rotate-45"
-        animate={inView ? {
-          rotate: [45, 135, 225, 315, 405],
-          scale: [1, 1.2, 0.9, 1.1, 1],
-        } : {}}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
-      />
-      {/* Pulsing lines */}
-      <motion.div
-        className="absolute w-32 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
-        animate={inView ? { x: [-40, 40, -40], opacity: [0.3, 0.6, 0.3] } : {}}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
-      />
-      <span className="absolute bottom-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white/20">
-        Prefer motion
-      </span>
+        className="relative"
+        style={{ width: S, height: S }}
+        animate={{
+          x: xTarget,
+          opacity: isFading ? 0 : 1,
+          scale: isFading ? 0.4 : 1,
+        }}
+        transition={{
+          x: xTransition,
+          opacity: isFading ? { duration: 0.4, ease: 'easeIn' as const } : { duration: 0 },
+          scale: isFading ? { duration: 0.4, ease: 'easeIn' as const } : { duration: 0 },
+        }}
+      >
+        {/* Edge strokes — drawn sequentially, hidden once fill appears */}
+        {!showFill && (
+          <svg
+            key={key}
+            className="absolute inset-0 overflow-visible"
+            viewBox={`0 0 ${S} ${S}`}
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {edges.map((edge, i) => {
+              const len = Math.hypot(edge.x2 - edge.x1, edge.y2 - edge.y1);
+              return (
+                <motion.line
+                  key={`${key}-${i}`}
+                  x1={edge.x1}
+                  y1={edge.y1}
+                  x2={edge.x2}
+                  y2={edge.y2}
+                  stroke={color}
+                  strokeWidth="2.5"
+                  strokeLinecap="square"
+                  strokeDasharray={len}
+                  initial={{ strokeDashoffset: len }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: i * 0.28,
+                    ease: [0.4, 0, 0.2, 1] as const,
+                  }}
+                />
+              );
+            })}
+          </svg>
+        )}
+
+        {/* Filled shape with rounded corners — replaces strokes entirely */}
+        {showFill && (
+          <motion.div
+            className="absolute inset-0"
+            style={{ backgroundColor: color, borderRadius: 18 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isFading ? 0 : 1 }}
+            transition={{ opacity: { duration: 0.2 } }}
+          />
+        )}
+      </motion.div>
     </div>
   );
 }
@@ -162,31 +280,52 @@ function DontBadge({ label, image }: { label: string; image?: string }) {
   );
 }
 
+function ImageryHeroFrame() {
+  const [textColor, setTextColor] = useState(TEXT_COLOR_MAP['#EF4444']);
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-[#0A0A0A]" style={{ aspectRatio: '3 / 1' }}>
+      {/* Background photo — dimmed & desaturated */}
+      <img
+        src={`${BASE_PATH}/brand/imagery-bg.png`}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale-[60%]"
+      />
+      <div className="absolute inset-0 bg-black/40" />
+      {/* Animation layer */}
+      <MotionPlaceholder onColorChange={(c) => setTextColor(TEXT_COLOR_MAP[c] || '#FCA5A5')} />
+      {/* Caption */}
+      <div className="absolute bottom-6 left-0 right-0 text-center pointer-events-none">
+        <motion.span
+          className="font-mono text-base uppercase tracking-[0.2em] font-medium"
+          animate={{ color: textColor }}
+          transition={{ duration: 0.6 }}
+        >
+          &ldquo;Ideas in motion, teams in tension&rdquo;
+        </motion.span>
+      </div>
+    </div>
+  );
+}
+
 export function BrandImagery() {
   const { t } = useLanguage();
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
+      {/* Animated frame — right after page-level title */}
+      <ImageryHeroFrame />
+
+      {/* Motion Over Stills — subsection */}
       <section>
-        <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-foreground mb-6">
-          {t('brand.imagery.title')}
+        <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-foreground mb-4">
+          {t('brand.imagery.motionTitle')}
         </h3>
-        <p className="mb-10 max-w-2xl text-muted-foreground">
-          {t('brand.imagery.description')}
+        <p className="mb-8 max-w-2xl text-muted-foreground">
+          {t('brand.imagery.description')} {t('brand.imagery.motionDesc')}
         </p>
 
-        {/* Primary principle: Motion over stills — full width */}
-        <div className="mb-8">
-          <ImageryCard
-            title={t('brand.imagery.motionTitle')}
-            description={t('brand.imagery.motionDesc')}
-            span
-          >
-            <MotionPlaceholder />
-          </ImageryCard>
-        </div>
-
-        {/* Three principles grid */}
+        {/* Principles cards */}
         <div className="grid gap-8 md:grid-cols-3 mb-8">
           <ImageryCard
             title={t('brand.imagery.vectorTitle')}
