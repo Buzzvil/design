@@ -188,7 +188,7 @@ const Resources = () => {
                     <div className="h-full p-6 bg-background rounded-xl border border-border hover-lift glass">
                       {/* Resource Header */}
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                        <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center group-hover:bg-white/10 transition-colors">
                           <resource.icon className="w-6 h-6 text-white" />
                         </div>
                         <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-full">
@@ -197,7 +197,7 @@ const Resources = () => {
                       </div>
 
                       {/* Resource Content */}
-                      <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      <h4 className="text-lg font-semibold mb-2 group-hover:text-white transition-colors">
                         {resource.title}
                       </h4>
                       <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
@@ -236,7 +236,7 @@ const Resources = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-16 p-8 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-2xl border border-primary/10"
+          className="mt-16 p-8 bg-gradient-to-r from-white/5 to-white/3 rounded-2xl border border-white/10"
         >
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">Need Something Specific?</h3>

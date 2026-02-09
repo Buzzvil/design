@@ -91,7 +91,7 @@ export function DelightInteraction({ isActive }: DelightInteractionProps) {
     >
       <motion.div 
         ref={containerRef}
-        className="bg-gradient-to-br from-pink-500/20 to-red-500/20 border border-pink-400/30 rounded-xl p-4 backdrop-blur-sm relative overflow-hidden cursor-pointer w-32 h-32 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/20"
+        className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-xl p-4 backdrop-blur-sm relative overflow-hidden cursor-pointer w-32 h-32 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-white/40 hover:shadow-lg hover:shadow-white/10"
         onClick={handleClick}
         style={{ cursor: isActive ? 'none' : 'default' }}
         animate={{

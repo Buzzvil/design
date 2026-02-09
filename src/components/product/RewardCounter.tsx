@@ -59,7 +59,7 @@ export function RewardCounter({ isActive }: RewardCounterProps) {
       className="mb-6 flex justify-center"
     >
       <motion.div 
-        className="bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-400/30 rounded-xl p-4 backdrop-blur-sm w-32 h-32 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-red-400/50 hover:shadow-lg hover:shadow-red-500/20 cursor-pointer"
+        className="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-xl p-4 backdrop-blur-sm w-32 h-32 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 cursor-pointer"
         onClick={handleClick}
         animate={{
           scale: isClicked ? 0.8 : 1,

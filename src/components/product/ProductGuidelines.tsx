@@ -70,19 +70,19 @@ const ProductGuidelines = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               onClick={() => router.push(card.href)}
-              className="group cursor-pointer bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10"
+              className="group cursor-pointer bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border p-8 hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:shadow-white/5"
             >
               {/* Card Header */}
               <div className="flex items-start space-x-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
                   <card.icon className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors">
                     {card.title}
                   </h3>
                 </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-white group-hover:translate-x-1 transition-all" />
               </div>
 
               {/* Card Description */}

@@ -57,10 +57,10 @@ export const defaultThemeColors: ColorTokens = {
   secondaryActive: 'hsl(0, 0%, 88%)',
   secondaryForeground: 'hsl(0, 0%, 9%)',
 
-  accent: 'hsl(0, 84%, 60%)',        // Red 50
-  accentHover: 'hsl(0, 84%, 55%)',
-  accentActive: 'hsl(0, 84%, 50%)',
-  accentForeground: 'hsl(0, 0%, 100%)',
+  accent: 'hsl(0, 0%, 92%)',          // light gray for hover
+  accentHover: 'hsl(0, 0%, 88%)',
+  accentActive: 'hsl(0, 0%, 84%)',
+  accentForeground: 'hsl(0, 0%, 9%)',
 
   background: 'hsl(0, 0%, 100%)',
   foreground: 'hsl(0, 0%, 9%)',
@@ -96,10 +96,10 @@ export const lightThemeColors: ColorTokens = {
   secondaryActive: 'hsl(0, 0%, 90%)',
   secondaryForeground: 'hsl(0, 0%, 9%)',
 
-  accent: 'hsl(0, 84%, 60%)',        // Red 50
-  accentHover: 'hsl(0, 84%, 55%)',
-  accentActive: 'hsl(0, 84%, 50%)',
-  accentForeground: 'hsl(0, 0%, 100%)',
+  accent: 'hsl(0, 0%, 94%)',          // light gray for hover
+  accentHover: 'hsl(0, 0%, 90%)',
+  accentActive: 'hsl(0, 0%, 86%)',
+  accentForeground: 'hsl(0, 0%, 9%)',
 
   background: 'hsl(0, 0%, 100%)',
   foreground: 'hsl(0, 0%, 9%)',
@@ -135,10 +135,10 @@ export const darkThemeColors: ColorTokens = {
   secondaryActive: 'hsl(0, 0%, 25%)',
   secondaryForeground: 'hsl(0, 0%, 98%)',
 
-  accent: 'hsl(0, 84%, 60%)',        // Red 50
-  accentHover: 'hsl(0, 84%, 65%)',
-  accentActive: 'hsl(0, 84%, 70%)',
-  accentForeground: 'hsl(0, 0%, 100%)',
+  accent: 'hsl(0, 0%, 15%)',          // subtle white shade for dark hover
+  accentHover: 'hsl(0, 0%, 20%)',
+  accentActive: 'hsl(0, 0%, 25%)',
+  accentForeground: 'hsl(0, 0%, 98%)',
 
   background: 'hsl(0, 0%, 3%)',
   foreground: 'hsl(0, 0%, 98%)',
