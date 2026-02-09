@@ -42,7 +42,6 @@ const Footer = () => {
       { name: t('footer.connect.figma'), href: 'https://www.figma.com/@buzzvil' },
       { name: t('footer.connect.github'), href: 'https://github.com/Buzzvil/design' },
       { name: t('footer.connect.linkedin'), href: 'https://www.linkedin.com/company/buzzvil/' },
-      { name: t('footer.about'), href: '/design/about' },
     ],
   };
 
@@ -92,9 +91,15 @@ const Footer = () => {
               <Logo size={32} className="text-white" />
               <span className="text-xl font-bold gradient-text">Design Buzzvil</span>
             </div>
-            <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
+            <p className="text-muted-foreground mb-4 max-w-md leading-relaxed">
               {t('footer.description')}
             </p>
+            <a
+              href="/design/about"
+              className="inline-block text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
+            >
+              {t('footer.about')} &rarr;
+            </a>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <motion.a

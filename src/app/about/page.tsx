@@ -144,12 +144,11 @@ export default function AboutPage() {
               M
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-lg">Maxence Bouret</p>
-              <p className="text-sm text-muted-foreground">Design Lead · Buzzvil</p>
-              <p className="text-xs text-muted-foreground mt-1">{t('about.contributorNote')}</p>
+              <p className="font-semibold text-lg">Maxence Mauduit</p>
+              <p className="text-sm text-muted-foreground">Experience Product Designer and CDO · Buzzvil</p>
             </div>
             <a
-              href="https://www.linkedin.com/in/maxencebouret/"
+              href="https://www.linkedin.com/in/mmaxence/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-white transition-colors"
