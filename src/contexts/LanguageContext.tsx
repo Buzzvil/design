@@ -177,8 +177,8 @@ const translations = {
             
             // Brand guidelines (Identity System 2.0)
             'brand.hero.tag': 'Identity System 26.1',
-            'brand.hero.title': 'Calm and Iconic. Always in Context.',
-            'brand.hero.description': 'Built on product behavior, our brand is context-native. Calm when it blends in, iconic when clarity demands it.',
+            'brand.hero.title': 'Alive Through Interaction. Iconic in Every Context.',
+            'brand.hero.description': 'Guided by product behavior, our brand comes to life through interaction, allowing its form, motion, and identity to adapt without losing its essence.',
             'brand.hero.cta': 'Explore Guidelines',
             'brand.nav.logo': 'Logo',
             'brand.nav.colors': 'Colors',
@@ -634,8 +634,8 @@ const translations = {
             
             // Brand guidelines (Identity System 2.0)
             'brand.hero.tag': '아이덴티티 시스템 26.1',
-            'brand.hero.title': '차분하고 상징적. 항상 맥락 속에.',
-            'brand.hero.description': '제품 행동 위에 구축된 우리의 브랜드는 맥락에 적합합니다. 어우러질 때는 차분하게, 명확함이 필요할 때는 상징적으로.',
+            'brand.hero.title': '인터랙션으로 살아나는. 모든 맥락에서 상징적인.',
+            'brand.hero.description': '제품 행동에 기반하여, 우리 브랜드는 인터랙션을 통해 생명을 얻으며, 본질을 잃지 않으면서 형태, 모션, 아이덴티티를 유연하게 적응시킵니다.',
             'brand.hero.cta': '가이드라인 살펴보기',
             'brand.nav.logo': '로고',
             'brand.nav.colors': '색상',
