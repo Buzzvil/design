@@ -321,9 +321,13 @@ export function BrandImagery() {
         <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-foreground mb-4">
           {t('brand.imagery.motionTitle')}
         </h3>
-        <p className="mb-8 max-w-2xl text-muted-foreground">
-          {t('brand.imagery.description')} {t('brand.imagery.motionDesc')}
+        <p className="mb-4 max-w-2xl text-muted-foreground">
+          {t('brand.imagery.description')}
         </p>
+        <ul className="mb-8 max-w-2xl text-muted-foreground list-disc pl-5 space-y-2">
+          <li>{t('brand.imagery.bullet1')}</li>
+          <li>{t('brand.imagery.bullet2')}</li>
+        </ul>
 
         {/* Principles cards */}
         <div className="grid gap-8 md:grid-cols-3 mb-8">
