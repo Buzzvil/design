@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 /* ── Vector/Lottie preview ── */
 function VectorLottiePreview() {
   return (
-    <div className="relative w-full h-full bg-[#F5F5F5] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-[#0A0A0A] flex items-center justify-center overflow-hidden">
       <DotLottieReact
         src={`${BASE_PATH}/brand/vector-lottie.lottie`}
         loop
