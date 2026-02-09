@@ -479,6 +479,17 @@ const translations = {
             'footer.by': 'by the Buzzvil Design Team',
             'footer.privacy': 'Privacy Policy',
             'footer.terms': 'Terms of Service',
+            'footer.about': 'About This Site',
+
+            // About page
+            'about.kicker': 'About this site',
+            'about.title': 'How This Site Was Built',
+            'about.description': 'Design Buzzvil is Buzzvil\'s living design portal. It documents our brand, product principles, and design system in a bilingual, fully animated, statically exported website. Here\'s a look under the hood.',
+            'about.contributors': 'Contributors',
+            'about.contributorNote': 'Sole author and maintainer. Future collaborators welcome.',
+            'about.techStack': 'Tech Stack',
+            'about.architecture': 'Architecture & Logic',
+            'about.viewSource': 'View Source on GitHub',
   },
   ko: {
     // Navigation
@@ -944,6 +955,17 @@ const translations = {
             'footer.by': '버즈빌 디자인 팀',
             'footer.privacy': '개인정보 보호정책',
             'footer.terms': '서비스 약관',
+            'footer.about': '사이트 소개',
+
+            // About page
+            'about.kicker': '사이트 소개',
+            'about.title': '이 사이트는 어떻게 만들어졌나요',
+            'about.description': 'Design Buzzvil은 버즈빌의 살아있는 디자인 포털입니다. 브랜드, 제품 원칙, 디자인 시스템을 이중 언어, 풀 애니메이션, 정적으로 내보내는 웹사이트로 문서화합니다. 내부 구조를 살펴보세요.',
+            'about.contributors': '기여자',
+            'about.contributorNote': '유일한 저자이자 관리자. 미래 협력자를 환영합니다.',
+            'about.techStack': '기술 스택',
+            'about.architecture': '아키텍처 및 로직',
+            'about.viewSource': 'GitHub에서 소스 보기',
   },
 };
 

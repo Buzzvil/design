@@ -42,6 +42,7 @@ const Footer = () => {
       { name: t('footer.connect.figma'), href: 'https://www.figma.com/@buzzvil' },
       { name: t('footer.connect.github'), href: 'https://github.com/Buzzvil/design' },
       { name: t('footer.connect.linkedin'), href: 'https://www.linkedin.com/company/buzzvil/' },
+      { name: t('footer.about'), href: '/design/about' },
     ],
   };
 
