@@ -23,11 +23,9 @@ const Header = () => {
       hasSubmenu: true,
       submenuItems: [
         { name: t('product.sections.principles'), href: '/product#principles' },
-        { name: t('product.sections.guidelines'), href: '/product#guidelines' },
-        { name: t('nav.product.uxPatterns'), href: '/product/UX-patterns', isIndented: true },
-        { name: t('nav.product.visualPatterns'), href: '/product/visual-patterns', isIndented: true },
-        { name: t('nav.product.workflowRituals'), href: '/product/workflow-rituals', isIndented: true },
-        { name: t('product.sections.resources'), href: '/product#resources' },
+        { name: t('product.sections.chameleon'), href: '/product#chameleon' },
+        { name: t('product.sections.patterns'), href: '/product#patterns' },
+        { name: t('product.sections.conventions'), href: '/product#conventions' },
       ]
     },
   ];
@@ -89,13 +87,9 @@ const Header = () => {
                                   router.push(subItem.href);
                                   setIsProductSubmenuOpen(false);
                                 }}
-                                className={`w-full flex items-center px-4 py-3 text-left hover:bg-muted/30 transition-colors duration-200 ${
-                                  subItem.isIndented ? 'pl-8' : ''
-                                }`}
+                                className="w-full flex items-center px-4 py-3 text-left hover:bg-muted/30 transition-colors duration-200"
                               >
-                                <span className={`font-medium ${
-                                  subItem.isIndented ? 'text-muted-foreground' : 'text-foreground'
-                                }`}>
+                                <span className="font-medium text-foreground">
                                   {subItem.name}
                                 </span>
                               </motion.button>
@@ -179,13 +173,9 @@ const Header = () => {
                                     setIsProductSubmenuOpen(false);
                                     router.push(subItem.href);
                                   }}
-                                  className={`flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left ${
-                                    subItem.isIndented ? 'ml-4' : ''
-                                  }`}
+                                  className="flex items-center px-4 py-2 rounded-lg hover:bg-accent transition-colors cursor-pointer w-full text-left"
                                 >
-                                  <span className={`font-medium text-sm ${
-                                    subItem.isIndented ? 'text-muted-foreground' : 'text-foreground'
-                                  }`}>
+                                  <span className="font-medium text-sm text-foreground">
                                     {subItem.name}
                                   </span>
                                 </motion.button>

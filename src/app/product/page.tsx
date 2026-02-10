@@ -6,9 +6,11 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/components/ui/SectionNavigation';
 import ProductPrinciples from '@/components/product/ProductPrinciples';
+import InteractionLayers from '@/components/product/InteractionLayers';
+import ChameleonTheming from '@/components/product/ChameleonTheming';
 import ProductGuidelines from '@/components/product/ProductGuidelines';
+import ProductConventions from '@/components/product/ProductConventions';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
-import { SectionHeader } from '@/components/ui/SectionHeader';
 import { HeroBackground, PRODUCT_PALETTE } from '@/components/ui/HeroBackground';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -25,8 +27,10 @@ export default function ProductPage() {
 
   const sections = [
     { id: 'principles', label: t('product.sections.principles') },
-    { id: 'guidelines', label: t('product.sections.guidelines') },
-    { id: 'resources', label: t('product.sections.resources') }
+    { id: 'layers', label: t('product.sections.layers') },
+    { id: 'chameleon', label: t('product.sections.chameleon') },
+    { id: 'patterns', label: t('product.sections.patterns') },
+    { id: 'conventions', label: t('product.sections.conventions') },
   ];
 
   return (
@@ -79,24 +83,26 @@ export default function ProductPage() {
         </AnimatedSection>
       </div>
       
-      <div id="guidelines" className="scroll-mt-24">
+      <div id="layers" className="scroll-mt-24">
+        <InteractionLayers />
+      </div>
+
+      <div id="chameleon" className="scroll-mt-24">
+        <ChameleonTheming />
+      </div>
+
+      <div id="patterns" className="scroll-mt-24">
         <AnimatedSection delay={0.2}>
           <ProductGuidelines />
         </AnimatedSection>
       </div>
-      
-      <div id="resources" className="scroll-mt-24">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection delay={0.3}>
-              <SectionHeader
-                title={t('product.resources.title')}
-                description={t('product.resources.description')}
-              />
-            </AnimatedSection>
-          </div>
-        </section>
+
+      <div id="conventions" className="scroll-mt-24">
+        <AnimatedSection delay={0.2}>
+          <ProductConventions />
+        </AnimatedSection>
       </div>
+
       <Footer />
     </main>
   );
