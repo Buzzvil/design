@@ -187,7 +187,7 @@ function Line({
   return (
     <motion.div
       ref={ref}
-      className={active ? "bg-orange-500" : "bg-muted-foreground/30"}
+      className={active ? "bg-white/90" : "bg-muted-foreground/30"}
       style={{
         width: LINE_WIDTH,
         height: active ? LINE_HEIGHT_ACTIVE : LINE_HEIGHT,
@@ -270,7 +270,7 @@ function NumberLabel({ index, isTop, mouseX }: { index: number; isTop: boolean; 
 function ConnectingLine({ scrollX, opacity }: { scrollX: MotionValue<number>; opacity: MotionValue<number> }) {
   return (
     <motion.div
-      className="fixed w-[1px] bg-orange-500 z-10"
+      className="fixed w-[1px] bg-white/90 z-10"
       style={{ 
         x: scrollX,
         top: 64, // Start right below header
