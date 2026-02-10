@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { HeroBackground } from '@/components/ui/HeroBackground';
+import { HeroBackground, BRAND_PALETTE } from '@/components/ui/HeroBackground';
 
 export function BrandHero() {
   const { t } = useLanguage();
@@ -18,7 +18,7 @@ export function BrandHero() {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-      <HeroBackground />
+      <HeroBackground palette={BRAND_PALETTE} />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white">
@@ -30,8 +30,8 @@ export function BrandHero() {
         >
           <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-white backdrop-blur-md shadow-lg">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#EF4444] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#EF4444]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" style={{ backgroundColor: BRAND_PALETTE.accent }} />
+              <span className="relative inline-flex h-2 w-2 rounded-full" style={{ backgroundColor: BRAND_PALETTE.accent }} />
             </span>
             {t('brand.hero.tag')}
           </span>

@@ -5,7 +5,7 @@ import { ArrowDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BlurReveal } from '../ui/BlurReveal';
 import { KeywordAnimation } from '../ui/KeywordAnimation';
-import { HeroBackground } from '../ui/HeroBackground';
+import { HeroBackground, HOME_PALETTE } from '../ui/HeroBackground';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -35,7 +35,7 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-      <HeroBackground />
+      <HeroBackground palette={HOME_PALETTE} />
 
       <motion.div
         variants={containerVariants}
