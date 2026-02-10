@@ -302,8 +302,8 @@ const translations = {
             
             // Product
             'product.hero.tag': 'Product Design System',
-            'product.hero.title': 'Interaction First.\nPixel Perfect.',
-            'product.hero.description': 'Designing delightful experiences that users love to engage with. We define interaction patterns before drafting a single screen.',
+            'product.hero.title': 'Simple. Iconic.\nDelightful.',
+            'product.hero.description': 'Every interaction is purposeful, every surface trustworthy. We design experiences that earn attention and reward it.',
             'product.hero.cta': 'Explore Principles',
             'product.sections.principles': 'Principles',
             'product.sections.guidelines': 'Guidelines',
@@ -782,8 +782,8 @@ const translations = {
             
             // Product
             'product.hero.tag': '제품 디자인 시스템',
-            'product.hero.title': '인터랙션 우선.\n픽셀 퍼펙트.',
-            'product.hero.description': '사용자가 참여하고 싶어하는 즐거운 경험을 디자인합니다. 단 하나의 화면을 그리기 전에 인터랙션 패턴을 먼저 정의합니다.',
+            'product.hero.title': '심플. 아이코닉.\n딜라이트풀.',
+            'product.hero.description': '모든 인터랙션은 목적이 있고, 모든 화면은 신뢰를 줍니다. 관심을 얻고 보답하는 경험을 디자인합니다.',
             'product.hero.cta': '원칙 살펴보기',
             'product.sections.principles': '원칙',
             'product.sections.guidelines': '가이드라인',
