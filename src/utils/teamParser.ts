@@ -150,14 +150,16 @@ export function loadTeamMembers(): TeamMember[] {
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>Systematically design user experiences essential for business</organizationDescription>
+    <organizationDescription>Designs business-critical user experiences and leads the Ads Self-Serve domain.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>Operational efficiency</keyword>
-      <keyword>Consistent experience</keyword>
+      <keyword>Efficient Operations</keyword>
+      <keyword>Simplified Complexity</keyword>
     </keywords>
   </expertise>
+  <linkUrl>https://www.linkedin.com/in/seongukshin</linkUrl>
+  <linkLabel>LinkedIn</linkLabel>
 </avatar>`;
       } else if (filename === 'joy.xml') {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
