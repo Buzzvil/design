@@ -1,196 +1,139 @@
-# Buzzvil Design System
+# Buzzvil Design Portal
 
-A comprehensive design system website for Buzzvil, featuring a modern dark theme, interactive animations, bilingual support (English/Korean), and a structured information architecture.
+Buzzvil’s design portal: foundations, brand, and product system in one bilingual, statically exported site. Built with Next.js 16, React 19, TypeScript, Tailwind CSS, and Framer Motion.
 
-## 🌟 Features
+## Features
 
-- **Structured Information Architecture**: Organized into Foundations, Brand, and Product sections
-- **Interactive Navigation**: Elegant section navigation with auto-scroll and active states
-- **Dark Theme**: Minimal, Linear-inspired design with blue accent colors
-- **Interactive Minimap**: Full-screen animated minimap with scroll-based progress
-- **Bilingual Support**: Seamless language switching between English and Korean
-- **Smooth Animations**: Choreographed page transitions and blur reveal effects
-- **Responsive Design**: Optimized for all device sizes
-- **Modern Stack**: Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion
+- **Foundations (home)**: Mission & Vision, Philosophy, Working Principles (table), Team (with profile links), Our Stack (tools), Design Routines
+- **Brand**: Principles, guidelines, resources, logo/icon/isometric generators
+- **Product**: Principles (table + alignment questions), Composition (interaction layers), Variables (Chameleon theming), Patterns, Conventions
+- **Bilingual**: English and Korean with seamless switching (LanguageContext, `t()`)
+- **Static export**: Full static build for GitHub Pages (`output: "export"`, `basePath: "/design"`)
+- **Motion**: Hero background blobs, parallax sections, blur reveals, scroll-linked behavior
+- **Navigation**: Header (Foundations, Brand, Product dropdown), side section nav, footer aligned with header
 
-## 🚀 Live Demo
+## Live site
 
-Visit the live site: [design.buzzvil.com](https://design.buzzvil.com)
+[design.buzzvil.com](https://design.buzzvil.com)
 
-## 🛠️ Tech Stack
+## Tech stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 16 (App Router, Turbopack in dev), React 19
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
+- **Styling**: Tailwind CSS, CSS custom properties (HSL theme)
+- **Motion**: Framer Motion
 - **Icons**: Lucide React
-- **Fonts**: Nunito (English), Pretendard (Korean)
-- **Deployment**: GitHub Pages
+- **Fonts**: Nunito, Noto Sans KR, Inter, Anonymous Pro, Nanum Gothic Coding
+- **Deploy**: GitHub Pages (static)
 
-## 📦 Getting Started
+## Getting started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
-### Installation
+### Install and run
 
-1. Clone the repository:
 ```bash
 git clone https://github.com/Buzzvil/design.git
 cd design
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
-
-3. Run the development server:
-```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000/design](http://localhost:3000/design) (dev server uses basePath).
 
-## 🎨 Design System
-
-### Information Architecture
-
-#### Foundations (`/`)
-- **The Mission**: Mission & Vision statements
-- **Our Mindset**: Philosophy and design approach
-- **How we work**: Core values and working principles
-- **The team**: Meet the design team
-- **Tools**: Design and development tools
-
-#### Brand (`/design/brand`)
-- **Principles**: Brand principles and guidelines
-- **Guidelines**: Comprehensive brand guidelines
-- **Resources**: Brand assets and templates
-
-#### Product (`/design/product`)
-- **Principles**: Product design principles (Reward = Time, Delight Without Deception, Scalable by Design)
-- **Guidelines**: Product design guidelines
-- **Resources**: Product design resources
-
-### Color Palette
-- **Primary**: Black (#000000)
-- **Accent**: Blue (#3B82F6)
-- **Background**: Dark (#0A0A0A)
-- **Text**: White (#FFFFFF)
-- **Muted**: Gray (#6B7280)
-
-### Typography
-- **English**: Nunito (Google Fonts)
-- **Korean**: Pretendard (Local font)
-
-### Components
-- Interactive Minimap
-- Section Navigation (auto-scroll, active states)
-- Language Switcher
-- Blur Reveal Animations
-- Parallax Sections
-- Values Slider (3D transitions)
-- Product Principles (interactive elements)
-
-## 🌐 Internationalization
-
-The site supports two languages:
-- **English** (en)
-- **Korean** (ko)
-
-Language switching is handled through React Context with smooth page-wide transitions.
-
-## 🚀 Deployment
-
-### GitHub Pages (Automatic)
-
-The site is automatically deployed to GitHub Pages on every push to the `main` branch using GitHub Actions.
-
-### Manual Deployment
+### Build (static export)
 
 ```bash
 npm run build
-npm run deploy
 ```
 
-## 📁 Project Structure
+Output is in `out/`. Deploy `out/` to GitHub Pages or any static host.
+
+## Information architecture
+
+### Foundations (`/design/`)
+
+- **The Mission** – Mission & Vision (with abstract planet / blueprint visuals)
+- **Our Mindset** – Philosophy
+- **Working Principles** – Values in a table with alignment questions (Build in the Open, Clarity, Grit, Explorers, One-UX)
+- **Our Team** – Team cards (name, role, description, keywords, optional profile link)
+- **Our Stack** – Design and dev tools (e.g. Figma, GPT, Cursor)
+- **Our Routines** – Design routines (biweekly sync, 1:1s, lunch study, design week)
+
+### Brand (`/design/brand/`)
+
+- Principles, guidelines, resources
+- Logo generator, icon generator, isometric generator (client-side)
+
+### Product (`/design/product/`)
+
+- **Principles** – Table: Simple, Iconic, Delightful, Purposeful, Trustworthy + alignment questions
+- **Composition** – Interaction layers (Delivery / Signature)
+- **Variables** – Chameleon theming (tokens, presets)
+- **Patterns** – Interaction, UI Kit, visual language
+- **Conventions** – Workflow, token governance, naming, versioning
+
+## Project structure
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── design/            # Design system pages
-│   │   ├── brand/         # Brand page (/design/brand)
-│   │   └── product/       # Product page (/design/product)
-│   ├── globals.css        # Global styles and CSS variables
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Homepage (Foundations)
-│   └── not-found.tsx      # 404 error page
-├── components/            # React components
-│   ├── Header.tsx         # Navigation header
-│   ├── Hero.tsx           # Hero section
-│   ├── SectionNavigation.tsx  # Section navigation
-│   ├── Values.tsx         # Values slider
-│   ├── ProductPrinciples.tsx  # Product principles
-│   ├── SectionPlaceholder.tsx # Placeholder components
-│   ├── InteractiveMinimap.tsx # Animated minimap
-│   ├── LanguageSwitcher.tsx   # Language toggle
+├── app/
+│   ├── about/          # About this site (/design/about/)
+│   ├── brand/          # Brand page
+│   ├── product/       # Product page
+│   ├── layout.tsx     # Root layout, fonts, LanguageProvider
+│   ├── page.tsx       # Home (Foundations)
+│   └── globals.css
+├── components/
+│   ├── layout/        # Header, Footer, Logo, LanguageSwitcher, ContactBanner
+│   ├── sections/      # Hero, MissionVision, Values, Team, Tools, Routines
+│   ├── product/       # ProductPrinciples, InteractionLayers, ChameleonTheming, etc.
+│   ├── ui/            # SectionHeader, BlurReveal, HeroBackground, Avatar, etc.
 │   └── ...
-├── contexts/              # React contexts
-│   └── LanguageContext.tsx # Language management & translations
-└── utils/                 # Utility functions
-    ├── avatar.ts          # Avatar generation
-    └── teamParser.ts      # Team data parsing
+├── contexts/          # LanguageContext (translations), ContactFormContext
+└── utils/             # teamParser (team XML/data), avatar helpers
 ```
 
-## 🤝 Contributing
+## i18n
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
+- **Languages**: English (en), Korean (ko)
+- **Mechanism**: `LanguageContext` with `t(key)`. All UI strings and section content (team, tools, routines, principles, values) use translation keys.
+- **Persistence**: Language preference in `localStorage`; optional browser-language detection.
+
+## Deployment
+
+- **GitHub Pages**: Typically via GitHub Actions on push to `main` (build + deploy `out/`).
+- **Manual**: `npm run build` then upload `out/` to any static host. Site is served under `/design` (basePath).
+
+## Contributing
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit: `git commit -m 'Add your feature'`
+4. Push: `git push origin feature/your-feature`
 5. Open a Pull Request
 
-## 📄 License
+## Team
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **Max (Maxence Mauduit)** – Experienced Product Designer and CDO
+- **Jia (Sophie Cui)** – Principal Product Designer
+- **Elle (신성욱)** – Product Designer
+- **Joy (배희준)** – Product Designer
+- **Rina (Erin Lee)** – Product Designer
+- **Mido (정초원)** – Product Design intern
 
-## 👥 Team
+## Links
 
-- **Max** - Design Lead
-- **Jia** - Product Designer
-- **Elle** - Product Designer
-- **Joy** - Product Designer
-- **Rina** - Product Designer
-
-## 🔗 Links
-
-- [Live Site](https://design.buzzvil.com)
-- [Foundations](https://design.buzzvil.com/) - Mission, Philosophy, Values, Team, Tools
-- [Brand](https://design.buzzvil.com/design/brand) - Brand principles, guidelines, and resources
-- [Product](https://design.buzzvil.com/design/product) - Product design principles and guidelines
+- [Live site](https://design.buzzvil.com)
+- [Foundations](https://design.buzzvil.com/design/) – Mission, Philosophy, Values, Team, Stack, Routines
+- [Brand](https://design.buzzvil.com/design/brand/) – Principles, guidelines, resources
+- [Product](https://design.buzzvil.com/design/product/) – Principles, Composition, Variables, Patterns, Conventions
+- [About this site](https://design.buzzvil.com/design/about/)
 - [Buzzvil](https://buzzvil.com)
-
-## 🎯 Key Features
-
-### Navigation
-- **Elegant Section Navigation**: Fixed sub-navigation with auto-scroll and active states
-- **Smooth Transitions**: Seamless page transitions and scroll animations
-- **Responsive Design**: Optimized for desktop, tablet, and mobile
-
-### Content
-- **Interactive Principles**: 3D animated product principles with interactive elements
-- **Values Slider**: Auto-advancing values showcase with smooth transitions
-- **Team Showcase**: Dynamic team member profiles with avatars
-- **Bilingual Support**: Complete English and Korean translations
-
-### Technical
-- **Modern Architecture**: Next.js 15 with App Router
-- **Type Safety**: Full TypeScript implementation
-- **Performance**: Optimized with Tailwind CSS and Framer Motion
-- **Accessibility**: WCAG compliant navigation and interactions
+- [Repository](https://github.com/Buzzvil/design)
 
 ---
 
