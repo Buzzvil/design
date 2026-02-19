@@ -142,7 +142,7 @@ export function loadTeamMembers(): TeamMember[] {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Elle Shin</name>
+    <name>Elle (신성욱)</name>
   </personal>
   <buzzvil>
     <value>clarity</value>
@@ -165,7 +165,7 @@ export function loadTeamMembers(): TeamMember[] {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Joy</name>
+    <name>Joy (배희준)</name>
   </personal>
   <buzzvil>
     <value>clarity</value>
@@ -173,15 +173,16 @@ export function loadTeamMembers(): TeamMember[] {
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>Build and develop the user experience of an advertising product that connects agencies and media.</organizationDescription>
+    <organizationDescription>Designs engagement-driven ad products that connect publishers and ad agencies, creating playful experiences with monetization in mind.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>Product Design</keyword>
-      <keyword>UX</keyword>
-      <keyword>UI</keyword>
+      <keyword>playful experience</keyword>
+      <keyword>interaction design</keyword>
     </keywords>
   </expertise>
+  <linkUrl>https://www.linkedin.com/in/heejunbae?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app</linkUrl>
+  <linkLabel>LinkedIn</linkLabel>
 </avatar>`;
       } else if (filename === 'rina.xml') {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
