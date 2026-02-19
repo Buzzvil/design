@@ -5,6 +5,9 @@ export interface TeamMember {
   keywords: string[];
   buzzvilValue: string;
   buzzvilPrinciple: string;
+  /** Optional profile link (LinkedIn, portfolio, etc.) */
+  linkUrl?: string;
+  linkLabel?: string;
 }
 
 export interface TeamMemberXML {
@@ -29,6 +32,11 @@ export function parseTeamMemberXML(xmlString: string): TeamMember | null {
     const descriptionMatch = xmlString.match(/<organizationDescription>([\s\S]*?)<\/organizationDescription>/);
     const valueMatch = xmlString.match(/<value>([\s\S]*?)<\/value>/);
     const principleMatch = xmlString.match(/<principle>([\s\S]*?)<\/principle>/);
+    const linkUrlMatch = xmlString.match(/<linkUrl>([\s\S]*?)<\/linkUrl>/);
+    const linkLabelMatch = xmlString.match(/<linkLabel>([\s\S]*?)<\/linkLabel>/);
+    const linkedInMatch = xmlString.match(/<linkedIn>([\s\S]*?)<\/linkedIn>/); // legacy
+    const url = linkUrlMatch?.[1]?.trim() ?? linkedInMatch?.[1]?.trim();
+    const label = linkLabelMatch?.[1]?.trim() ?? (linkedInMatch ? 'LinkedIn' : undefined);
     
     // Parse keywords from nested structure
     const keywordMatches = xmlString.match(/<keyword>([\s\S]*?)<\/keyword>/g);
@@ -48,6 +56,7 @@ export function parseTeamMemberXML(xmlString: string): TeamMember | null {
       keywords,
       buzzvilValue: valueMatch[1].trim(),
       buzzvilPrinciple: principleMatch[1].trim(),
+      ...(url && { linkUrl: url, ...(label && { linkLabel: label }) }),
     };
   } catch (error) {
     console.error('Error parsing team member XML:', error);
@@ -81,44 +90,50 @@ export function loadTeamMembers(): TeamMember[] {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Max</name>
+    <name>Max (Maxence Mauduit)</name>
   </personal>
   <buzzvil>
     <value>iterate-fast</value>
     <principle>playful</principle>
   </buzzvil>
   <role>
-    <title>Product Designer - CDO</title>
-    <organizationDescription>Making Ads great again by provide the best post-impression ad experience there is.</organizationDescription>
+    <title>Experienced Product Designer and CDO</title>
+    <organizationDescription>I lead the creation of playful brand interactions that scale engagement into conversion.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>Interaction design</keyword>
-      <keyword>Leadership</keyword>
-      <keyword>Research & Experiment</keyword>
+      <keyword>0→1 Builder</keyword>
+      <keyword>Systems Thinker</keyword>
+      <keyword>Product Strategist</keyword>
+      <keyword>Design Leader</keyword>
     </keywords>
   </expertise>
+  <linkUrl>https://www.linkedin.com/in/mmaxence/</linkUrl>
+  <linkLabel>LinkedIn</linkLabel>
 </avatar>`;
       } else if (filename === 'jia.xml') {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Jia</name>
+    <name>Jia (Sophie Cui)</name>
   </personal>
   <buzzvil>
     <value>iterate-fast</value>
     <principle>reward-time</principle>
   </buzzvil>
   <role>
-    <title>Product Designer</title>
-    <organizationDescription>Designing screens for Buzzvil's B2B2C products.</organizationDescription>
+    <title>Principal Product Designer</title>
+    <organizationDescription>Overseeing Buzzvil's publisher-side products. Main focus includes revenue-generation and engagement.</organizationDescription>
   </role>
   <expertise>
     <keywords>
-      <keyword>Fun experience</keyword>
-      <keyword>Fast Iteration</keyword>
+      <keyword>unconventional methods</keyword>
+      <keyword>goal-oriented</keyword>
+      <keyword>trend-hunter</keyword>
     </keywords>
   </expertise>
+  <linkUrl>https://www.linkedin.com/in/sophie-cui-978850b0?utm_source=share_via&utm_content=profile&utm_medium=member_ios</linkUrl>
+  <linkLabel>LinkedIn</linkLabel>
 </avatar>`;
       } else if (filename === 'elle.xml') {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>

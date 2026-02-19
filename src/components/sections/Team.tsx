@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Avatar from '../ui/Avatar';
 import { loadTeamMembers, TeamMember } from '@/utils/teamParser';
 import { useState, useEffect } from 'react';
 import { BlurReveal } from '../ui/BlurReveal';
 import { SectionTitle } from '../ui/SectionTitle';
+import { Linkedin, ExternalLink } from 'lucide-react';
 
 const Team = () => {
   const { t } = useLanguage();
@@ -141,6 +143,26 @@ const Team = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Profile link (LinkedIn or other) */}
+                {member.linkUrl && (
+                  <div className="mt-4 flex justify-center">
+                    <Link
+                      href={member.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {member.linkLabel?.toLowerCase() === 'linkedin' ? (
+                        <Linkedin className="w-4 h-4" />
+                      ) : (
+                        <ExternalLink className="w-4 h-4" />
+                      )}
+                      {member.linkLabel ?? 'Link'}
+                    </Link>
+                  </div>
+                )}
 
                 {/* Hover Effect */}
                 <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
