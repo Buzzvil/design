@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
-import { Download, RotateCw } from 'lucide-react';
+import { Copy, Download, RotateCw } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import { LogoMark } from './LogoMark';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -40,6 +40,7 @@ export function IsometricGenerator() {
   const colorInputRef = useRef<HTMLInputElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [copyFeedback, setCopyFeedback] = useState(false);
 
   const logoColor = activeColorKey === CUSTOM_COLOR_ID ? customHex : color;
 
@@ -71,6 +72,38 @@ export function IsometricGenerator() {
       setIsDownloading(false);
     }
   }, [angleKey, direction, depthLayers]);
+
+  const getIsometricSvgString = useCallback(() => {
+    // Build an SVG with layered logo paths (2D projection of depth) and opacity to approximate the isometric view
+    const depthOffsetX = 12;
+    const depthOffsetY = 10;
+    const paths: string[] = [];
+    for (let i = depthLayers - 1; i >= 0; i--) {
+      const opacity = Math.max(0.25, 0.95 - (depthLayers - 1 - i) * 0.08);
+      const tx = (depthLayers - 1 - i) * depthOffsetX;
+      const ty = (depthLayers - 1 - i) * depthOffsetY;
+      paths.push(`<path fill-rule="evenodd" clip-rule="evenodd" d="${LOGO_PATH}" fill="${logoColor}" opacity="${opacity}" transform="translate(${tx},${ty})"/>`);
+    }
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${1395 + (depthLayers - 1) * depthOffsetX} ${887 + (depthLayers - 1) * depthOffsetY}" fill="none">${paths.join('')}</svg>`;
+  }, [depthLayers, logoColor]);
+
+  const copyIsometricSvg = useCallback(async () => {
+    const svgString = getIsometricSvgString();
+    try {
+      await navigator.clipboard.writeText(svgString);
+      setCopyFeedback(true);
+      setTimeout(() => setCopyFeedback(false), 2000);
+    } catch {
+      const textArea = document.createElement('textarea');
+      textArea.value = svgString;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopyFeedback(true);
+      setTimeout(() => setCopyFeedback(false), 2000);
+    }
+  }, [getIsometricSvgString]);
 
   const angleOptions: AngleKey[] = ['subtle', 'standard', 'strong'];
 
@@ -208,18 +241,29 @@ export function IsometricGenerator() {
               </button>
             </div>
           </div>
-          <button
-            onClick={handleDownload}
-            disabled={isDownloading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-4 text-sm font-bold shadow-sm transition-all hover:bg-muted/30 disabled:opacity-50"
-          >
-            {isDownloading ? (
-              <RotateCw className="h-4 w-4 animate-spin" />
-            ) : (
-              <Download className="h-4 w-4" />
-            )}
-            {t('brand.isometricGenerator.download')}
-          </button>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button
+              onClick={handleDownload}
+              disabled={isDownloading}
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-4 text-sm font-bold shadow-sm transition-all hover:bg-muted/30 disabled:opacity-50"
+            >
+              {isDownloading ? (
+                <RotateCw className="h-4 w-4 animate-spin" />
+              ) : (
+                <Download className="h-4 w-4" />
+              )}
+              {t('brand.isometricGenerator.download')}
+            </button>
+            <button
+              onClick={copyIsometricSvg}
+              className={`flex flex-1 items-center justify-center gap-2 rounded-lg border px-6 py-4 text-sm font-bold shadow-sm transition-colors ${
+                copyFeedback ? 'border-green-500/50 bg-green-500/10 text-green-400' : 'border-border bg-background hover:bg-muted/30'
+              }`}
+            >
+              <Copy className="h-4 w-4" />
+              {copyFeedback ? t('brand.colors.copied') : t('brand.isometricGenerator.copySvg')}
+            </button>
+          </div>
         </div>
 
         <div className="relative flex min-h-[400px] items-center justify-center overflow-hidden rounded-lg border border-border bg-[#0A0A0A]">

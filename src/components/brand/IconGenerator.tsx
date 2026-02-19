@@ -138,6 +138,7 @@ export function IconGenerator() {
   const colorInputRef = useRef<HTMLInputElement>(null);
   const [weight, setWeight] = useState<Weight>('regular');
   const [displayLimit, setDisplayLimit] = useState(48);
+  const [copyFeedback, setCopyFeedback] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hiddenIconRef = useRef<HTMLDivElement>(null);
 
@@ -153,6 +154,32 @@ export function IconGenerator() {
   }, [searchQuery]);
 
   const SelectedIconComponent = EXTENDED_ICONS[selectedIconName] || Coins;
+
+  const copyIconSvg = async () => {
+    const hiddenIconContainer = hiddenIconRef.current;
+    if (!hiddenIconContainer) return;
+    const svgElement = hiddenIconContainer.querySelector('svg');
+    if (!svgElement) return;
+    const serializer = new XMLSerializer();
+    let svgString = serializer.serializeToString(svgElement);
+    if (!svgString.includes('xmlns="http://www.w3.org/2000/svg"')) {
+      svgString = svgString.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+    try {
+      await navigator.clipboard.writeText(svgString);
+      setCopyFeedback(true);
+      setTimeout(() => setCopyFeedback(false), 2000);
+    } catch {
+      const textArea = document.createElement('textarea');
+      textArea.value = svgString;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopyFeedback(true);
+      setTimeout(() => setCopyFeedback(false), 2000);
+    }
+  };
 
   const downloadIcon = () => {
     const canvas = canvasRef.current;
@@ -325,13 +352,22 @@ export function IconGenerator() {
                 </div>
               </div>
             </div>
-            <div className="pt-2">
+            <div className="flex flex-col gap-2 pt-2 sm:flex-row">
               <button
                 onClick={downloadIcon}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-4 text-sm font-bold shadow-sm transition-colors hover:bg-muted/30"
+                className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-background px-6 py-4 text-sm font-bold shadow-sm transition-colors hover:bg-muted/30"
               >
                 <Download weight="bold" className="h-4 w-4" />
                 {t('brand.iconGenerator.download')}
+              </button>
+              <button
+                onClick={copyIconSvg}
+                className={`flex flex-1 items-center justify-center gap-2 rounded-lg border px-6 py-4 text-sm font-bold shadow-sm transition-colors ${
+                  copyFeedback ? 'border-green-500/50 bg-green-500/10 text-green-400' : 'border-border bg-background hover:bg-muted/30'
+                }`}
+              >
+                <Copy weight="bold" className="h-4 w-4" />
+                {copyFeedback ? t('brand.colors.copied') : t('brand.iconGenerator.copySvg')}
               </button>
             </div>
           </div>
