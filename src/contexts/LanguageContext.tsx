@@ -123,6 +123,12 @@ const translations = {
     'values.team.shortTitle': 'One-UX',
     'values.team.content': 'We align as a design team before we scale out. That means syncing often, sharing conventions, and applying consistent practices. Our alignment ensures partners, users, and advertisers experience Buzzvil design as one coherent system.',
     'values.team.tagline': 'Align first, scale together.',
+    'values.alignmentQuestionLabel': 'Alignment question',
+    'values.build.alignmentQuestion': 'Are we sharing early enough and iterating fast enough?',
+    'values.clarity.alignmentQuestion': 'Would a teammate understand this without asking follow-ups?',
+    'values.grit.alignmentQuestion': 'Did we take it from idea to shipped outcome?',
+    'values.explore.alignmentQuestion': 'Did we validate with research or real feedback before locking in?',
+    'values.team.alignmentQuestion': 'Does this feel like one Buzzvil experience, or a patchwork?',
     
     // Values Characteristics
     'values.build.characteristics.0': 'Rapid Prototyping',
@@ -660,6 +666,12 @@ const translations = {
     'values.team.shortTitle': 'One-UX',
     'values.team.content': '우리는 확장하기 전에 디자인 팀으로 정렬합니다. 이는 자주 동기화하고, 관례를 공유하고, 일관된 관행을 적용하는 것을 의미합니다. 우리의 정렬은 파트너, 사용자, 광고주가 버즈빌 디자인을 하나의 일관된 시스템으로 경험하도록 보장합니다.',
     'values.team.tagline': '먼저 정렬하고, 함께 확장하라.',
+    'values.alignmentQuestionLabel': '정렬 질문',
+    'values.build.alignmentQuestion': '충분히 일찍 공유하고 빠르게 반복하고 있는가?',
+    'values.clarity.alignmentQuestion': '팀원이 추가 설명 없이 이해할 수 있는가?',
+    'values.grit.alignmentQuestion': '아이디어에서 실제 출시 결과까지 책임지고 이끌었는가?',
+    'values.explore.alignmentQuestion': '고정하기 전에 리서치나 실제 피드백으로 검증했는가?',
+    'values.team.alignmentQuestion': '하나의 버즈빌 경험처럼 느껴지는가, 아니면 조각낸 느낌인가?',
     
     // Values Characteristics
     'values.build.characteristics.0': '빠른 프로토타이핑',
