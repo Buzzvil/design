@@ -160,11 +160,14 @@ export function IconGenerator() {
     if (!hiddenIconContainer) return;
     const svgElement = hiddenIconContainer.querySelector('svg');
     if (!svgElement) return;
+    const resolvedColor = activeColorKey === CUSTOM_COLOR_ID ? customHex : color;
     const serializer = new XMLSerializer();
     let svgString = serializer.serializeToString(svgElement);
     if (!svgString.includes('xmlns="http://www.w3.org/2000/svg"')) {
       svgString = svgString.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
     }
+    // Ensure the chosen (including custom) color is applied in the copied SVG
+    svgString = svgString.replace(/currentColor/g, resolvedColor);
     try {
       await navigator.clipboard.writeText(svgString);
       setCopyFeedback(true);
