@@ -4,7 +4,7 @@ import { useState, useEffect, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight } from 'lucide-react';
 
-const STORAGE_KEY = 'featured-isometric-dismissed';
+const STORAGE_KEY = 'featured-update-dismissed-version';
 
 interface FeaturedUpdateProps {
   heading: string;
@@ -12,7 +12,12 @@ interface FeaturedUpdateProps {
   linkHref: string;
   linkLabel: string;
   children: ReactNode;
-  /** If set, dismiss state is persisted in localStorage (once closed, never show again) */
+  /**
+   * Content version (e.g. '1', 'isometric-v2'). When you bump this, the featured card
+   * will show again for all users, including those who previously dismissed it.
+   */
+  contentVersion: string;
+  /** localStorage key to store the last dismissed version (default works with contentVersion) */
   storageKey?: string;
 }
 
@@ -22,6 +27,7 @@ export function FeaturedUpdate({
   linkHref,
   linkLabel,
   children,
+  contentVersion,
   storageKey = STORAGE_KEY,
 }: FeaturedUpdateProps) {
   const [visible, setVisible] = useState(false);
@@ -30,17 +36,17 @@ export function FeaturedUpdate({
   useEffect(() => {
     setMounted(true);
     if (storageKey && typeof localStorage !== 'undefined') {
-      const dismissed = localStorage.getItem(storageKey);
-      if (dismissed === '1') return;
+      const dismissedVersion = localStorage.getItem(storageKey);
+      if (dismissedVersion === contentVersion) return;
     }
     const t = setTimeout(() => setVisible(true), 600);
     return () => clearTimeout(t);
-  }, [storageKey]);
+  }, [storageKey, contentVersion]);
 
   const dismiss = () => {
     setVisible(false);
     if (storageKey && typeof localStorage !== 'undefined') {
-      localStorage.setItem(storageKey, '1');
+      localStorage.setItem(storageKey, contentVersion);
     }
   };
 
