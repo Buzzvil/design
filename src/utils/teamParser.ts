@@ -230,6 +230,8 @@ export function loadTeamMembers(): TeamMember[] {
       <keyword>UX/UI</keyword>
     </keywords>
   </expertise>
+  <linkUrl>https://www.linkedin.com/in/%EC%B4%88%EC%9B%90-%EC%A0%95-112164333/</linkUrl>
+  <linkLabel>LinkedIn</linkLabel>
 </avatar>`;
       }
 
