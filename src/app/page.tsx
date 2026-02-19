@@ -8,6 +8,7 @@ import MissionVision from '@/components/sections/MissionVision';
 import Values from '@/components/sections/Values';
 import Team from '@/components/sections/Team';
 import Tools from '@/components/sections/Tools';
+import Routines from '@/components/sections/Routines';
 import Footer from '@/components/layout/Footer';
 import InteractiveMinimap from '@/components/ui/InteractiveMinimap';
 import SectionNavigation from '@/components/ui/SectionNavigation';
@@ -43,6 +44,7 @@ export default function Home() {
     { id: 'values', label: t('nav.sections.values') },
     { id: 'team', label: t('nav.sections.team') },
     { id: 'tools', label: t('nav.sections.tools') },
+    { id: 'routines', label: t('nav.sections.routines') },
   ];
 
   return (
@@ -106,6 +108,12 @@ export default function Home() {
         <ParallaxSection speed={0.7} offset={250}>
           <div id="tools" className="scroll-mt-24">
             <Tools />
+          </div>
+        </ParallaxSection>
+        
+        <ParallaxSection speed={0.75} offset={280}>
+          <div id="routines" className="scroll-mt-24">
+            <Routines />
           </div>
         </ParallaxSection>
         

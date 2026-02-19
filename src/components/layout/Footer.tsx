@@ -22,6 +22,7 @@ const Footer = () => {
       { name: t('footer.foundations.values'), href: '/design/#values' },
       { name: t('footer.foundations.team'), href: '/design/#team' },
       { name: t('footer.foundations.tools'), href: '/design/#tools' },
+      { name: t('footer.foundations.routines'), href: '/design/#routines' },
     ],
     'Brand': [
       { name: t('footer.brand.principles'), href: '/design/brand/#principles' },

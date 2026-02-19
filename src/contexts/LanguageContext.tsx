@@ -27,6 +27,7 @@ const translations = {
     'nav.sections.values': 'Working Principles',
     'nav.sections.team': 'Our Team',
     'nav.sections.tools': 'Our Stack',
+    'nav.sections.routines': 'Our Routines',
     
     // Contact Banner
     'banner.title': 'Want to meet us over coffee?',
@@ -209,6 +210,21 @@ const translations = {
     'tools.tool.cursor.feature.0': 'AI Coding',
     'tools.tool.cursor.feature.1': 'Design System',
     'tools.tool.cursor.feature.2': 'Frontend Development',
+    
+    // Routines (Design Routines at Buzzvil)
+    'routines.title': 'Design Routines',
+    'routines.subtitle': 'We operate as a functional design team across products. These routines create alignment without slowing teams down, and autonomy without drifting apart.',
+    'routines.whyTitle': 'Why routines matter',
+    'routines.whyContent': 'When designers are distributed across products, context fragments, decisions become local, and quality can drift. Routines counterbalance that through regular reflection, sharing, and recalibration—not constant reviews, but deliberate moments that compound learning over time.',
+    'routines.sync.title': 'Biweekly design sync',
+    'routines.sync.description': 'The team shares what we learned, not just what we shipped: releases, KPIs, surprises, trade-offs. We also leave room for tools, stuck problems, peer review, and process friction. Prepared, concrete sharing builds a shared understanding of how design connects to outcomes.',
+    'routines.1on1.title': 'Biweekly 1 on 1s',
+    'routines.1on1.description': 'Protected time for depth, not reporting. We use it to unblock problems, talk through design decisions, zoom out on scope, discuss collaboration, and reflect on growth. Prepared topics allow us to go deeper, faster, and build the trust needed for autonomous, high-impact decisions.',
+    'routines.lunch.title': 'Monthly lunch study',
+    'routines.lunch.description': 'We eat together and explore something new: a tool, a technology, or a method worth pressure-testing. Sometimes we study a board game—learning and playing together strengthens bonding and collaboration. The point is shared exploration, not output.',
+    'routines.week.title': 'Quarterly design week',
+    'routines.week.description': 'Our heaviest ritual: time to work on the design function itself. Workshops on principles or patterns, token structure, system-level decisions. We also step outside—conferences, exhibitions, external speakers, internal talks. Design week recharges perspective and raises the ceiling of the team.',
+    'routines.closing': 'Routines give us shared language, standards, and momentum while preserving the autonomy required to move fast inside product teams.',
     
             // Brand
             'brand.sections.principles': 'Principles',
@@ -530,6 +546,7 @@ const translations = {
             'footer.foundations.values': 'Working Principles',
             'footer.foundations.team': 'Our Team',
             'footer.foundations.tools': 'Our Stack',
+    'footer.foundations.routines': 'Our Routines',
             'footer.brand.principles': 'Principles',
             'footer.brand.guidelines': 'Guidelines',
             'footer.brand.resources': 'Resources',
@@ -570,6 +587,7 @@ const translations = {
     'nav.sections.values': '작업 원칙',
     'nav.sections.team': '우리의 팀',
     'nav.sections.tools': '우리의 스택',
+    'nav.sections.routines': '우리의 루틴',
     
     // Contact Banner
     'banner.title': '커피 한 잔 하며 만나볼까요?',
@@ -751,6 +769,21 @@ const translations = {
     'tools.tool.cursor.feature.0': 'AI 코딩',
     'tools.tool.cursor.feature.1': '디자인 시스템',
     'tools.tool.cursor.feature.2': '프론트엔드 개발',
+    
+    // Routines
+    'routines.title': '디자인 루틴',
+    'routines.subtitle': '우리는 여러 제품에 걸쳐 기능형 디자인 팀으로 운영됩니다. 이 루틴들은 팀 속도를 늦추지 않으면서 정렬을 만들고, 흐트러지지 않으면서 자율성을 유지합니다.',
+    'routines.whyTitle': '루틴이 중요한 이유',
+    'routines.whyContent': '디자이너가 제품별로 분산되면 맥락이 조각나고, 결정은 로컬해지며, 품질이 흐트러질 수 있습니다. 루틴은 지속적인 리뷰가 아니라 정기적인 성찰, 공유, 재정렬을 통해 이를 균형 있게 만듭니다. 시간이 지남에 따라 학습이 쌓이도록 합니다.',
+    'routines.sync.title': '격주 디자인 싱크',
+    'routines.sync.description': '팀은 출시한 것뿐 아니라 배운 것을 공유합니다: 릴리스, KPI, 놀라운 점, 트레이드오프. 도구, 막힌 문제, 피어 리뷰, 프로세스 마찰도 다룹니다. 준비된 구체적 공유로 디자인이 결과와 어떻게 연결되는지에 대한 공유 이해가 쌓입니다.',
+    'routines.1on1.title': '격주 1:1',
+    'routines.1on1.description': '리포트가 아닌 깊이를 위한 보호된 시간. 문제 해소, 디자인 결정 논의, 스코프 조망, 협업·역할 경계, 성장 성찰에 씁니다. 준비된 주제로 더 깊고 빠르게 가며, 자율적 고임팩트 결정에 필요한 신뢰를 쌓습니다.',
+    'routines.lunch.title': '월간 런치 스터디',
+    'routines.lunch.description': '함께 식사하며 새로운 것을 탐구합니다: 도구, 기술, 검증할 만한 방법. 때로는 보드게임을 배우고 함께 플레이하며 팀 결속과 협업을 키웁니다. 목적은 공유 탐구이며, 산출물이 아닙니다.',
+    'routines.week.title': '분기 디자인 위크',
+    'routines.week.description': '가장 무게 있는 의식. 디자인 기능 자체에 쓸 시간입니다. 원칙·패턴 워크숍, 토큰 구조, 시스템 수준 결정. 외부로도 나갑니다—컨퍼런스, 전시, 외부 연사, 내부 발표. 디자인 위크는 시야를 재충전하고 팀의 천장을 높입니다.',
+    'routines.closing': '루틴은 제품 팀 안에서 빠르게 움직이기에 필요한 자율성을 유지하면서, 공유 언어, 기준, 모멘텀을 줍니다.',
     
             // Brand
             'brand.sections.principles': '원칙',
@@ -1072,6 +1105,7 @@ const translations = {
             'footer.foundations.values': '작업 원칙',
             'footer.foundations.team': '우리의 팀',
             'footer.foundations.tools': '우리의 스택',
+    'footer.foundations.routines': '우리의 루틴',
             'footer.brand.principles': '원칙',
             'footer.brand.guidelines': '가이드라인',
             'footer.brand.resources': '리소스',
