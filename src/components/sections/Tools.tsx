@@ -7,39 +7,28 @@ import Image from 'next/image';
 import { BlurReveal } from '../ui/BlurReveal';
 import { SectionTitle } from '../ui/SectionTitle';
 
+const TOOL_IDS = ['figma', 'gpt', 'cursor'] as const;
+
 const Tools = () => {
-  const { t } = useLanguage();
-  
+  const { t, language } = useLanguage();
+
   const tools = [
     {
       category: t('tools.category.design-development'),
       icon: Palette,
-      items: [
-        {
-          name: 'Figma Suite (org)',
-          description: 'Our primary design tool for creating interfaces, prototypes, and design systems with team collaboration',
-          status: 'Active',
-          link: 'https://figma.com',
-          features: ['Design System', 'Prototyping', 'Team Collaboration'],
-          logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
-        },
-        {
-          name: 'GPT Business',
-          description: 'AI-powered assistant for design ideation, content generation, and workflow optimization',
-          status: 'Active',
-          link: 'https://openai.com',
-          features: ['AI Assistant', 'Content Generation', 'Workflow Optimization'],
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
-        },
-        {
-          name: 'Cursor',
-          description: 'AI-powered code editor for design system development and frontend implementation',
-          status: 'Active',
-          link: 'https://cursor.sh',
-          features: ['AI Coding', 'Design System', 'Frontend Development'],
-          logo: 'https://cursor.sh/favicon.ico',
-        },
-      ],
+      items: TOOL_IDS.map((id) => ({
+        id,
+        name: t(`tools.tool.${id}.name`),
+        description: t(`tools.tool.${id}.description`),
+        status: 'Active',
+        link: id === 'figma' ? 'https://figma.com' : id === 'gpt' ? 'https://openai.com' : 'https://cursor.sh',
+        features: [0, 1, 2].map((i) => t(`tools.tool.${id}.feature.${i}`)),
+        logo: id === 'figma'
+          ? 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg'
+          : id === 'gpt'
+            ? 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg'
+            : 'https://cursor.sh/favicon.ico',
+      })),
     },
   ];
 
@@ -87,8 +76,9 @@ const Tools = () => {
           </BlurReveal>
         </motion.div>
 
-        {/* Tools Grid */}
+        {/* Tools Grid — key by language so content re-renders and re-animates on language change */}
         <motion.div
+          key={language}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -106,7 +96,7 @@ const Tools = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((tool) => (
                   <motion.div
-                    key={tool.name}
+                    key={tool.id}
                     whileHover={{ y: -4, scale: 1.02 }}
                     className="group relative"
                   >

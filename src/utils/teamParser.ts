@@ -1,4 +1,5 @@
 export interface TeamMember {
+  id: string; // e.g. 'max', 'jia' — for translation keys
   name: string;
   role: string;
   description: string;
@@ -50,6 +51,7 @@ export function parseTeamMemberXML(xmlString: string): TeamMember | null {
     }
 
     return {
+      id: '', // set by loadTeamMembers from filename
       name: nameMatch[1].trim(),
       role: titleMatch[1].trim(),
       description: descriptionMatch[1].trim(),
@@ -182,7 +184,7 @@ export function loadTeamMembers(): TeamMember[] {
         xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <avatar>
   <personal>
-    <name>Rina Lee</name>
+    <name>Rina (Erin Lee)</name>
   </personal>
   <buzzvil>
     <value>clarity</value>
@@ -190,20 +192,24 @@ export function loadTeamMembers(): TeamMember[] {
   </buzzvil>
   <role>
     <title>Product Designer</title>
-    <organizationDescription>I am a Product Designer on the Supply Experience Team, specializing in the UI/UX of the Benefit Hub and the internal operation system, Dash, that enables and monitors it.</organizationDescription>
+    <organizationDescription>Design and oversee the UI/UX for publisher-side products and the internal tool used to control, monitor, and support them.</organizationDescription>
   </role>
   <expertise>
     <keywords>
       <keyword>UI/UX</keyword>
       <keyword>Usability Improvement</keyword>
       <keyword>System Design</keyword>
+      <keyword>logical thinking</keyword>
     </keywords>
   </expertise>
+  <linkUrl>https://www.linkedin.com/in/elee612?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app</linkUrl>
+  <linkLabel>LinkedIn</linkLabel>
 </avatar>`;
       }
 
       const member = parseTeamMemberXML(xmlContent);
       if (member) {
+        member.id = filename.replace(/\.xml$/, '');
         teamMembers.push(member);
       }
     } catch (error) {

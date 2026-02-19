@@ -12,7 +12,7 @@ import { SectionTitle } from '../ui/SectionTitle';
 const Team = () => {
   const { t } = useLanguage();
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
+  const [hoveredMemberId, setHoveredMemberId] = useState<string | null>(null);
   
   useEffect(() => {
     try {
@@ -79,9 +79,21 @@ const Team = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {teamMembers.length > 0 ? teamMembers.map((member) => (
+          {teamMembers.length > 0 ? teamMembers.map((member) => {
+            const nameKey = `team.member.${member.id}.name`;
+            const roleKey = `team.member.${member.id}.role`;
+            const descKey = `team.member.${member.id}.description`;
+            const keywordsKey = `team.member.${member.id}.keywords`;
+            const displayName = t(nameKey) !== nameKey ? t(nameKey) : member.name;
+            const displayRole = t(roleKey) !== roleKey ? t(roleKey) : member.role;
+            const displayDesc = t(descKey) !== descKey ? t(descKey) : member.description;
+            const translatedKw = t(keywordsKey);
+            const displayKeywords = translatedKw !== keywordsKey
+              ? translatedKw.split(',').map((s) => s.trim())
+              : member.keywords;
+            return (
             <motion.div
-              key={member.name}
+              key={member.id}
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               className="group relative"
@@ -96,10 +108,10 @@ const Team = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="absolute inset-0 z-10 rounded-2xl"
-                      aria-label={`More about ${member.name}`}
+                      aria-label={`More about ${displayName}`}
                     />
                     <span className="absolute bottom-4 right-4 text-sm text-muted-foreground group-hover:text-primary transition-colors z-20 pointer-events-none">
-                      More →
+                      {t('team.more')}
                     </span>
                   </>
                 )}
@@ -112,18 +124,12 @@ const Team = () => {
                       philosophy={member.buzzvilValue}
                       workingStyle={member.buzzvilPrinciple}
                       className="cursor-pointer"
-                      onMouseEnter={() => {
-                        console.log('Hovering over avatar:', member.name);
-                        setHoveredMember(member.name);
-                      }}
-                      onMouseLeave={() => {
-                        console.log('Leaving avatar:', member.name);
-                        setHoveredMember(null);
-                      }}
+                      onMouseEnter={() => setHoveredMemberId(member.id)}
+                      onMouseLeave={() => setHoveredMemberId(null)}
                     />
                     {/* Tooltip - positioned 8px from top right of avatar */}
                     <div className={`absolute -top-2 -right-2 bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 shadow-lg transition-all duration-200 pointer-events-none z-50 whitespace-nowrap transform -translate-y-1 ${
-                      hoveredMember === member.name ? 'opacity-100' : 'opacity-0'
+                      hoveredMemberId === member.id ? 'opacity-100' : 'opacity-0'
                     }`}>
                       <div className="text-sm font-medium text-white">
                         {member.buzzvilValue.replace('-', ' ')} • {member.buzzvilPrinciple.replace('-', ' ')}
@@ -137,17 +143,17 @@ const Team = () => {
                 {/* Member Info */}
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {member.name}
+                    {displayName}
                   </h3>
-                  <p className="text-primary font-semibold mb-3">{member.role}</p>
+                  <p className="text-primary font-semibold mb-3">{displayRole}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    {member.description}
+                    {displayDesc}
                   </p>
                 </div>
 
                 {/* Keywords/Expertise Tags */}
                 <div className="flex flex-wrap gap-2 justify-center">
-                  {member.keywords.map((keyword, keywordIndex) => (
+                  {displayKeywords.map((keyword, keywordIndex) => (
                     <span
                       key={keywordIndex}
                       className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full group-hover:bg-primary/10 group-hover:text-primary transition-colors"
@@ -161,7 +167,8 @@ const Team = () => {
                 <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </motion.div>
-          )) : (
+          );
+          }) : (
             <div className="col-span-full text-center text-muted-foreground">
               Loading team members...
             </div>
