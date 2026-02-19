@@ -29,7 +29,7 @@ function buildDepthLayers(count: number): number[] {
 export function IsometricGenerator() {
   const { t } = useLanguage();
   const [angleKey, setAngleKey] = useState<AngleKey>('standard');
-  const [direction, setDirection] = useState<Direction>('left');
+  const [direction, setDirection] = useState<Direction>('center');
   const [depthLayers, setDepthLayers] = useState(3);
   const [color, setColor] = useState('#FFFFFF');
   const [customHex, setCustomHex] = useState('#FFFFFF');

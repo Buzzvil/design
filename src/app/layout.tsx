@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ContactFormProvider } from "@/contexts/ContactFormContext";
 import ContactForm from "@/components/ui/ContactForm";
+import { FeaturedUpdateGlobal } from "@/components/ui/FeaturedUpdateGlobal";
 
 const nunito = Nunito({ 
   subsets: ["latin"], 
@@ -63,6 +64,7 @@ export default function RootLayout({
           <ContactFormProvider>
             {children}
             <ContactForm />
+            <FeaturedUpdateGlobal />
           </ContactFormProvider>
         </LanguageProvider>
       </body>
