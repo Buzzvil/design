@@ -14,10 +14,10 @@ export interface HeroPalette {
 
 /* ─── Page palettes ─── */
 
-/** Home (Foundations) — neutral white & greys */
+/** Home (Foundations) — one white, one gray for clear contrast */
 export const HOME_PALETTE: HeroPalette = {
   gradient: 'linear-gradient(to bottom right, #0A0A0A, #000000, #111111)',
-  blobs: ['#FFFFFF', '#9CA3AF', '#D1D5DB'],
+  blobs: ['#FFFFFF', '#374151', '#6B7280'],
 };
 
 /** Brand — white & red */
@@ -45,36 +45,36 @@ export function HeroBackground({ palette = BRAND_PALETTE }: { palette?: HeroPale
         className="absolute inset-0 opacity-80"
         style={{ background: palette.gradient }}
       />
-      <div className="absolute inset-0 opacity-60 mix-blend-screen">
+      <div className="absolute inset-0 opacity-70 mix-blend-screen">
         <motion.div
-          className="absolute top-1/4 left-1/4 h-[500px] w-[500px] rounded-full blur-[120px]"
+          className="absolute top-1/4 left-1/4 h-[480px] w-[480px] rounded-full blur-[100px]"
           style={{ backgroundColor: blob1 }}
           animate={{
-            x: [0, 100, -100, 0],
-            y: [0, -100, 100, 0],
-            scale: [1, 1.2, 0.8, 1],
+            x: [0, 80, -120, 40, 0],
+            y: [0, -80, 60, -40, 0],
+            scale: [1, 1.15, 0.85, 1.1, 1],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full blur-[100px]"
+          className="absolute bottom-1/3 right-1/4 h-[380px] w-[380px] rounded-full blur-[90px]"
           style={{ backgroundColor: blob2 }}
           animate={{
-            x: [0, -150, 100, 0],
-            y: [0, 50, -50, 0],
-            scale: [1, 1.3, 0.9, 1],
+            x: [0, -100, 80, -60, 0],
+            y: [0, 60, -80, 30, 0],
+            scale: [1.1, 0.9, 1.25, 0.95, 1.1],
           }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 19, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 h-[600px] w-[600px] rounded-full blur-[140px]"
+          className="absolute top-1/2 right-1/2 h-[320px] w-[320px] rounded-full blur-[80px] opacity-80"
           style={{ backgroundColor: blob3 }}
           animate={{
-            x: [-50, 50, -50],
-            y: [-50, 50, -50],
-            scale: [0.9, 1.1, 0.9],
+            x: [-40, 60, -30, 50, -40],
+            y: [-30, -50, 40, -20, -30],
+            scale: [0.95, 1.05, 0.9, 1.1, 0.95],
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
       <div className="absolute inset-0 opacity-30 mix-blend-overlay [background-image:url('https://grainy-gradients.vercel.app/noise.svg')]" />

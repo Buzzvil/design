@@ -23,6 +23,7 @@ const Header = () => {
       hasSubmenu: true,
       submenuItems: [
         { name: t('product.sections.principles'), href: '/product#principles' },
+        { name: t('product.sections.layers'), href: '/product#layers' },
         { name: t('product.sections.chameleon'), href: '/product#chameleon' },
         { name: t('product.sections.patterns'), href: '/product#patterns' },
         { name: t('product.sections.conventions'), href: '/product#conventions' },

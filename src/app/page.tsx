@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Hero from '@/components/sections/Hero';
 import MissionVision from '@/components/sections/MissionVision';
-import { PhilosophyAnimation } from '@/components/sections/PhilosophyAnimation';
 import Values from '@/components/sections/Values';
 import Team from '@/components/sections/Team';
 import Tools from '@/components/sections/Tools';
@@ -73,7 +73,13 @@ export default function Home() {
 
               <div className="max-w-4xl mx-auto">
                 <div className="text-center p-12 bg-gradient-to-br from-background to-muted/20 rounded-2xl border border-border">
-                  <PhilosophyAnimation isActive={true} />
+                  <div className="mb-8 flex justify-center">
+                    <motion.div
+                      className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/20"
+                      animate={{ scale: [1, 1.03, 1], opacity: [0.9, 1, 0.9] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                  </div>
                   <div className="text-xl text-muted-foreground leading-relaxed space-y-4">
                     {t('philosophy.content').split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
