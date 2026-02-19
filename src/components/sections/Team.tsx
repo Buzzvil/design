@@ -8,7 +8,6 @@ import { loadTeamMembers, TeamMember } from '@/utils/teamParser';
 import { useState, useEffect } from 'react';
 import { BlurReveal } from '../ui/BlurReveal';
 import { SectionTitle } from '../ui/SectionTitle';
-import { Linkedin, ExternalLink } from 'lucide-react';
 
 const Team = () => {
   const { t } = useLanguage();
@@ -87,9 +86,23 @@ const Team = () => {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group relative"
             >
-              <div 
+              <div
                 className="h-full p-8 bg-background rounded-2xl border border-border hover-lift glass overflow-visible relative"
               >
+                {member.linkUrl && (
+                  <>
+                    <Link
+                      href={member.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 z-10 rounded-2xl"
+                      aria-label={`More about ${member.name}`}
+                    />
+                    <span className="absolute bottom-4 right-4 text-sm text-muted-foreground group-hover:text-primary transition-colors z-20 pointer-events-none">
+                      More →
+                    </span>
+                  </>
+                )}
                 {/* Avatar with Buzzvil Animation */}
                 <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
                   <div className="relative p-4">
@@ -143,26 +156,6 @@ const Team = () => {
                     </span>
                   ))}
                 </div>
-
-                {/* Profile link (LinkedIn or other) */}
-                {member.linkUrl && (
-                  <div className="mt-4 flex justify-center">
-                    <Link
-                      href={member.linkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {member.linkLabel?.toLowerCase() === 'linkedin' ? (
-                        <Linkedin className="w-4 h-4" />
-                      ) : (
-                        <ExternalLink className="w-4 h-4" />
-                      )}
-                      {member.linkLabel ?? 'Link'}
-                    </Link>
-                  </div>
-                )}
 
                 {/* Hover Effect */}
                 <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
