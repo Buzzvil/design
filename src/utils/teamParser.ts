@@ -74,10 +74,11 @@ export function loadTeamMembers(): TeamMember[] {
   // List of team member XML files
   const teamMemberFiles = [
     'max.xml',
-    'jia.xml', 
+    'jia.xml',
     'elle.xml',
     'joy.xml',
-    'rina.xml'
+    'rina.xml',
+    'mido.xml',
   ];
 
   const teamMembers: TeamMember[] = [];
@@ -204,6 +205,28 @@ export function loadTeamMembers(): TeamMember[] {
   </expertise>
   <linkUrl>https://www.linkedin.com/in/elee612?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app</linkUrl>
   <linkLabel>LinkedIn</linkLabel>
+</avatar>`;
+      } else if (filename === 'mido.xml') {
+        xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<avatar>
+  <personal>
+    <name>Mido (정초원)</name>
+  </personal>
+  <buzzvil>
+    <value>delight</value>
+    <principle>playful</principle>
+  </buzzvil>
+  <role>
+    <title>Product Design intern</title>
+    <organizationDescription>Product designer on the AD Product Team, designing the user experience for our game user-acquisition product.</organizationDescription>
+  </role>
+  <expertise>
+    <keywords>
+      <keyword>Product Design</keyword>
+      <keyword>Interaction Design</keyword>
+      <keyword>UX/UI</keyword>
+    </keywords>
+  </expertise>
 </avatar>`;
       }
 

@@ -178,6 +178,10 @@ const translations = {
     'team.member.rina.role': 'Product Designer',
     'team.member.rina.description': 'Design and oversee the UI/UX for publisher-side products and the internal tool used to control, monitor, and support them.',
     'team.member.rina.keywords': 'UI/UX, Usability Improvement, System Design, logical thinking',
+    'team.member.mido.name': 'Mido (정초원)',
+    'team.member.mido.role': 'Product Design intern',
+    'team.member.mido.description': 'Product designer on the AD Product Team, designing the user experience for our game user-acquisition product.',
+    'team.member.mido.keywords': 'Product Design, Interaction Design, UX/UI',
     
     // Tools
     'tools.title': 'Our Stack',
@@ -710,6 +714,10 @@ const translations = {
     'team.member.rina.role': '제품 디자이너',
     'team.member.rina.description': '퍼블리셔 측 제품과 이를 제어·모니터링·지원하는 내부 도구의 UI/UX를 디자인하고 총괄합니다.',
     'team.member.rina.keywords': 'UI/UX, 사용성 개선, 시스템 디자인, 논리적 사고',
+    'team.member.mido.name': 'Mido (정초원)',
+    'team.member.mido.role': '제품 디자인 인턴',
+    'team.member.mido.description': 'AD Product 팀 제품 디자이너. 게임 유저 어퀴지션 제품의 사용자 경험을 디자인합니다.',
+    'team.member.mido.keywords': '제품 디자인, 인터랙션 디자인, UX/UI',
     
     // Tools
     'tools.title': '우리의 스택',
