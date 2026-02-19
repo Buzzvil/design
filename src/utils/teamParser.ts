@@ -101,7 +101,7 @@ export function loadTeamMembers(): TeamMember[] {
   </buzzvil>
   <role>
     <title>Experienced Product Designer and CDO</title>
-    <organizationDescription>I lead the creation of playful brand interactions that scale engagement into conversion.</organizationDescription>
+    <organizationDescription>Leading the creation of playful brand interactions that scale engagement into conversion.</organizationDescription>
   </role>
   <expertise>
     <keywords>

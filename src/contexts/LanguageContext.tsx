@@ -160,7 +160,7 @@ const translations = {
     // Team members (fallback to parsed values if key missing)
     'team.member.max.name': 'Max (Maxence Mauduit)',
     'team.member.max.role': 'Experienced Product Designer and CDO',
-    'team.member.max.description': 'I lead the creation of playful brand interactions that scale engagement into conversion.',
+    'team.member.max.description': 'Leading the creation of playful brand interactions that scale engagement into conversion.',
     'team.member.max.keywords': '0→1 Builder, Systems Thinker, Product Strategist, Design Leader',
     'team.member.jia.name': 'Jia (Sophie Cui)',
     'team.member.jia.role': 'Principal Product Designer',
@@ -696,7 +696,7 @@ const translations = {
     'team.more': '더보기 →',
     'team.member.max.name': 'Max (Maxence Mauduit)',
     'team.member.max.role': '경험 많은 제품 디자이너 & CDO',
-    'team.member.max.description': '참여를 전환으로 확장하는 플레이풀한 브랜드 경험을 만듭니다.',
+    'team.member.max.description': '참여를 전환으로 확장하는 플레이풀한 브랜드 경험 창조를 이끕니다.',
     'team.member.max.keywords': '0→1 구축, 시스템 사고, 제품 전략, 디자인 리더',
     'team.member.jia.name': 'Jia (Sophie Cui)',
     'team.member.jia.role': '수석 제품 디자이너',
