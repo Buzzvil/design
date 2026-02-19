@@ -10,7 +10,7 @@ const ProductConventions = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div

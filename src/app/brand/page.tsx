@@ -6,6 +6,7 @@ import SectionNavigation from '@/components/ui/SectionNavigation';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BrandHero } from '@/components/brand/BrandHero';
+import { BrandPrinciples } from '@/components/brand/BrandPrinciples';
 import { BrandLogoSection } from '@/components/brand/BrandLogoSection';
 import { BrandColors } from '@/components/brand/BrandColors';
 import { BrandTypography } from '@/components/brand/BrandTypography';
@@ -18,6 +19,7 @@ export default function BrandPage() {
   const { t } = useLanguage();
 
   const sections = [
+    { id: 'principles', label: t('brand.sections.principles') },
     { id: 'logo', label: t('brand.nav.logo') },
     { id: 'colors', label: t('brand.nav.colors') },
     { id: 'typography', label: t('brand.nav.typography') },
@@ -34,8 +36,12 @@ export default function BrandPage() {
       {/* Hero - Identity System 2.0 */}
       <BrandHero />
 
-      <div id="logo" className="scroll-mt-24">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div id="principles" className="scroll-mt-24 min-h-screen">
+        <BrandPrinciples />
+      </div>
+
+      <div id="logo" className="scroll-mt-24 min-h-screen">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={0.1}>
               <div className="mb-12 border-b border-border pb-4">
@@ -49,8 +55,8 @@ export default function BrandPage() {
         </section>
       </div>
 
-      <div id="colors" className="scroll-mt-24">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div id="colors" className="scroll-mt-24 min-h-screen">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={0.15}>
               <div className="mb-12 border-b border-border pb-4">
@@ -64,8 +70,8 @@ export default function BrandPage() {
         </section>
       </div>
 
-      <div id="typography" className="scroll-mt-24">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div id="typography" className="scroll-mt-24 min-h-screen">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={0.2}>
               <div className="mb-12 border-b border-border pb-4">
@@ -79,8 +85,8 @@ export default function BrandPage() {
         </section>
       </div>
 
-      <div id="imagery" className="scroll-mt-24">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div id="imagery" className="scroll-mt-24 min-h-screen">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={0.25}>
               <div className="mb-12 border-b border-border pb-4">
@@ -94,8 +100,8 @@ export default function BrandPage() {
         </section>
       </div>
 
-      <div id="downloads" className="scroll-mt-24">
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div id="downloads" className="scroll-mt-24 min-h-screen">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection delay={0.3}>
               <div className="mb-12 border-b border-border pb-4">

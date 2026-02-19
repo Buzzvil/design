@@ -83,21 +83,21 @@ export default function ProductPage() {
         </AnimatedSection>
       </div>
       
-      <div id="layers" className="scroll-mt-24">
+      <div id="layers" className="scroll-mt-24 min-h-screen">
         <InteractionLayers />
       </div>
 
-      <div id="chameleon" className="scroll-mt-24">
+      <div id="chameleon" className="scroll-mt-24 min-h-screen">
         <ChameleonTheming />
       </div>
 
-      <div id="patterns" className="scroll-mt-24">
+      <div id="patterns" className="scroll-mt-24 min-h-screen">
         <AnimatedSection delay={0.2}>
           <ProductGuidelines />
         </AnimatedSection>
       </div>
 
-      <div id="conventions" className="scroll-mt-24">
+      <div id="conventions" className="scroll-mt-24 min-h-screen">
         <AnimatedSection delay={0.2}>
           <ProductConventions />
         </AnimatedSection>

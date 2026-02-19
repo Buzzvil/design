@@ -58,13 +58,13 @@ export default function Home() {
         </ParallaxSection>
         
         <ParallaxSection speed={0.3} offset={50}>
-          <div id="mission-vision" className="scroll-mt-24">
+          <div id="mission-vision" className="scroll-mt-24 min-h-screen">
             <MissionVision />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.4} offset={100}>
-          <section id="philosophy" className="py-20 scroll-mt-24">
+          <section id="philosophy" className="py-20 scroll-mt-24 min-h-screen flex flex-col justify-center">
             <div className="max-w-7xl mx-auto px-8">
               <SectionHeader
                 title={t('philosophy.title')}
@@ -94,25 +94,25 @@ export default function Home() {
         </ParallaxSection>
         
         <ParallaxSection speed={0.5} offset={150}>
-          <div id="values" className="scroll-mt-24">
+          <div id="values" className="scroll-mt-24 min-h-screen">
             <Values />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.6} offset={200}>
-          <div id="team" className="scroll-mt-24">
+          <div id="team" className="scroll-mt-24 min-h-screen">
             <Team />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.7} offset={250}>
-          <div id="tools" className="scroll-mt-24">
+          <div id="tools" className="scroll-mt-24 min-h-screen">
             <Tools />
           </div>
         </ParallaxSection>
         
         <ParallaxSection speed={0.75} offset={280}>
-          <div id="routines" className="scroll-mt-24">
+          <div id="routines" className="scroll-mt-24 min-h-screen">
             <Routines />
           </div>
         </ParallaxSection>

@@ -433,7 +433,7 @@ export default function ChameleonTheming() {
   const visibleThemeTokens = tokensExpanded ? THEME_TOKEN_ROWS : THEME_TOKEN_ROWS.slice(0, 6);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

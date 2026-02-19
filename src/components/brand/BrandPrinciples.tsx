@@ -1,67 +1,90 @@
 'use client';
 
+import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { BlurReveal } from '../ui/BlurReveal';
+import { SectionTitle } from '../ui/SectionTitle';
 
-export const BrandPrinciples = () => {
+const PRINCIPLE_IDS = ['adaptive', 'motion', 'real', 'clarity', 'consistent'] as const;
+
+export function BrandPrinciples() {
+  const { t } = useLanguage();
+
+  const principles = PRINCIPLE_IDS.map((id) => ({
+    id,
+    shortTitle: t(`brand.principles.${id}.shortTitle`),
+    title: t(`brand.principles.${id}.title`),
+    description: t(`brand.principles.${id}.description`),
+    alignmentQuestion: t(`brand.principles.${id}.alignmentQuestion`),
+  }));
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Brand Principles
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our brand principles guide how we communicate and present ourselves to the world.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-8 border border-border/20 hover:border-border/40 transition-all duration-300">
-            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-              <span className="text-2xl">🎯</span>
-            </div>
-            <h3 className="text-2xl font-semibold text-white mb-4">Consistency</h3>
-            <p className="text-muted-foreground mb-4">
-              Maintain consistent visual and verbal identity across all touchpoints.
-            </p>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>• Unified visual language</li>
-              <li>• Consistent messaging tone</li>
-              <li>• Cohesive brand experience</li>
-            </ul>
+    <section className="py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
+      <div className="max-w-6xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="text-center mb-14"
+        >
+          <BlurReveal>
+            <SectionTitle>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t('brand.principles.title')}
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                {t('brand.principles.description')}
+              </p>
+            </SectionTitle>
+          </BlurReveal>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          className="overflow-hidden rounded-xl border border-border bg-background/40 backdrop-blur-sm"
+        >
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-border bg-muted/20">
+                  <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                    Principle
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wider text-foreground">
+                    {t('brand.principles.alignmentQuestionLabel')}
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold uppercase tracking-wider text-foreground min-w-[280px]">
+                    Description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {principles.map((p) => (
+                  <tr
+                    key={p.id}
+                    className="border-b border-border/60 last:border-b-0 hover:bg-muted/10 transition-colors"
+                  >
+                    <td className="px-6 py-5 align-top text-sm font-medium text-foreground">
+                      {p.shortTitle}
+                    </td>
+                    <td className="px-6 py-5 align-top">
+                      <span className="font-semibold text-white">{p.title}</span>
+                      <p className="mt-2 text-sm italic text-muted-foreground">
+                        &ldquo;{p.alignmentQuestion}&rdquo;
+                      </p>
+                    </td>
+                    <td className="px-6 py-5 text-muted-foreground leading-relaxed">
+                      {p.description}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          
-          <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-8 border border-border/20 hover:border-border/40 transition-all duration-300">
-            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-              <span className="text-2xl">✨</span>
-            </div>
-            <h3 className="text-2xl font-semibold text-white mb-4">Authenticity</h3>
-            <p className="text-muted-foreground mb-4">
-              Stay true to our values and mission in every brand interaction.
-            </p>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>• Genuine brand voice</li>
-              <li>• Honest communication</li>
-              <li>• Value-driven messaging</li>
-            </ul>
-          </div>
-          
-          <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-8 border border-border/20 hover:border-border/40 transition-all duration-300">
-            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-              <span className="text-2xl">💡</span>
-            </div>
-            <h3 className="text-2xl font-semibold text-white mb-4">Clarity</h3>
-            <p className="text-muted-foreground mb-4">
-              Communicate clearly and effectively with our audience.
-            </p>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>• Clear messaging</li>
-              <li>• Simple communication</li>
-              <li>• Easy to understand</li>
-            </ul>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-};
+}

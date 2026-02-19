@@ -48,7 +48,7 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="py-32 bg-muted/30">
+    <section id="team" className="py-32 bg-muted/30 min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

@@ -30,7 +30,7 @@ const Routines = () => {
   };
 
   return (
-    <section id="routines" className="py-32 bg-muted/20">
+    <section id="routines" className="py-32 bg-muted/20 min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

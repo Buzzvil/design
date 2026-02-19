@@ -21,33 +21,33 @@ const techStack = [
   {
     category: 'Framework',
     items: [
-      { name: 'Next.js 16', detail: 'App Router, static export', href: 'https://nextjs.org' },
-      { name: 'React 19', detail: 'Server & Client components', href: 'https://react.dev' },
+      { name: 'Next.js 16', detail: 'App Router, Turbopack dev, static export (output: "export")', href: 'https://nextjs.org' },
+      { name: 'React 19', detail: 'Client components, concurrent features', href: 'https://react.dev' },
       { name: 'TypeScript', detail: 'Strict mode, end-to-end type safety', href: 'https://www.typescriptlang.org' },
     ],
   },
   {
-    category: 'Styling & Design',
+    category: 'Styling & Motion',
     items: [
-      { name: 'Tailwind CSS', detail: 'Utility-first, custom theme tokens', href: 'https://tailwindcss.com' },
-      { name: 'CSS Custom Properties', detail: 'Theming via HSL variables', href: null },
-      { name: 'Framer Motion', detail: 'Animations, spring physics, layout transitions', href: 'https://www.framer.com/motion' },
+      { name: 'Tailwind CSS', detail: 'Utility-first, custom theme (HSL tokens)', href: 'https://tailwindcss.com' },
+      { name: 'Framer Motion', detail: 'Scroll-linked motion, parallax, blur reveal, hero blobs', href: 'https://www.framer.com/motion' },
+      { name: 'Lucide React', detail: 'Icons across layout and sections', href: 'https://lucide.dev' },
     ],
   },
   {
     category: 'Typography',
     items: [
-      { name: 'Nunito', detail: 'Primary sans-serif (EN)', href: 'https://fonts.google.com/specimen/Nunito' },
-      { name: 'Noto Sans KR', detail: 'Primary sans-serif (KR)', href: 'https://fonts.google.com/noto/specimen/Noto+Sans+KR' },
-      { name: 'Anonymous Pro', detail: 'Monospace (EN)', href: 'https://fonts.google.com/specimen/Anonymous+Pro' },
-      { name: 'Nanum Gothic Coding', detail: 'Monospace (KR)', href: 'https://fonts.google.com/specimen/Nanum+Gothic+Coding' },
+      { name: 'Nunito', detail: 'Display / hero (EN)', href: 'https://fonts.google.com/specimen/Nunito' },
+      { name: 'Noto Sans KR', detail: 'Primary (KR)', href: 'https://fonts.google.com/noto/specimen/Noto+Sans+KR' },
+      { name: 'Inter', detail: 'Primary (EN body)', href: 'https://fonts.google.com/specimen/Inter' },
+      { name: 'Anonymous Pro / Nanum Gothic Coding', detail: 'Monospace (EN / KR)', href: null },
     ],
   },
   {
     category: 'Deployment',
     items: [
       { name: 'GitHub Pages', detail: 'Static hosting via GitHub Actions', href: 'https://pages.github.com' },
-      { name: 'Static Export', detail: 'output: "export" with basePath /design', href: null },
+      { name: 'Static Export', detail: 'basePath /design, trailing slash, no server runtime', href: null },
     ],
   },
 ];
@@ -56,32 +56,32 @@ const architectureDetails = [
   {
     icon: Palette,
     title: 'Theming',
-    description: 'HSL-based color tokens defined as CSS custom properties. Three theme presets (default, light, dark) generated from a single config. The accent, primary, and muted tokens cascade through every component.',
+    description: 'HSL-based color tokens as CSS custom properties. Accent, primary, and muted tokens cascade through all components. Hero and brand/product pages use per-page palettes for background blobs.',
   },
   {
     icon: Globe,
     title: 'Internationalization',
-    description: 'Fully bilingual (English / Korean). A custom LanguageContext provides the t() function across all pages. Every string is translated, including navigation, section headers, and body copy.',
+    description: 'Fully bilingual (English / Korean). LanguageContext provides t() across the app. All copy is translated: nav, section headers, team profiles, tools, routines, principles, and values.',
   },
   {
     icon: Layers,
-    title: 'Component Architecture',
-    description: 'Modular section components organized by domain: brand (logo, colors, typography, imagery), product (guidelines, patterns), and shared layout (header, footer, parallax). A separate lib/ namespace hosts a themeable component library.',
+    title: 'Site Structure',
+    description: 'Foundations (home): Mission & Vision, Philosophy, Working Principles, Team, Our Stack, Design Routines. Brand: principles, guidelines, resources. Product: Principles table, Composition, Variables, Patterns, Conventions. Shared: Header, Footer, section nav, parallax sections.',
   },
   {
     icon: Zap,
-    title: 'Animation System',
-    description: 'Framer Motion powers all transitions. Custom spring physics for the slingshot animation, sequential SVG line drawing, color-cycling compositions, and scroll-triggered section reveals. Animations are designed to loop gracefully with generous delays.',
+    title: 'Motion & Layout',
+    description: 'Framer Motion for scroll-linked parallax, blur reveals, and hero background blobs (white/gray gradients). Principles and Values are presented in readable tables; no carousels. Contact form and brand generators use client-side logic.',
   },
   {
     icon: Code2,
-    title: 'Static Generation',
-    description: 'The entire site is statically exported for GitHub Pages. Dynamic routes use generateStaticParams(). No server runtime required — everything is pre-rendered at build time.',
+    title: 'Static Export',
+    description: 'Next.js output: "export" with basePath /design and trailing slash. Entire site is pre-rendered at build time for GitHub Pages. No server or API routes.',
   },
   {
     icon: Users,
     title: 'Open by Design',
-    description: 'Source code is public on GitHub. The portal is primarily an internal tool for the Buzzvil design team and partners, but anyone can browse how we work, learn from our approach, and contribute.',
+    description: 'Source is public on GitHub. The portal is for the Buzzvil design team and partners; anyone can browse how we work, use our structure as reference, or contribute.',
   },
 ];
 
@@ -93,7 +93,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-8">
+      <section className="pt-32 pb-16 px-8 min-h-screen flex flex-col justify-center">
         <div className="max-w-4xl mx-auto">
           <motion.p
             initial={{ opacity: 0 }}
@@ -123,7 +123,7 @@ export default function AboutPage() {
       </section>
 
       {/* Contributors */}
-      <section className="py-12 px-8">
+      <section className="py-12 px-8 min-h-screen flex flex-col justify-center">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -145,7 +145,7 @@ export default function AboutPage() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-lg">Maxence Mauduit</p>
-              <p className="text-sm text-muted-foreground">Experience Product Designer and CDO · Buzzvil</p>
+              <p className="text-sm text-muted-foreground">Experienced Product Designer and CDO · Buzzvil</p>
             </div>
             <a
               href="https://www.linkedin.com/in/mmaxence/"
@@ -160,7 +160,7 @@ export default function AboutPage() {
       </section>
 
       {/* Tech Stack */}
-      <section className="py-12 px-8">
+      <section className="py-12 px-8 min-h-screen flex flex-col justify-center">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -213,7 +213,7 @@ export default function AboutPage() {
       </section>
 
       {/* Architecture & Logic */}
-      <section className="py-12 px-8 pb-20">
+      <section className="py-12 px-8 pb-20 min-h-screen flex flex-col justify-center">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}

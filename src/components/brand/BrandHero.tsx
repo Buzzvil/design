@@ -11,8 +11,8 @@ export function BrandHero() {
   const heroOpacity = useTransform(scrollY, [0, 500], [1, 0]);
   const heroY = useTransform(scrollY, [0, 500], [0, 200]);
 
-  const scrollToLogo = () => {
-    const el = document.getElementById('logo');
+  const scrollToPrinciples = () => {
+    const el = document.getElementById('principles');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -47,7 +47,7 @@ export function BrandHero() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={scrollToLogo}
+            onClick={scrollToPrinciples}
             className="mt-12 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/20 backdrop-blur-md px-8 py-4 text-sm font-bold tracking-wide text-white transition-all hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
           >
             {t('brand.hero.cta')} <ArrowRight className="h-4 w-4" />

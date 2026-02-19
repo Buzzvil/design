@@ -54,7 +54,7 @@ const Tools = () => {
   };
 
   return (
-    <section id="tools" className="py-32">
+    <section id="tools" className="py-32 min-h-screen flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
