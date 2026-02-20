@@ -35,7 +35,7 @@ const nanumGothicCoding = Nanum_Gothic_Coding({
 });
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/design';
-const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://design.buzzvil.com';
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://buzzvil.github.io';
 const baseUrl = `${siteOrigin}${basePath}`;
 const iconUrl = `${baseUrl}/icon.png`;
 
@@ -72,6 +72,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${nunito.variable} ${notoKR.variable} ${anonymousPro.variable} ${inter.variable} ${nanumGothicCoding.variable}`}>
+      <head>
+        <link rel="icon" href={`${basePath}/icon.png`} type="image/png" />
+      </head>
       <body className="min-h-screen bg-background antialiased">
         <LanguageProvider>
           <ContactFormProvider>

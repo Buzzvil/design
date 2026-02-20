@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const basePath = '/design';
-const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://design.buzzvil.com';
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://buzzvil.github.io';
 
 const nextConfig: NextConfig = {
   output: 'export',
